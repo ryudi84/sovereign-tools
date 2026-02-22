@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JWT Token Decoder: How to Debug JWT Tokens — Sovereign Tools</title>
+<meta name="description" content="Learn how JWT tokens work, decode them safely in the browser, and debug common authentication issues. Free online JWT decoder included.">
+<meta property="og:title" content="JWT Token Decoder: How to Debug JWT Tokens">
+<meta property="og:description" content="Understand JWT structure, decode tokens client-side, and debug auth issues with our free tool.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://ryudi84.github.io/sovereign-tools/blog/jwt-decoder-explained.html">
+<link rel="canonical" href="https://ryudi84.github.io/sovereign-tools/blog/jwt-decoder-explained.html">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"JWT Token Decoder: How to Debug JWT Tokens","description":"Learn how JWT tokens work, decode them safely in the browser, and debug common authentication issues.","author":{"@type":"Organization","name":"Sovereign Tools"},"publisher":{"@type":"Organization","name":"Sovereign Tools"},"datePublished":"2026-02-22","dateModified":"2026-02-22","mainEntityOfPage":"https://ryudi84.github.io/sovereign-tools/blog/jwt-decoder-explained.html"}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,sans-serif;background:#0a0a0a;color:#d4d4d4;line-height:1.75}
+a{color:#6ee7b7;text-decoration:none}a:hover{text-decoration:underline}
+.container{max-width:760px;margin:0 auto;padding:2rem 1.5rem}
+nav{padding:1rem 0;font-size:.9rem;color:#6b7280}
+h1{font-size:2rem;color:#f0f0f0;margin:1.5rem 0 .5rem;line-height:1.3}
+.meta{color:#6b7280;font-size:.85rem;margin-bottom:2rem}
+h2{font-size:1.4rem;color:#e0e0e0;margin:2rem 0 .75rem;padding-top:.5rem;border-top:1px solid #1a1a1a}
+h3{font-size:1.1rem;color:#d0d0d0;margin:1.5rem 0 .5rem}
+p{margin-bottom:1rem;color:#b0b0b0}
+ul,ol{margin:0 0 1rem 1.5rem;color:#b0b0b0}li{margin-bottom:.4rem}
+pre{background:#111;border:1px solid #222;border-radius:8px;padding:1.2rem;overflow-x:auto;margin-bottom:1.25rem;font-size:.88rem;line-height:1.5}
+code{font-family:'Fira Code',Consolas,monospace;color:#6ee7b7}
+pre code{color:#d4d4d4}
+.jwt-part{padding:2px 0}
+.jwt-header{color:#f472b6}
+.jwt-payload{color:#c084fc}
+.jwt-sig{color:#60a5fa}
+blockquote{border-left:3px solid #f59e0b;padding:.75rem 1rem;background:#111;margin-bottom:1rem;border-radius:0 8px 8px 0}
+blockquote p{margin:0;color:#d4a017}
+.cta{background:linear-gradient(135deg,#065f46,#1e3a5f);border:1px solid #10b981;border-radius:12px;padding:2rem;text-align:center;margin:2.5rem 0}
+.cta h2{border:none;margin:0 0 .5rem;padding:0;color:#f0f0f0}
+.cta p{color:#9ca3af;margin-bottom:1rem}
+.cta a.btn{display:inline-block;background:#10b981;color:#000;font-weight:600;padding:.75rem 2rem;border-radius:8px;text-decoration:none}
+.cta a.btn:hover{background:#34d399}
+.related{background:#111;border:1px solid #222;border-radius:12px;padding:1.5rem;margin:2rem 0}
+.related h3{margin-top:0}.related ul{list-style:none;margin:0;padding:0}.related li{padding:.3rem 0}
+footer{text-align:center;padding:2rem 0;color:#4b5563;font-size:.85rem}
+</style>
+</head>
+<body>
+<div class="container">
+<nav><a href="index.html">← Blog</a> · <a href="https://ryudi84.github.io/sovereign-tools/">Sovereign Tools</a></nav>
+
+<h1>JWT Token Decoder: How to Debug JWT Tokens</h1>
+<div class="meta">Published Feb 22, 2026 · 5 min read</div>
+
+<p>JSON Web Tokens (JWTs) are everywhere in modern authentication — from OAuth flows to API authorization. But when something goes wrong, debugging a JWT can feel like deciphering hieroglyphics. This guide breaks down JWT structure, shows you how to decode tokens safely, and covers the most common pitfalls.</p>
+
+<h2>What Is a JWT?</h2>
+
+<p>A JWT is a compact, URL-safe token format defined in <a href="https://tools.ietf.org/html/rfc7519">RFC 7519</a>. It consists of three Base64URL-encoded parts separated by dots:</p>
+
+<pre><code><span class="jwt-header">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9</span>.<span class="jwt-payload">eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ</span>.<span class="jwt-sig">SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c</span></code></pre>
+
+<p>Each part has a specific purpose:</p>
+
+<ul>
+<li><strong style="color:#f472b6">Header</strong> — Algorithm and token type</li>
+<li><strong style="color:#c084fc">Payload</strong> — Claims (the actual data)</li>
+<li><strong style="color:#60a5fa">Signature</strong> — Verification hash</li>
+</ul>
+
+<h2>Decoding the Header</h2>
+
+<p>The header is a Base64URL-encoded JSON object that tells the server how to verify the token:</p>
+
+<pre><code>{
+  <span style="color:#f472b6">"alg"</span>: "HS256",
+  <span style="color:#f472b6">"typ"</span>: "JWT"
+}</code></pre>
+
+<p>Common algorithms:</p>
+<ul>
+<li><strong>HS256</strong> — HMAC with SHA-256 (symmetric, shared secret)</li>
+<li><strong>RS256</strong> — RSA with SHA-256 (asymmetric, public/private key)</li>
+<li><strong>ES256</strong> — ECDSA with SHA-256 (asymmetric, smaller keys)</li>
+<li><strong>none</strong> — No signature (⚠️ never accept in production!)</li>
+</ul>
+
+<h2>Decoding the Payload</h2>
+
+<p>The payload contains <strong>claims</strong> — statements about the user and metadata:</p>
+
+<pre><code>{
+  <span style="color:#c084fc">"sub"</span>: "1234567890",
+  <span style="color:#c084fc">"name"</span>: "John Doe",
+  <span style="color:#c084fc">"email"</span>: "john@example.com",
+  <span style="color:#c084fc">"role"</span>: "admin",
+  <span style="color:#c084fc">"iat"</span>: 1516239022,
+  <span style="color:#c084fc">"exp"</span>: 1516242622
+}</code></pre>
+
+<h3>Standard Claims (Registered)</h3>
+<ul>
+<li><code>sub</code> — Subject (user ID)</li>
+<li><code>iss</code> — Issuer (who created the token)</li>
+<li><code>aud</code> — Audience (intended recipient)</li>
+<li><code>exp</code> — Expiration time (Unix timestamp)</li>
+<li><code>iat</code> — Issued at</li>
+<li><code>nbf</code> — Not before (token isn't valid before this time)</li>
+<li><code>jti</code> — JWT ID (unique identifier for the token)</li>
+</ul>
+
+<blockquote><p>⚠️ <strong>Important:</strong> The payload is encoded, not encrypted. Anyone with the token can read the claims. Never store secrets, passwords, or sensitive PII in JWT payloads.</p></blockquote>
+
+<h2>How to Decode a JWT in JavaScript</h2>
+
+<p>You don't need a library. The payload is just Base64URL-encoded JSON:</p>
+
+<pre><code>function decodeJWT(token) {
+  const parts = token.split('.');
+  if (parts.length !== 3) throw new Error('Invalid JWT');
+
+  const decode = (str) => {
+    // Base64URL → Base64 → decode
+    const base64 = str.replace(/-/g, '+').replace(/_/g, '/');
+    return JSON.parse(atob(base64));
+  };
+
+  return {
+    header: decode(parts[0]),
+    payload: decode(parts[1]),
+    signature: parts[2]
+  };
+}</code></pre>
+
+<p>This runs entirely client-side — your token never leaves the browser. That's exactly how our <a href="https://ryudi84.github.io/sovereign-tools/">free JWT decoder</a> works.</p>
+
+<h2>Common JWT Debugging Scenarios</h2>
+
+<h3>1. "Token Expired" (401 Unauthorized)</h3>
+<p>Check the <code>exp</code> claim. It's a Unix timestamp — convert it to see if the token has expired:</p>
+<pre><code>new Date(payload.exp * 1000).toISOString()
+// → "2026-02-22T15:30:22.000Z"</code></pre>
+<p>If your server and client clocks are out of sync, even a valid token can appear expired. Most libraries allow a small clock skew tolerance (30-60 seconds).</p>
+
+<h3>2. "Invalid Signature"</h3>
+<p>This means the token was tampered with, or the server is using a different secret/key than expected. Common causes:</p>
+<ul>
+<li>Different secret keys between services</li>
+<li>Rotating keys without updating all services</li>
+<li>Using HS256 when the server expects RS256</li>
+<li>Token was modified in transit (check middleware)</li>
+</ul>
+
+<h3>3. "Token Not Yet Valid"</h3>
+<p>The <code>nbf</code> (not before) claim is in the future. Usually a clock sync issue.</p>
+
+<h3>4. Wrong Audience or Issuer</h3>
+<p>If you're using microservices, tokens issued for Service A might be rejected by Service B because the <code>aud</code> claim doesn't match.</p>
+
+<h2>JWT Security Best Practices</h2>
+
+<ul>
+<li><strong>Always verify the signature</strong> — never trust a decoded JWT without verification</li>
+<li><strong>Reject <code>alg: "none"</code></strong> — a classic attack vector. Attackers strip the signature and set algorithm to "none"</li>
+<li><strong>Use short expiration times</strong> — 15-60 minutes for access tokens, use refresh tokens for persistence</li>
+<li><strong>Store tokens securely</strong> — HttpOnly cookies > localStorage (XSS protection)</li>
+<li><strong>Validate all claims</strong> — check <code>iss</code>, <code>aud</code>, <code>exp</code>, not just the signature</li>
+<li><strong>Use asymmetric algorithms (RS256/ES256)</strong> — allows public key verification without sharing secrets</li>
+<li><strong>Implement token revocation</strong> — JWTs are stateless, so consider a deny-list for compromised tokens</li>
+</ul>
+
+<h2>JWT vs Session Cookies: When to Use What</h2>
+
+<p><strong>Use JWTs when:</strong> You need stateless authentication across microservices, mobile apps, or third-party integrations.</p>
+
+<p><strong>Use session cookies when:</strong> You have a single server, need easy revocation, or want simpler security. Sessions are stored server-side, giving you full control.</p>
+
+<p>JWTs aren't always the right choice. They add complexity and can't be easily revoked. Choose based on your architecture, not hype.</p>
+
+<div class="cta">
+<h2>Decode Your JWT Tokens Instantly</h2>
+<p>Paste any JWT to see the header, payload, and expiration — all client-side. Your tokens never leave your browser.</p>
+<a href="https://ryudi84.github.io/sovereign-tools/" class="btn">Open JWT Decoder →</a>
+</div>
+
+<div class="related">
+<h3>Related Articles</h3>
+<ul>
+<li><a href="base64-encode-decode.html">Base64 Encode & Decode</a> — JWTs use Base64URL encoding</li>
+<li><a href="json-formatter-guide.html">How to Format JSON Online</a> — format decoded JWT payloads</li>
+<li><a href="regex-cheat-sheet.html">Regex Cheat Sheet 2026</a> — extract tokens from logs with regex</li>
+</ul>
+</div>
+
+<footer>
+<p><a href="index.html">← Back to Blog</a> · <a href="https://ryudi84.github.io/sovereign-tools/">Sovereign Tools</a></p>
+<p style="margin-top:.5rem">&copy; 2026 Sovereign Tools</p>
+</footer>
+</div>
+</body>
+</html>

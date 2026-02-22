@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Base64 Encode & Decode: When and How to Use It — Sovereign Tools</title>
+<meta name="description" content="Learn what Base64 encoding is, why it exists, when to use it, and how it works. Includes encoding tables, real-world examples, and a free online Base64 tool.">
+<meta property="og:title" content="Base64 Encode & Decode: When and How to Use It">
+<meta property="og:description" content="Everything about Base64: how it works, when to use it, common pitfalls, and a free online encoder/decoder.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://ryudi84.github.io/sovereign-tools/blog/base64-encode-decode.html">
+<link rel="canonical" href="https://ryudi84.github.io/sovereign-tools/blog/base64-encode-decode.html">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Base64 Encode & Decode: When and How to Use It","description":"Learn what Base64 encoding is, why it exists, when to use it, and how it works.","author":{"@type":"Organization","name":"Sovereign Tools"},"publisher":{"@type":"Organization","name":"Sovereign Tools"},"datePublished":"2026-02-22","dateModified":"2026-02-22","mainEntityOfPage":"https://ryudi84.github.io/sovereign-tools/blog/base64-encode-decode.html"}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,sans-serif;background:#0a0a0a;color:#d4d4d4;line-height:1.75}
+a{color:#6ee7b7;text-decoration:none}a:hover{text-decoration:underline}
+.container{max-width:760px;margin:0 auto;padding:2rem 1.5rem}
+nav{padding:1rem 0;font-size:.9rem;color:#6b7280}
+h1{font-size:2rem;color:#f0f0f0;margin:1.5rem 0 .5rem;line-height:1.3}
+.meta{color:#6b7280;font-size:.85rem;margin-bottom:2rem}
+h2{font-size:1.4rem;color:#e0e0e0;margin:2rem 0 .75rem;padding-top:.5rem;border-top:1px solid #1a1a1a}
+h3{font-size:1.1rem;color:#d0d0d0;margin:1.5rem 0 .5rem}
+p{margin-bottom:1rem;color:#b0b0b0}
+ul,ol{margin:0 0 1rem 1.5rem;color:#b0b0b0}li{margin-bottom:.4rem}
+pre{background:#111;border:1px solid #222;border-radius:8px;padding:1.2rem;overflow-x:auto;margin-bottom:1.25rem;font-size:.88rem;line-height:1.5}
+code{font-family:'Fira Code',Consolas,monospace;color:#6ee7b7}
+pre code{color:#d4d4d4}
+table{width:100%;border-collapse:collapse;margin-bottom:1.5rem;font-size:.9rem}
+th{text-align:left;background:#111;color:#e0e0e0;padding:.6rem .8rem;border-bottom:2px solid #222}
+td{padding:.5rem .8rem;border-bottom:1px solid #1a1a1a;color:#b0b0b0}
+td code{color:#fbbf24;background:#1a1a0a;padding:1px 5px;border-radius:3px}
+blockquote{border-left:3px solid #6ee7b7;padding:.75rem 1rem;background:#111;margin-bottom:1rem;border-radius:0 8px 8px 0}
+blockquote p{margin:0;color:#9ca3af}
+.cta{background:linear-gradient(135deg,#065f46,#1e3a5f);border:1px solid #10b981;border-radius:12px;padding:2rem;text-align:center;margin:2.5rem 0}
+.cta h2{border:none;margin:0 0 .5rem;padding:0;color:#f0f0f0}
+.cta p{color:#9ca3af;margin-bottom:1rem}
+.cta a.btn{display:inline-block;background:#10b981;color:#000;font-weight:600;padding:.75rem 2rem;border-radius:8px;text-decoration:none}
+.cta a.btn:hover{background:#34d399}
+.related{background:#111;border:1px solid #222;border-radius:12px;padding:1.5rem;margin:2rem 0}
+.related h3{margin-top:0}.related ul{list-style:none;margin:0;padding:0}.related li{padding:.3rem 0}
+footer{text-align:center;padding:2rem 0;color:#4b5563;font-size:.85rem}
+</style>
+</head>
+<body>
+<div class="container">
+<nav><a href="index.html">← Blog</a> · <a href="https://ryudi84.github.io/sovereign-tools/">Sovereign Tools</a></nav>
+
+<h1>Base64 Encode &amp; Decode: When and How to Use It</h1>
+<div class="meta">Published Feb 22, 2026 · 5 min read</div>
+
+<p>Base64 is one of those things every developer uses but few truly understand. You've seen it in data URIs, email attachments, API payloads, and JWT tokens. This guide explains what Base64 actually is, how it works under the hood, and when you should (and shouldn't) use it.</p>
+
+<h2>What Is Base64?</h2>
+
+<p>Base64 is a <strong>binary-to-text encoding scheme</strong> that represents binary data using 64 printable ASCII characters. It was designed to safely transmit binary data through systems that only handle text — like email (SMTP) or JSON payloads.</p>
+
+<p>The 64 characters used are:</p>
+<pre><code>A-Z  (26)  →  values 0-25
+a-z  (26)  →  values 26-51
+0-9  (10)  →  values 52-61
++    (1)   →  value 62
+/    (1)   →  value 63
+=          →  padding</code></pre>
+
+<blockquote><p>💡 Base64 is <strong>encoding, not encryption</strong>. It provides zero security. Anyone can decode it. Never use Base64 to "hide" sensitive data.</p></blockquote>
+
+<h2>How Base64 Works (Step by Step)</h2>
+
+<p>Here's how the string "Hi" gets encoded:</p>
+
+<ol>
+<li><strong>Convert to bytes:</strong> H = 72, i = 105 → binary: <code>01001000 01101001</code></li>
+<li><strong>Group into 6-bit chunks:</strong> <code>010010 000110 1001</code> (pad to 24 bits → <code>010010 000110 100100</code>)</li>
+<li><strong>Map to Base64 alphabet:</strong> 18=S, 6=G, 36=k</li>
+<li><strong>Add padding:</strong> Since 2 bytes need 1 pad char → <code>SGk=</code></li>
+</ol>
+
+<p>Every 3 bytes of input become 4 characters of Base64 output. That's why <strong>Base64 increases size by ~33%</strong>.</p>
+
+<h2>Base64 vs Base64URL</h2>
+
+<p>Standard Base64 uses <code>+</code> and <code>/</code>, which are special characters in URLs. Base64URL replaces them:</p>
+
+<table>
+<tr><th>Encoding</th><th>Char 62</th><th>Char 63</th><th>Padding</th></tr>
+<tr><td>Base64</td><td><code>+</code></td><td><code>/</code></td><td><code>=</code></td></tr>
+<tr><td>Base64URL</td><td><code>-</code></td><td><code>_</code></td><td>Optional/omitted</td></tr>
+</table>
+
+<p>Base64URL is used in <a href="jwt-decoder-explained.html">JWT tokens</a>, OAuth, and anywhere tokens appear in URLs.</p>
+
+<h2>When to Use Base64</h2>
+
+<h3>✅ Good Use Cases</h3>
+<ul>
+<li><strong>Data URIs</strong> — Embed small images directly in HTML/CSS: <code>data:image/png;base64,iVBOR...</code></li>
+<li><strong>Email attachments</strong> — MIME encoding uses Base64 to send binary files through text-only SMTP</li>
+<li><strong>JSON payloads</strong> — When you need to include binary data in JSON (which only supports text)</li>
+<li><strong>Basic Authentication</strong> — HTTP Basic Auth encodes <code>username:password</code> in Base64</li>
+<li><strong>Storing binary in text fields</strong> — Database text columns, environment variables, config files</li>
+</ul>
+
+<h3>❌ Bad Use Cases</h3>
+<ul>
+<li><strong>Security/encryption</strong> — Base64 is trivially reversible. Use actual encryption (AES, RSA).</li>
+<li><strong>Large files</strong> — The 33% size overhead adds up. Use proper binary transfer instead.</li>
+<li><strong>Obfuscation</strong> — Anyone can decode Base64 in seconds. It's not hiding anything.</li>
+</ul>
+
+<h2>Base64 in Every Language</h2>
+
+<h3>JavaScript (Browser)</h3>
+<pre><code>// Encode
+const encoded = btoa('Hello, World!');
+// → "SGVsbG8sIFdvcmxkIQ=="
+
+// Decode
+const decoded = atob('SGVsbG8sIFdvcmxkIQ==');
+// → "Hello, World!"
+
+// For Unicode strings:
+const encoded = btoa(unescape(encodeURIComponent('Héllo')));
+const decoded = decodeURIComponent(escape(atob(encoded)));</code></pre>
+
+<h3>Node.js</h3>
+<pre><code>// Encode
+Buffer.from('Hello, World!').toString('base64');
+
+// Decode
+Buffer.from('SGVsbG8sIFdvcmxkIQ==', 'base64').toString('utf8');</code></pre>
+
+<h3>Python</h3>
+<pre><code>import base64
+
+# Encode
+base64.b64encode(b'Hello, World!').decode()
+
+# Decode
+base64.b64decode('SGVsbG8sIFdvcmxkIQ==').decode()</code></pre>
+
+<h3>Command Line</h3>
+<pre><code># Linux/Mac
+echo -n 'Hello' | base64        # encode
+echo 'SGVsbG8=' | base64 -d     # decode
+
+# Windows PowerShell
+[Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes('Hello'))
+[Text.Encoding]::UTF8.GetString([Convert]::FromBase64String('SGVsbG8='))</code></pre>
+
+<h2>Common Pitfalls</h2>
+
+<ul>
+<li><strong>Unicode issues in browsers</strong> — <code>btoa()</code> only handles Latin1. For UTF-8, you need the <code>encodeURIComponent</code> trick shown above, or use <code>TextEncoder</code>.</li>
+<li><strong>Newlines in encoded output</strong> — Some implementations add line breaks every 76 characters (per MIME spec). Strip them if you don't need them: <code>encoded.replace(/\n/g, '')</code></li>
+<li><strong>Padding confusion</strong> — The <code>=</code> padding isn't always required. Base64URL often omits it. But standard Base64 decoders may fail without it.</li>
+<li><strong>Double-encoding</strong> — Base64-encoding an already-encoded string creates a mess. Always decode first, then re-encode if needed.</li>
+</ul>
+
+<h2>Base64 Encoding Table</h2>
+
+<p>For reference, here's the index-to-character mapping (first 16):</p>
+
+<table>
+<tr><th>Index</th><th>Char</th><th>Index</th><th>Char</th><th>Index</th><th>Char</th><th>Index</th><th>Char</th></tr>
+<tr><td>0</td><td>A</td><td>16</td><td>Q</td><td>32</td><td>g</td><td>48</td><td>w</td></tr>
+<tr><td>1</td><td>B</td><td>17</td><td>R</td><td>33</td><td>h</td><td>49</td><td>x</td></tr>
+<tr><td>2</td><td>C</td><td>18</td><td>S</td><td>34</td><td>i</td><td>50</td><td>y</td></tr>
+<tr><td>3</td><td>D</td><td>19</td><td>T</td><td>35</td><td>j</td><td>51</td><td>z</td></tr>
+<tr><td>4</td><td>E</td><td>20</td><td>U</td><td>36</td><td>k</td><td>52</td><td>0</td></tr>
+<tr><td>5</td><td>F</td><td>21</td><td>V</td><td>37</td><td>l</td><td>53</td><td>1</td></tr>
+<tr><td>6</td><td>G</td><td>22</td><td>W</td><td>38</td><td>m</td><td>54</td><td>2</td></tr>
+<tr><td>7</td><td>H</td><td>23</td><td>X</td><td>39</td><td>n</td><td>55</td><td>3</td></tr>
+</table>
+
+<div class="cta">
+<h2>Encode & Decode Base64 Instantly</h2>
+<p>Paste text or Base64, get instant results. Supports standard Base64 and Base64URL. No signup, runs in your browser.</p>
+<a href="https://ryudi84.github.io/sovereign-tools/" class="btn">Open Base64 Tool →</a>
+</div>
+
+<div class="related">
+<h3>Related Articles</h3>
+<ul>
+<li><a href="jwt-decoder-explained.html">JWT Token Decoder</a> — JWTs use Base64URL encoding for all three parts</li>
+<li><a href="json-formatter-guide.html">How to Format JSON Online</a> — decode Base64 payloads, then format the JSON</li>
+<li><a href="css-gradient-generator.html">CSS Gradient Generator</a> — create gradients and embed preview images as data URIs</li>
+</ul>
+</div>
+
+<footer>
+<p><a href="index.html">← Back to Blog</a> · <a href="https://ryudi84.github.io/sovereign-tools/">Sovereign Tools</a></p>
+<p style="margin-top:.5rem">&copy; 2026 Sovereign Tools</p>
+</footer>
+</div>
+</body>
+</html>

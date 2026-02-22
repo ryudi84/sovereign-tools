@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Gradient Generator: Create Beautiful Gradients — Sovereign Tools</title>
+<meta name="description" content="Master CSS gradients with this complete guide. Learn linear, radial, and conic gradients, explore trending palettes, and generate production-ready CSS with our free tool.">
+<meta property="og:title" content="CSS Gradient Generator: Create Beautiful Gradients">
+<meta property="og:description" content="Complete guide to CSS gradients — linear, radial, conic. Includes trending palettes and a free generator.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://ryudi84.github.io/sovereign-tools/blog/css-gradient-generator.html">
+<link rel="canonical" href="https://ryudi84.github.io/sovereign-tools/blog/css-gradient-generator.html">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"CSS Gradient Generator: Create Beautiful Gradients","description":"Master CSS gradients with this complete guide. Covers linear, radial, and conic gradients with trending palettes.","author":{"@type":"Organization","name":"Sovereign Tools"},"publisher":{"@type":"Organization","name":"Sovereign Tools"},"datePublished":"2026-02-22","dateModified":"2026-02-22","mainEntityOfPage":"https://ryudi84.github.io/sovereign-tools/blog/css-gradient-generator.html"}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,sans-serif;background:#0a0a0a;color:#d4d4d4;line-height:1.75}
+a{color:#6ee7b7;text-decoration:none}a:hover{text-decoration:underline}
+.container{max-width:760px;margin:0 auto;padding:2rem 1.5rem}
+nav{padding:1rem 0;font-size:.9rem;color:#6b7280}
+h1{font-size:2rem;color:#f0f0f0;margin:1.5rem 0 .5rem;line-height:1.3}
+.meta{color:#6b7280;font-size:.85rem;margin-bottom:2rem}
+h2{font-size:1.4rem;color:#e0e0e0;margin:2rem 0 .75rem;padding-top:.5rem;border-top:1px solid #1a1a1a}
+h3{font-size:1.1rem;color:#d0d0d0;margin:1.5rem 0 .5rem}
+p{margin-bottom:1rem;color:#b0b0b0}
+ul,ol{margin:0 0 1rem 1.5rem;color:#b0b0b0}li{margin-bottom:.4rem}
+pre{background:#111;border:1px solid #222;border-radius:8px;padding:1.2rem;overflow-x:auto;margin-bottom:1.25rem;font-size:.88rem;line-height:1.5}
+code{font-family:'Fira Code',Consolas,monospace;color:#6ee7b7}
+pre code{color:#d4d4d4}
+.gradient-demo{height:80px;border-radius:8px;margin-bottom:1rem;border:1px solid #222}
+.kw{color:#c084fc}.val{color:#fbbf24}.fn{color:#60a5fa}.unit{color:#f472b6}
+blockquote{border-left:3px solid #6ee7b7;padding:.75rem 1rem;background:#111;margin-bottom:1rem;border-radius:0 8px 8px 0}
+blockquote p{margin:0;color:#9ca3af}
+.cta{background:linear-gradient(135deg,#065f46,#1e3a5f);border:1px solid #10b981;border-radius:12px;padding:2rem;text-align:center;margin:2.5rem 0}
+.cta h2{border:none;margin:0 0 .5rem;padding:0;color:#f0f0f0}
+.cta p{color:#9ca3af;margin-bottom:1rem}
+.cta a.btn{display:inline-block;background:#10b981;color:#000;font-weight:600;padding:.75rem 2rem;border-radius:8px;text-decoration:none}
+.cta a.btn:hover{background:#34d399}
+.related{background:#111;border:1px solid #222;border-radius:12px;padding:1.5rem;margin:2rem 0}
+.related h3{margin-top:0}.related ul{list-style:none;margin:0;padding:0}.related li{padding:.3rem 0}
+footer{text-align:center;padding:2rem 0;color:#4b5563;font-size:.85rem}
+</style>
+</head>
+<body>
+<div class="container">
+<nav><a href="index.html">← Blog</a> · <a href="https://ryudi84.github.io/sovereign-tools/">Sovereign Tools</a></nav>
+
+<h1>CSS Gradient Generator: Create Beautiful Gradients</h1>
+<div class="meta">Published Feb 22, 2026 · 5 min read</div>
+
+<p>Flat colors are boring. Gradients add depth, energy, and personality to your designs — and CSS makes them surprisingly powerful. This guide covers everything from basic linear gradients to advanced conic patterns, with copy-paste code and trending palettes for 2026.</p>
+
+<h2>Linear Gradients</h2>
+
+<p>The most common type. A smooth transition between colors along a straight line.</p>
+
+<div class="gradient-demo" style="background:linear-gradient(135deg,#667eea,#764ba2)"></div>
+
+<pre><code><span class="kw">background</span>: <span class="fn">linear-gradient</span>(<span class="unit">135deg</span>, <span class="val">#667eea</span>, <span class="val">#764ba2</span>);</code></pre>
+
+<h3>Direction Options</h3>
+<ul>
+<li><code>to right</code> — left to right (same as <code>90deg</code>)</li>
+<li><code>to bottom</code> — top to bottom (default, <code>180deg</code>)</li>
+<li><code>to bottom right</code> — diagonal</li>
+<li><code>135deg</code> — precise angle control</li>
+</ul>
+
+<h3>Multiple Color Stops</h3>
+
+<div class="gradient-demo" style="background:linear-gradient(90deg,#ff6b6b,#feca57,#48dbfb,#ff9ff3)"></div>
+
+<pre><code><span class="kw">background</span>: <span class="fn">linear-gradient</span>(
+  <span class="unit">90deg</span>,
+  <span class="val">#ff6b6b</span> <span class="unit">0%</span>,
+  <span class="val">#feca57</span> <span class="unit">33%</span>,
+  <span class="val">#48dbfb</span> <span class="unit">66%</span>,
+  <span class="val">#ff9ff3</span> <span class="unit">100%</span>
+);</code></pre>
+
+<p>Color stops let you control exactly where each color starts and ends. Without percentages, colors are distributed evenly.</p>
+
+<h2>Radial Gradients</h2>
+
+<p>Radiate outward from a center point — perfect for spotlight effects, buttons, and backgrounds.</p>
+
+<div class="gradient-demo" style="background:radial-gradient(circle at 30% 50%,#6ee7b7,#0a0a0a)"></div>
+
+<pre><code><span class="kw">background</span>: <span class="fn">radial-gradient</span>(
+  circle at <span class="unit">30%</span> <span class="unit">50%</span>,
+  <span class="val">#6ee7b7</span>,
+  <span class="val">#0a0a0a</span>
+);</code></pre>
+
+<h3>Shape and Position</h3>
+<ul>
+<li><code>circle</code> vs <code>ellipse</code> (default) — controls the shape</li>
+<li><code>at center</code>, <code>at top left</code>, <code>at 30% 70%</code> — controls the origin</li>
+<li><code>closest-side</code>, <code>farthest-corner</code> — controls the size</li>
+</ul>
+
+<h2>Conic Gradients</h2>
+
+<p>Rotate around a center point like a color wheel. Great for pie charts, color pickers, and artistic effects.</p>
+
+<div class="gradient-demo" style="background:conic-gradient(from 0deg,#ff6b6b,#feca57,#48dbfb,#ff9ff3,#ff6b6b);border-radius:50%;width:80px;height:80px;margin:0 auto 1rem"></div>
+
+<pre><code><span class="kw">background</span>: <span class="fn">conic-gradient</span>(
+  from <span class="unit">0deg</span>,
+  <span class="val">#ff6b6b</span>,
+  <span class="val">#feca57</span>,
+  <span class="val">#48dbfb</span>,
+  <span class="val">#ff9ff3</span>,
+  <span class="val">#ff6b6b</span>
+);</code></pre>
+
+<p>Note the last color matches the first — this creates a seamless rotation.</p>
+
+<h2>Trending Gradient Palettes for 2026</h2>
+
+<h3>Aurora</h3>
+<div class="gradient-demo" style="background:linear-gradient(135deg,#0c0c1d,#1a1a4e,#2d1b69,#1a4e5a,#0c0c1d)"></div>
+<pre><code><span class="kw">background</span>: <span class="fn">linear-gradient</span>(<span class="unit">135deg</span>, <span class="val">#0c0c1d</span>, <span class="val">#1a1a4e</span>, <span class="val">#2d1b69</span>, <span class="val">#1a4e5a</span>, <span class="val">#0c0c1d</span>);</code></pre>
+
+<h3>Sunset Vibes</h3>
+<div class="gradient-demo" style="background:linear-gradient(135deg,#fa709a,#fee140)"></div>
+<pre><code><span class="kw">background</span>: <span class="fn">linear-gradient</span>(<span class="unit">135deg</span>, <span class="val">#fa709a</span>, <span class="val">#fee140</span>);</code></pre>
+
+<h3>Ocean Depth</h3>
+<div class="gradient-demo" style="background:linear-gradient(135deg,#0f2027,#203a43,#2c5364)"></div>
+<pre><code><span class="kw">background</span>: <span class="fn">linear-gradient</span>(<span class="unit">135deg</span>, <span class="val">#0f2027</span>, <span class="val">#203a43</span>, <span class="val">#2c5364</span>);</code></pre>
+
+<h3>Neon Glow</h3>
+<div class="gradient-demo" style="background:linear-gradient(135deg,#b721ff,#21d4fd)"></div>
+<pre><code><span class="kw">background</span>: <span class="fn">linear-gradient</span>(<span class="unit">135deg</span>, <span class="val">#b721ff</span>, <span class="val">#21d4fd</span>);</code></pre>
+
+<h2>Advanced Techniques</h2>
+
+<h3>Gradient Text</h3>
+<pre><code><span class="kw">h1</span> {
+  <span class="kw">background</span>: <span class="fn">linear-gradient</span>(<span class="unit">135deg</span>, <span class="val">#6ee7b7</span>, <span class="val">#3b82f6</span>);
+  <span class="kw">-webkit-background-clip</span>: text;
+  <span class="kw">-webkit-text-fill-color</span>: transparent;
+}</code></pre>
+
+<h3>Animated Gradients</h3>
+<pre><code><span class="kw">@keyframes</span> gradient-shift {
+  <span class="unit">0%</span>   { <span class="kw">background-position</span>: <span class="unit">0%</span> <span class="unit">50%</span>; }
+  <span class="unit">50%</span>  { <span class="kw">background-position</span>: <span class="unit">100%</span> <span class="unit">50%</span>; }
+  <span class="unit">100%</span> { <span class="kw">background-position</span>: <span class="unit">0%</span> <span class="unit">50%</span>; }
+}
+
+<span class="kw">.animated-bg</span> {
+  <span class="kw">background</span>: <span class="fn">linear-gradient</span>(<span class="unit">-45deg</span>, <span class="val">#ee7752</span>, <span class="val">#e73c7e</span>, <span class="val">#23a6d5</span>, <span class="val">#23d5ab</span>);
+  <span class="kw">background-size</span>: <span class="unit">400%</span> <span class="unit">400%</span>;
+  <span class="kw">animation</span>: gradient-shift <span class="unit">15s</span> ease infinite;
+}</code></pre>
+
+<h3>Gradient Borders</h3>
+<pre><code><span class="kw">.gradient-border</span> {
+  <span class="kw">border</span>: <span class="unit">2px</span> solid transparent;
+  <span class="kw">background-image</span>:
+    <span class="fn">linear-gradient</span>(<span class="val">#0a0a0a</span>, <span class="val">#0a0a0a</span>),
+    <span class="fn">linear-gradient</span>(<span class="unit">135deg</span>, <span class="val">#6ee7b7</span>, <span class="val">#3b82f6</span>);
+  <span class="kw">background-origin</span>: border-box;
+  <span class="kw">background-clip</span>: padding-box, border-box;
+}</code></pre>
+
+<h3>Mesh-Like Gradients</h3>
+<p>Layer multiple radial gradients for organic, mesh-style backgrounds:</p>
+<div class="gradient-demo" style="background:#0a0a0a;background-image:radial-gradient(at 40% 20%,rgba(110,231,183,.3) 0,transparent 50%),radial-gradient(at 80% 0%,rgba(59,130,246,.3) 0,transparent 50%),radial-gradient(at 0% 50%,rgba(192,132,252,.2) 0,transparent 50%)"></div>
+<pre><code><span class="kw">background-color</span>: <span class="val">#0a0a0a</span>;
+<span class="kw">background-image</span>:
+  <span class="fn">radial-gradient</span>(at <span class="unit">40%</span> <span class="unit">20%</span>, <span class="fn">rgba</span>(<span class="val">110,231,183</span>,<span class="unit">.3</span>) 0, transparent <span class="unit">50%</span>),
+  <span class="fn">radial-gradient</span>(at <span class="unit">80%</span> <span class="unit">0%</span>, <span class="fn">rgba</span>(<span class="val">59,130,246</span>,<span class="unit">.3</span>) 0, transparent <span class="unit">50%</span>),
+  <span class="fn">radial-gradient</span>(at <span class="unit">0%</span> <span class="unit">50%</span>, <span class="fn">rgba</span>(<span class="val">192,132,252</span>,<span class="unit">.2</span>) 0, transparent <span class="unit">50%</span>);</code></pre>
+
+<h2>Browser Support and Performance</h2>
+
+<p>CSS gradients have excellent support — <strong>98%+ of browsers</strong> handle linear and radial gradients. Conic gradients are at 95%+. No vendor prefixes needed in 2026.</p>
+
+<p><strong>Performance tips:</strong></p>
+<ul>
+<li>Gradients are rendered by the GPU — they're fast and resolution-independent</li>
+<li>Avoid animating <code>background</code> directly; animate <code>background-position</code> or use a pseudo-element</li>
+<li>Complex gradients with 10+ stops can impact paint time on low-end devices</li>
+<li>Use <code>will-change: background-position</code> for animated gradients</li>
+</ul>
+
+<div class="cta">
+<h2>Generate CSS Gradients Visually</h2>
+<p>Pick colors, adjust angles, preview live, and copy production-ready CSS. No signup needed.</p>
+<a href="https://ryudi84.github.io/sovereign-tools/" class="btn">Open Gradient Generator →</a>
+</div>
+
+<div class="related">
+<h3>Related Articles</h3>
+<ul>
+<li><a href="regex-cheat-sheet.html">Regex Cheat Sheet 2026</a> — for when you need logic, not beauty</li>
+<li><a href="base64-encode-decode.html">Base64 Encode & Decode</a> — embed gradient previews as data URIs</li>
+<li><a href="json-formatter-guide.html">How to Format JSON Online</a> — format design token JSON with gradients</li>
+</ul>
+</div>
+
+<footer>
+<p><a href="index.html">← Back to Blog</a> · <a href="https://ryudi84.github.io/sovereign-tools/">Sovereign Tools</a></p>
+<p style="margin-top:.5rem">&copy; 2026 Sovereign Tools</p>
+</footer>
+</div>
+</body>
+</html>

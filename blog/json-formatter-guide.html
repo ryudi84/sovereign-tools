@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Format JSON Online: Free Tool + Guide — Sovereign Tools</title>
+<meta name="description" content="Format, validate, and minify JSON instantly with our free online JSON formatter. Learn best practices, common errors, and pro tips for working with JSON data.">
+<meta property="og:title" content="How to Format JSON Online: Free Tool + Guide">
+<meta property="og:description" content="Format, validate, and minify JSON instantly with our free online tool. Includes best practices and common error fixes.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://ryudi84.github.io/sovereign-tools/blog/json-formatter-guide.html">
+<link rel="canonical" href="https://ryudi84.github.io/sovereign-tools/blog/json-formatter-guide.html">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"How to Format JSON Online: Free Tool + Guide","description":"Format, validate, and minify JSON instantly with our free online JSON formatter.","author":{"@type":"Organization","name":"Sovereign Tools"},"publisher":{"@type":"Organization","name":"Sovereign Tools"},"datePublished":"2026-02-22","dateModified":"2026-02-22","mainEntityOfPage":"https://ryudi84.github.io/sovereign-tools/blog/json-formatter-guide.html"}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,sans-serif;background:#0a0a0a;color:#d4d4d4;line-height:1.75}
+a{color:#6ee7b7;text-decoration:none}a:hover{text-decoration:underline}
+.container{max-width:760px;margin:0 auto;padding:2rem 1.5rem}
+nav{padding:1rem 0;font-size:.9rem;color:#6b7280}
+nav a{color:#6ee7b7}
+h1{font-size:2rem;color:#f0f0f0;margin:1.5rem 0 .5rem;line-height:1.3}
+.meta{color:#6b7280;font-size:.85rem;margin-bottom:2rem}
+h2{font-size:1.4rem;color:#e0e0e0;margin:2rem 0 .75rem;padding-top:.5rem;border-top:1px solid #1a1a1a}
+h3{font-size:1.1rem;color:#d0d0d0;margin:1.5rem 0 .5rem}
+p{margin-bottom:1rem;color:#b0b0b0}
+ul,ol{margin:0 0 1rem 1.5rem;color:#b0b0b0}
+li{margin-bottom:.4rem}
+pre{background:#111;border:1px solid #222;border-radius:8px;padding:1.2rem;overflow-x:auto;margin-bottom:1.25rem;font-size:.88rem;line-height:1.5}
+code{font-family:'Fira Code',Consolas,monospace;color:#6ee7b7}
+pre code{color:#d4d4d4}
+.kw{color:#c084fc}.str{color:#fbbf24}.num{color:#60a5fa}.bool{color:#f472b6}.null{color:#6b7280}
+blockquote{border-left:3px solid #6ee7b7;padding:.75rem 1rem;background:#111;margin-bottom:1rem;border-radius:0 8px 8px 0}
+blockquote p{margin:0;color:#9ca3af}
+.cta{background:linear-gradient(135deg,#065f46,#1e3a5f);border:1px solid #10b981;border-radius:12px;padding:2rem;text-align:center;margin:2.5rem 0}
+.cta h2{border:none;margin:0 0 .5rem;padding:0;color:#f0f0f0}
+.cta p{color:#9ca3af;margin-bottom:1rem}
+.cta a.btn{display:inline-block;background:#10b981;color:#000;font-weight:600;padding:.75rem 2rem;border-radius:8px;text-decoration:none;font-size:1rem}
+.cta a.btn:hover{background:#34d399}
+.related{background:#111;border:1px solid #222;border-radius:12px;padding:1.5rem;margin:2rem 0}
+.related h3{margin-top:0;color:#e0e0e0}
+.related ul{list-style:none;margin:0;padding:0}
+.related li{padding:.3rem 0}
+footer{text-align:center;padding:2rem 0;color:#4b5563;font-size:.85rem}
+</style>
+</head>
+<body>
+<div class="container">
+<nav><a href="index.html">← Blog</a> · <a href="https://ryudi84.github.io/sovereign-tools/">Sovereign Tools</a></nav>
+
+<h1>How to Format JSON Online: Free Tool + Guide</h1>
+<div class="meta">Published Feb 22, 2026 · 5 min read</div>
+
+<p>If you've ever stared at a wall of unformatted JSON from an API response and tried to make sense of it, you know the pain. Whether you're debugging a REST endpoint, configuring a deployment manifest, or parsing webhook payloads, <strong>readable JSON is essential</strong>. This guide covers everything you need to know about formatting JSON — plus a free tool you can use right now.</p>
+
+<h2>What Is JSON and Why Does Formatting Matter?</h2>
+
+<p>JSON (JavaScript Object Notation) is the lingua franca of data exchange on the web. It's used in REST APIs, configuration files, databases like MongoDB, and pretty much everywhere data travels between systems.</p>
+
+<p>The problem? JSON transmitted over the wire is usually <strong>minified</strong> — all whitespace stripped to save bytes. That's great for performance, terrible for humans:</p>
+
+<pre><code><span class="kw">{"users"</span>:[{<span class="str">"id"</span>:<span class="num">1</span>,<span class="str">"name"</span>:<span class="str">"Alice"</span>,<span class="str">"roles"</span>:[<span class="str">"admin"</span>,<span class="str">"editor"</span>]},{<span class="str">"id"</span>:<span class="num">2</span>,<span class="str">"name"</span>:<span class="str">"Bob"</span>,<span class="str">"roles"</span>:[<span class="str">"viewer"</span>]}]}</code></pre>
+
+<p>Formatted with proper indentation, it becomes instantly readable:</p>
+
+<pre><code>{
+  <span class="str">"users"</span>: [
+    {
+      <span class="str">"id"</span>: <span class="num">1</span>,
+      <span class="str">"name"</span>: <span class="str">"Alice"</span>,
+      <span class="str">"roles"</span>: [<span class="str">"admin"</span>, <span class="str">"editor"</span>]
+    },
+    {
+      <span class="str">"id"</span>: <span class="num">2</span>,
+      <span class="str">"name"</span>: <span class="str">"Bob"</span>,
+      <span class="str">"roles"</span>: [<span class="str">"viewer"</span>]
+    }
+  ]
+}</code></pre>
+
+<h2>Common JSON Errors (and How to Fix Them)</h2>
+
+<p>A good JSON formatter doesn't just prettify — it <strong>validates</strong>. Here are the most common errors developers hit:</p>
+
+<h3>1. Trailing Commas</h3>
+<p>JavaScript allows trailing commas in objects and arrays. JSON does not.</p>
+<pre><code><span class="comment">// ❌ Invalid JSON</span>
+{ <span class="str">"name"</span>: <span class="str">"Alice"</span>, <span class="str">"age"</span>: <span class="num">30</span>, }
+
+<span class="comment">// ✅ Valid JSON</span>
+{ <span class="str">"name"</span>: <span class="str">"Alice"</span>, <span class="str">"age"</span>: <span class="num">30</span> }</code></pre>
+
+<h3>2. Single Quotes</h3>
+<p>JSON requires double quotes. Single quotes are a syntax error.</p>
+<pre><code><span class="comment">// ❌ Invalid</span>
+{ <span class="str">'name'</span>: <span class="str">'Alice'</span> }
+
+<span class="comment">// ✅ Valid</span>
+{ <span class="str">"name"</span>: <span class="str">"Alice"</span> }</code></pre>
+
+<h3>3. Unquoted Keys</h3>
+<p>In JavaScript objects, keys don't need quotes. In JSON, they always do.</p>
+
+<h3>4. Comments</h3>
+<p>JSON has no comment syntax. If you need comments in config files, consider JSON5 or JSONC (supported by VS Code). For standard JSON, strip comments before parsing.</p>
+
+<h3>5. Special Values</h3>
+<p>JSON doesn't support <code>undefined</code>, <code>NaN</code>, <code>Infinity</code>, or functions. Use <code class="null">null</code> for missing values, strings for special numbers.</p>
+
+<h2>Formatting JSON in Different Environments</h2>
+
+<h3>Command Line</h3>
+<p>If you have Python installed (you probably do):</p>
+<pre><code>echo '{"a":1,"b":2}' | python -m json.tool</code></pre>
+
+<p>With <code>jq</code> (the gold standard for CLI JSON processing):</p>
+<pre><code>curl -s https://api.example.com/data | jq '.'</code></pre>
+
+<h3>In Code</h3>
+<pre><code><span class="comment">// JavaScript</span>
+<span class="kw">const</span> formatted = <span class="kw">JSON</span>.stringify(data, <span class="null">null</span>, <span class="num">2</span>);
+
+<span class="comment"># Python</span>
+<span class="kw">import</span> json
+formatted = json.dumps(data, indent=<span class="num">2</span>)</code></pre>
+
+<p>The third argument in <code>JSON.stringify</code> controls indentation — 2 spaces is the most common convention, though some teams prefer 4 or tabs.</p>
+
+<h3>In Your Browser (Right Now)</h3>
+<p>Open DevTools (F12), go to Console, and paste:</p>
+<pre><code>copy(<span class="kw">JSON</span>.stringify(<span class="kw">JSON</span>.parse(<span class="str">'your json here'</span>), <span class="null">null</span>, <span class="num">2</span>))</code></pre>
+<p>This parses, formats, and copies the result to your clipboard.</p>
+
+<h2>JSON Formatting Best Practices</h2>
+
+<ul>
+<li><strong>Use 2-space indentation</strong> — it's the most widely adopted standard in the JavaScript ecosystem</li>
+<li><strong>Sort keys alphabetically</strong> when the order doesn't matter semantically — makes diffs cleaner</li>
+<li><strong>Validate before sending</strong> — use <code>JSON.parse()</code> to catch errors early</li>
+<li><strong>Minify for production</strong> — formatting is for humans; wire format should be compact</li>
+<li><strong>Use a schema</strong> — JSON Schema lets you validate structure, not just syntax</li>
+</ul>
+
+<h2>When to Minify vs. Pretty-Print</h2>
+
+<p><strong>Minify</strong> when sending data over the network, storing in databases, or any machine-to-machine communication. Every unnecessary byte adds latency.</p>
+
+<p><strong>Pretty-print</strong> when debugging, reviewing logs, writing documentation, or storing configuration that humans will edit. Readability saves time.</p>
+
+<blockquote><p>💡 A 1MB JSON file can shrink by 20-40% when minified, just by removing whitespace. For large datasets, this matters.</p></blockquote>
+
+<h2>Advanced: JSON Path and Querying</h2>
+
+<p>Once your JSON is formatted, you might need to extract specific values. JSON Path expressions work like XPath for JSON:</p>
+
+<pre><code><span class="comment">// Given the users array above:</span>
+$.users[0].name       <span class="comment">→ "Alice"</span>
+$.users[*].roles      <span class="comment">→ all roles arrays</span>
+$.users[?(@.id > 1)]  <span class="comment">→ users with id > 1</span></code></pre>
+
+<p>Tools like <code>jq</code> on the command line or JSONPath libraries in every language make this powerful for data extraction.</p>
+
+<div class="cta">
+<h2>Try Our Free JSON Formatter</h2>
+<p>Paste your JSON, get instant formatting with validation, syntax highlighting, and minification. No signup, no tracking — runs entirely in your browser.</p>
+<a href="https://ryudi84.github.io/sovereign-tools/" class="btn">Open Sovereign Tools →</a>
+</div>
+
+<div class="related">
+<h3>Related Articles</h3>
+<ul>
+<li><a href="jwt-decoder-explained.html">JWT Token Decoder: How to Debug JWT Tokens</a> — JWTs contain Base64-encoded JSON</li>
+<li><a href="base64-encode-decode.html">Base64 Encode & Decode: When and How to Use It</a></li>
+<li><a href="regex-cheat-sheet.html">Regex Cheat Sheet 2026</a> — useful for searching within JSON</li>
+</ul>
+</div>
+
+<footer>
+<p><a href="index.html">← Back to Blog</a> · <a href="https://ryudi84.github.io/sovereign-tools/">Sovereign Tools</a></p>
+<p style="margin-top:.5rem">&copy; 2026 Sovereign Tools</p>
+</footer>
+</div>
+</body>
+</html>
