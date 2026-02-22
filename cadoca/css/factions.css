@@ -1,0 +1,23 @@
+/* factions.css — Faction-specific themes */
+
+/* Capybara theme */
+.faction-card-capybara {
+  background: linear-gradient(135deg, #FFF8E1, #FFECB3);
+  border-color: #FF9800;
+}
+.faction-hud-capybara .hud-wave { color: #E65100; }
+
+/* Cat theme */
+.faction-card-cat {
+  background: linear-gradient(135deg, #EDE7F6, #D1C4E9);
+  border-color: #7E57C2;
+}
+.faction-hud-cat { background: #F3E5F5; }
+.faction-hud-cat .hud-wave { color: #4A148C; }
+
+/* Dog theme */
+.faction-card-dog {
+  background: linear-gradient(135deg, #FFF8E1, #FFE082);
+  border-color: #F9A825;
+}
+.faction-hud-dog .hud-wave { color: #E65100; }

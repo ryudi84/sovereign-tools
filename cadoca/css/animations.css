@@ -1,0 +1,104 @@
+/* animations.css — All animations and transitions */
+
+@keyframes titleBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes constructPulse {
+  0%, 100% { border-color: #FDD835; box-shadow: 0 0 0 0 rgba(253, 216, 53, 0.4); }
+  50% { border-color: #FFEB3B; box-shadow: 0 0 12px 4px rgba(253, 216, 53, 0.2); }
+}
+
+@keyframes idleBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+@keyframes smokePuff {
+  0% { transform: translateY(0) scale(1); opacity: 0.5; }
+  100% { transform: translateY(-20px) scale(1.5); opacity: 0; }
+}
+
+@keyframes waterRipple {
+  0% { transform: scale(1); opacity: 0.5; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+@keyframes attackSlash {
+  0% { transform: rotate(0deg) scale(1); }
+  25% { transform: rotate(-15deg) scale(1.2); }
+  50% { transform: rotate(15deg) scale(1.1); }
+  100% { transform: rotate(0deg) scale(1); }
+}
+
+@keyframes deathPoof {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.5); opacity: 0.5; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+@keyframes shakeX {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 5px rgba(255, 152, 0, 0.3); }
+  50% { box-shadow: 0 0 20px rgba(255, 152, 0, 0.6); }
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-40px); opacity: 0; }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Animated elements */
+.building-sprite { animation: idleBounce 3s ease-in-out infinite; }
+.constructing .building-sprite { animation: shakeX 0.5s ease-in-out infinite; }
+.title-char.capybara-char { color: #8B6914; }
+.title-char.cat-char { color: #4A148C; }
+.title-char.dog-char { color: #F9A825; }
+
+/* Battle animations */
+.battle-panel { animation: slideUp 0.3s ease-out; }
+.battle-victory { animation: slideUp 0.3s ease-out, glow 2s ease-in-out infinite; }
+
+/* Faction-specific HUD colors */
+.faction-hud-capybara { border-bottom-color: #FF9800; }
+.faction-hud-cat { border-bottom-color: #7E57C2; }
+.faction-hud-dog { border-bottom-color: #F9A825; }
+
+/* Resource number animation */
+.hud-res span { transition: all 0.3s; }
+
+/* Smooth transitions for all interactive elements */
+.building-item, .troop-item, .village-slot, .faction-card, .save-slot {
+  transition: all 0.2s ease;
+}
+
+/* Hover effects with faction colors */
+.faction-bg-capybara .btn-primary { background: #FF9800; border-color: #E65100; }
+.faction-bg-cat .btn-primary { background: #7E57C2; border-color: #4A148C; }
+.faction-bg-dog .btn-primary { background: #F9A825; border-color: #F57F17; }
