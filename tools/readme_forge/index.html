@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>README Forge — Professional README Generator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background: #0f172a; color: #e2e8f0; }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        textarea, input, select { font-family: 'Inter', sans-serif; }
+        .preview-area { font-family: 'Inter', sans-serif; }
+        .preview-area h1 { font-size: 2em; font-weight: 700; border-bottom: 1px solid #334155; padding-bottom: 0.3em; margin-bottom: 0.5em; }
+        .preview-area h2 { font-size: 1.5em; font-weight: 600; border-bottom: 1px solid #1e293b; padding-bottom: 0.2em; margin: 1em 0 0.5em; }
+        .preview-area h3 { font-size: 1.2em; font-weight: 600; margin: 0.8em 0 0.4em; }
+        .preview-area p { margin: 0.5em 0; line-height: 1.6; }
+        .preview-area ul, .preview-area ol { margin: 0.5em 0 0.5em 1.5em; }
+        .preview-area li { margin: 0.3em 0; }
+        .preview-area code { background: #1e293b; padding: 2px 6px; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 0.9em; }
+        .preview-area pre { background: #1e293b; padding: 16px; border-radius: 8px; overflow-x: auto; margin: 0.5em 0; }
+        .preview-area pre code { background: none; padding: 0; }
+        .preview-area a { color: #60a5fa; }
+        .preview-area img { max-width: 100%; }
+        .preview-area table { border-collapse: collapse; width: 100%; margin: 0.5em 0; }
+        .preview-area th, .preview-area td { border: 1px solid #334155; padding: 8px 12px; text-align: left; }
+        .preview-area th { background: #1e293b; }
+        .preview-area blockquote { border-left: 4px solid #6366f1; padding-left: 16px; color: #94a3b8; margin: 0.5em 0; }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Header -->
+    <header class="border-b border-slate-800 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center text-white font-bold text-sm">R</div>
+                <h1 class="text-lg font-bold">README Forge</h1>
+                <span class="text-xs text-slate-500 ml-2">by Sovereign AI</span>
+            </div>
+            <div class="flex items-center gap-3">
+                <button onclick="copyMarkdown()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 rounded-lg text-sm font-medium transition-colors">Copy MD</button>
+                <button onclick="downloadMarkdown()" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 rounded-lg text-sm font-medium transition-colors">Download</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto flex gap-0" style="height: calc(100vh - 65px);">
+        <!-- Left: Form -->
+        <div class="w-1/3 border-r border-slate-800 overflow-y-auto p-6 space-y-5">
+            <div>
+                <label class="block text-xs font-medium text-slate-400 mb-1.5">Project Name *</label>
+                <input id="projectName" type="text" placeholder="my-awesome-project" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-indigo-500" oninput="generate()">
+            </div>
+            <div>
+                <label class="block text-xs font-medium text-slate-400 mb-1.5">Tagline</label>
+                <input id="tagline" type="text" placeholder="A brief description of what this project does" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-indigo-500" oninput="generate()">
+            </div>
+            <div>
+                <label class="block text-xs font-medium text-slate-400 mb-1.5">Template</label>
+                <select id="template" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-indigo-500" onchange="generate()">
+                    <option value="standard">Standard (Recommended)</option>
+                    <option value="minimal">Minimal</option>
+                    <option value="detailed">Detailed / Enterprise</option>
+                    <option value="library">Library / Package</option>
+                    <option value="api">API Documentation</option>
+                    <option value="cli">CLI Tool</option>
+                </select>
+            </div>
+            <div>
+                <label class="block text-xs font-medium text-slate-400 mb-1.5">Description</label>
+                <textarea id="description" rows="3" placeholder="What problem does this solve? Who is it for?" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-indigo-500 resize-none" oninput="generate()"></textarea>
+            </div>
+            <div>
+                <label class="block text-xs font-medium text-slate-400 mb-1.5">Tech Stack (comma separated)</label>
+                <input id="techStack" type="text" placeholder="Python, FastAPI, PostgreSQL, Redis" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-indigo-500" oninput="generate()">
+            </div>
+            <div>
+                <label class="block text-xs font-medium text-slate-400 mb-1.5">Installation Command</label>
+                <input id="installCmd" type="text" placeholder="npm install my-package" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-indigo-500 mono text-xs" oninput="generate()">
+            </div>
+            <div>
+                <label class="block text-xs font-medium text-slate-400 mb-1.5">Usage Example (code)</label>
+                <textarea id="usageCode" rows="4" placeholder="import mylib&#10;result = mylib.do_thing()&#10;print(result)" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-indigo-500 resize-none mono" oninput="generate()"></textarea>
+            </div>
+            <div>
+                <label class="block text-xs font-medium text-slate-400 mb-1.5">Features (one per line)</label>
+                <textarea id="features" rows="4" placeholder="Lightning fast performance&#10;Zero dependencies&#10;TypeScript support&#10;Extensive documentation" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-indigo-500 resize-none" oninput="generate()"></textarea>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+                <div>
+                    <label class="block text-xs font-medium text-slate-400 mb-1.5">License</label>
+                    <select id="license" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-indigo-500" onchange="generate()">
+                        <option value="MIT">MIT</option>
+                        <option value="Apache-2.0">Apache 2.0</option>
+                        <option value="GPL-3.0">GPL 3.0</option>
+                        <option value="BSD-3-Clause">BSD 3-Clause</option>
+                        <option value="ISC">ISC</option>
+                        <option value="none">None</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-slate-400 mb-1.5">Author / Org</label>
+                    <input id="author" type="text" placeholder="Your Name" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-indigo-500" oninput="generate()">
+                </div>
+            </div>
+
+            <div>
+                <label class="block text-xs font-medium text-slate-400 mb-2">Include Sections</label>
+                <div class="grid grid-cols-2 gap-2 text-sm">
+                    <label class="flex items-center gap-2"><input type="checkbox" id="incBadges" checked onchange="generate()"> Badges</label>
+                    <label class="flex items-center gap-2"><input type="checkbox" id="incTOC" checked onchange="generate()"> Table of Contents</label>
+                    <label class="flex items-center gap-2"><input type="checkbox" id="incScreenshots" onchange="generate()"> Screenshots</label>
+                    <label class="flex items-center gap-2"><input type="checkbox" id="incAPI" onchange="generate()"> API Reference</label>
+                    <label class="flex items-center gap-2"><input type="checkbox" id="incContributing" checked onchange="generate()"> Contributing</label>
+                    <label class="flex items-center gap-2"><input type="checkbox" id="incRoadmap" onchange="generate()"> Roadmap</label>
+                    <label class="flex items-center gap-2"><input type="checkbox" id="incChangelog" onchange="generate()"> Changelog</label>
+                    <label class="flex items-center gap-2"><input type="checkbox" id="incFAQ" onchange="generate()"> FAQ</label>
+                </div>
+            </div>
+
+            <div class="pt-2 border-t border-slate-800">
+                <p class="text-xs text-slate-600 text-center">Built by <a href="/store" class="text-indigo-400">Sovereign AI</a> — Free forever</p>
+                <p class="text-xs text-slate-700 text-center mt-1">Tips: <code class="text-xs">4uPS7vhkh6cgWEYJqgBQLApNXBnqW4KxuJg6MEzZNLVd</code></p>
+            </div>
+        </div>
+
+        <!-- Middle: Raw Markdown -->
+        <div class="w-1/3 border-r border-slate-800 flex flex-col">
+            <div class="px-4 py-2 border-b border-slate-800 flex items-center gap-2">
+                <span class="text-xs font-medium text-slate-400">Markdown</span>
+                <button onclick="copyMarkdown()" class="ml-auto text-xs text-slate-500 hover:text-slate-300">Copy</button>
+            </div>
+            <textarea id="markdownOutput" class="flex-1 bg-slate-900 p-4 text-xs mono text-slate-300 resize-none focus:outline-none leading-relaxed" spellcheck="false" oninput="updatePreview()"></textarea>
+        </div>
+
+        <!-- Right: Preview -->
+        <div class="w-1/3 flex flex-col">
+            <div class="px-4 py-2 border-b border-slate-800">
+                <span class="text-xs font-medium text-slate-400">Preview</span>
+            </div>
+            <div id="preview" class="preview-area flex-1 overflow-y-auto p-6 text-sm bg-slate-950"></div>
+        </div>
+    </div>
+
+    <script>
+    function val(id) { return document.getElementById(id).value.trim(); }
+    function checked(id) { return document.getElementById(id).checked; }
+
+    function generate() {
+        const name = val('projectName') || 'my-project';
+        const tagline = val('tagline');
+        const desc = val('description');
+        const tech = val('techStack').split(',').map(s => s.trim()).filter(Boolean);
+        const install = val('installCmd');
+        const usage = val('usageCode');
+        const feats = val('features').split('\n').filter(s => s.trim());
+        const license = val('license');
+        const author = val('author');
+        const template = val('template');
+
+        let md = '';
+
+        // Badges
+        if (checked('incBadges')) {
+            const badges = [];
+            if (license !== 'none') badges.push(`[![License: ${license}](https://img.shields.io/badge/License-${license.replace(/-/g,'--')}-blue.svg)](LICENSE)`);
+            badges.push(`![Version](https://img.shields.io/badge/version-1.0.0-green)`);
+            if (tech.length) badges.push(`![Built with](https://img.shields.io/badge/built_with-${tech[0].replace(/ /g,'_')}-orange)`);
+            md += badges.join(' ') + '\n\n';
+        }
+
+        // Title
+        md += `# ${name}\n\n`;
+        if (tagline) md += `> ${tagline}\n\n`;
+        if (desc) md += `${desc}\n\n`;
+
+        // TOC
+        if (checked('incTOC')) {
+            md += `## Table of Contents\n\n`;
+            const sections = ['Features', 'Installation', 'Usage'];
+            if (checked('incScreenshots')) sections.push('Screenshots');
+            if (checked('incAPI')) sections.push('API Reference');
+            if (tech.length) sections.push('Tech Stack');
+            if (checked('incRoadmap')) sections.push('Roadmap');
+            if (checked('incContributing')) sections.push('Contributing');
+            if (checked('incFAQ')) sections.push('FAQ');
+            if (checked('incChangelog')) sections.push('Changelog');
+            if (license !== 'none') sections.push('License');
+            sections.forEach(s => { md += `- [${s}](#${s.toLowerCase().replace(/ /g, '-')})\n`; });
+            md += '\n';
+        }
+
+        // Features
+        if (feats.length || template !== 'minimal') {
+            md += `## Features\n\n`;
+            if (feats.length) {
+                feats.forEach(f => { md += `- ${f.trim()}\n`; });
+            } else {
+                md += `- Feature 1\n- Feature 2\n- Feature 3\n`;
+            }
+            md += '\n';
+        }
+
+        // Installation
+        md += `## Installation\n\n`;
+        if (install) {
+            md += `\`\`\`bash\n${install}\n\`\`\`\n\n`;
+        } else {
+            md += `\`\`\`bash\ngit clone https://github.com/username/${name}.git\ncd ${name}\nnpm install\n\`\`\`\n\n`;
+        }
+
+        // Usage
+        md += `## Usage\n\n`;
+        if (usage) {
+            const lang = tech.length ? tech[0].toLowerCase() : '';
+            md += `\`\`\`${lang}\n${usage}\n\`\`\`\n\n`;
+        } else {
+            md += `\`\`\`bash\nnpm start\n\`\`\`\n\n`;
+        }
+
+        // Screenshots
+        if (checked('incScreenshots')) {
+            md += `## Screenshots\n\n`;
+            md += `| Feature | Screenshot |\n|---------|------------|\n| Main view | ![Screenshot](screenshots/main.png) |\n\n`;
+        }
+
+        // API Reference (for api/library templates)
+        if (checked('incAPI')) {
+            md += `## API Reference\n\n`;
+            if (template === 'api') {
+                md += `### Base URL\n\n\`\`\`\nhttps://api.example.com/v1\n\`\`\`\n\n`;
+                md += `### Endpoints\n\n`;
+                md += `| Method | Endpoint | Description |\n|--------|----------|-------------|\n`;
+                md += `| \`GET\` | \`/items\` | Get all items |\n`;
+                md += `| \`GET\` | \`/items/:id\` | Get item by ID |\n`;
+                md += `| \`POST\` | \`/items\` | Create new item |\n`;
+                md += `| \`PUT\` | \`/items/:id\` | Update item |\n`;
+                md += `| \`DELETE\` | \`/items/:id\` | Delete item |\n\n`;
+                md += `### Authentication\n\nAll requests require an API key in the header:\n\n\`\`\`\nAuthorization: Bearer YOUR_API_KEY\n\`\`\`\n\n`;
+            } else if (template === 'library') {
+                md += `### \`${name}(options)\`\n\n`;
+                md += `| Parameter | Type | Default | Description |\n|-----------|------|---------|-------------|\n`;
+                md += `| \`option1\` | \`string\` | \`"default"\` | Description |\n`;
+                md += `| \`option2\` | \`boolean\` | \`false\` | Description |\n\n`;
+            } else {
+                md += `See the [API documentation](docs/API.md) for detailed reference.\n\n`;
+            }
+        }
+
+        // Tech Stack
+        if (tech.length) {
+            md += `## Tech Stack\n\n`;
+            tech.forEach(t => { md += `- **${t}**\n`; });
+            md += '\n';
+        }
+
+        // CLI-specific section
+        if (template === 'cli') {
+            md += `## Commands\n\n`;
+            md += `| Command | Description |\n|---------|-------------|\n`;
+            md += `| \`${name} init\` | Initialize a new project |\n`;
+            md += `| \`${name} build\` | Build the project |\n`;
+            md += `| \`${name} deploy\` | Deploy to production |\n`;
+            md += `| \`${name} --help\` | Show help message |\n\n`;
+        }
+
+        // Roadmap
+        if (checked('incRoadmap')) {
+            md += `## Roadmap\n\n`;
+            md += `- [x] Initial release\n- [ ] Feature A\n- [ ] Feature B\n- [ ] v2.0 release\n\n`;
+        }
+
+        // Contributing
+        if (checked('incContributing')) {
+            md += `## Contributing\n\n`;
+            md += `Contributions are welcome! Please read our [Contributing Guide](CONTRIBUTING.md) before submitting a PR.\n\n`;
+            md += `1. Fork the repository\n2. Create your feature branch (\`git checkout -b feature/amazing-feature\`)\n3. Commit your changes (\`git commit -m 'Add amazing feature'\`)\n4. Push to the branch (\`git push origin feature/amazing-feature\`)\n5. Open a Pull Request\n\n`;
+        }
+
+        // FAQ
+        if (checked('incFAQ')) {
+            md += `## FAQ\n\n`;
+            md += `<details>\n<summary>Question 1?</summary>\n\nAnswer to question 1.\n</details>\n\n`;
+            md += `<details>\n<summary>Question 2?</summary>\n\nAnswer to question 2.\n</details>\n\n`;
+        }
+
+        // Changelog
+        if (checked('incChangelog')) {
+            md += `## Changelog\n\n`;
+            md += `See [CHANGELOG.md](CHANGELOG.md) for a list of changes.\n\n`;
+        }
+
+        // License
+        if (license !== 'none') {
+            md += `## License\n\n`;
+            md += `This project is licensed under the ${license} License — see the [LICENSE](LICENSE) file for details.\n\n`;
+        }
+
+        // Author/footer
+        if (author) {
+            md += `---\n\nBuilt by **${author}**`;
+            if (template === 'detailed') md += ` | [Report Bug](issues) | [Request Feature](issues)`;
+            md += '\n';
+        }
+
+        document.getElementById('markdownOutput').value = md;
+        updatePreview();
+    }
+
+    function updatePreview() {
+        const md = document.getElementById('markdownOutput').value;
+        document.getElementById('preview').innerHTML = renderMarkdown(md);
+    }
+
+    function renderMarkdown(md) {
+        let html = md
+            .replace(/^### (.*$)/gm, '<h3>$1</h3>')
+            .replace(/^## (.*$)/gm, '<h2>$1</h2>')
+            .replace(/^# (.*$)/gm, '<h1>$1</h1>')
+            .replace(/^> (.*$)/gm, '<blockquote><p>$1</p></blockquote>')
+            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+            .replace(/\*(.*?)\*/g, '<em>$1</em>')
+            .replace(/`([^`]+)`/g, '<code>$1</code>')
+            .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>')
+            .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img alt="$1" src="$2">')
+            .replace(/^- \[x\] (.*$)/gm, '<li style="list-style:none;"><input type="checkbox" checked disabled> $1</li>')
+            .replace(/^- \[ \] (.*$)/gm, '<li style="list-style:none;"><input type="checkbox" disabled> $1</li>')
+            .replace(/^- (.*$)/gm, '<li>$1</li>')
+            .replace(/(<li>.*<\/li>)/s, '<ul>$1</ul>');
+
+        // Code blocks
+        html = html.replace(/```(\w*)\n([\s\S]*?)```/g, (_, lang, code) => {
+            return `<pre><code class="language-${lang}">${code.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</code></pre>`;
+        });
+
+        // Tables
+        html = html.replace(/^\|(.+)\|\s*\n\|[-| :]+\|\s*\n((?:\|.+\|\s*\n?)*)/gm, (match, header, body) => {
+            const headers = header.split('|').map(h => h.trim()).filter(Boolean);
+            const rows = body.trim().split('\n').map(r => r.split('|').map(c => c.trim()).filter(Boolean));
+            let table = '<table><thead><tr>';
+            headers.forEach(h => { table += `<th>${h}</th>`; });
+            table += '</tr></thead><tbody>';
+            rows.forEach(r => { table += '<tr>'; r.forEach(c => { table += `<td>${c}</td>`; }); table += '</tr>'; });
+            table += '</tbody></table>';
+            return table;
+        });
+
+        // Paragraphs
+        html = html.replace(/\n\n/g, '</p><p>');
+        return '<p>' + html + '</p>';
+    }
+
+    function copyMarkdown() {
+        const md = document.getElementById('markdownOutput').value;
+        navigator.clipboard.writeText(md).then(() => {
+            const btn = event.target;
+            const orig = btn.textContent;
+            btn.textContent = 'Copied!';
+            setTimeout(() => { btn.textContent = orig; }, 1500);
+        });
+    }
+
+    function downloadMarkdown() {
+        const md = document.getElementById('markdownOutput').value;
+        const name = val('projectName') || 'README';
+        const blob = new Blob([md], { type: 'text/markdown' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'README.md';
+        a.click();
+    }
+
+    // Generate on load
+    generate();
+    </script>
+</body>
+</html>

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regex Lab — Visual Regex Tester & Debugger</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background: #0f172a; color: #e2e8f0; }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        textarea { font-family: 'JetBrains Mono', monospace; }
+        .match-highlight { background: rgba(99, 102, 241, 0.3); border-bottom: 2px solid #6366f1; padding: 1px 0; }
+        .group-1 { background: rgba(16, 185, 129, 0.3); border-bottom: 2px solid #10b981; }
+        .group-2 { background: rgba(245, 158, 11, 0.3); border-bottom: 2px solid #f59e0b; }
+        .group-3 { background: rgba(239, 68, 68, 0.3); border-bottom: 2px solid #ef4444; }
+        .group-4 { background: rgba(168, 85, 247, 0.3); border-bottom: 2px solid #a855f7; }
+        .cheat-item { cursor: pointer; transition: all 0.15s; }
+        .cheat-item:hover { background: #1e293b; }
+        mark { background: transparent; color: inherit; }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Header -->
+    <header class="border-b border-slate-800 px-6 py-3">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-lg flex items-center justify-center text-white font-bold text-sm">/</div>
+                <h1 class="text-lg font-bold">Regex Lab</h1>
+                <span class="text-xs text-slate-500">by Sovereign AI</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <button onclick="shareRegex()" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 rounded-lg text-xs font-medium transition-colors">Share</button>
+                <a href="/store" class="px-3 py-1.5 text-xs text-slate-500 hover:text-slate-300">More Tools</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto flex" style="height: calc(100vh - 53px);">
+        <!-- Main Area -->
+        <div class="flex-1 flex flex-col p-6 gap-4 overflow-y-auto">
+            <!-- Pattern Input -->
+            <div>
+                <label class="block text-xs font-medium text-slate-400 mb-1.5">Regular Expression</label>
+                <div class="flex gap-2">
+                    <span class="flex items-center text-slate-500 text-lg mono">/</span>
+                    <input id="pattern" type="text" placeholder="your regex here"
+                        class="flex-1 bg-slate-800 border border-slate-700 rounded-lg px-3 py-2.5 mono text-sm focus:outline-none focus:border-emerald-500 text-emerald-400"
+                        oninput="runRegex()" value="">
+                    <span class="flex items-center text-slate-500 text-lg mono">/</span>
+                    <input id="flags" type="text" placeholder="gmi" value="gm"
+                        class="w-16 bg-slate-800 border border-slate-700 rounded-lg px-3 py-2.5 mono text-sm text-center focus:outline-none focus:border-emerald-500 text-amber-400"
+                        oninput="runRegex()">
+                </div>
+                <div id="regexError" class="text-red-400 text-xs mt-1 hidden"></div>
+            </div>
+
+            <!-- Test String -->
+            <div class="flex-1 flex flex-col min-h-0">
+                <label class="block text-xs font-medium text-slate-400 mb-1.5">Test String</label>
+                <textarea id="testString" class="flex-1 bg-slate-800 border border-slate-700 rounded-lg p-3 text-sm resize-none focus:outline-none focus:border-emerald-500 leading-relaxed min-h-[200px]"
+                    oninput="runRegex()" placeholder="Paste your test string here...">john.doe@email.com
+jane_smith@company.org
+invalid-email@
+support+tag@example.co.uk
+123.456.789 not-an-email
+user@sub.domain.com</textarea>
+            </div>
+
+            <!-- Results with highlighting -->
+            <div>
+                <div class="flex items-center justify-between mb-1.5">
+                    <label class="text-xs font-medium text-slate-400">Highlighted Matches</label>
+                    <span id="matchCount" class="text-xs text-slate-500">0 matches</span>
+                </div>
+                <div id="highlighted" class="bg-slate-900 border border-slate-700 rounded-lg p-3 mono text-sm leading-relaxed min-h-[100px] max-h-[200px] overflow-y-auto whitespace-pre-wrap"></div>
+            </div>
+
+            <!-- Match Details -->
+            <div>
+                <label class="text-xs font-medium text-slate-400 mb-1.5 block">Match Details</label>
+                <div id="matchDetails" class="bg-slate-900 border border-slate-700 rounded-lg overflow-hidden">
+                    <table class="w-full text-xs">
+                        <thead>
+                            <tr class="border-b border-slate-800">
+                                <th class="px-3 py-2 text-left text-slate-500 font-medium">#</th>
+                                <th class="px-3 py-2 text-left text-slate-500 font-medium">Match</th>
+                                <th class="px-3 py-2 text-left text-slate-500 font-medium">Groups</th>
+                                <th class="px-3 py-2 text-left text-slate-500 font-medium">Index</th>
+                            </tr>
+                        </thead>
+                        <tbody id="matchTable"></tbody>
+                    </table>
+                    <div id="noMatches" class="px-3 py-4 text-center text-slate-600 text-xs">No matches found</div>
+                </div>
+            </div>
+
+            <!-- Replace -->
+            <div>
+                <label class="block text-xs font-medium text-slate-400 mb-1.5">Replace With (optional)</label>
+                <div class="flex gap-2">
+                    <input id="replacement" type="text" placeholder="$1@newdomain.com"
+                        class="flex-1 bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 mono text-sm focus:outline-none focus:border-emerald-500"
+                        oninput="runReplace()">
+                    <button onclick="copyReplaced()" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 rounded-lg text-xs font-medium">Copy Result</button>
+                </div>
+                <div id="replaceResult" class="mt-2 bg-slate-900 border border-slate-700 rounded-lg p-3 mono text-xs leading-relaxed max-h-[100px] overflow-y-auto whitespace-pre-wrap hidden"></div>
+            </div>
+
+            <div class="text-center py-2">
+                <p class="text-xs text-slate-700">Built by <a href="/store" class="text-emerald-500">Sovereign AI</a> | Tips: <code class="text-xs text-slate-600">4uPS7vhkh6cgWEYJqgBQLApNXBnqW4KxuJg6MEzZNLVd</code></p>
+            </div>
+        </div>
+
+        <!-- Cheat Sheet Sidebar -->
+        <div class="w-72 border-l border-slate-800 overflow-y-auto p-4">
+            <h3 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">Cheat Sheet</h3>
+
+            <div class="space-y-4 text-xs">
+                <div>
+                    <h4 class="text-slate-500 font-medium mb-1">Characters</h4>
+                    <div class="space-y-0.5">
+                        <div class="cheat-item flex justify-between px-2 py-1 rounded" onclick="insertPattern('.')"><code class="text-emerald-400">.</code><span class="text-slate-500">Any character</span></div>
+                        <div class="cheat-item flex justify-between px-2 py-1 rounded" onclick="insertPattern('\\d')"><code class="text-emerald-400">\d</code><span class="text-slate-500">Digit [0-9]</span></div>
+                        <div class="cheat-item flex justify-between px-2 py-1 rounded" onclick="insertPattern('\\D')"><code class="text-emerald-400">\D</code><span class="text-slate-500">Non-digit</span></div>
+                        <div class="cheat-item flex justify-between px-2 py-1 rounded" onclick="insertPattern('\\w')"><code class="text-emerald-400">\w</code><span class="text-slate-500">Word [a-zA-Z0-9_]</span></div>
+                        <div class="cheat-item flex justify-between px-2 py-1 rounded" onclick="insertPattern('\\W')"><code class="text-emerald-400">\W</code><span class="text-slate-500">Non-word</span></div>
+                        <div class="cheat-item flex justify-between px-2 py-1 rounded" onclick="insertPattern('\\s')"><code class="text-emerald-400">\s</code><span class="text-slate-500">Whitespace</span></div>
+                        <div class="cheat-item flex justify-between px-2 py-1 rounded" onclick="insertPattern('\\b')"><code class="text-emerald-400">\b</code><span class="text-slate-500">Word boundary</span></div>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-slate-500 font-medium mb-1">Quantifiers</h4>
+                    <div class="space-y-0.5">
+                        <div class="cheat-item flex justify-between px-2 py-1 rounded" onclick="insertPattern('*')"><code class="text-amber-400">*</code><span class="text-slate-500">0 or more</span></div>
+                        <div class="cheat-item flex justify-between px-2 py-1 rounded" onclick="insertPattern('+')"><code class="text-amber-400">+</code><span class="text-slate-500">1 or more</span></div>
+                        <div class="cheat-item flex justify-between px-2 py-1 rounded" onclick="insertPattern('?')"><code class="text-amber-400">?</code><span class="text-slate-500">0 or 1</span></div>
+                        <div class="cheat-item flex justify-between px-2 py-1 rounded" onclick="insertPattern('{n}')"><code class="text-amber-400">{n}</code><span class="text-slate-500">Exactly n</span></div>
+                        <div class="cheat-item flex justify-between px-2 py-1 rounded" onclick="insertPattern('{n,m}')"><code class="text-amber-400">{n,m}</code><span class="text-slate-500">Between n and m</span></div>
+                        <div class="cheat-item flex justify-between px-2 py-1 rounded" onclick="insertPattern('*?')"><code class="text-amber-400">*?</code><span class="text-slate-500">Lazy (minimal)</span></div>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-slate-500 font-medium mb-1">Groups & Alternation</h4>
+                    <div class="space-y-0.5">
+                        <div class="cheat-item flex justify-between px-2 py-1 rounded" onclick="insertPattern('()')"><code class="text-indigo-400">()</code><span class="text-slate-500">Capture group</span></div>
+                        <div class="cheat-item flex justify-between px-2 py-1 rounded" onclick="insertPattern('(?:)')"><code class="text-indigo-400">(?:)</code><span class="text-slate-500">Non-capture</span></div>
+                        <div class="cheat-item flex justify-between px-2 py-1 rounded" onclick="insertPattern('|')"><code class="text-indigo-400">|</code><span class="text-slate-500">Alternation (or)</span></div>
+                        <div class="cheat-item flex justify-between px-2 py-1 rounded" onclick="insertPattern('(?=)')"><code class="text-indigo-400">(?=)</code><span class="text-slate-500">Lookahead</span></div>
+                        <div class="cheat-item flex justify-between px-2 py-1 rounded" onclick="insertPattern('(?!)')"><code class="text-indigo-400">(?!)</code><span class="text-slate-500">Neg. lookahead</span></div>
+                        <div class="cheat-item flex justify-between px-2 py-1 rounded" onclick="insertPattern('(?<=)')"><code class="text-indigo-400">(?<=)</code><span class="text-slate-500">Lookbehind</span></div>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-slate-500 font-medium mb-1">Anchors</h4>
+                    <div class="space-y-0.5">
+                        <div class="cheat-item flex justify-between px-2 py-1 rounded" onclick="insertPattern('^')"><code class="text-rose-400">^</code><span class="text-slate-500">Start of line</span></div>
+                        <div class="cheat-item flex justify-between px-2 py-1 rounded" onclick="insertPattern('$')"><code class="text-rose-400">$</code><span class="text-slate-500">End of line</span></div>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-slate-500 font-medium mb-1">Flags</h4>
+                    <div class="space-y-0.5">
+                        <div class="cheat-item flex justify-between px-2 py-1 rounded"><code class="text-amber-400">g</code><span class="text-slate-500">Global (all matches)</span></div>
+                        <div class="cheat-item flex justify-between px-2 py-1 rounded"><code class="text-amber-400">m</code><span class="text-slate-500">Multiline</span></div>
+                        <div class="cheat-item flex justify-between px-2 py-1 rounded"><code class="text-amber-400">i</code><span class="text-slate-500">Case insensitive</span></div>
+                        <div class="cheat-item flex justify-between px-2 py-1 rounded"><code class="text-amber-400">s</code><span class="text-slate-500">Dotall (. = \n)</span></div>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-slate-500 font-medium mb-1">Common Patterns</h4>
+                    <div class="space-y-0.5">
+                        <div class="cheat-item px-2 py-1 rounded" onclick="loadPattern('[\\\\w.+-]+@[\\\\w-]+\\\\.[\\\\w.]+', 'Email')"><span class="text-slate-400">Email</span></div>
+                        <div class="cheat-item px-2 py-1 rounded" onclick="loadPattern('https?://[\\\\w.-]+(?:/[\\\\w./-]*)?', 'URL')"><span class="text-slate-400">URL</span></div>
+                        <div class="cheat-item px-2 py-1 rounded" onclick="loadPattern('\\\\b\\\\d{1,3}(?:\\\\.\\\\d{1,3}){3}\\\\b', 'IPv4')"><span class="text-slate-400">IPv4 Address</span></div>
+                        <div class="cheat-item px-2 py-1 rounded" onclick="loadPattern('\\\\b\\\\d{4}-\\\\d{2}-\\\\d{2}\\\\b', 'Date')"><span class="text-slate-400">Date (YYYY-MM-DD)</span></div>
+                        <div class="cheat-item px-2 py-1 rounded" onclick="loadPattern('^(?=.*[A-Z])(?=.*[a-z])(?=.*\\\\d).{8,}$', 'Strong Password')"><span class="text-slate-400">Strong Password</span></div>
+                        <div class="cheat-item px-2 py-1 rounded" onclick="loadPattern('#(?:[0-9a-fA-F]{3}){1,2}\\\\b', 'Hex Color')"><span class="text-slate-400">Hex Color</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    const groupColors = ['match-highlight', 'group-1', 'group-2', 'group-3', 'group-4'];
+
+    function runRegex() {
+        const patternStr = document.getElementById('pattern').value;
+        const flags = document.getElementById('flags').value;
+        const testStr = document.getElementById('testString').value;
+        const errorEl = document.getElementById('regexError');
+        const highlightedEl = document.getElementById('highlighted');
+        const matchTableEl = document.getElementById('matchTable');
+        const noMatchesEl = document.getElementById('noMatches');
+        const countEl = document.getElementById('matchCount');
+
+        errorEl.classList.add('hidden');
+        matchTableEl.innerHTML = '';
+
+        if (!patternStr) {
+            highlightedEl.textContent = testStr;
+            countEl.textContent = '0 matches';
+            noMatchesEl.style.display = 'block';
+            return;
+        }
+
+        let regex;
+        try {
+            regex = new RegExp(patternStr, flags);
+        } catch (e) {
+            errorEl.textContent = e.message;
+            errorEl.classList.remove('hidden');
+            highlightedEl.textContent = testStr;
+            countEl.textContent = 'Error';
+            noMatchesEl.style.display = 'block';
+            return;
+        }
+
+        // Find all matches
+        const matches = [];
+        if (flags.includes('g')) {
+            let m;
+            while ((m = regex.exec(testStr)) !== null) {
+                matches.push(m);
+                if (m.index === regex.lastIndex) regex.lastIndex++;
+            }
+        } else {
+            const m = regex.exec(testStr);
+            if (m) matches.push(m);
+        }
+
+        countEl.textContent = `${matches.length} match${matches.length !== 1 ? 'es' : ''}`;
+
+        // Highlight matches
+        if (matches.length === 0) {
+            highlightedEl.textContent = testStr;
+            noMatchesEl.style.display = 'block';
+        } else {
+            noMatchesEl.style.display = 'none';
+            let html = '';
+            let lastIndex = 0;
+            matches.forEach((m, i) => {
+                html += escapeHtml(testStr.slice(lastIndex, m.index));
+                html += `<mark class="match-highlight">${escapeHtml(m[0])}</mark>`;
+                lastIndex = m.index + m[0].length;
+
+                // Match details table
+                const groups = m.slice(1).map((g, gi) =>
+                    g !== undefined ? `<span class="${groupColors[Math.min(gi + 1, 4)]}" style="padding:1px 4px;border-radius:2px;">${escapeHtml(g)}</span>` : '<span class="text-slate-600">undefined</span>'
+                ).join(', ');
+                matchTableEl.innerHTML += `<tr class="border-b border-slate-800/50 hover:bg-slate-800/30"><td class="px-3 py-1.5 text-slate-500">${i + 1}</td><td class="px-3 py-1.5 mono text-emerald-400">${escapeHtml(m[0])}</td><td class="px-3 py-1.5 mono">${groups || '<span class="text-slate-600">none</span>'}</td><td class="px-3 py-1.5 text-slate-500">${m.index}</td></tr>`;
+            });
+            html += escapeHtml(testStr.slice(lastIndex));
+            highlightedEl.innerHTML = html;
+        }
+
+        runReplace();
+    }
+
+    function runReplace() {
+        const patternStr = document.getElementById('pattern').value;
+        const flags = document.getElementById('flags').value;
+        const testStr = document.getElementById('testString').value;
+        const replacement = document.getElementById('replacement').value;
+        const resultEl = document.getElementById('replaceResult');
+
+        if (!replacement || !patternStr) {
+            resultEl.classList.add('hidden');
+            return;
+        }
+
+        try {
+            const regex = new RegExp(patternStr, flags);
+            const result = testStr.replace(regex, replacement);
+            resultEl.textContent = result;
+            resultEl.classList.remove('hidden');
+        } catch (e) {
+            resultEl.classList.add('hidden');
+        }
+    }
+
+    function escapeHtml(str) {
+        return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
+    function insertPattern(p) {
+        const input = document.getElementById('pattern');
+        const pos = input.selectionStart;
+        input.value = input.value.slice(0, pos) + p + input.value.slice(pos);
+        input.focus();
+        input.setSelectionRange(pos + p.length, pos + p.length);
+        runRegex();
+    }
+
+    function loadPattern(p, name) {
+        document.getElementById('pattern').value = p;
+        runRegex();
+    }
+
+    function shareRegex() {
+        const p = document.getElementById('pattern').value;
+        const f = document.getElementById('flags').value;
+        const url = window.location.origin + window.location.pathname + `?p=${encodeURIComponent(p)}&f=${encodeURIComponent(f)}`;
+        navigator.clipboard.writeText(url).then(() => alert('Share URL copied to clipboard!'));
+    }
+
+    function copyReplaced() {
+        const text = document.getElementById('replaceResult').textContent;
+        navigator.clipboard.writeText(text).then(() => {
+            event.target.textContent = 'Copied!';
+            setTimeout(() => { event.target.textContent = 'Copy Result'; }, 1500);
+        });
+    }
+
+    // Load from URL params
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('p')) document.getElementById('pattern').value = params.get('p');
+    if (params.get('f')) document.getElementById('flags').value = params.get('f');
+
+    // Default demo pattern
+    if (!document.getElementById('pattern').value) {
+        document.getElementById('pattern').value = '[\\w.+-]+@[\\w-]+\\.[\\w.]+';
+    }
+    runRegex();
+    </script>
+</body>
+</html>

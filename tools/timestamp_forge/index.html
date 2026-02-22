@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timestamp Forge — Date & Time Converter</title>
+    <meta name="description" content="Free online date & time converter. Unix timestamps, ISO 8601, time zones, date diff. Works offline. No signup required.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-tertiary: #334155;
+            --bg-card: #1e293b;
+            --border: #334155;
+            --border-hover: #475569;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --accent: #0ea5e9;
+            --accent-hover: #38bdf8;
+            --accent-dim: rgba(14, 165, 233, 0.15);
+            --accent-glow: rgba(14, 165, 233, 0.3);
+            --success: #22c55e;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            --radius: 8px;
+            --radius-lg: 12px;
+            --mono: 'JetBrains Mono', monospace;
+            --sans: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            font-family: var(--sans);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: var(--bg-tertiary); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--border-hover); }
+
+        /* ── NAVBAR ── */
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 24px;
+            border-bottom: 1px solid var(--border);
+            background: var(--bg-primary);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .navbar-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--accent), #6366f1);
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: 700;
+            color: white;
+        }
+        .navbar-title {
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+        }
+        .navbar-version {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-left: 4px;
+        }
+        .navbar-links {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        .navbar-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .navbar-links a:hover { color: var(--accent); }
+
+        /* ── TABS ── */
+        .tabs {
+            display: flex;
+            gap: 0;
+            border-bottom: 1px solid var(--border);
+            padding: 0 24px;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        .tab {
+            padding: 12px 18px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-muted);
+            border: none;
+            background: none;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+        .tab:hover { color: var(--text-secondary); }
+        .tab.active {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+        }
+
+        /* ── MAIN ── */
+        .main {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 24px;
+        }
+        .panel {
+            display: none;
+        }
+        .panel.active {
+            display: block;
+        }
+
+        /* ── LIVE CLOCK ── */
+        .clock-hero {
+            text-align: center;
+            padding: 32px 20px 28px;
+            background: linear-gradient(180deg, rgba(14,165,233,0.06) 0%, transparent 100%);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            margin-bottom: 24px;
+        }
+        .clock-label {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+        .clock-unix {
+            font-family: var(--mono);
+            font-size: 42px;
+            font-weight: 700;
+            letter-spacing: -1px;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .clock-unix:hover { color: var(--accent); }
+        .clock-ms {
+            font-family: var(--mono);
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .clock-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 12px;
+            margin-top: 16px;
+        }
+        .clock-item {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 12px 14px;
+            text-align: left;
+            cursor: pointer;
+            transition: border-color 0.2s, background 0.2s;
+        }
+        .clock-item:hover {
+            border-color: var(--accent);
+            background: var(--accent-dim);
+        }
+        .clock-item-label {
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+        .clock-item-value {
+            font-family: var(--mono);
+            font-size: 13px;
+            color: var(--text-primary);
+            word-break: break-all;
+        }
+
+        /* ── CARDS ── */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        .card-title {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .card-title .icon {
+            font-size: 18px;
+        }
+
+        /* ── FORM ELEMENTS ── */
+        .form-row {
+            display: flex;
+            gap: 12px;
+            align-items: flex-end;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+        .form-group {
+            flex: 1;
+            min-width: 180px;
+        }
+        .form-label {
+            display: block;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+        .form-input {
+            width: 100%;
+            padding: 10px 14px;
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            color: var(--text-primary);
+            font-family: var(--mono);
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .form-input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--accent-glow);
+        }
+        .form-input::placeholder { color: var(--text-muted); }
+
+        input[type="datetime-local"] {
+            color-scheme: dark;
+        }
+
+        /* ── BUTTONS ── */
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: var(--radius);
+            font-family: var(--sans);
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+        .btn-primary:hover { background: var(--accent-hover); }
+        .btn-secondary {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+        }
+        .btn-secondary:hover { background: var(--border-hover); }
+        .btn-sm {
+            padding: 6px 12px;
+            font-size: 12px;
+        }
+        .btn-now {
+            padding: 10px 16px;
+            background: var(--accent-dim);
+            color: var(--accent);
+            border: 1px solid var(--accent);
+        }
+        .btn-now:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        /* ── OUTPUT TABLE ── */
+        .output-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 8px;
+            margin-top: 16px;
+        }
+        .output-row {
+            display: flex;
+            align-items: center;
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: border-color 0.2s;
+        }
+        .output-row:hover { border-color: var(--border-hover); }
+        .output-label {
+            padding: 10px 14px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--text-muted);
+            background: var(--bg-secondary);
+            min-width: 140px;
+            border-right: 1px solid var(--border);
+        }
+        .output-value {
+            flex: 1;
+            padding: 10px 14px;
+            font-family: var(--mono);
+            font-size: 13px;
+            color: var(--text-primary);
+            word-break: break-all;
+            min-height: 40px;
+            display: flex;
+            align-items: center;
+        }
+        .output-copy {
+            padding: 8px 12px;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 14px;
+            transition: color 0.2s;
+            flex-shrink: 0;
+        }
+        .output-copy:hover { color: var(--accent); }
+
+        /* ── TIMEZONE TABLE ── */
+        .tz-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 16px;
+        }
+        .tz-table th {
+            padding: 10px 14px;
+            text-align: left;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--text-muted);
+            border-bottom: 1px solid var(--border);
+            background: var(--bg-secondary);
+        }
+        .tz-table td {
+            padding: 10px 14px;
+            font-size: 13px;
+            border-bottom: 1px solid var(--border);
+            vertical-align: middle;
+        }
+        .tz-table tr:hover td { background: var(--accent-dim); }
+        .tz-name {
+            font-weight: 600;
+            color: var(--text-primary);
+            white-space: nowrap;
+        }
+        .tz-offset {
+            font-family: var(--mono);
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+        .tz-time {
+            font-family: var(--mono);
+            font-size: 13px;
+            color: var(--accent);
+        }
+        .tz-date {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+        .tz-copy-btn {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 14px;
+            padding: 4px 8px;
+            transition: color 0.2s;
+        }
+        .tz-copy-btn:hover { color: var(--accent); }
+
+        /* ── DIFF RESULT ── */
+        .diff-result {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+            margin-top: 16px;
+        }
+        .diff-item {
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 16px;
+            text-align: center;
+        }
+        .diff-number {
+            font-family: var(--mono);
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 4px;
+        }
+        .diff-unit {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+        }
+        .diff-relative {
+            margin-top: 16px;
+            padding: 14px 18px;
+            background: var(--accent-dim);
+            border: 1px solid rgba(14,165,233,0.2);
+            border-radius: var(--radius);
+            font-size: 14px;
+            color: var(--accent);
+            text-align: center;
+            font-weight: 500;
+        }
+
+        /* ── TOAST ── */
+        .toast-container {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .toast {
+            padding: 10px 18px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--success);
+            border-radius: var(--radius);
+            color: var(--success);
+            font-size: 13px;
+            font-weight: 500;
+            animation: toastIn 0.3s ease-out;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        @keyframes toastIn {
+            from { opacity: 0; transform: translateY(12px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        /* ── FOOTER ── */
+        .footer {
+            border-top: 1px solid var(--border);
+            padding: 24px;
+            text-align: center;
+            margin-top: 40px;
+        }
+        .footer-brand {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+        .footer-brand a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        .footer-brand a:hover { text-decoration: underline; }
+        .footer-tip {
+            margin-top: 12px;
+            padding: 12px 16px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            display: inline-block;
+            max-width: 600px;
+        }
+        .footer-tip-label {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+        .footer-tip-address {
+            font-family: var(--mono);
+            font-size: 12px;
+            color: var(--text-secondary);
+            word-break: break-all;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .footer-tip-address:hover { color: var(--accent); }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 768px) {
+            .navbar { padding: 10px 16px; }
+            .navbar-links span { display: none; }
+            .tabs { padding: 0 12px; }
+            .tab { padding: 10px 12px; font-size: 12px; }
+            .main { padding: 16px; }
+            .clock-unix { font-size: 28px; }
+            .clock-grid { grid-template-columns: 1fr; }
+            .form-row { flex-direction: column; }
+            .form-group { min-width: 100%; }
+            .output-label { min-width: 100px; font-size: 10px; }
+            .diff-result { grid-template-columns: repeat(2, 1fr); }
+            .tz-table { font-size: 12px; }
+            .tz-table th, .tz-table td { padding: 8px 10px; }
+        }
+        @media (max-width: 480px) {
+            .diff-result { grid-template-columns: 1fr 1fr; }
+            .clock-unix { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <div class="navbar-icon">T</div>
+            <span class="navbar-title">Timestamp Forge</span>
+            <span class="navbar-version">v1.0</span>
+        </div>
+        <div class="navbar-links">
+            <span>Free &amp; Offline</span>
+            <span>No Signup</span>
+            <a href="/store">Store</a>
+        </div>
+    </nav>
+
+    <!-- Tabs -->
+    <div class="tabs" role="tablist">
+        <button class="tab active" onclick="switchTab('live')" data-tab="live">Live Clock</button>
+        <button class="tab" onclick="switchTab('toHuman')" data-tab="toHuman">Unix &rarr; Human</button>
+        <button class="tab" onclick="switchTab('toUnix')" data-tab="toUnix">Human &rarr; Unix</button>
+        <button class="tab" onclick="switchTab('timezone')" data-tab="timezone">Time Zones</button>
+        <button class="tab" onclick="switchTab('diff')" data-tab="diff">Date Diff</button>
+        <button class="tab" onclick="switchTab('formats')" data-tab="formats">Formats</button>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main">
+
+        <!-- ═══════════════════ PANEL: LIVE CLOCK ═══════════════════ -->
+        <div id="panel-live" class="panel active">
+            <div class="clock-hero">
+                <div class="clock-label">Current Unix Timestamp</div>
+                <div class="clock-unix" id="liveUnix" onclick="copyText(this.textContent, 'Unix timestamp')" title="Click to copy">—</div>
+                <div class="clock-ms" id="liveUnixMs">milliseconds: —</div>
+                <div class="clock-grid">
+                    <div class="clock-item" onclick="copyText(this.querySelector('.clock-item-value').textContent, 'UTC time')">
+                        <div class="clock-item-label">UTC</div>
+                        <div class="clock-item-value" id="liveUTC">—</div>
+                    </div>
+                    <div class="clock-item" onclick="copyText(this.querySelector('.clock-item-value').textContent, 'Local time')">
+                        <div class="clock-item-label">Local Time</div>
+                        <div class="clock-item-value" id="liveLocal">—</div>
+                    </div>
+                    <div class="clock-item" onclick="copyText(this.querySelector('.clock-item-value').textContent, 'ISO 8601')">
+                        <div class="clock-item-label">ISO 8601</div>
+                        <div class="clock-item-value" id="liveISO">—</div>
+                    </div>
+                    <div class="clock-item" onclick="copyText(this.querySelector('.clock-item-value').textContent, 'RFC 2822')">
+                        <div class="clock-item-label">RFC 2822</div>
+                        <div class="clock-item-value" id="liveRFC2822">—</div>
+                    </div>
+                    <div class="clock-item" onclick="copyText(this.querySelector('.clock-item-value').textContent, 'SQL Datetime')">
+                        <div class="clock-item-label">SQL Datetime</div>
+                        <div class="clock-item-value" id="liveSQL">—</div>
+                    </div>
+                    <div class="clock-item" onclick="copyText(this.querySelector('.clock-item-value').textContent, 'Day of year')">
+                        <div class="clock-item-label">Day of Year / Week</div>
+                        <div class="clock-item-value" id="liveDOY">—</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════ PANEL: UNIX → HUMAN ═══════════════════ -->
+        <div id="panel-toHuman" class="panel">
+            <div class="card">
+                <div class="card-title"><span class="icon">&#128337;</span> Unix Timestamp to Human-Readable Date</div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Unix Timestamp</label>
+                        <input type="text" class="form-input" id="inputUnixTs" placeholder="e.g. 1700000000 or 1700000000000" oninput="convertUnixToHuman()">
+                    </div>
+                    <button class="btn btn-now" onclick="fillNowUnix()">Now</button>
+                    <button class="btn btn-primary" onclick="convertUnixToHuman()">Convert</button>
+                </div>
+                <div id="unixDetect" style="font-size:12px;color:var(--text-muted);margin-bottom:12px;"></div>
+                <div class="output-grid" id="unixToHumanOutput"></div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════ PANEL: HUMAN → UNIX ═══════════════════ -->
+        <div id="panel-toUnix" class="panel">
+            <div class="card">
+                <div class="card-title"><span class="icon">&#128197;</span> Human Date to Unix Timestamp</div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Date & Time</label>
+                        <input type="datetime-local" class="form-input" id="inputHumanDate" step="1" onchange="convertHumanToUnix()">
+                    </div>
+                    <button class="btn btn-now" onclick="fillNowHuman()">Now</button>
+                    <button class="btn btn-primary" onclick="convertHumanToUnix()">Convert</button>
+                </div>
+                <div class="output-grid" id="humanToUnixOutput"></div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════ PANEL: TIME ZONES ═══════════════════ -->
+        <div id="panel-timezone" class="panel">
+            <div class="card">
+                <div class="card-title"><span class="icon">&#127758;</span> Time Zone Converter</div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Date & Time</label>
+                        <input type="datetime-local" class="form-input" id="inputTzDate" step="1" onchange="convertTimeZones()">
+                    </div>
+                    <div class="form-group" style="max-width:220px;">
+                        <label class="form-label">Source Time Zone</label>
+                        <select class="form-input" id="sourceTz" onchange="convertTimeZones()" style="font-family:var(--sans);font-size:13px;">
+                        </select>
+                    </div>
+                    <button class="btn btn-now" onclick="fillNowTz()">Now</button>
+                </div>
+                <div style="overflow-x:auto;">
+                    <table class="tz-table" id="tzTable">
+                        <thead>
+                            <tr>
+                                <th>Time Zone</th>
+                                <th>Offset</th>
+                                <th>Time</th>
+                                <th>Date</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="tzTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════ PANEL: DATE DIFF ═══════════════════ -->
+        <div id="panel-diff" class="panel">
+            <div class="card">
+                <div class="card-title"><span class="icon">&#8596;</span> Date Difference Calculator</div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Start Date & Time</label>
+                        <input type="datetime-local" class="form-input" id="diffStart" step="1" onchange="calcDiff()">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">End Date & Time</label>
+                        <input type="datetime-local" class="form-input" id="diffEnd" step="1" onchange="calcDiff()">
+                    </div>
+                    <button class="btn btn-secondary btn-sm" onclick="fillDiffNow()" title="Set start to now">Start = Now</button>
+                </div>
+                <div class="diff-result" id="diffResult"></div>
+                <div id="diffRelative"></div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════ PANEL: FORMAT OUTPUT ═══════════════════ -->
+        <div id="panel-formats" class="panel">
+            <div class="card">
+                <div class="card-title"><span class="icon">&#128196;</span> Common Date/Time Formats</div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Date & Time</label>
+                        <input type="datetime-local" class="form-input" id="inputFormatDate" step="1" onchange="generateFormats()">
+                    </div>
+                    <button class="btn btn-now" onclick="fillNowFormats()">Now</button>
+                </div>
+                <div class="output-grid" id="formatsOutput"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-brand">
+            Built by <strong>Sovereign AI</strong> &mdash; <a href="/store">Browse more tools</a>
+        </div>
+        <div class="footer-tip">
+            <div class="footer-tip-label">Tips (Solana)</div>
+            <div class="footer-tip-address" onclick="copyText('4uPS7vhkh6cgWEYJqgBQLApNXBnqW4KxuJg6MEzZNLVd', 'Wallet address')" title="Click to copy">
+                4uPS7vhkh6cgWEYJqgBQLApNXBnqW4KxuJg6MEzZNLVd
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script>
+    /* ══════════════════════════════════════════════════
+       TIMESTAMP FORGE — Core Logic
+       ══════════════════════════════════════════════════ */
+
+    // ── Time Zones ──
+    const TIME_ZONES = [
+        { name: 'UTC',               iana: 'UTC',                   label: 'UTC' },
+        { name: 'US Eastern',        iana: 'America/New_York',      label: 'New York' },
+        { name: 'US Central',        iana: 'America/Chicago',       label: 'Chicago' },
+        { name: 'US Mountain',       iana: 'America/Denver',        label: 'Denver' },
+        { name: 'US Pacific',        iana: 'America/Los_Angeles',   label: 'Los Angeles' },
+        { name: 'London',            iana: 'Europe/London',         label: 'London' },
+        { name: 'Central Europe',    iana: 'Europe/Berlin',         label: 'Berlin' },
+        { name: 'Eastern Europe',    iana: 'Europe/Bucharest',      label: 'Bucharest' },
+        { name: 'Moscow',            iana: 'Europe/Moscow',         label: 'Moscow' },
+        { name: 'Dubai',             iana: 'Asia/Dubai',            label: 'Dubai' },
+        { name: 'India',             iana: 'Asia/Kolkata',          label: 'Kolkata' },
+        { name: 'Singapore',         iana: 'Asia/Singapore',        label: 'Singapore' },
+        { name: 'China',             iana: 'Asia/Shanghai',         label: 'Shanghai' },
+        { name: 'Japan',             iana: 'Asia/Tokyo',            label: 'Tokyo' },
+        { name: 'Australia East',    iana: 'Australia/Sydney',      label: 'Sydney' },
+        { name: 'New Zealand',       iana: 'Pacific/Auckland',      label: 'Auckland' },
+        { name: 'Sao Paulo',         iana: 'America/Sao_Paulo',     label: 'Sao Paulo' },
+    ];
+
+    // Populate source timezone select
+    (function populateTzSelect() {
+        const sel = document.getElementById('sourceTz');
+        const localTz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        TIME_ZONES.forEach(tz => {
+            const opt = document.createElement('option');
+            opt.value = tz.iana;
+            opt.textContent = tz.name + ' (' + tz.label + ')';
+            if (tz.iana === localTz) opt.selected = true;
+            sel.appendChild(opt);
+        });
+        // If local tz not in list, add it
+        if (!TIME_ZONES.find(t => t.iana === localTz)) {
+            const opt = document.createElement('option');
+            opt.value = localTz;
+            opt.textContent = 'Local (' + localTz + ')';
+            opt.selected = true;
+            sel.insertBefore(opt, sel.firstChild);
+        }
+    })();
+
+    // ── Tab Switching ──
+    function switchTab(tabName) {
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+        document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
+        document.getElementById('panel-' + tabName).classList.add('active');
+    }
+
+    // ── Clipboard & Toast ──
+    function copyText(text, label) {
+        navigator.clipboard.writeText(text).then(() => {
+            showToast('Copied ' + (label || 'value'));
+        }).catch(() => {
+            // fallback
+            const ta = document.createElement('textarea');
+            ta.value = text;
+            ta.style.position = 'fixed';
+            ta.style.opacity = '0';
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+            showToast('Copied ' + (label || 'value'));
+        });
+    }
+
+    function showToast(msg) {
+        const container = document.getElementById('toastContainer');
+        const toast = document.createElement('div');
+        toast.className = 'toast';
+        toast.textContent = msg;
+        container.appendChild(toast);
+        setTimeout(() => {
+            toast.style.transition = 'opacity 0.3s';
+            toast.style.opacity = '0';
+            setTimeout(() => toast.remove(), 300);
+        }, 1800);
+    }
+
+    // ── Helper: format datetime-local value ──
+    function toLocalDatetimeStr(d) {
+        const pad = n => String(n).padStart(2, '0');
+        return d.getFullYear() + '-' + pad(d.getMonth()+1) + '-' + pad(d.getDate())
+            + 'T' + pad(d.getHours()) + ':' + pad(d.getMinutes()) + ':' + pad(d.getSeconds());
+    }
+
+    // ── Helper: detect seconds vs milliseconds ──
+    function normalizeTimestamp(val) {
+        const num = Number(val);
+        if (isNaN(num)) return null;
+        // If the value is greater than a reasonable seconds timestamp (year ~2200),
+        // treat it as milliseconds
+        if (num > 9999999999) {
+            return { ms: num, s: Math.floor(num / 1000), detected: 'milliseconds' };
+        }
+        return { ms: num * 1000, s: num, detected: 'seconds' };
+    }
+
+    // ── Helper: day of year ──
+    function dayOfYear(d) {
+        const start = new Date(d.getFullYear(), 0, 0);
+        const diff = d - start;
+        const oneDay = 1000 * 60 * 60 * 24;
+        return Math.floor(diff / oneDay);
+    }
+
+    // ── Helper: ISO week number ──
+    function weekNumber(d) {
+        const dt = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+        const dayNum = dt.getUTCDay() || 7;
+        dt.setUTCDate(dt.getUTCDate() + 4 - dayNum);
+        const yearStart = new Date(Date.UTC(dt.getUTCFullYear(), 0, 1));
+        return Math.ceil((((dt - yearStart) / 86400000) + 1) / 7);
+    }
+
+    // ── Format Generators ──
+    function fmtISO8601(d) { return d.toISOString(); }
+
+    function fmtRFC2822(d) {
+        const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+        const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+        const pad = n => String(n).padStart(2, '0');
+        return days[d.getUTCDay()] + ', ' + pad(d.getUTCDate()) + ' ' + months[d.getUTCMonth()] + ' '
+            + d.getUTCFullYear() + ' ' + pad(d.getUTCHours()) + ':' + pad(d.getUTCMinutes()) + ':'
+            + pad(d.getUTCSeconds()) + ' +0000';
+    }
+
+    function fmtRFC3339(d) { return d.toISOString(); }
+
+    function fmtSQL(d) {
+        const pad = n => String(n).padStart(2, '0');
+        return d.getUTCFullYear() + '-' + pad(d.getUTCMonth()+1) + '-' + pad(d.getUTCDate())
+            + ' ' + pad(d.getUTCHours()) + ':' + pad(d.getUTCMinutes()) + ':' + pad(d.getUTCSeconds());
+    }
+
+    function fmtHTTPDate(d) {
+        const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+        const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+        const pad = n => String(n).padStart(2, '0');
+        return days[d.getUTCDay()] + ', ' + pad(d.getUTCDate()) + ' ' + months[d.getUTCMonth()] + ' '
+            + d.getUTCFullYear() + ' ' + pad(d.getUTCHours()) + ':' + pad(d.getUTCMinutes()) + ':'
+            + pad(d.getUTCSeconds()) + ' GMT';
+    }
+
+    function fmtUTC(d) {
+        return d.toUTCString();
+    }
+
+    function fmtLocalFull(d) {
+        return d.toLocaleString(undefined, {
+            weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
+            hour: '2-digit', minute: '2-digit', second: '2-digit', timeZoneName: 'short'
+        });
+    }
+
+    // ── Relative Time ──
+    function relativeTime(d, ref) {
+        ref = ref || new Date();
+        const diffMs = d.getTime() - ref.getTime();
+        const absDiff = Math.abs(diffMs);
+        const isFuture = diffMs > 0;
+
+        const seconds = Math.floor(absDiff / 1000);
+        const minutes = Math.floor(seconds / 60);
+        const hours = Math.floor(minutes / 60);
+        const days = Math.floor(hours / 24);
+        const weeks = Math.floor(days / 7);
+        const months = Math.floor(days / 30.44);
+        const years = Math.floor(days / 365.25);
+
+        let text;
+        if (seconds < 5) text = 'just now';
+        else if (seconds < 60) text = seconds + ' seconds';
+        else if (minutes < 2) text = '1 minute';
+        else if (minutes < 60) text = minutes + ' minutes';
+        else if (hours < 2) text = '1 hour';
+        else if (hours < 24) text = hours + ' hours';
+        else if (days < 2) text = '1 day';
+        else if (days < 7) text = days + ' days';
+        else if (weeks < 2) text = '1 week';
+        else if (weeks < 5) text = weeks + ' weeks';
+        else if (months < 2) text = '1 month';
+        else if (months < 12) text = months + ' months';
+        else if (years < 2) text = '1 year';
+        else text = years + ' years';
+
+        if (text === 'just now') return text;
+        return isFuture ? 'in ' + text : text + ' ago';
+    }
+
+    // ── Output Row Builder ──
+    function makeOutputRow(label, value) {
+        return `<div class="output-row">
+            <div class="output-label">${label}</div>
+            <div class="output-value">${value}</div>
+            <button class="output-copy" onclick="copyText('${value.replace(/'/g, "\\'")}', '${label}')" title="Copy">&#128203;</button>
+        </div>`;
+    }
+
+    // ══════════════════════════════════════════
+    //  1. LIVE CLOCK
+    // ══════════════════════════════════════════
+    function updateLiveClock() {
+        const now = new Date();
+        const unix = Math.floor(now.getTime() / 1000);
+
+        document.getElementById('liveUnix').textContent = unix;
+        document.getElementById('liveUnixMs').textContent = 'milliseconds: ' + now.getTime();
+        document.getElementById('liveUTC').textContent = fmtUTC(now);
+        document.getElementById('liveLocal').textContent = fmtLocalFull(now);
+        document.getElementById('liveISO').textContent = fmtISO8601(now);
+        document.getElementById('liveRFC2822').textContent = fmtRFC2822(now);
+        document.getElementById('liveSQL').textContent = fmtSQL(now);
+        document.getElementById('liveDOY').textContent = 'Day ' + dayOfYear(now) + ' / Week ' + weekNumber(now);
+    }
+    setInterval(updateLiveClock, 200);
+    updateLiveClock();
+
+    // ══════════════════════════════════════════
+    //  2. UNIX → HUMAN
+    // ══════════════════════════════════════════
+    function fillNowUnix() {
+        document.getElementById('inputUnixTs').value = Math.floor(Date.now() / 1000);
+        convertUnixToHuman();
+    }
+
+    function convertUnixToHuman() {
+        const val = document.getElementById('inputUnixTs').value.trim();
+        const container = document.getElementById('unixToHumanOutput');
+        const detectEl = document.getElementById('unixDetect');
+
+        if (!val) { container.innerHTML = ''; detectEl.textContent = ''; return; }
+
+        const ts = normalizeTimestamp(val);
+        if (!ts) {
+            container.innerHTML = '<div style="color:var(--error);padding:12px;">Invalid timestamp</div>';
+            detectEl.textContent = '';
+            return;
+        }
+
+        detectEl.textContent = 'Auto-detected as ' + ts.detected +
+            (ts.detected === 'milliseconds' ? ' (value > 9999999999)' : ' (value <= 9999999999)');
+
+        const d = new Date(ts.ms);
+        if (isNaN(d.getTime())) {
+            container.innerHTML = '<div style="color:var(--error);padding:12px;">Invalid date</div>';
+            return;
+        }
+
+        container.innerHTML =
+            makeOutputRow('Unix (seconds)', String(ts.s)) +
+            makeOutputRow('Unix (ms)', String(ts.ms)) +
+            makeOutputRow('UTC', fmtUTC(d)) +
+            makeOutputRow('Local Time', fmtLocalFull(d)) +
+            makeOutputRow('ISO 8601', fmtISO8601(d)) +
+            makeOutputRow('RFC 2822', fmtRFC2822(d)) +
+            makeOutputRow('RFC 3339', fmtRFC3339(d)) +
+            makeOutputRow('SQL Datetime', fmtSQL(d)) +
+            makeOutputRow('HTTP Date', fmtHTTPDate(d)) +
+            makeOutputRow('Relative', relativeTime(d)) +
+            makeOutputRow('Day of Year', 'Day ' + dayOfYear(d) + ' / Week ' + weekNumber(d));
+    }
+
+    // ══════════════════════════════════════════
+    //  3. HUMAN → UNIX
+    // ══════════════════════════════════════════
+    function fillNowHuman() {
+        document.getElementById('inputHumanDate').value = toLocalDatetimeStr(new Date());
+        convertHumanToUnix();
+    }
+
+    function convertHumanToUnix() {
+        const val = document.getElementById('inputHumanDate').value;
+        const container = document.getElementById('humanToUnixOutput');
+        if (!val) { container.innerHTML = ''; return; }
+
+        const d = new Date(val);
+        if (isNaN(d.getTime())) {
+            container.innerHTML = '<div style="color:var(--error);padding:12px;">Invalid date</div>';
+            return;
+        }
+
+        const s = Math.floor(d.getTime() / 1000);
+        const ms = d.getTime();
+
+        container.innerHTML =
+            makeOutputRow('Unix (seconds)', String(s)) +
+            makeOutputRow('Unix (milliseconds)', String(ms)) +
+            makeOutputRow('ISO 8601', fmtISO8601(d)) +
+            makeOutputRow('RFC 2822', fmtRFC2822(d)) +
+            makeOutputRow('SQL Datetime', fmtSQL(d)) +
+            makeOutputRow('HTTP Date', fmtHTTPDate(d)) +
+            makeOutputRow('Relative', relativeTime(d));
+    }
+
+    // ══════════════════════════════════════════
+    //  4. TIME ZONE CONVERTER
+    // ══════════════════════════════════════════
+    function fillNowTz() {
+        document.getElementById('inputTzDate').value = toLocalDatetimeStr(new Date());
+        convertTimeZones();
+    }
+
+    function convertTimeZones() {
+        const val = document.getElementById('inputTzDate').value;
+        const tbody = document.getElementById('tzTableBody');
+        if (!val) { tbody.innerHTML = ''; return; }
+
+        const sourceTzIana = document.getElementById('sourceTz').value;
+
+        // Parse as if the input is in the source timezone
+        // Strategy: format a known date in the source tz to find its UTC offset
+        const naiveDate = new Date(val);
+        if (isNaN(naiveDate.getTime())) { tbody.innerHTML = ''; return; }
+
+        // Get the offset of the source timezone at the given time
+        const sourceOffsetMs = getTimezoneOffsetMs(naiveDate, sourceTzIana);
+        // Convert naive date to UTC: naiveDate is interpreted as local by the browser,
+        // so we need to correct to make it be "in sourceTz"
+        const localOffsetMs = naiveDate.getTimezoneOffset() * 60 * 1000;
+        const utcMs = naiveDate.getTime() + localOffsetMs - sourceOffsetMs;
+        const utcDate = new Date(utcMs);
+
+        let html = '';
+        TIME_ZONES.forEach(tz => {
+            try {
+                const opts = { timeZone: tz.iana, hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
+                const dateOpts = { timeZone: tz.iana, weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
+                const timeStr = utcDate.toLocaleTimeString('en-GB', opts);
+                const dateStr = utcDate.toLocaleDateString('en-US', dateOpts);
+                const offset = getTimezoneOffsetStr(utcDate, tz.iana);
+                const fullStr = dateStr + ' ' + timeStr + ' (' + tz.name + ')';
+
+                html += `<tr>
+                    <td class="tz-name">${tz.name} <span style="color:var(--text-muted);font-weight:400;font-size:12px;">${tz.label}</span></td>
+                    <td class="tz-offset">${offset}</td>
+                    <td class="tz-time">${timeStr}</td>
+                    <td class="tz-date">${dateStr}</td>
+                    <td><button class="tz-copy-btn" onclick="copyText('${fullStr.replace(/'/g, "\\'")}', '${tz.name} time')" title="Copy">&#128203;</button></td>
+                </tr>`;
+            } catch(e) {
+                // skip unsupported tz
+            }
+        });
+        tbody.innerHTML = html;
+    }
+
+    function getTimezoneOffsetMs(date, iana) {
+        // Calculate the offset of a timezone at a given instant
+        const utcStr = date.toLocaleString('en-US', { timeZone: 'UTC' });
+        const tzStr = date.toLocaleString('en-US', { timeZone: iana });
+        const utcDate = new Date(utcStr);
+        const tzDate = new Date(tzStr);
+        return tzDate - utcDate;
+    }
+
+    function getTimezoneOffsetStr(date, iana) {
+        const offsetMs = getTimezoneOffsetMs(date, iana);
+        const totalMin = Math.round(offsetMs / 60000);
+        const sign = totalMin >= 0 ? '+' : '-';
+        const absMin = Math.abs(totalMin);
+        const h = Math.floor(absMin / 60);
+        const m = absMin % 60;
+        return 'UTC' + sign + String(h).padStart(2, '0') + ':' + String(m).padStart(2, '0');
+    }
+
+    // ══════════════════════════════════════════
+    //  5. DATE DIFFERENCE
+    // ══════════════════════════════════════════
+    function fillDiffNow() {
+        document.getElementById('diffStart').value = toLocalDatetimeStr(new Date());
+        calcDiff();
+    }
+
+    function calcDiff() {
+        const startVal = document.getElementById('diffStart').value;
+        const endVal = document.getElementById('diffEnd').value;
+        const resultEl = document.getElementById('diffResult');
+        const relEl = document.getElementById('diffRelative');
+
+        if (!startVal || !endVal) { resultEl.innerHTML = ''; relEl.innerHTML = ''; return; }
+
+        const startD = new Date(startVal);
+        const endD = new Date(endVal);
+        if (isNaN(startD.getTime()) || isNaN(endD.getTime())) {
+            resultEl.innerHTML = '<div style="color:var(--error);padding:12px;grid-column:1/-1;">Invalid date</div>';
+            relEl.innerHTML = '';
+            return;
+        }
+
+        const diffMs = Math.abs(endD - startD);
+        const totalSeconds = Math.floor(diffMs / 1000);
+        const totalMinutes = Math.floor(totalSeconds / 60);
+        const totalHours = Math.floor(totalMinutes / 60);
+        const totalDays = Math.floor(totalHours / 24);
+        const totalWeeks = Math.floor(totalDays / 7);
+
+        // Broken down
+        const years = Math.floor(totalDays / 365.25);
+        const months = Math.floor(totalDays / 30.44);
+        const remainDaysAfterWeeks = totalDays % 7;
+        const remainHours = totalHours % 24;
+        const remainMinutes = totalMinutes % 60;
+        const remainSeconds = totalSeconds % 60;
+
+        resultEl.innerHTML = `
+            <div class="diff-item">
+                <div class="diff-number">${totalDays.toLocaleString()}</div>
+                <div class="diff-unit">Days</div>
+            </div>
+            <div class="diff-item">
+                <div class="diff-number">${totalHours.toLocaleString()}</div>
+                <div class="diff-unit">Hours</div>
+            </div>
+            <div class="diff-item">
+                <div class="diff-number">${totalMinutes.toLocaleString()}</div>
+                <div class="diff-unit">Minutes</div>
+            </div>
+            <div class="diff-item">
+                <div class="diff-number">${totalSeconds.toLocaleString()}</div>
+                <div class="diff-unit">Seconds</div>
+            </div>
+            <div class="diff-item">
+                <div class="diff-number">${totalWeeks.toLocaleString()}</div>
+                <div class="diff-unit">Weeks</div>
+            </div>
+            <div class="diff-item">
+                <div class="diff-number">${months}</div>
+                <div class="diff-unit">Months (approx)</div>
+            </div>
+        `;
+
+        const direction = endD >= startD ? 'later' : 'earlier';
+        const breakdown = [];
+        if (years > 0) breakdown.push(years + (years === 1 ? ' year' : ' years'));
+        const remMonths = months - (years * 12);
+        if (remMonths > 0) breakdown.push(remMonths + (remMonths === 1 ? ' month' : ' months'));
+        if (remainDaysAfterWeeks > 0 || (totalDays > 0 && totalWeeks === 0)) {
+            const daysForBreakdown = totalDays - (years * 365) - (remMonths * 30);
+            if (daysForBreakdown > 0) breakdown.push(daysForBreakdown + (daysForBreakdown === 1 ? ' day' : ' days'));
+        }
+        if (remainHours > 0) breakdown.push(remainHours + (remainHours === 1 ? ' hour' : ' hours'));
+        if (remainMinutes > 0) breakdown.push(remainMinutes + (remainMinutes === 1 ? ' minute' : ' minutes'));
+        if (remainSeconds > 0) breakdown.push(remainSeconds + (remainSeconds === 1 ? ' second' : ' seconds'));
+
+        const breakdownStr = breakdown.length ? breakdown.join(', ') : '0 seconds';
+        relEl.innerHTML = `<div class="diff-relative">${breakdownStr} &mdash; End is ${direction} than start</div>`;
+    }
+
+    // ══════════════════════════════════════════
+    //  6. COMMON FORMATS
+    // ══════════════════════════════════════════
+    function fillNowFormats() {
+        document.getElementById('inputFormatDate').value = toLocalDatetimeStr(new Date());
+        generateFormats();
+    }
+
+    function generateFormats() {
+        const val = document.getElementById('inputFormatDate').value;
+        const container = document.getElementById('formatsOutput');
+        if (!val) { container.innerHTML = ''; return; }
+
+        const d = new Date(val);
+        if (isNaN(d.getTime())) {
+            container.innerHTML = '<div style="color:var(--error);padding:12px;">Invalid date</div>';
+            return;
+        }
+
+        const pad = n => String(n).padStart(2, '0');
+        const unix = Math.floor(d.getTime() / 1000);
+
+        // Additional formats
+        const shortDate = pad(d.getMonth()+1) + '/' + pad(d.getDate()) + '/' + d.getFullYear();
+        const euroDate = pad(d.getDate()) + '/' + pad(d.getMonth()+1) + '/' + d.getFullYear();
+        const isoDate = d.getFullYear() + '-' + pad(d.getMonth()+1) + '-' + pad(d.getDate());
+        const time24 = pad(d.getHours()) + ':' + pad(d.getMinutes()) + ':' + pad(d.getSeconds());
+        let h12 = d.getHours() % 12 || 12;
+        const ampm = d.getHours() >= 12 ? 'PM' : 'AM';
+        const time12 = h12 + ':' + pad(d.getMinutes()) + ':' + pad(d.getSeconds()) + ' ' + ampm;
+
+        container.innerHTML =
+            makeOutputRow('Unix (seconds)', String(unix)) +
+            makeOutputRow('Unix (ms)', String(d.getTime())) +
+            makeOutputRow('ISO 8601', fmtISO8601(d)) +
+            makeOutputRow('RFC 2822', fmtRFC2822(d)) +
+            makeOutputRow('RFC 3339', fmtRFC3339(d)) +
+            makeOutputRow('SQL Datetime', fmtSQL(d)) +
+            makeOutputRow('HTTP Date', fmtHTTPDate(d)) +
+            makeOutputRow('UTC String', fmtUTC(d)) +
+            makeOutputRow('Short (US)', shortDate) +
+            makeOutputRow('Short (EU)', euroDate) +
+            makeOutputRow('ISO Date', isoDate) +
+            makeOutputRow('Time (24h)', time24) +
+            makeOutputRow('Time (12h)', time12) +
+            makeOutputRow('Relative', relativeTime(d)) +
+            makeOutputRow('Day of Year', 'Day ' + dayOfYear(d) + ' / Week ' + weekNumber(d));
+    }
+
+    // ══════════════════════════════════════════
+    //  KEYBOARD SHORTCUT: press 1-6 to switch tabs
+    // ══════════════════════════════════════════
+    document.addEventListener('keydown', function(e) {
+        // Don't trigger when typing in inputs
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.tagName === 'SELECT') return;
+        const tabs = ['live','toHuman','toUnix','timezone','diff','formats'];
+        const num = parseInt(e.key);
+        if (num >= 1 && num <= 6) {
+            switchTab(tabs[num - 1]);
+        }
+    });
+
+    </script>
+</body>
+</html>

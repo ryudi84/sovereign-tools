@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Forge — AI Color Palette Generator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #0f172a; color: #e2e8f0; min-height: 100vh; }
+        .header { padding: 20px 24px; border-bottom: 1px solid #1e293b; display: flex; align-items: center; justify-content: space-between; }
+        .header h1 { font-size: 18px; font-weight: 700; }
+        .header .logo { display: flex; align-items: center; gap: 10px; }
+        .header .logo .icon { width: 32px; height: 32px; border-radius: 8px; background: linear-gradient(135deg, #f43f5e, #8b5cf6, #06b6d4); }
+        .controls { padding: 20px 24px; display: flex; gap: 12px; flex-wrap: wrap; align-items: center; border-bottom: 1px solid #1e293b; }
+        .btn { padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; font-family: inherit; }
+        .btn-primary { background: #6366f1; color: white; }
+        .btn-primary:hover { background: #4f46e5; }
+        .btn-secondary { background: #1e293b; color: #94a3b8; }
+        .btn-secondary:hover { background: #334155; color: #e2e8f0; }
+        .btn-sm { padding: 6px 12px; font-size: 11px; }
+        select { background: #1e293b; color: #e2e8f0; border: 1px solid #334155; border-radius: 8px; padding: 8px 12px; font-size: 13px; font-family: inherit; cursor: pointer; }
+        select:focus { outline: none; border-color: #6366f1; }
+        .palette-display { flex: 1; display: flex; min-height: 300px; }
+        .color-swatch { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; padding: 20px; cursor: pointer; transition: flex 0.3s; position: relative; min-width: 0; }
+        .color-swatch:hover { flex: 1.5; }
+        .color-swatch .info { opacity: 0; transition: opacity 0.2s; }
+        .color-swatch:hover .info { opacity: 1; }
+        .color-info { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+        .color-sub { font-size: 11px; opacity: 0.8; }
+        .copied-toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); background: #10b981; color: white; padding: 8px 20px; border-radius: 8px; font-size: 13px; font-weight: 600; opacity: 0; transition: opacity 0.3s; pointer-events: none; z-index: 100; }
+        .copied-toast.show { opacity: 1; }
+        .bottom-panel { padding: 20px 24px; border-top: 1px solid #1e293b; }
+        .export-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+        .code-block { background: #0f172a; border: 1px solid #1e293b; border-radius: 8px; padding: 16px; font-family: 'JetBrains Mono', monospace; font-size: 12px; white-space: pre; overflow-x: auto; position: relative; max-height: 200px; overflow-y: auto; }
+        .saved-palettes { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; }
+        .saved-palette { display: flex; border-radius: 6px; overflow: hidden; cursor: pointer; border: 2px solid transparent; transition: border-color 0.2s; height: 32px; }
+        .saved-palette:hover { border-color: #6366f1; }
+        .saved-swatch { width: 24px; height: 32px; }
+        .footer { text-align: center; padding: 16px; color: #475569; font-size: 11px; }
+        .lock-btn { position: absolute; top: 8px; right: 8px; background: rgba(0,0,0,0.3); border: none; color: white; width: 28px; height: 28px; border-radius: 6px; cursor: pointer; font-size: 14px; opacity: 0; transition: opacity 0.2s; }
+        .color-swatch:hover .lock-btn { opacity: 1; }
+        .lock-btn.locked { opacity: 1; background: rgba(99,102,241,0.5); }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <div class="icon"></div>
+            <div>
+                <h1>Color Forge</h1>
+                <span style="font-size: 11px; color: #64748b;">by Sovereign AI</span>
+            </div>
+        </div>
+        <div style="display: flex; gap: 8px; align-items: center;">
+            <span style="font-size: 12px; color: #64748b;">Press <kbd style="background:#1e293b;padding:2px 6px;border-radius:4px;font-size:11px;">Space</kbd> to generate</span>
+            <a href="/store" class="btn btn-secondary btn-sm">More Tools</a>
+        </div>
+    </div>
+
+    <div class="controls">
+        <button class="btn btn-primary" onclick="generatePalette()">Generate Palette</button>
+        <select id="harmony" onchange="generatePalette()">
+            <option value="random">Random</option>
+            <option value="analogous">Analogous</option>
+            <option value="complementary">Complementary</option>
+            <option value="triadic">Triadic</option>
+            <option value="split-complementary">Split Complementary</option>
+            <option value="monochromatic">Monochromatic</option>
+            <option value="warm">Warm Tones</option>
+            <option value="cool">Cool Tones</option>
+            <option value="pastel">Pastel</option>
+            <option value="dark">Dark Mode</option>
+            <option value="neon">Neon</option>
+        </select>
+        <select id="count" onchange="generatePalette()">
+            <option value="5" selected>5 Colors</option>
+            <option value="3">3 Colors</option>
+            <option value="4">4 Colors</option>
+            <option value="6">6 Colors</option>
+            <option value="7">7 Colors</option>
+            <option value="8">8 Colors</option>
+        </select>
+        <button class="btn btn-secondary" onclick="savePalette()">Save</button>
+        <div style="flex:1;"></div>
+        <span id="savedCount" style="font-size:11px;color:#64748b;"></span>
+    </div>
+
+    <div id="palette" class="palette-display"></div>
+
+    <div class="bottom-panel">
+        <div class="export-row">
+            <button class="btn btn-secondary btn-sm" onclick="showExport('css')">CSS Variables</button>
+            <button class="btn btn-secondary btn-sm" onclick="showExport('tailwind')">Tailwind Config</button>
+            <button class="btn btn-secondary btn-sm" onclick="showExport('scss')">SCSS</button>
+            <button class="btn btn-secondary btn-sm" onclick="showExport('json')">JSON</button>
+            <button class="btn btn-secondary btn-sm" onclick="showExport('svg')">SVG</button>
+            <button class="btn btn-secondary btn-sm" onclick="copyExport()">Copy</button>
+        </div>
+        <div id="exportBlock" class="code-block" style="display:none;"></div>
+
+        <div id="savedArea" class="saved-palettes"></div>
+    </div>
+
+    <div class="footer">
+        Built by <a href="/store" style="color:#6366f1;">Sovereign AI</a> | Tips: <code style="font-size:10px;color:#475569;">4uPS7vhkh6cgWEYJqgBQLApNXBnqW4KxuJg6MEzZNLVd</code>
+    </div>
+
+    <div id="toast" class="copied-toast">Copied!</div>
+
+    <script>
+    let currentPalette = [];
+    let locked = [];
+    let savedPalettes = JSON.parse(localStorage.getItem('colorforge_saved') || '[]');
+    let currentExport = '';
+
+    function hslToHex(h, s, l) {
+        h /= 360; s /= 100; l /= 100;
+        let r, g, b;
+        if (s === 0) { r = g = b = l; }
+        else {
+            const hue2rgb = (p, q, t) => { if (t < 0) t += 1; if (t > 1) t -= 1; if (t < 1/6) return p + (q - p) * 6 * t; if (t < 1/2) return q; if (t < 2/3) return p + (q - p) * (2/3 - t) * 6; return p; };
+            const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+            const p = 2 * l - q;
+            r = hue2rgb(p, q, h + 1/3);
+            g = hue2rgb(p, q, h);
+            b = hue2rgb(p, q, h - 1/3);
+        }
+        return '#' + [r, g, b].map(x => Math.round(x * 255).toString(16).padStart(2, '0')).join('');
+    }
+
+    function hexToRgb(hex) {
+        const r = parseInt(hex.slice(1, 3), 16);
+        const g = parseInt(hex.slice(3, 5), 16);
+        const b = parseInt(hex.slice(5, 7), 16);
+        return { r, g, b };
+    }
+
+    function luminance(hex) {
+        const { r, g, b } = hexToRgb(hex);
+        return (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+    }
+
+    function generateColors(harmony, count) {
+        const n = parseInt(count);
+        const baseHue = Math.random() * 360;
+        const colors = [];
+
+        for (let i = 0; i < n; i++) {
+            if (locked[i] && currentPalette[i]) { colors.push(currentPalette[i]); continue; }
+            let h, s, l;
+            switch (harmony) {
+                case 'analogous':
+                    h = (baseHue + i * (30 + Math.random() * 10)) % 360;
+                    s = 60 + Math.random() * 30;
+                    l = 40 + Math.random() * 30;
+                    break;
+                case 'complementary':
+                    h = i % 2 === 0 ? baseHue : (baseHue + 180 + Math.random() * 20 - 10) % 360;
+                    s = 55 + Math.random() * 35;
+                    l = 35 + Math.random() * 35;
+                    break;
+                case 'triadic':
+                    h = (baseHue + i * 120 + Math.random() * 15) % 360;
+                    s = 55 + Math.random() * 35;
+                    l = 40 + Math.random() * 30;
+                    break;
+                case 'split-complementary':
+                    const offsets = [0, 150, 210, 30, 330];
+                    h = (baseHue + (offsets[i % 5] || i * 72) + Math.random() * 10) % 360;
+                    s = 55 + Math.random() * 35;
+                    l = 40 + Math.random() * 30;
+                    break;
+                case 'monochromatic':
+                    h = baseHue + Math.random() * 5;
+                    s = 30 + Math.random() * 50;
+                    l = 20 + i * (60 / n) + Math.random() * 10;
+                    break;
+                case 'warm':
+                    h = Math.random() * 60;
+                    s = 60 + Math.random() * 30;
+                    l = 40 + Math.random() * 30;
+                    break;
+                case 'cool':
+                    h = 180 + Math.random() * 120;
+                    s = 50 + Math.random() * 35;
+                    l = 35 + Math.random() * 35;
+                    break;
+                case 'pastel':
+                    h = Math.random() * 360;
+                    s = 50 + Math.random() * 30;
+                    l = 75 + Math.random() * 15;
+                    break;
+                case 'dark':
+                    h = Math.random() * 360;
+                    s = 30 + Math.random() * 40;
+                    l = 10 + Math.random() * 25;
+                    break;
+                case 'neon':
+                    h = Math.random() * 360;
+                    s = 90 + Math.random() * 10;
+                    l = 50 + Math.random() * 15;
+                    break;
+                default:
+                    h = Math.random() * 360;
+                    s = 40 + Math.random() * 50;
+                    l = 30 + Math.random() * 45;
+            }
+            colors.push(hslToHex(h, s, l));
+        }
+        return colors;
+    }
+
+    function generatePalette() {
+        const harmony = document.getElementById('harmony').value;
+        const count = document.getElementById('count').value;
+        currentPalette = generateColors(harmony, count);
+        while (locked.length < currentPalette.length) locked.push(false);
+        renderPalette();
+    }
+
+    function renderPalette() {
+        const el = document.getElementById('palette');
+        el.innerHTML = currentPalette.map((hex, i) => {
+            const textColor = luminance(hex) > 0.5 ? '#1e293b' : '#f8fafc';
+            const { r, g, b } = hexToRgb(hex);
+            return `<div class="color-swatch" style="background:${hex};color:${textColor};" onclick="copyColor('${hex}')">
+                <button class="lock-btn ${locked[i] ? 'locked' : ''}" onclick="event.stopPropagation();toggleLock(${i})">${locked[i] ? '🔒' : '🔓'}</button>
+                <div class="info">
+                    <div class="color-info">${hex.toUpperCase()}</div>
+                    <div class="color-sub">rgb(${r}, ${g}, ${b})</div>
+                </div>
+            </div>`;
+        }).join('');
+    }
+
+    function toggleLock(i) {
+        locked[i] = !locked[i];
+        renderPalette();
+    }
+
+    function copyColor(hex) {
+        navigator.clipboard.writeText(hex.toUpperCase());
+        showToast(`Copied ${hex.toUpperCase()}`);
+    }
+
+    function showToast(msg) {
+        const t = document.getElementById('toast');
+        t.textContent = msg;
+        t.classList.add('show');
+        setTimeout(() => t.classList.remove('show'), 1500);
+    }
+
+    function savePalette() {
+        savedPalettes.push([...currentPalette]);
+        localStorage.setItem('colorforge_saved', JSON.stringify(savedPalettes));
+        renderSaved();
+        showToast('Palette saved!');
+    }
+
+    function renderSaved() {
+        const el = document.getElementById('savedArea');
+        document.getElementById('savedCount').textContent = savedPalettes.length ? `${savedPalettes.length} saved` : '';
+        el.innerHTML = savedPalettes.map((pal, i) => `<div class="saved-palette" onclick="loadPalette(${i})" title="Click to load">${pal.map(c => `<div class="saved-swatch" style="background:${c};"></div>`).join('')}</div>`).join('');
+    }
+
+    function loadPalette(i) {
+        currentPalette = [...savedPalettes[i]];
+        locked = currentPalette.map(() => false);
+        document.getElementById('count').value = currentPalette.length;
+        renderPalette();
+    }
+
+    function showExport(format) {
+        const el = document.getElementById('exportBlock');
+        el.style.display = 'block';
+        switch (format) {
+            case 'css':
+                currentExport = `:root {\n${currentPalette.map((c, i) => `  --color-${i + 1}: ${c};`).join('\n')}\n}`;
+                break;
+            case 'tailwind':
+                currentExport = `// tailwind.config.js\nmodule.exports = {\n  theme: {\n    extend: {\n      colors: {\n${currentPalette.map((c, i) => `        'brand-${i + 1}': '${c}',`).join('\n')}\n      }\n    }\n  }\n}`;
+                break;
+            case 'scss':
+                currentExport = currentPalette.map((c, i) => `$color-${i + 1}: ${c};`).join('\n');
+                break;
+            case 'json':
+                currentExport = JSON.stringify({ palette: currentPalette.map((hex, i) => { const {r,g,b} = hexToRgb(hex); return { hex, rgb: `rgb(${r},${g},${b})`, name: `color-${i+1}` }; }) }, null, 2);
+                break;
+            case 'svg':
+                const w = 100 / currentPalette.length;
+                currentExport = `<svg xmlns="http://www.w3.org/2000/svg" width="500" height="100">\n${currentPalette.map((c, i) => `  <rect x="${i * w}%" width="${w}%" height="100" fill="${c}"/>`).join('\n')}\n</svg>`;
+                break;
+        }
+        el.textContent = currentExport;
+    }
+
+    function copyExport() {
+        if (currentExport) {
+            navigator.clipboard.writeText(currentExport);
+            showToast('Export copied!');
+        }
+    }
+
+    // Keyboard shortcut
+    document.addEventListener('keydown', e => {
+        if (e.code === 'Space' && e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
+            e.preventDefault();
+            generatePalette();
+        }
+    });
+
+    generatePalette();
+    renderSaved();
+    </script>
+</body>
+</html>

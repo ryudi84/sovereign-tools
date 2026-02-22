@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Email Templates Gallery - Preview All 8 Templates</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: #f4f4f7;
+      color: #1a1a2e;
+      line-height: 1.6;
+    }
+    .header {
+      background: linear-gradient(135deg, #1a1a2e 0%, #2563eb 100%);
+      color: #ffffff;
+      padding: 60px 20px;
+      text-align: center;
+    }
+    .header h1 {
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .header p {
+      font-size: 18px;
+      opacity: 0.85;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .header .badge {
+      display: inline-block;
+      padding: 4px 14px;
+      background-color: rgba(255,255,255,0.15);
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      letter-spacing: 0.5px;
+    }
+    .features-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 24px;
+      padding: 30px 20px;
+      background-color: #ffffff;
+      border-bottom: 1px solid #e8e8ef;
+    }
+    .feature-item {
+      text-align: center;
+      min-width: 140px;
+    }
+    .feature-item .icon {
+      font-size: 24px;
+      margin-bottom: 6px;
+    }
+    .feature-item .label {
+      font-size: 13px;
+      font-weight: 600;
+      color: #4a4a68;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+    }
+    .card {
+      background-color: #ffffff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    }
+    .card-preview {
+      height: 200px;
+      border-bottom: 1px solid #e8e8ef;
+      overflow: hidden;
+      position: relative;
+    }
+    .card-preview iframe {
+      width: 600px;
+      height: 600px;
+      transform: scale(0.54);
+      transform-origin: top left;
+      border: none;
+      pointer-events: none;
+    }
+    .card-preview .template-label {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      padding: 3px 10px;
+      background-color: #2563eb;
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: 600;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      z-index: 2;
+    }
+    .card-body {
+      padding: 20px 24px 24px 24px;
+    }
+    .card-body h3 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #1a1a2e;
+    }
+    .card-body p {
+      font-size: 14px;
+      color: #4a4a68;
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+    .card-body .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+    .card-body .tag {
+      display: inline-block;
+      padding: 3px 10px;
+      background-color: #eff4ff;
+      color: #2563eb;
+      font-size: 11px;
+      font-weight: 600;
+      border-radius: 4px;
+    }
+    .card-body .view-link {
+      display: inline-block;
+      padding: 8px 20px;
+      background-color: #2563eb;
+      color: #ffffff;
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+    .card-body .view-link:hover {
+      background-color: #1d4ed8;
+    }
+    .footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: #9999aa;
+      font-size: 13px;
+    }
+    @media (max-width: 700px) {
+      .header h1 { font-size: 28px; }
+      .header p { font-size: 15px; }
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="badge">8 Professional Templates</div>
+    <h1>Email Templates Collection</h1>
+    <p>Production-ready, responsive HTML email templates compatible with Gmail, Outlook, Apple Mail, and all major email clients.</p>
+  </div>
+
+  <div class="features-bar">
+    <div class="feature-item">
+      <div class="icon">&#128233;</div>
+      <div class="label">Email Client Compatible</div>
+    </div>
+    <div class="feature-item">
+      <div class="icon">&#128241;</div>
+      <div class="label">Mobile Responsive</div>
+    </div>
+    <div class="feature-item">
+      <div class="icon">&#127912;</div>
+      <div class="label">Inline CSS</div>
+    </div>
+    <div class="feature-item">
+      <div class="icon">&#128736;</div>
+      <div class="label">Table-Based Layout</div>
+    </div>
+    <div class="feature-item">
+      <div class="icon">&#127384;</div>
+      <div class="label">VML Outlook Support</div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="grid">
+
+      <!-- Welcome -->
+      <div class="card">
+        <div class="card-preview">
+          <iframe src="welcome.html" loading="lazy" title="Welcome email template preview"></iframe>
+          <span class="template-label">Onboarding</span>
+        </div>
+        <div class="card-body">
+          <h3>Welcome / Onboarding</h3>
+          <p>Greet new users with a professional hero image, feature highlights, and a clear call-to-action to get started.</p>
+          <div class="tags">
+            <span class="tag">Hero Image</span>
+            <span class="tag">Feature List</span>
+            <span class="tag">CTA Button</span>
+          </div>
+          <a href="welcome.html" class="view-link" target="_blank">Preview Template</a>
+        </div>
+      </div>
+
+      <!-- Newsletter -->
+      <div class="card">
+        <div class="card-preview">
+          <iframe src="newsletter.html" loading="lazy" title="Newsletter email template preview"></iframe>
+          <span class="template-label">Content</span>
+        </div>
+        <div class="card-body">
+          <h3>Newsletter</h3>
+          <p>Three-article layout with a featured post, side-by-side article cards, social links in the footer, and browser view option.</p>
+          <div class="tags">
+            <span class="tag">3-Article Layout</span>
+            <span class="tag">Featured Post</span>
+            <span class="tag">Social Links</span>
+          </div>
+          <a href="newsletter.html" class="view-link" target="_blank">Preview Template</a>
+        </div>
+      </div>
+
+      <!-- Receipt -->
+      <div class="card">
+        <div class="card-preview">
+          <iframe src="receipt.html" loading="lazy" title="Receipt email template preview"></iframe>
+          <span class="template-label">Transactional</span>
+        </div>
+        <div class="card-body">
+          <h3>Purchase Receipt</h3>
+          <p>Professional invoice with line items table, order details, payment summary, totals with discount, and support contact.</p>
+          <div class="tags">
+            <span class="tag">Line Items</span>
+            <span class="tag">Order Details</span>
+            <span class="tag">Totals</span>
+          </div>
+          <a href="receipt.html" class="view-link" target="_blank">Preview Template</a>
+        </div>
+      </div>
+
+      <!-- Password Reset -->
+      <div class="card">
+        <div class="card-preview">
+          <iframe src="password-reset.html" loading="lazy" title="Password reset email template preview"></iframe>
+          <span class="template-label">Security</span>
+        </div>
+        <div class="card-body">
+          <h3>Password Reset</h3>
+          <p>Security-focused template with shield icon, single CTA button, expiration notice, fallback URL, and unauthorized access warning.</p>
+          <div class="tags">
+            <span class="tag">Security Warning</span>
+            <span class="tag">Expiry Timer</span>
+            <span class="tag">Fallback URL</span>
+          </div>
+          <a href="password-reset.html" class="view-link" target="_blank">Preview Template</a>
+        </div>
+      </div>
+
+      <!-- Abandoned Cart -->
+      <div class="card">
+        <div class="card-preview">
+          <iframe src="abandoned-cart.html" loading="lazy" title="Abandoned cart email template preview"></iframe>
+          <span class="template-label">E-commerce</span>
+        </div>
+        <div class="card-body">
+          <h3>Abandoned Cart</h3>
+          <p>Product cards with images, urgency messaging with countdown, discount code highlight, and trust signals for conversions.</p>
+          <div class="tags">
+            <span class="tag">Product Cards</span>
+            <span class="tag">Discount Code</span>
+            <span class="tag">Urgency</span>
+          </div>
+          <a href="abandoned-cart.html" class="view-link" target="_blank">Preview Template</a>
+        </div>
+      </div>
+
+      <!-- Event Invite -->
+      <div class="card">
+        <div class="card-preview">
+          <iframe src="event-invite.html" loading="lazy" title="Event invite email template preview"></iframe>
+          <span class="template-label">Events</span>
+        </div>
+        <div class="card-body">
+          <h3>Event Invitation</h3>
+          <p>Beautiful event template with date, time, and location details, RSVP button, calendar integration links, and speaker highlights.</p>
+          <div class="tags">
+            <span class="tag">Event Details</span>
+            <span class="tag">RSVP Button</span>
+            <span class="tag">Calendar Links</span>
+          </div>
+          <a href="event-invite.html" class="view-link" target="_blank">Preview Template</a>
+        </div>
+      </div>
+
+      <!-- Feedback Request -->
+      <div class="card">
+        <div class="card-preview">
+          <iframe src="feedback-request.html" loading="lazy" title="Feedback request email template preview"></iframe>
+          <span class="template-label">Engagement</span>
+        </div>
+        <div class="card-body">
+          <h3>Feedback Request</h3>
+          <p>Post-purchase review request with clickable star ratings, product reminder, testimonial prompt with incentive, and example review.</p>
+          <div class="tags">
+            <span class="tag">Star Ratings</span>
+            <span class="tag">Review CTA</span>
+            <span class="tag">Testimonial</span>
+          </div>
+          <a href="feedback-request.html" class="view-link" target="_blank">Preview Template</a>
+        </div>
+      </div>
+
+      <!-- Announcement -->
+      <div class="card">
+        <div class="card-preview">
+          <iframe src="announcement.html" loading="lazy" title="Announcement email template preview"></iframe>
+          <span class="template-label">Marketing</span>
+        </div>
+        <div class="card-body">
+          <h3>Product Announcement</h3>
+          <p>Launch or update announcement with hero banner, four feature highlight cards, availability notice, and dual CTA buttons.</p>
+          <div class="tags">
+            <span class="tag">Feature Cards</span>
+            <span class="tag">Hero Banner</span>
+            <span class="tag">Dual CTA</span>
+          </div>
+          <a href="announcement.html" class="view-link" target="_blank">Preview Template</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>Professional HTML Email Templates &mdash; Table-based layouts &mdash; Tested across all major email clients</p>
+    <p style="margin-top: 8px;">All templates use <code>{{placeholder}}</code> syntax for easy integration with any template engine.</p>
+  </div>
+
+</body>
+</html>

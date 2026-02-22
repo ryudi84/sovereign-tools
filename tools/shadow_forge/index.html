@@ -1,0 +1,1308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shadow Forge — CSS Box Shadow Generator | Sovereign AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-tertiary: #334155;
+  --bg-card: #1a2332;
+  --border: #334155;
+  --border-hover: #475569;
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --accent: #818cf8;
+  --accent-hover: #6366f1;
+  --accent-glow: rgba(129, 140, 248, 0.25);
+  --success: #34d399;
+  --danger: #f87171;
+  --warning: #fbbf24;
+  --radius: 10px;
+  --radius-sm: 6px;
+  --transition: 0.2s ease;
+}
+
+html { font-size: 14px; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  line-height: 1.5;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb { background: var(--bg-tertiary); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--border-hover); }
+
+/* ========== HEADER ========== */
+.header {
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(12px);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo-icon {
+  width: 38px;
+  height: 38px;
+  background: linear-gradient(135deg, var(--accent), #a78bfa);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  box-shadow: 0 0 20px var(--accent-glow);
+}
+
+.header h1 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.header h1 span {
+  color: var(--accent);
+}
+
+.header-subtitle {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.brand-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 500;
+  transition: color var(--transition);
+}
+
+.brand-link:hover { color: var(--accent); }
+
+/* ========== LAYOUT ========== */
+.app-layout {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  min-height: calc(100vh - 62px - 48px);
+}
+
+/* ========== SIDEBAR ========== */
+.sidebar {
+  background: var(--bg-secondary);
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+  max-height: calc(100vh - 62px - 48px);
+  padding-bottom: 1rem;
+}
+
+.sidebar-section {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.sidebar-section:last-child { border-bottom: none; }
+
+.section-title {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.section-title svg { width: 14px; height: 14px; opacity: 0.6; }
+
+/* ========== CONTROLS ========== */
+.control-group {
+  margin-bottom: 0.75rem;
+}
+
+.control-group:last-child { margin-bottom: 0; }
+
+.control-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-bottom: 0.35rem;
+}
+
+.control-label .value-display {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--accent);
+  background: rgba(129, 140, 248, 0.1);
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+
+.control-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.control-row input[type="range"] { flex: 1; }
+.control-row input[type="number"] { width: 64px; }
+
+/* Range slider */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  background: var(--bg-tertiary);
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  background: var(--accent);
+  border-radius: 50%;
+  border: 2px solid var(--bg-secondary);
+  box-shadow: 0 0 8px var(--accent-glow);
+  cursor: pointer;
+  transition: transform var(--transition);
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: var(--accent);
+  border-radius: 50%;
+  border: 2px solid var(--bg-secondary);
+  box-shadow: 0 0 8px var(--accent-glow);
+  cursor: pointer;
+}
+
+/* Number input */
+input[type="number"] {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.35rem 0.5rem;
+  outline: none;
+  transition: border-color var(--transition);
+  text-align: center;
+}
+
+input[type="number"]:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent-glow);
+}
+
+input[type="number"]::-webkit-inner-spin-button { opacity: 0.5; }
+
+/* Color input */
+.color-control {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+input[type="color"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 36px;
+  height: 32px;
+  border: 2px solid var(--border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  background: none;
+  padding: 2px;
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper { padding: 0; }
+input[type="color"]::-webkit-color-swatch { border: none; border-radius: 3px; }
+
+.color-hex {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.35rem 0.5rem;
+  width: 82px;
+  outline: none;
+}
+
+.color-hex:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent-glow);
+}
+
+/* Toggle */
+.toggle-control {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.toggle-switch {
+  width: 40px;
+  height: 22px;
+  background: var(--bg-tertiary);
+  border-radius: 11px;
+  position: relative;
+  transition: background var(--transition);
+  flex-shrink: 0;
+}
+
+.toggle-switch::after {
+  content: '';
+  width: 16px;
+  height: 16px;
+  background: var(--text-secondary);
+  border-radius: 50%;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  transition: all var(--transition);
+}
+
+.toggle-control.active .toggle-switch {
+  background: var(--accent);
+}
+
+.toggle-control.active .toggle-switch::after {
+  left: 21px;
+  background: white;
+}
+
+.toggle-text {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+/* Buttons */
+.btn {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.btn svg { width: 14px; height: 14px; }
+
+.btn-primary {
+  background: var(--accent);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover);
+  box-shadow: 0 0 16px var(--accent-glow);
+}
+
+.btn-secondary {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+  background: var(--border-hover);
+  border-color: var(--border-hover);
+}
+
+.btn-danger {
+  background: transparent;
+  color: var(--danger);
+  border: 1px solid rgba(248, 113, 113, 0.3);
+  padding: 0.3rem 0.5rem;
+  font-size: 0.75rem;
+}
+
+.btn-danger:hover {
+  background: rgba(248, 113, 113, 0.1);
+}
+
+.btn-sm {
+  padding: 0.3rem 0.6rem;
+  font-size: 0.75rem;
+}
+
+.btn-block {
+  width: 100%;
+  justify-content: center;
+}
+
+/* Shadow layer card */
+.shadow-layer {
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.85rem;
+  margin-bottom: 0.65rem;
+  transition: border-color var(--transition);
+}
+
+.shadow-layer:hover {
+  border-color: var(--border-hover);
+}
+
+.shadow-layer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.65rem;
+}
+
+.shadow-layer-title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.shadow-layer-title .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.shadow-layer-actions {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.layer-action-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 2px;
+  border-radius: 4px;
+  transition: all var(--transition);
+  display: flex;
+  align-items: center;
+}
+
+.layer-action-btn:hover { color: var(--text-primary); background: var(--bg-tertiary); }
+.layer-action-btn.delete:hover { color: var(--danger); }
+.layer-action-btn svg { width: 14px; height: 14px; }
+
+/* Presets */
+.presets-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+.preset-btn {
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: all var(--transition);
+  text-align: center;
+}
+
+.preset-btn:hover {
+  border-color: var(--accent);
+  background: rgba(129, 140, 248, 0.05);
+}
+
+.preset-preview {
+  width: 36px;
+  height: 36px;
+  background: var(--bg-secondary);
+  border-radius: 6px;
+  margin: 0 auto 0.35rem;
+}
+
+.preset-name {
+  font-size: 0.65rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Preview element customization */
+.shape-selector {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.shape-btn {
+  flex: 1;
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.4rem;
+  cursor: pointer;
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+  transition: all var(--transition);
+}
+
+.shape-btn.active {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(129, 140, 248, 0.08);
+}
+
+.shape-btn:hover:not(.active) {
+  border-color: var(--border-hover);
+  color: var(--text-primary);
+}
+
+/* ========== MAIN CONTENT ========== */
+.main-content {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  max-height: calc(100vh - 62px - 48px);
+}
+
+/* Preview area */
+.preview-area {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  padding: 2rem;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(129, 140, 248, 0.03), transparent 70%),
+    repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(255,255,255,0.02) 39px, rgba(255,255,255,0.02) 40px),
+    repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(255,255,255,0.02) 39px, rgba(255,255,255,0.02) 40px);
+  position: relative;
+}
+
+.preview-element {
+  background: var(--bg-secondary);
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+/* Code output */
+.code-output-area {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border);
+  padding: 1rem 1.5rem;
+}
+
+.code-output-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.65rem;
+}
+
+.code-output-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+.code-block {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.82rem;
+  line-height: 1.7;
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+  white-space: pre-wrap;
+  word-break: break-all;
+  color: var(--text-primary);
+  position: relative;
+  overflow-x: auto;
+}
+
+.code-block .prop { color: #93c5fd; }
+.code-block .val { color: #fde68a; }
+.code-block .punct { color: var(--text-muted); }
+.code-block .comma { color: var(--text-muted); }
+
+/* Toast */
+.toast {
+  position: fixed;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: var(--success);
+  color: #064e3b;
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 0.65rem 1.5rem;
+  border-radius: var(--radius);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.toast svg { width: 16px; height: 16px; }
+
+/* ========== FOOTER ========== */
+.footer {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border);
+  padding: 0.75rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  height: 48px;
+}
+
+.footer a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.footer a:hover { color: var(--accent-hover); }
+
+.wallet-address {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  background: var(--bg-primary);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: color var(--transition);
+  border: 1px solid var(--border);
+}
+
+.wallet-address:hover { color: var(--text-secondary); }
+
+.footer-left, .footer-right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 900px) {
+  .app-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    max-height: none;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .main-content {
+    max-height: none;
+  }
+
+  .preview-area {
+    min-height: 320px;
+  }
+
+  .header {
+    padding: 0.75rem 1rem;
+  }
+
+  .footer {
+    flex-direction: column;
+    gap: 0.5rem;
+    height: auto;
+    padding: 0.75rem 1rem;
+    text-align: center;
+  }
+
+  .footer-left, .footer-right {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .presets-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .code-output-area {
+    padding: 0.75rem 1rem;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="header">
+  <div class="header-left">
+    <div class="logo-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+        <path d="M12 3v18"/>
+        <path d="M5 8l7-5 7 5"/>
+        <path d="M5 16l7 5 7-5"/>
+        <rect x="8" y="9" width="8" height="6" rx="1" opacity="0.5"/>
+      </svg>
+    </div>
+    <div>
+      <h1><span>Shadow</span> Forge</h1>
+      <div class="header-subtitle">CSS Box Shadow Generator</div>
+    </div>
+  </div>
+  <div class="header-right">
+    <a href="/store" class="brand-link">by Sovereign AI</a>
+  </div>
+</header>
+
+<!-- Main layout -->
+<div class="app-layout">
+
+  <!-- Sidebar controls -->
+  <aside class="sidebar" id="sidebar">
+
+    <!-- Presets -->
+    <div class="sidebar-section">
+      <div class="section-title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        Presets
+      </div>
+      <div class="presets-grid" id="presetsGrid"></div>
+    </div>
+
+    <!-- Shadow Layers -->
+    <div class="sidebar-section">
+      <div class="section-title" style="justify-content: space-between;">
+        <span style="display:flex;align-items:center;gap:0.5rem;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/></svg>
+          Shadow Layers
+        </span>
+        <button class="btn btn-sm btn-secondary" onclick="addShadowLayer()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Add
+        </button>
+      </div>
+      <div id="shadowLayers"></div>
+    </div>
+
+    <!-- Preview element customization -->
+    <div class="sidebar-section">
+      <div class="section-title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+        Preview Element
+      </div>
+
+      <div class="control-group">
+        <div class="control-label">Shape</div>
+        <div class="shape-selector">
+          <button class="shape-btn active" data-shape="square" onclick="setShape('square', this)">Square</button>
+          <button class="shape-btn" data-shape="rounded" onclick="setShape('rounded', this)">Rounded</button>
+          <button class="shape-btn" data-shape="circle" onclick="setShape('circle', this)">Circle</button>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <div class="control-label">
+          Size
+          <span class="value-display" id="elemSizeDisplay">200px</span>
+        </div>
+        <div class="control-row">
+          <input type="range" min="80" max="400" value="200" oninput="setElemSize(this.value)">
+          <input type="number" min="80" max="400" value="200" oninput="setElemSize(this.value)">
+        </div>
+      </div>
+
+      <div class="control-group">
+        <div class="control-label">Background Color</div>
+        <div class="color-control">
+          <input type="color" value="#1e293b" oninput="setElemBg(this.value)">
+          <input type="text" class="color-hex" value="#1e293b" oninput="setElemBg(this.value)">
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main content -->
+  <div class="main-content">
+    <div class="preview-area" id="previewArea">
+      <div class="preview-element" id="previewElement" style="width:200px;height:200px;border-radius:8px;">
+        Preview
+      </div>
+    </div>
+
+    <div class="code-output-area">
+      <div class="code-output-header">
+        <div class="code-output-title">Generated CSS</div>
+        <button class="btn btn-primary btn-sm" onclick="copyCSS()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+          Copy CSS
+        </button>
+      </div>
+      <div class="code-block" id="codeOutput"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-left">
+    <span>Built by <a href="/store">Sovereign AI</a></span>
+    <span style="color:var(--border);">|</span>
+    <a href="/store">More Tools</a>
+  </div>
+  <div class="footer-right">
+    <span>Tips (SOL):</span>
+    <span class="wallet-address" onclick="copyWallet()" title="Click to copy wallet address">4uPS7vhkh6cgWEYJqgBQLApNXBnqW4KxuJg6MEzZNLVd</span>
+  </div>
+</footer>
+
+<!-- Toast notification -->
+<div class="toast" id="toast">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+  <span id="toastMessage">Copied!</span>
+</div>
+
+<script>
+// ===== STATE =====
+let shadowLayers = [];
+let layerIdCounter = 0;
+let previewShape = 'square';
+let previewSize = 200;
+let previewBg = '#1e293b';
+
+// ===== PRESETS =====
+const PRESETS = [
+  {
+    name: 'Subtle',
+    layers: [{ h: 0, v: 1, blur: 3, spread: 0, color: '#000000', opacity: 0.12, inset: false }]
+  },
+  {
+    name: 'Soft',
+    layers: [{ h: 0, v: 4, blur: 6, spread: -1, color: '#000000', opacity: 0.15, inset: false }]
+  },
+  {
+    name: 'Medium',
+    layers: [{ h: 0, v: 10, blur: 15, spread: -3, color: '#000000', opacity: 0.2, inset: false }]
+  },
+  {
+    name: 'Heavy',
+    layers: [{ h: 0, v: 20, blur: 40, spread: -4, color: '#000000', opacity: 0.35, inset: false }]
+  },
+  {
+    name: 'Sharp',
+    layers: [{ h: 4, v: 4, blur: 0, spread: 0, color: '#000000', opacity: 0.3, inset: false }]
+  },
+  {
+    name: 'Neon Glow',
+    layers: [
+      { h: 0, v: 0, blur: 20, spread: 2, color: '#818cf8', opacity: 0.7, inset: false },
+      { h: 0, v: 0, blur: 60, spread: 10, color: '#818cf8', opacity: 0.3, inset: false }
+    ]
+  },
+  {
+    name: 'Fire Glow',
+    layers: [
+      { h: 0, v: 0, blur: 15, spread: 2, color: '#f97316', opacity: 0.6, inset: false },
+      { h: 0, v: 0, blur: 50, spread: 8, color: '#ef4444', opacity: 0.25, inset: false }
+    ]
+  },
+  {
+    name: 'Layered',
+    layers: [
+      { h: 0, v: 1, blur: 2, spread: 0, color: '#000000', opacity: 0.08, inset: false },
+      { h: 0, v: 4, blur: 8, spread: 0, color: '#000000', opacity: 0.08, inset: false },
+      { h: 0, v: 16, blur: 32, spread: 0, color: '#000000', opacity: 0.08, inset: false }
+    ]
+  },
+  {
+    name: 'Dreamy',
+    layers: [
+      { h: 0, v: 8, blur: 32, spread: 0, color: '#818cf8', opacity: 0.25, inset: false },
+      { h: 0, v: 16, blur: 64, spread: 0, color: '#a78bfa', opacity: 0.15, inset: false }
+    ]
+  },
+  {
+    name: 'Inset',
+    layers: [{ h: 0, v: 2, blur: 8, spread: 0, color: '#000000', opacity: 0.35, inset: true }]
+  },
+  {
+    name: 'Emboss',
+    layers: [
+      { h: -2, v: -2, blur: 6, spread: 0, color: '#ffffff', opacity: 0.06, inset: true },
+      { h: 2, v: 2, blur: 6, spread: 0, color: '#000000', opacity: 0.3, inset: true }
+    ]
+  },
+  {
+    name: 'Floating',
+    layers: [
+      { h: 0, v: 30, blur: 60, spread: -15, color: '#000000', opacity: 0.35, inset: false }
+    ]
+  },
+  {
+    name: 'Outline',
+    layers: [
+      { h: 0, v: 0, blur: 0, spread: 2, color: '#818cf8', opacity: 0.8, inset: false },
+      { h: 0, v: 4, blur: 12, spread: 0, color: '#818cf8', opacity: 0.3, inset: false }
+    ]
+  },
+  {
+    name: 'Neumorphic',
+    layers: [
+      { h: 6, v: 6, blur: 12, spread: 0, color: '#000000', opacity: 0.3, inset: false },
+      { h: -6, v: -6, blur: 12, spread: 0, color: '#ffffff', opacity: 0.04, inset: false }
+    ]
+  },
+  {
+    name: 'Material',
+    layers: [
+      { h: 0, v: 2, blur: 4, spread: -1, color: '#000000', opacity: 0.15, inset: false },
+      { h: 0, v: 4, blur: 6, spread: -1, color: '#000000', opacity: 0.1, inset: false }
+    ]
+  }
+];
+
+// ===== LAYER COLORS (for dots) =====
+const LAYER_COLORS = ['#818cf8', '#34d399', '#fbbf24', '#f87171', '#a78bfa', '#38bdf8', '#fb923c', '#f472b6'];
+
+function getLayerColor(index) {
+  return LAYER_COLORS[index % LAYER_COLORS.length];
+}
+
+// ===== HELPERS =====
+function hexToRgba(hex, opacity) {
+  hex = hex.replace('#', '');
+  if (hex.length === 3) hex = hex[0]+hex[0]+hex[1]+hex[1]+hex[2]+hex[2];
+  const r = parseInt(hex.substring(0,2), 16);
+  const g = parseInt(hex.substring(2,4), 16);
+  const b = parseInt(hex.substring(4,6), 16);
+  return `rgba(${r}, ${g}, ${b}, ${opacity})`;
+}
+
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  document.getElementById('toastMessage').textContent = msg;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 2200);
+}
+
+// ===== SHADOW LAYER MANAGEMENT =====
+function createLayer(config) {
+  const id = layerIdCounter++;
+  return {
+    id,
+    h: config?.h ?? 0,
+    v: config?.v ?? 4,
+    blur: config?.blur ?? 12,
+    spread: config?.spread ?? 0,
+    color: config?.color ?? '#000000',
+    opacity: config?.opacity ?? 0.2,
+    inset: config?.inset ?? false,
+    visible: true
+  };
+}
+
+function addShadowLayer(config) {
+  const layer = createLayer(config);
+  shadowLayers.push(layer);
+  renderLayers();
+  updatePreview();
+}
+
+function removeLayer(id) {
+  if (shadowLayers.length <= 1) return;
+  shadowLayers = shadowLayers.filter(l => l.id !== id);
+  renderLayers();
+  updatePreview();
+}
+
+function duplicateLayer(id) {
+  const src = shadowLayers.find(l => l.id === id);
+  if (!src) return;
+  const copy = createLayer({ ...src });
+  const idx = shadowLayers.findIndex(l => l.id === id);
+  shadowLayers.splice(idx + 1, 0, copy);
+  renderLayers();
+  updatePreview();
+}
+
+function toggleLayerVisibility(id) {
+  const layer = shadowLayers.find(l => l.id === id);
+  if (layer) layer.visible = !layer.visible;
+  renderLayers();
+  updatePreview();
+}
+
+function toggleInset(id) {
+  const layer = shadowLayers.find(l => l.id === id);
+  if (layer) layer.inset = !layer.inset;
+  renderLayers();
+  updatePreview();
+}
+
+function updateLayerProp(id, prop, value) {
+  const layer = shadowLayers.find(l => l.id === id);
+  if (!layer) return;
+  if (prop === 'color') {
+    layer.color = value;
+  } else if (prop === 'opacity') {
+    layer.opacity = parseFloat(value);
+  } else {
+    layer[prop] = parseInt(value, 10);
+  }
+  updatePreview();
+  // Update displays
+  const display = document.getElementById(`display-${id}-${prop}`);
+  if (display) {
+    if (prop === 'opacity') {
+      display.textContent = Math.round(layer.opacity * 100) + '%';
+    } else if (prop !== 'color') {
+      display.textContent = layer[prop] + 'px';
+    }
+  }
+}
+
+function syncInputs(id, prop, value) {
+  const container = document.querySelector(`[data-layer-id="${id}"]`);
+  if (!container) return;
+  const range = container.querySelector(`input[type="range"][data-prop="${prop}"]`);
+  const number = container.querySelector(`input[type="number"][data-prop="${prop}"]`);
+  if (range) range.value = value;
+  if (number) number.value = value;
+  updateLayerProp(id, prop, value);
+}
+
+// ===== RENDER SHADOW LAYERS =====
+function renderLayers() {
+  const container = document.getElementById('shadowLayers');
+  container.innerHTML = '';
+
+  shadowLayers.forEach((layer, index) => {
+    const dotColor = getLayerColor(index);
+    const visIcon = layer.visible
+      ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>'
+      : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19M1 1l22 22"/></svg>';
+
+    const el = document.createElement('div');
+    el.className = 'shadow-layer';
+    el.dataset.layerId = layer.id;
+    if (!layer.visible) el.style.opacity = '0.5';
+
+    el.innerHTML = `
+      <div class="shadow-layer-header">
+        <div class="shadow-layer-title">
+          <span class="dot" style="background:${dotColor}"></span>
+          Shadow ${index + 1}
+        </div>
+        <div class="shadow-layer-actions">
+          <button class="layer-action-btn" title="Toggle visibility" onclick="toggleLayerVisibility(${layer.id})">${visIcon}</button>
+          <button class="layer-action-btn" title="Duplicate" onclick="duplicateLayer(${layer.id})">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+          </button>
+          <button class="layer-action-btn delete" title="Remove" onclick="removeLayer(${layer.id})" ${shadowLayers.length <= 1 ? 'disabled style="opacity:0.3;cursor:default"' : ''}>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+      </div>
+
+      ${makeSlider(layer.id, 'h', 'X Offset', layer.h, -50, 50, 'px')}
+      ${makeSlider(layer.id, 'v', 'Y Offset', layer.v, -50, 50, 'px')}
+      ${makeSlider(layer.id, 'blur', 'Blur', layer.blur, 0, 100, 'px')}
+      ${makeSlider(layer.id, 'spread', 'Spread', layer.spread, -50, 50, 'px')}
+      ${makeSlider(layer.id, 'opacity', 'Opacity', layer.opacity, 0, 1, '%', true)}
+
+      <div class="control-group">
+        <div class="control-label">Color</div>
+        <div class="color-control">
+          <input type="color" value="${layer.color}" oninput="updateLayerProp(${layer.id},'color',this.value); this.nextElementSibling.value=this.value">
+          <input type="text" class="color-hex" value="${layer.color}" oninput="updateLayerProp(${layer.id},'color',this.value); this.previousElementSibling.value=this.value">
+        </div>
+      </div>
+
+      <div class="control-group" style="margin-top:0.5rem">
+        <div class="toggle-control ${layer.inset ? 'active' : ''}" onclick="toggleInset(${layer.id}); this.classList.toggle('active')">
+          <div class="toggle-switch"></div>
+          <span class="toggle-text">Inset shadow</span>
+        </div>
+      </div>
+    `;
+
+    container.appendChild(el);
+  });
+}
+
+function makeSlider(id, prop, label, value, min, max, unit, isFloat) {
+  let displayVal;
+  let step = isFloat ? '0.01' : '1';
+  let inputMin = min;
+  let inputMax = max;
+
+  if (isFloat) {
+    displayVal = Math.round(value * 100) + '%';
+  } else {
+    displayVal = value + unit;
+  }
+
+  const rangeVal = value;
+  const numVal = isFloat ? value : value;
+  const numMin = isFloat ? 0 : min;
+  const numMax = isFloat ? 1 : max;
+  const numStep = isFloat ? 0.01 : 1;
+
+  return `
+    <div class="control-group">
+      <div class="control-label">
+        ${label}
+        <span class="value-display" id="display-${id}-${prop}">${displayVal}</span>
+      </div>
+      <div class="control-row">
+        <input type="range" min="${min}" max="${max}" step="${step}" value="${rangeVal}" data-prop="${prop}"
+          oninput="syncInputs(${id},'${prop}',this.value); this.parentElement.querySelector('input[type=number]').value=${isFloat ? 'this.value' : 'this.value'}">
+        <input type="number" min="${numMin}" max="${numMax}" step="${numStep}" value="${numVal}" data-prop="${prop}" style="width:${isFloat ? '56px' : '64px'}"
+          oninput="syncInputs(${id},'${prop}',this.value); this.parentElement.querySelector('input[type=range]').value=this.value">
+      </div>
+    </div>
+  `;
+}
+
+// ===== PREVIEW & CODE OUTPUT =====
+function buildShadowCSS() {
+  const parts = [];
+  shadowLayers.forEach(layer => {
+    if (!layer.visible) return;
+    const inset = layer.inset ? 'inset ' : '';
+    const rgba = hexToRgba(layer.color, layer.opacity);
+    parts.push(`${inset}${layer.h}px ${layer.v}px ${layer.blur}px ${layer.spread}px ${rgba}`);
+  });
+  return parts.length ? parts.join(',\n    ') : 'none';
+}
+
+function updatePreview() {
+  const el = document.getElementById('previewElement');
+  const visibleLayers = shadowLayers.filter(l => l.visible);
+  const parts = [];
+
+  visibleLayers.forEach(layer => {
+    const inset = layer.inset ? 'inset ' : '';
+    const rgba = hexToRgba(layer.color, layer.opacity);
+    parts.push(`${inset}${layer.h}px ${layer.v}px ${layer.blur}px ${layer.spread}px ${rgba}`);
+  });
+
+  el.style.boxShadow = parts.length ? parts.join(', ') : 'none';
+  updateCodeOutput();
+}
+
+function updateCodeOutput() {
+  const code = document.getElementById('codeOutput');
+  const css = buildShadowCSS();
+  if (css === 'none') {
+    code.innerHTML = `<span class="prop">box-shadow</span><span class="punct">:</span> <span class="val">none</span><span class="punct">;</span>`;
+    return;
+  }
+
+  const visibleLayers = shadowLayers.filter(l => l.visible);
+  const lines = visibleLayers.map((layer, i) => {
+    const inset = layer.inset ? 'inset ' : '';
+    const rgba = hexToRgba(layer.color, layer.opacity);
+    const comma = i < visibleLayers.length - 1 ? ',' : ';';
+    return `    <span class="val">${inset}${layer.h}px ${layer.v}px ${layer.blur}px ${layer.spread}px ${rgba}</span><span class="comma">${comma}</span>`;
+  });
+
+  code.innerHTML = `<span class="prop">box-shadow</span><span class="punct">:</span>\n${lines.join('\n')}`;
+}
+
+// ===== COPY CSS =====
+function copyCSS() {
+  const css = `box-shadow: ${buildShadowCSS()};`;
+  navigator.clipboard.writeText(css).then(() => {
+    showToast('CSS copied to clipboard!');
+  }).catch(() => {
+    // Fallback
+    const ta = document.createElement('textarea');
+    ta.value = css;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    showToast('CSS copied to clipboard!');
+  });
+}
+
+function copyWallet() {
+  const addr = '4uPS7vhkh6cgWEYJqgBQLApNXBnqW4KxuJg6MEzZNLVd';
+  navigator.clipboard.writeText(addr).then(() => {
+    showToast('Wallet address copied!');
+  }).catch(() => {
+    const ta = document.createElement('textarea');
+    ta.value = addr;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    showToast('Wallet address copied!');
+  });
+}
+
+// ===== PREVIEW ELEMENT CUSTOMIZATION =====
+function setShape(shape, btn) {
+  previewShape = shape;
+  const el = document.getElementById('previewElement');
+  document.querySelectorAll('.shape-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  switch (shape) {
+    case 'square': el.style.borderRadius = '8px'; break;
+    case 'rounded': el.style.borderRadius = '24px'; break;
+    case 'circle': el.style.borderRadius = '50%'; break;
+  }
+}
+
+function setElemSize(val) {
+  val = Math.max(80, Math.min(400, parseInt(val) || 200));
+  previewSize = val;
+  const el = document.getElementById('previewElement');
+  el.style.width = val + 'px';
+  el.style.height = val + 'px';
+  document.getElementById('elemSizeDisplay').textContent = val + 'px';
+
+  // Sync inputs
+  const section = document.querySelector('.sidebar-section:last-child');
+  const rangeInput = section.querySelectorAll('input[type="range"]')[0];
+  const numInput = section.querySelectorAll('input[type="number"]')[0];
+  if (rangeInput) rangeInput.value = val;
+  if (numInput) numInput.value = val;
+}
+
+function setElemBg(val) {
+  previewBg = val;
+  document.getElementById('previewElement').style.background = val;
+  const section = document.querySelector('.sidebar-section:last-child');
+  const colorInput = section.querySelector('input[type="color"]');
+  const hexInput = section.querySelector('.color-hex');
+  if (colorInput) colorInput.value = val;
+  if (hexInput) hexInput.value = val;
+}
+
+// ===== PRESETS =====
+function applyPreset(index) {
+  const preset = PRESETS[index];
+  shadowLayers = [];
+  layerIdCounter = 0;
+  preset.layers.forEach(l => {
+    shadowLayers.push(createLayer(l));
+  });
+  renderLayers();
+  updatePreview();
+}
+
+function renderPresets() {
+  const grid = document.getElementById('presetsGrid');
+  grid.innerHTML = '';
+
+  PRESETS.forEach((preset, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'preset-btn';
+    btn.onclick = () => applyPreset(i);
+
+    // Build shadow CSS for preview thumbnail
+    const shadowParts = preset.layers.map(l => {
+      const inset = l.inset ? 'inset ' : '';
+      const rgba = hexToRgba(l.color, l.opacity);
+      return `${inset}${l.h}px ${l.v}px ${l.blur}px ${l.spread}px ${rgba}`;
+    });
+
+    btn.innerHTML = `
+      <div class="preset-preview" style="box-shadow: ${shadowParts.join(', ')}"></div>
+      <div class="preset-name">${preset.name}</div>
+    `;
+
+    grid.appendChild(btn);
+  });
+}
+
+// ===== INIT =====
+function init() {
+  renderPresets();
+  addShadowLayer({ h: 0, v: 4, blur: 12, spread: 0, color: '#000000', opacity: 0.2, inset: false });
+}
+
+init();
+</script>
+</body>
+</html>

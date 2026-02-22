@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Base64 Forge — Encode/Decode Toolkit | Sovereign AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-tertiary: #334155;
+  --bg-input: #0c1322;
+  --border: #334155;
+  --border-focus: #6366f1;
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --accent: #6366f1;
+  --accent-hover: #818cf8;
+  --accent-glow: rgba(99, 102, 241, 0.25);
+  --success: #22c55e;
+  --success-bg: rgba(34, 197, 94, 0.12);
+  --error: #ef4444;
+  --error-bg: rgba(239, 68, 68, 0.12);
+  --warning: #f59e0b;
+  --tab-active-bg: #6366f1;
+  --radius: 10px;
+  --radius-sm: 6px;
+  --shadow: 0 4px 24px rgba(0,0,0,0.3);
+  --transition: 0.2s ease;
+}
+
+html { font-size: 16px; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.6;
+}
+
+/* ── Header ── */
+.header {
+  text-align: center;
+  padding: 2.5rem 1.5rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(99,102,241,0.06) 0%, transparent 100%);
+}
+
+.header-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 0.3rem 1rem;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  letter-spacing: 0.03em;
+}
+
+.header-badge .dot {
+  width: 6px; height: 6px;
+  background: var(--success);
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(34,197,94,0.5);
+}
+
+.header h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, #f1f5f9 0%, #818cf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.35rem;
+}
+
+.header p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  font-weight: 400;
+}
+
+/* ── Tab Bar ── */
+.tab-bar {
+  display: flex;
+  gap: 0.35rem;
+  padding: 1rem 1.5rem 0;
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.tab-bar::-webkit-scrollbar { display: none; }
+
+.tab-btn {
+  flex-shrink: 0;
+  padding: 0.6rem 1.1rem;
+  border: 1px solid var(--border);
+  border-bottom: none;
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition);
+  white-space: nowrap;
+}
+.tab-btn:hover {
+  color: var(--text-primary);
+  background: var(--bg-tertiary);
+}
+.tab-btn.active {
+  background: var(--tab-active-bg);
+  color: #fff;
+  border-color: var(--tab-active-bg);
+  font-weight: 600;
+}
+
+/* ── Main Container ── */
+.main-container {
+  flex: 1;
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1.5rem 2rem;
+}
+
+.workspace {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 0 var(--radius) var(--radius) var(--radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+}
+
+/* ── Editor Layout ── */
+.editor-grid {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 0;
+  align-items: stretch;
+  min-height: 360px;
+}
+
+.editor-pane {
+  display: flex;
+  flex-direction: column;
+}
+
+.pane-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  min-height: 2rem;
+}
+
+.pane-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+}
+
+.pane-stats {
+  display: flex;
+  gap: 0.75rem;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.pane-stats span { white-space: nowrap; }
+
+.editor-textarea {
+  flex: 1;
+  width: 100%;
+  min-height: 300px;
+  padding: 1rem;
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  line-height: 1.65;
+  resize: vertical;
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+.editor-textarea:focus {
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+.editor-textarea::placeholder {
+  color: var(--text-muted);
+  font-style: italic;
+}
+.editor-textarea.error {
+  border-color: var(--error);
+  box-shadow: 0 0 0 3px rgba(239,68,68,0.15);
+}
+
+/* ── Middle Controls ── */
+.middle-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0 1rem;
+}
+
+.btn-icon {
+  width: 42px; height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--bg-tertiary);
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: all var(--transition);
+}
+.btn-icon:hover {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+  transform: scale(1.08);
+}
+
+.btn-copy {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+.btn-copy:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+}
+
+/* ── Drop Zone ── */
+.drop-zone {
+  flex: 1;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  border: 2px dashed var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg-input);
+  cursor: pointer;
+  transition: all var(--transition);
+  padding: 2rem;
+  text-align: center;
+}
+.drop-zone:hover, .drop-zone.dragover {
+  border-color: var(--accent);
+  background: rgba(99,102,241,0.05);
+}
+.drop-zone.dragover {
+  transform: scale(1.01);
+}
+.drop-zone .icon {
+  font-size: 2.5rem;
+  opacity: 0.5;
+}
+.drop-zone .label {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+.drop-zone .sublabel {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.file-info-card {
+  display: none;
+  width: 100%;
+  padding: 1rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  margin-top: 0.5rem;
+}
+.file-info-card.visible { display: block; }
+.file-info-card .file-name {
+  font-weight: 600;
+  font-size: 0.88rem;
+  color: var(--text-primary);
+  margin-bottom: 0.3rem;
+  word-break: break-all;
+}
+.file-info-card .file-meta {
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', monospace;
+}
+.file-info-card .file-meta .size-increase {
+  color: var(--warning);
+}
+
+/* ── Image Preview ── */
+.image-preview-container {
+  display: none;
+  width: 100%;
+  max-height: 220px;
+  margin-top: 0.75rem;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: repeating-conic-gradient(#1a1a2e 0% 25%, #0f172a 0% 50%) 0 0 / 16px 16px;
+}
+.image-preview-container.visible { display: block; }
+.image-preview-container img {
+  display: block;
+  max-width: 100%;
+  max-height: 220px;
+  margin: 0 auto;
+  object-fit: contain;
+}
+
+/* ── Size Bar ── */
+.size-bar {
+  display: none;
+  margin-top: 1rem;
+  padding: 0.85rem 1rem;
+  background: var(--bg-primary);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+}
+.size-bar.visible { display: flex; gap: 2rem; flex-wrap: wrap; align-items: center; }
+.size-bar .size-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+.size-bar .size-label {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+.size-bar .size-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.size-bar .size-increase { color: var(--warning); }
+
+/* ── Error Message ── */
+.error-msg {
+  display: none;
+  padding: 0.6rem 1rem;
+  background: var(--error-bg);
+  border: 1px solid rgba(239,68,68,0.25);
+  border-radius: var(--radius-sm);
+  color: var(--error);
+  font-size: 0.82rem;
+  font-weight: 500;
+  margin-top: 0.5rem;
+}
+.error-msg.visible { display: flex; align-items: center; gap: 0.5rem; }
+
+/* ── Toast ── */
+.toast {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(120%);
+  background: var(--success);
+  color: #fff;
+  padding: 0.7rem 1.5rem;
+  border-radius: 100px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  box-shadow: 0 8px 32px rgba(34,197,94,0.35);
+  transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), opacity 0.35s ease;
+  opacity: 0;
+  z-index: 999;
+  pointer-events: none;
+}
+.toast.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+/* ── Footer ── */
+.footer {
+  text-align: center;
+  padding: 1.5rem;
+  border-top: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 0.78rem;
+}
+.footer a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+.footer a:hover { color: var(--accent-hover); text-decoration: underline; }
+.footer .brand {
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 0.4rem;
+}
+.footer .wallet {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+  padding: 0.35rem 0.8rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+.footer .wallet:hover {
+  border-color: var(--accent);
+  color: var(--text-secondary);
+}
+
+/* ── Responsive ── */
+@media (max-width: 860px) {
+  .editor-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .middle-controls {
+    flex-direction: row;
+    padding: 0.75rem 0;
+  }
+  .editor-textarea { min-height: 180px; }
+  .drop-zone { min-height: 180px; }
+  .header h1 { font-size: 1.5rem; }
+  .tab-btn { padding: 0.5rem 0.8rem; font-size: 0.76rem; }
+}
+
+@media (max-width: 480px) {
+  .main-container { padding: 0 0.75rem 1.5rem; }
+  .workspace { padding: 1rem; }
+  .tab-bar { padding: 1rem 0.75rem 0; }
+  .pane-header { flex-direction: column; align-items: flex-start; gap: 0.25rem; }
+}
+
+/* Hide file input */
+.hidden-input { display: none; }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="header">
+  <div class="header-badge"><span class="dot"></span> Sovereign AI Tool</div>
+  <h1>Base64 Forge</h1>
+  <p>Encode &amp; Decode Toolkit &mdash; Text, Files, Images, URLs, HTML Entities</p>
+</header>
+
+<!-- Tab Bar -->
+<nav class="tab-bar" id="tabBar">
+  <button class="tab-btn active" data-tab="text">Text &#8596; Base64</button>
+  <button class="tab-btn" data-tab="file">File &#8594; Base64</button>
+  <button class="tab-btn" data-tab="image">Image &#8594; Data URI</button>
+  <button class="tab-btn" data-tab="url">URL Encode/Decode</button>
+  <button class="tab-btn" data-tab="html">HTML Entity Encode/Decode</button>
+</nav>
+
+<!-- Main -->
+<main class="main-container">
+  <section class="workspace">
+
+    <!-- ====== TEXT TAB ====== -->
+    <div class="tab-content" id="tab-text">
+      <div class="editor-grid">
+        <div class="editor-pane">
+          <div class="pane-header">
+            <span class="pane-label" id="textInputLabel">Plain Text</span>
+            <div class="pane-stats">
+              <span id="textInputChars">0 chars</span>
+              <span id="textInputBytes">0 B</span>
+            </div>
+          </div>
+          <textarea class="editor-textarea" id="textInput" placeholder="Type or paste text here..." spellcheck="false"></textarea>
+        </div>
+        <div class="middle-controls">
+          <button class="btn-icon" title="Swap input and output" onclick="swapText()">&#8646;</button>
+          <button class="btn-icon btn-copy" title="Copy output" onclick="copyOutput('textOutput')">&#128203;</button>
+        </div>
+        <div class="editor-pane">
+          <div class="pane-header">
+            <span class="pane-label" id="textOutputLabel">Base64 Encoded</span>
+            <div class="pane-stats">
+              <span id="textOutputChars">0 chars</span>
+              <span id="textOutputBytes">0 B</span>
+            </div>
+          </div>
+          <textarea class="editor-textarea" id="textOutput" placeholder="Encoded output will appear here..." spellcheck="false"></textarea>
+        </div>
+      </div>
+      <div class="error-msg" id="textError"><span>&#9888;</span> <span id="textErrorMsg"></span></div>
+      <div class="size-bar" id="textSizeBar">
+        <div class="size-item">
+          <span class="size-label">Original</span>
+          <span class="size-value" id="textOrigSize">--</span>
+        </div>
+        <div class="size-item">
+          <span class="size-label">Encoded</span>
+          <span class="size-value" id="textEncSize">--</span>
+        </div>
+        <div class="size-item">
+          <span class="size-label">Increase</span>
+          <span class="size-value size-increase" id="textIncSize">--</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====== FILE TAB ====== -->
+    <div class="tab-content" id="tab-file" style="display:none">
+      <div class="editor-grid">
+        <div class="editor-pane">
+          <div class="pane-header">
+            <span class="pane-label">Drop a File</span>
+            <div class="pane-stats"><span id="fileInputInfo">&nbsp;</span></div>
+          </div>
+          <div class="drop-zone" id="fileDropZone" onclick="document.getElementById('fileHiddenInput').click()">
+            <div class="icon">&#128193;</div>
+            <div class="label">Drag &amp; drop a file here</div>
+            <div class="sublabel">or click to browse &mdash; any file type</div>
+          </div>
+          <input type="file" class="hidden-input" id="fileHiddenInput">
+          <div class="file-info-card" id="fileInfoCard">
+            <div class="file-name" id="fileInfoName">--</div>
+            <div class="file-meta">
+              <span>Type: <strong id="fileInfoType">--</strong></span>
+              <span>Original: <strong id="fileInfoOrigSize">--</strong></span>
+              <span>Encoded: <strong id="fileInfoEncSize">--</strong></span>
+              <span class="size-increase">+<strong id="fileInfoIncrease">--</strong></span>
+            </div>
+          </div>
+        </div>
+        <div class="middle-controls">
+          <button class="btn-icon btn-copy" title="Copy output" onclick="copyOutput('fileOutput')">&#128203;</button>
+        </div>
+        <div class="editor-pane">
+          <div class="pane-header">
+            <span class="pane-label">Base64 Output</span>
+            <div class="pane-stats">
+              <span id="fileOutputChars">0 chars</span>
+            </div>
+          </div>
+          <textarea class="editor-textarea" id="fileOutput" placeholder="Base64 encoded string will appear here..." spellcheck="false" readonly></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====== IMAGE TAB ====== -->
+    <div class="tab-content" id="tab-image" style="display:none">
+      <div class="editor-grid">
+        <div class="editor-pane">
+          <div class="pane-header">
+            <span class="pane-label">Drop an Image</span>
+            <div class="pane-stats"><span id="imageInputInfo">&nbsp;</span></div>
+          </div>
+          <div class="drop-zone" id="imageDropZone" onclick="document.getElementById('imageHiddenInput').click()">
+            <div class="icon">&#128444;</div>
+            <div class="label">Drag &amp; drop an image here</div>
+            <div class="sublabel">PNG, JPG, GIF, SVG, WEBP, ICO</div>
+          </div>
+          <input type="file" class="hidden-input" id="imageHiddenInput" accept="image/*">
+          <div class="image-preview-container" id="imagePreview"></div>
+          <div class="file-info-card" id="imageInfoCard">
+            <div class="file-name" id="imageInfoName">--</div>
+            <div class="file-meta">
+              <span>Type: <strong id="imageInfoType">--</strong></span>
+              <span>Original: <strong id="imageInfoOrigSize">--</strong></span>
+              <span>Data URI: <strong id="imageInfoEncSize">--</strong></span>
+              <span class="size-increase">+<strong id="imageInfoIncrease">--</strong></span>
+            </div>
+          </div>
+        </div>
+        <div class="middle-controls">
+          <button class="btn-icon btn-copy" title="Copy output" onclick="copyOutput('imageOutput')">&#128203;</button>
+        </div>
+        <div class="editor-pane">
+          <div class="pane-header">
+            <span class="pane-label">Data URI Output</span>
+            <div class="pane-stats">
+              <span id="imageOutputChars">0 chars</span>
+            </div>
+          </div>
+          <textarea class="editor-textarea" id="imageOutput" placeholder="data:image/... URI will appear here..." spellcheck="false" readonly></textarea>
+        </div>
+      </div>
+      <div class="error-msg" id="imageError"><span>&#9888;</span> <span id="imageErrorMsg"></span></div>
+    </div>
+
+    <!-- ====== URL TAB ====== -->
+    <div class="tab-content" id="tab-url" style="display:none">
+      <div class="editor-grid">
+        <div class="editor-pane">
+          <div class="pane-header">
+            <span class="pane-label" id="urlInputLabel">Plain Text</span>
+            <div class="pane-stats">
+              <span id="urlInputChars">0 chars</span>
+              <span id="urlInputBytes">0 B</span>
+            </div>
+          </div>
+          <textarea class="editor-textarea" id="urlInput" placeholder="Type or paste text to URL-encode..." spellcheck="false"></textarea>
+        </div>
+        <div class="middle-controls">
+          <button class="btn-icon" title="Swap input and output" onclick="swapUrl()">&#8646;</button>
+          <button class="btn-icon btn-copy" title="Copy output" onclick="copyOutput('urlOutput')">&#128203;</button>
+        </div>
+        <div class="editor-pane">
+          <div class="pane-header">
+            <span class="pane-label" id="urlOutputLabel">URL Encoded</span>
+            <div class="pane-stats">
+              <span id="urlOutputChars">0 chars</span>
+              <span id="urlOutputBytes">0 B</span>
+            </div>
+          </div>
+          <textarea class="editor-textarea" id="urlOutput" placeholder="URL encoded output will appear here..." spellcheck="false"></textarea>
+        </div>
+      </div>
+      <div class="error-msg" id="urlError"><span>&#9888;</span> <span id="urlErrorMsg"></span></div>
+      <div class="size-bar" id="urlSizeBar">
+        <div class="size-item">
+          <span class="size-label">Original</span>
+          <span class="size-value" id="urlOrigSize">--</span>
+        </div>
+        <div class="size-item">
+          <span class="size-label">Encoded</span>
+          <span class="size-value" id="urlEncSize">--</span>
+        </div>
+        <div class="size-item">
+          <span class="size-label">Increase</span>
+          <span class="size-value size-increase" id="urlIncSize">--</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====== HTML TAB ====== -->
+    <div class="tab-content" id="tab-html" style="display:none">
+      <div class="editor-grid">
+        <div class="editor-pane">
+          <div class="pane-header">
+            <span class="pane-label" id="htmlInputLabel">Plain Text / HTML</span>
+            <div class="pane-stats">
+              <span id="htmlInputChars">0 chars</span>
+              <span id="htmlInputBytes">0 B</span>
+            </div>
+          </div>
+          <textarea class="editor-textarea" id="htmlInput" placeholder='Type HTML like <div class="test"> or &amp;amp; entities...' spellcheck="false"></textarea>
+        </div>
+        <div class="middle-controls">
+          <button class="btn-icon" title="Swap input and output" onclick="swapHtml()">&#8646;</button>
+          <button class="btn-icon btn-copy" title="Copy output" onclick="copyOutput('htmlOutput')">&#128203;</button>
+        </div>
+        <div class="editor-pane">
+          <div class="pane-header">
+            <span class="pane-label" id="htmlOutputLabel">HTML Encoded</span>
+            <div class="pane-stats">
+              <span id="htmlOutputChars">0 chars</span>
+              <span id="htmlOutputBytes">0 B</span>
+            </div>
+          </div>
+          <textarea class="editor-textarea" id="htmlOutput" placeholder="HTML entity encoded output will appear here..." spellcheck="false"></textarea>
+        </div>
+      </div>
+      <div class="error-msg" id="htmlError"><span>&#9888;</span> <span id="htmlErrorMsg"></span></div>
+      <div class="size-bar" id="htmlSizeBar">
+        <div class="size-item">
+          <span class="size-label">Original</span>
+          <span class="size-value" id="htmlOrigSize">--</span>
+        </div>
+        <div class="size-item">
+          <span class="size-label">Encoded</span>
+          <span class="size-value" id="htmlEncSize">--</span>
+        </div>
+        <div class="size-item">
+          <span class="size-label">Increase</span>
+          <span class="size-value size-increase" id="htmlIncSize">--</span>
+        </div>
+      </div>
+    </div>
+
+  </section>
+</main>
+
+<!-- Toast -->
+<div class="toast" id="toast">Copied to clipboard!</div>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="brand">by <a href="/store">Sovereign AI</a></div>
+  <div>Encode, decode, and transform data &mdash; entirely in your browser. Nothing leaves your machine.</div>
+  <div class="wallet" onclick="copyWallet()" title="Click to copy SOL wallet address">
+    &#9830; Tips: 4uPS7vhkh6cgWEYJqgBQLApNXBnqW4KxuJg6MEzZNLVd
+  </div>
+</footer>
+
+<script>
+/* ── Utility Functions ── */
+function formatBytes(bytes) {
+  if (bytes === 0) return '0 B';
+  const units = ['B', 'KB', 'MB', 'GB'];
+  const i = Math.floor(Math.log(bytes) / Math.log(1024));
+  return parseFloat((bytes / Math.pow(1024, i)).toFixed(2)) + ' ' + units[i];
+}
+
+function byteSize(str) {
+  return new Blob([str]).size;
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg || 'Copied to clipboard!';
+  t.classList.add('show');
+  clearTimeout(t._timeout);
+  t._timeout = setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+function showError(id, msg) {
+  const el = document.getElementById(id);
+  const msgEl = document.getElementById(id + 'Msg');
+  if (msg) {
+    msgEl.textContent = msg;
+    el.classList.add('visible');
+  } else {
+    el.classList.remove('visible');
+  }
+}
+
+function copyOutput(id) {
+  const ta = document.getElementById(id);
+  if (!ta.value) return;
+  navigator.clipboard.writeText(ta.value).then(() => showToast());
+}
+
+function copyWallet() {
+  navigator.clipboard.writeText('4uPS7vhkh6cgWEYJqgBQLApNXBnqW4KxuJg6MEzZNLVd').then(() => showToast('Wallet address copied!'));
+}
+
+function updateStats(prefix, value) {
+  const chars = document.getElementById(prefix + 'Chars');
+  const bytes = document.getElementById(prefix + 'Bytes');
+  if (chars) chars.textContent = value.length.toLocaleString() + ' chars';
+  if (bytes) bytes.textContent = formatBytes(byteSize(value));
+}
+
+/* ── Tab Switching ── */
+const tabBtns = document.querySelectorAll('.tab-btn');
+const tabContents = document.querySelectorAll('.tab-content');
+
+tabBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    tabBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    tabContents.forEach(tc => tc.style.display = 'none');
+    document.getElementById('tab-' + btn.dataset.tab).style.display = 'block';
+  });
+});
+
+/* ══════════════════════════════════════════════
+   TAB 1: Text <-> Base64
+   ══════════════════════════════════════════════ */
+let textDirection = 'encode'; // 'encode' or 'decode'
+
+const textInput = document.getElementById('textInput');
+const textOutput = document.getElementById('textOutput');
+
+function processText() {
+  const val = textInput.value;
+  updateStats('textInput', val);
+  showError('textError', '');
+  textOutput.classList.remove('error');
+
+  if (!val) {
+    textOutput.value = '';
+    updateStats('textOutput', '');
+    document.getElementById('textSizeBar').classList.remove('visible');
+    return;
+  }
+
+  try {
+    let result;
+    if (textDirection === 'encode') {
+      result = btoa(unescape(encodeURIComponent(val)));
+    } else {
+      result = decodeURIComponent(escape(atob(val.replace(/\s/g, ''))));
+    }
+    textOutput.value = result;
+    updateStats('textOutput', result);
+
+    const origBytes = byteSize(val);
+    const encBytes = byteSize(result);
+    document.getElementById('textOrigSize').textContent = formatBytes(origBytes);
+    document.getElementById('textEncSize').textContent = formatBytes(encBytes);
+    const pct = origBytes > 0 ? (((encBytes - origBytes) / origBytes) * 100).toFixed(1) : '0';
+    document.getElementById('textIncSize').textContent = (pct >= 0 ? '+' : '') + pct + '%';
+    document.getElementById('textSizeBar').classList.add('visible');
+  } catch (e) {
+    textOutput.value = '';
+    textOutput.classList.add('error');
+    showError('textError', 'Invalid Base64 input. Check for corrupted or non-Base64 characters.');
+    updateStats('textOutput', '');
+    document.getElementById('textSizeBar').classList.remove('visible');
+  }
+}
+
+textInput.addEventListener('input', processText);
+
+textOutput.addEventListener('input', () => {
+  // Reverse direction live decode
+  const val = textOutput.value;
+  updateStats('textOutput', val);
+  showError('textError', '');
+  textInput.classList.remove('error');
+
+  if (!val) {
+    textInput.value = '';
+    updateStats('textInput', '');
+    return;
+  }
+
+  try {
+    let result;
+    if (textDirection === 'encode') {
+      result = decodeURIComponent(escape(atob(val.replace(/\s/g, ''))));
+    } else {
+      result = btoa(unescape(encodeURIComponent(val)));
+    }
+    textInput.value = result;
+    updateStats('textInput', result);
+  } catch (e) {
+    textInput.classList.add('error');
+    showError('textError', 'Cannot reverse-decode the output. Input may be invalid.');
+  }
+});
+
+function swapText() {
+  const tmp = textInput.value;
+  textInput.value = textOutput.value;
+  textOutput.value = tmp;
+  textDirection = textDirection === 'encode' ? 'decode' : 'encode';
+  document.getElementById('textInputLabel').textContent = textDirection === 'encode' ? 'Plain Text' : 'Base64 Encoded';
+  document.getElementById('textOutputLabel').textContent = textDirection === 'encode' ? 'Base64 Encoded' : 'Plain Text';
+  updateStats('textInput', textInput.value);
+  updateStats('textOutput', textOutput.value);
+  showError('textError', '');
+  textInput.classList.remove('error');
+  textOutput.classList.remove('error');
+}
+
+/* ══════════════════════════════════════════════
+   TAB 2: File -> Base64
+   ══════════════════════════════════════════════ */
+const fileDropZone = document.getElementById('fileDropZone');
+const fileHiddenInput = document.getElementById('fileHiddenInput');
+const fileOutput = document.getElementById('fileOutput');
+
+function setupDropZone(zone, inputEl, handler) {
+  ['dragenter', 'dragover'].forEach(evt => {
+    zone.addEventListener(evt, e => { e.preventDefault(); e.stopPropagation(); zone.classList.add('dragover'); });
+  });
+  ['dragleave', 'drop'].forEach(evt => {
+    zone.addEventListener(evt, e => { e.preventDefault(); e.stopPropagation(); zone.classList.remove('dragover'); });
+  });
+  zone.addEventListener('drop', e => {
+    const files = e.dataTransfer.files;
+    if (files.length > 0) handler(files[0]);
+  });
+  inputEl.addEventListener('change', e => {
+    if (e.target.files.length > 0) handler(e.target.files[0]);
+  });
+}
+
+function handleFile(file) {
+  const reader = new FileReader();
+  reader.onload = function() {
+    const base64 = reader.result.split(',')[1] || '';
+    fileOutput.value = base64;
+    document.getElementById('fileOutputChars').textContent = base64.length.toLocaleString() + ' chars';
+
+    const card = document.getElementById('fileInfoCard');
+    card.classList.add('visible');
+    document.getElementById('fileInfoName').textContent = file.name;
+    document.getElementById('fileInfoType').textContent = file.type || 'unknown';
+    document.getElementById('fileInfoOrigSize').textContent = formatBytes(file.size);
+    const encSize = byteSize(base64);
+    document.getElementById('fileInfoEncSize').textContent = formatBytes(encSize);
+    const pct = file.size > 0 ? (((encSize - file.size) / file.size) * 100).toFixed(1) : '0';
+    document.getElementById('fileInfoIncrease').textContent = pct + '%';
+
+    // Update drop zone visual
+    fileDropZone.querySelector('.label').textContent = file.name;
+    fileDropZone.querySelector('.sublabel').textContent = formatBytes(file.size) + ' — click or drop to replace';
+  };
+  reader.readAsDataURL(file);
+}
+
+setupDropZone(fileDropZone, fileHiddenInput, handleFile);
+
+/* ══════════════════════════════════════════════
+   TAB 3: Image -> Data URI
+   ══════════════════════════════════════════════ */
+const imageDropZone = document.getElementById('imageDropZone');
+const imageHiddenInput = document.getElementById('imageHiddenInput');
+const imageOutput = document.getElementById('imageOutput');
+
+function handleImage(file) {
+  if (!file.type.startsWith('image/')) {
+    showError('imageError', 'Selected file is not an image. Please drop a PNG, JPG, GIF, SVG, or WEBP file.');
+    return;
+  }
+  showError('imageError', '');
+
+  const reader = new FileReader();
+  reader.onload = function() {
+    const dataUri = reader.result;
+    imageOutput.value = dataUri;
+    document.getElementById('imageOutputChars').textContent = dataUri.length.toLocaleString() + ' chars';
+
+    // Preview
+    const preview = document.getElementById('imagePreview');
+    preview.innerHTML = '';
+    const img = document.createElement('img');
+    img.src = dataUri;
+    img.alt = file.name;
+    preview.appendChild(img);
+    preview.classList.add('visible');
+
+    // Info card
+    const card = document.getElementById('imageInfoCard');
+    card.classList.add('visible');
+    document.getElementById('imageInfoName').textContent = file.name;
+    document.getElementById('imageInfoType').textContent = file.type;
+    document.getElementById('imageInfoOrigSize').textContent = formatBytes(file.size);
+    const encSize = byteSize(dataUri);
+    document.getElementById('imageInfoEncSize').textContent = formatBytes(encSize);
+    const pct = file.size > 0 ? (((encSize - file.size) / file.size) * 100).toFixed(1) : '0';
+    document.getElementById('imageInfoIncrease').textContent = pct + '%';
+
+    // Update drop zone visual
+    imageDropZone.querySelector('.label').textContent = file.name;
+    imageDropZone.querySelector('.sublabel').textContent = formatBytes(file.size) + ' — click or drop to replace';
+  };
+  reader.readAsDataURL(file);
+}
+
+setupDropZone(imageDropZone, imageHiddenInput, handleImage);
+
+/* ══════════════════════════════════════════════
+   TAB 4: URL Encode/Decode
+   ══════════════════════════════════════════════ */
+let urlDirection = 'encode';
+
+const urlInput = document.getElementById('urlInput');
+const urlOutput = document.getElementById('urlOutput');
+
+function processUrl() {
+  const val = urlInput.value;
+  updateStats('urlInput', val);
+  showError('urlError', '');
+  urlOutput.classList.remove('error');
+
+  if (!val) {
+    urlOutput.value = '';
+    updateStats('urlOutput', '');
+    document.getElementById('urlSizeBar').classList.remove('visible');
+    return;
+  }
+
+  try {
+    let result;
+    if (urlDirection === 'encode') {
+      result = encodeURIComponent(val);
+    } else {
+      result = decodeURIComponent(val);
+    }
+    urlOutput.value = result;
+    updateStats('urlOutput', result);
+
+    const origBytes = byteSize(val);
+    const encBytes = byteSize(result);
+    document.getElementById('urlOrigSize').textContent = formatBytes(origBytes);
+    document.getElementById('urlEncSize').textContent = formatBytes(encBytes);
+    const pct = origBytes > 0 ? (((encBytes - origBytes) / origBytes) * 100).toFixed(1) : '0';
+    document.getElementById('urlIncSize').textContent = (pct >= 0 ? '+' : '') + pct + '%';
+    document.getElementById('urlSizeBar').classList.add('visible');
+  } catch (e) {
+    urlOutput.value = '';
+    urlOutput.classList.add('error');
+    showError('urlError', 'Invalid URL-encoded input. Check for malformed percent-encoding sequences.');
+    updateStats('urlOutput', '');
+    document.getElementById('urlSizeBar').classList.remove('visible');
+  }
+}
+
+urlInput.addEventListener('input', processUrl);
+
+urlOutput.addEventListener('input', () => {
+  const val = urlOutput.value;
+  updateStats('urlOutput', val);
+  showError('urlError', '');
+  urlInput.classList.remove('error');
+
+  if (!val) {
+    urlInput.value = '';
+    updateStats('urlInput', '');
+    return;
+  }
+
+  try {
+    let result;
+    if (urlDirection === 'encode') {
+      result = decodeURIComponent(val);
+    } else {
+      result = encodeURIComponent(val);
+    }
+    urlInput.value = result;
+    updateStats('urlInput', result);
+  } catch (e) {
+    urlInput.classList.add('error');
+    showError('urlError', 'Cannot reverse-decode the output.');
+  }
+});
+
+function swapUrl() {
+  const tmp = urlInput.value;
+  urlInput.value = urlOutput.value;
+  urlOutput.value = tmp;
+  urlDirection = urlDirection === 'encode' ? 'decode' : 'encode';
+  document.getElementById('urlInputLabel').textContent = urlDirection === 'encode' ? 'Plain Text' : 'URL Encoded';
+  document.getElementById('urlOutputLabel').textContent = urlDirection === 'encode' ? 'URL Encoded' : 'Plain Text';
+  updateStats('urlInput', urlInput.value);
+  updateStats('urlOutput', urlOutput.value);
+  showError('urlError', '');
+  urlInput.classList.remove('error');
+  urlOutput.classList.remove('error');
+}
+
+/* ══════════════════════════════════════════════
+   TAB 5: HTML Entity Encode/Decode
+   ══════════════════════════════════════════════ */
+let htmlDirection = 'encode';
+
+const htmlInput = document.getElementById('htmlInput');
+const htmlOutput = document.getElementById('htmlOutput');
+
+const htmlEntityMap = {
+  '&': '&amp;',
+  '<': '&lt;',
+  '>': '&gt;',
+  '"': '&quot;',
+  "'": '&#39;',
+  '/': '&#x2F;',
+  '`': '&#x60;',
+  '=': '&#x3D;'
+};
+
+function htmlEncode(str) {
+  return str.replace(/[&<>"'`=\/]/g, ch => htmlEntityMap[ch]);
+}
+
+function htmlDecode(str) {
+  const textarea = document.createElement('textarea');
+  textarea.innerHTML = str;
+  return textarea.value;
+}
+
+function processHtml() {
+  const val = htmlInput.value;
+  updateStats('htmlInput', val);
+  showError('htmlError', '');
+  htmlOutput.classList.remove('error');
+
+  if (!val) {
+    htmlOutput.value = '';
+    updateStats('htmlOutput', '');
+    document.getElementById('htmlSizeBar').classList.remove('visible');
+    return;
+  }
+
+  try {
+    let result;
+    if (htmlDirection === 'encode') {
+      result = htmlEncode(val);
+    } else {
+      result = htmlDecode(val);
+    }
+    htmlOutput.value = result;
+    updateStats('htmlOutput', result);
+
+    const origBytes = byteSize(val);
+    const encBytes = byteSize(result);
+    document.getElementById('htmlOrigSize').textContent = formatBytes(origBytes);
+    document.getElementById('htmlEncSize').textContent = formatBytes(encBytes);
+    const pct = origBytes > 0 ? (((encBytes - origBytes) / origBytes) * 100).toFixed(1) : '0';
+    document.getElementById('htmlIncSize').textContent = (pct >= 0 ? '+' : '') + pct + '%';
+    document.getElementById('htmlSizeBar').classList.add('visible');
+  } catch (e) {
+    htmlOutput.value = '';
+    htmlOutput.classList.add('error');
+    showError('htmlError', 'Error processing HTML entities.');
+    updateStats('htmlOutput', '');
+    document.getElementById('htmlSizeBar').classList.remove('visible');
+  }
+}
+
+htmlInput.addEventListener('input', processHtml);
+
+htmlOutput.addEventListener('input', () => {
+  const val = htmlOutput.value;
+  updateStats('htmlOutput', val);
+  showError('htmlError', '');
+  htmlInput.classList.remove('error');
+
+  if (!val) {
+    htmlInput.value = '';
+    updateStats('htmlInput', '');
+    return;
+  }
+
+  try {
+    let result;
+    if (htmlDirection === 'encode') {
+      result = htmlDecode(val);
+    } else {
+      result = htmlEncode(val);
+    }
+    htmlInput.value = result;
+    updateStats('htmlInput', result);
+  } catch (e) {
+    htmlInput.classList.add('error');
+    showError('htmlError', 'Cannot reverse-decode the output.');
+  }
+});
+
+function swapHtml() {
+  const tmp = htmlInput.value;
+  htmlInput.value = htmlOutput.value;
+  htmlOutput.value = tmp;
+  htmlDirection = htmlDirection === 'encode' ? 'decode' : 'encode';
+  document.getElementById('htmlInputLabel').textContent = htmlDirection === 'encode' ? 'Plain Text / HTML' : 'HTML Encoded';
+  document.getElementById('htmlOutputLabel').textContent = htmlDirection === 'encode' ? 'HTML Encoded' : 'Plain Text / HTML';
+  updateStats('htmlInput', htmlInput.value);
+  updateStats('htmlOutput', htmlOutput.value);
+  showError('htmlError', '');
+  htmlInput.classList.remove('error');
+  htmlOutput.classList.remove('error');
+}
+</script>
+</body>
+</html>
