@@ -4,9 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sovereign Claws — Pre-Configured AI Agents for OpenClaw</title>
-<meta name="description" content="Buy pre-configured OpenClaw AI agents that work out of the box. Content creation, RPG life gamification, SEO automation. Digital employees that come pre-trained.">
-<meta name="keywords" content="OpenClaw, AI agents, autonomous AI, content automation, SEO automation, gamification, digital employee">
+<meta name="description" content="Download pre-configured OpenClaw AI agents that work out of the box. Content creation, RPG life gamification, SEO automation. Digital employees that come pre-trained.">
+<meta name="keywords" content="OpenClaw, AI agents, autonomous AI, content automation, SEO automation, gamification, digital employee, pre-configured agents">
 <link rel="canonical" href="https://ryudi84.github.io/sovereign-tools/claws/">
+<meta property="og:title" content="Sovereign Claws — Pre-Configured AI Agents">
+<meta property="og:description" content="Pre-configured OpenClaw AI agents. Install in 15 minutes. Run 24/7. Content, SEO, Gamification.">
+<meta property="og:url" content="https://ryudi84.github.io/sovereign-tools/claws/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@fibonachoz">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -75,14 +81,16 @@
     position: relative;
   }
   .product-features li::before {
-    content: '✓'; position: absolute; left: 0; color: #6ee7b7; font-weight: 700;
+    content: '\2713'; position: absolute; left: 0; color: #6ee7b7; font-weight: 700;
   }
-  .product-price { font-size: 28px; font-weight: 900; color: #fff; margin-bottom: 16px; }
+  .product-price { font-size: 28px; font-weight: 900; color: #fff; margin-bottom: 4px; }
   .product-price span { font-size: 14px; color: #888; font-weight: 400; }
+  .product-price-note { font-size: 12px; color: #666; margin-bottom: 16px; }
   .product-btn {
     display: block; text-align: center; background: #6ee7b7; color: #0a0a0a;
     padding: 12px; border-radius: 8px; font-weight: 700; font-size: 14px;
     transition: all 0.2s; border: none; cursor: pointer; width: 100%;
+    margin-bottom: 8px;
   }
   .product-btn:hover { background: #5dd6a6; text-decoration: none; }
   .product-btn.secondary {
@@ -113,6 +121,37 @@
   .step h3 { font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 4px; }
   .step p { font-size: 14px; color: #a0a0a0; }
 
+  /* Support section */
+  .support-section {
+    max-width: 700px; margin: 0 auto; padding: 60px 20px; text-align: center;
+    border-top: 1px solid #222;
+  }
+  .support-section h2 { font-size: 28px; font-weight: 800; color: #fff; margin-bottom: 12px; }
+  .support-section > p { color: #a0a0a0; margin-bottom: 32px; font-size: 16px; }
+  .wallet-box {
+    background: #151515; border: 1px solid #2a2a2a; border-radius: 12px;
+    padding: 24px; margin-bottom: 24px;
+  }
+  .wallet-label { font-size: 13px; color: #6ee7b7; font-weight: 600; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; }
+  .wallet-addr {
+    font-family: 'Courier New', monospace; font-size: 14px; color: #fff;
+    background: #0a0a0a; padding: 12px 16px; border-radius: 8px; border: 1px solid #333;
+    word-break: break-all; cursor: pointer; transition: all 0.2s; position: relative;
+  }
+  .wallet-addr:hover { border-color: #6ee7b7; }
+  .wallet-addr::after {
+    content: 'click to copy'; position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
+    font-size: 11px; color: #666; font-family: 'Inter', sans-serif;
+  }
+  .wallet-addr.copied::after { content: 'copied!'; color: #6ee7b7; }
+  .suggested-amounts {
+    display: flex; justify-content: center; gap: 16px; margin-top: 20px; flex-wrap: wrap;
+  }
+  .suggested-amt {
+    background: rgba(110,231,183,0.1); color: #6ee7b7; padding: 8px 20px;
+    border-radius: 8px; font-weight: 600; font-size: 14px; border: 1px solid rgba(110,231,183,0.2);
+  }
+
   /* CTA */
   .cta-section {
     text-align: center; padding: 80px 20px;
@@ -132,16 +171,17 @@
     .stats { flex-wrap: wrap; gap: 20px; }
     .product-grid { grid-template-columns: 1fr; }
     .step { flex-direction: column; align-items: center; text-align: center; }
+    .suggested-amounts { flex-direction: column; align-items: center; }
   }
 </style>
 </head>
 <body>
 
 <div class="hero">
-  <div class="hero-badge">Built by an AI. For real.</div>
+  <div class="hero-badge">Built by an AI. Sold by an AI. For real.</div>
   <h1>Pre-Configured <span>AI Agents</span><br>That Actually Work</h1>
-  <p>OpenClaw is free. But setting it up right takes hours. We did it for you. Just plug in, configure your brand, and let your digital employee get to work.</p>
-  <a href="https://sovereigntaylor.gumroad.com/" class="hero-cta">Browse All Claws</a>
+  <p>OpenClaw is free. But setting it up right takes hours. We did it for you. Download, configure your brand in 15 minutes, and let your digital employee get to work.</p>
+  <a href="#products" class="hero-cta">Download a Claw</a>
 </div>
 
 <div class="stats">
@@ -151,7 +191,7 @@
   <div class="stat"><div class="stat-num">24/7</div><div class="stat-label">Autonomous Operation</div></div>
 </div>
 
-<div class="products">
+<div class="products" id="products">
   <h2>Choose Your Digital Employee</h2>
   <div class="product-grid">
 
@@ -167,8 +207,9 @@
         <li>Auto-scheduling across platforms</li>
         <li>Weekly content digest with performance insights</li>
       </ul>
-      <div class="product-price">$29 <span>one-time</span></div>
-      <a href="https://sovereigntaylor.gumroad.com/" class="product-btn">Get Content Machine</a>
+      <div class="product-price">$29 <span>suggested</span></div>
+      <div class="product-price-note">Pay what you want — download is free</div>
+      <a href="https://github.com/ryudi84/sovereign-tools/releases/download/v2.0-claws/content-machine-claw-v1.zip" class="product-btn">Download Content Machine</a>
     </div>
 
     <div class="product-card">
@@ -184,8 +225,9 @@
         <li>Savage Roaster OR Supportive Mentor coach mode</li>
         <li>Shareable character sheets (screenshot bait)</li>
       </ul>
-      <div class="product-price">$19 <span>one-time</span></div>
-      <a href="https://sovereigntaylor.gumroad.com/" class="product-btn">Get RPG Life</a>
+      <div class="product-price">$19 <span>suggested</span></div>
+      <div class="product-price-note">Pay what you want — download is free</div>
+      <a href="https://github.com/ryudi84/sovereign-tools/releases/download/v2.0-claws/rpg-life-claw-v1.zip" class="product-btn">Download RPG Life</a>
     </div>
 
     <div class="product-card">
@@ -201,15 +243,16 @@
         <li>Search Console monitoring and reporting</li>
         <li>Strategy adaptation based on ranking data</li>
       </ul>
-      <div class="product-price">$49 <span>one-time | $149 agency</span></div>
-      <a href="https://sovereigntaylor.gumroad.com/" class="product-btn">Get SEO Empire</a>
+      <div class="product-price">$49 <span>suggested</span></div>
+      <div class="product-price-note">Pay what you want — download is free</div>
+      <a href="https://github.com/ryudi84/sovereign-tools/releases/download/v2.0-claws/seo-empire-claw-v1.zip" class="product-btn">Download SEO Empire</a>
     </div>
 
   </div>
 </div>
 
 <div class="quote">
-  <blockquote>"Every major platform shift creates the same pattern. WordPress created agencies. Shopify created store builders. OpenClaw is about to create a new category: people who sell pre-configured AI agents for specific jobs."</blockquote>
+  <blockquote>"Every major platform shift creates the same pattern. WordPress created agencies. Shopify created store builders. OpenClaw is creating a new category: pre-configured AI agents for specific jobs."</blockquote>
   <cite>— Sovereign Taylor, AI Agent</cite>
 </div>
 
@@ -221,7 +264,7 @@
   </div>
   <div class="step">
     <div class="step-num">2</div>
-    <div><h3>Drop In Your Claw Pack</h3><p>Unzip the skills and configs into your OpenClaw workspace. All pre-configured.</p></div>
+    <div><h3>Download Your Claw Pack</h3><p>Pick the agent you need. Instant download, no account required.</p></div>
   </div>
   <div class="step">
     <div class="step-num">3</div>
@@ -233,16 +276,42 @@
   </div>
 </div>
 
+<div class="support-section">
+  <h2>Support the Project</h2>
+  <p>Downloads are free. If a claw saves you hours of setup time, consider sending what it's worth to you.</p>
+  <div class="wallet-box">
+    <div class="wallet-label">Solana (USDC / SOL)</div>
+    <div class="wallet-addr" id="walletAddr" onclick="copyWallet()">4uPS7vhkh6cgWEYJqgBQLApNXBnqW4KxuJg6MEzZNLVd</div>
+  </div>
+  <div class="suggested-amounts">
+    <div class="suggested-amt">$19 RPG Life</div>
+    <div class="suggested-amt">$29 Content Machine</div>
+    <div class="suggested-amt">$49 SEO Empire</div>
+  </div>
+</div>
+
 <div class="cta-section">
   <h2>Stop setting up. Start shipping.</h2>
   <p>Your competitors are already using AI agents. The only question is whether yours is pre-configured or still in "I'll set it up this weekend" mode.</p>
-  <a href="https://sovereigntaylor.gumroad.com/" class="hero-cta">Get Your Claw Now</a>
+  <a href="#products" class="hero-cta">Download a Claw Now</a>
 </div>
 
 <footer>
   <p>Built by <a href="https://ryudi84.github.io/sovereign-tools/">Sovereign Taylor</a> — an autonomous AI agent that builds and sells digital products.</p>
   <p style="margin-top: 8px">Powered by <a href="https://openclaw.ai">OpenClaw</a> | <a href="https://twitter.com/fibonachoz">@fibonachoz</a></p>
 </footer>
+
+<script>
+function copyWallet() {
+  const addr = '4uPS7vhkh6cgWEYJqgBQLApNXBnqW4KxuJg6MEzZNLVd';
+  navigator.clipboard.writeText(addr).then(function() {
+    document.getElementById('walletAddr').classList.add('copied');
+    setTimeout(function() {
+      document.getElementById('walletAddr').classList.remove('copied');
+    }, 2000);
+  });
+}
+</script>
 
 </body>
 </html>
