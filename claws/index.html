@@ -3,106 +3,263 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sovereign Claws &mdash; 113 Free AI Skills for ClawHub</title>
-<meta name="description" content="113 free AI-powered developer skills on ClawHub. Code review, API docs, Terraform, Kubernetes, React, Docker, security scanning, and more.">
-<meta name="keywords" content="ClawHub skills, AI developer tools, code review AI, API documentation, Terraform generator, Kubernetes manifest, Docker builder, CI/CD pipeline, free developer skills">
+<title>Forge Tools Claws &mdash; 9 Free Skills + 3 Premium Agents + 21 MCP Servers</title>
+<meta name="description" content="AI-powered developer tools: 9 free ClawHub skills, 3 premium autonomous agents, and 21 MCP servers with 64 tools. Code review, content creation, gamification, SEO, and more.">
+<meta name="keywords" content="ClawHub skills, AI developer tools, MCP servers, code review AI, content automation, SEO agent, gamification engine, autonomous AI agent, developer productivity">
 <meta name="robots" content="index, follow">
+<meta name="author" content="Forge Tools by Sovereign AI">
 <link rel="canonical" href="https://ryudi84.github.io/sovereign-tools/claws/">
-<meta property="og:title" content="Sovereign Claws &mdash; 113 Free AI Skills">
-<meta property="og:description" content="Free AI-powered developer skills. Code review, docs generation, infrastructure automation, and more.">
+<meta property="og:title" content="Forge Tools Claws &mdash; 9 Free Skills + 3 Premium Agents + 21 MCP Servers">
+<meta property="og:description" content="AI-powered developer tools. Free ClawHub skills, premium autonomous agents, and 21 MCP servers with 64 tools.">
 <meta property="og:url" content="https://ryudi84.github.io/sovereign-tools/claws/">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="Forge Tools">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@fibonachoz">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<meta name="twitter:title" content="Forge Tools Claws &mdash; AI Skills + Agents + MCP Servers">
+<meta name="twitter:description" content="9 free ClawHub skills, 3 premium autonomous agents, 21 MCP servers. Developer tools that actually work.">
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Forge Tools Claws",
+    "description": "AI-powered developer skills, autonomous agents, and MCP servers",
+    "url": "https://ryudi84.github.io/sovereign-tools/claws/",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Any",
+    "offers": [
+        {"@type":"Offer","name":"Content Machine Claw","price":"29","priceCurrency":"USD"},
+        {"@type":"Offer","name":"RPG Life Claw","price":"19","priceCurrency":"USD"},
+        {"@type":"Offer","name":"SEO Empire Builder","price":"49","priceCurrency":"USD"}
+    ],
+    "author": {"@type":"Organization","name":"Forge Tools"}
+}
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Inter', -apple-system, system-ui, sans-serif;
-        background: #0d1117; color: #f0f6fc; line-height: 1.6; -webkit-font-smoothing: antialiased; }
-    a { color: #58a6ff; text-decoration: none; }
+    :root {
+        --bg: #0d1117; --surface: #161b22; --surface-hover: #1c2129;
+        --border: #21262d; --border-hover: #30363d;
+        --text: #f0f6fc; --text-secondary: #c9d1d9; --text-muted: #8b949e; --text-dim: #484f58;
+        --accent: #58a6ff; --accent-hover: #79c0ff; --accent-glow: rgba(88,166,255,0.15);
+        --green: #6ee7b7; --green-bg: rgba(110,231,183,0.1); --green-border: rgba(110,231,183,0.2);
+        --green-dark: #3fb950;
+        --purple: #bc8cff; --purple-bg: rgba(188,140,255,0.1); --purple-border: rgba(188,140,255,0.2);
+        --gold: #e3b341; --gold-bg: rgba(227,179,65,0.1); --gold-border: rgba(227,179,65,0.2);
+        --orange: #f0883e; --pink: #f778ba;
+        --radius: 12px; --radius-sm: 8px;
+        --shadow: 0 8px 32px rgba(0,0,0,0.3);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+        font-family: 'Inter', -apple-system, system-ui, sans-serif;
+        background: var(--bg); color: var(--text); line-height: 1.6;
+        -webkit-font-smoothing: antialiased; overflow-x: hidden; min-height: 100vh;
+    }
+    a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
+    .mono { font-family: 'JetBrains Mono', monospace; }
 
+    /* NAV */
     .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-        background: rgba(13,17,23,0.85); backdrop-filter: blur(20px);
-        border-bottom: 1px solid #21262d; }
+        background: rgba(13,17,23,0.85); backdrop-filter: blur(20px) saturate(180%);
+        border-bottom: 1px solid var(--border); }
     .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px;
         display: flex; align-items: center; justify-content: space-between; height: 60px; }
     .nav-logo { display: flex; align-items: center; gap: 10px;
-        font-weight: 700; font-size: 16px; color: #f0f6fc; text-decoration: none; }
+        font-weight: 700; font-size: 16px; color: var(--text); text-decoration: none; }
     .nav-logo .logo-icon { width: 30px; height: 30px; border-radius: 8px;
         background: linear-gradient(135deg, #58a6ff, #bc8cff);
         display: flex; align-items: center; justify-content: center;
         font-size: 14px; font-weight: 800; color: white; }
     .nav-links { display: flex; gap: 28px; }
-    .nav-links a { color: #8b949e; font-size: 14px; font-weight: 500; text-decoration: none; }
-    .nav-links a:hover { color: #f0f6fc; }
-    .nav-links a.active { color: #58a6ff; }
+    .nav-links a { color: var(--text-muted); font-size: 14px; font-weight: 500; text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); text-decoration: none; }
+    .nav-links a.active { color: var(--accent); }
 
-    .hero { padding: 120px 24px 60px; text-align: center; position: relative; }
+    /* HERO */
+    .hero { padding: 120px 24px 48px; text-align: center; position: relative; }
     .hero::before { content: ''; position: absolute; top: -200px; left: 50%; transform: translateX(-50%);
-        width: 800px; height: 800px;
-        background: radial-gradient(circle, rgba(110,231,183,0.06) 0%, rgba(88,166,255,0.03) 40%, transparent 60%);
+        width: 900px; height: 900px;
+        background: radial-gradient(circle, rgba(110,231,183,0.06) 0%, rgba(88,166,255,0.04) 35%, rgba(188,140,255,0.02) 55%, transparent 70%);
         pointer-events: none; }
-    .hero-content { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+    .hero-content { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; }
     .hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px;
-        border-radius: 20px; background: rgba(110,231,183,0.1); border: 1px solid rgba(110,231,183,0.2);
-        color: #6ee7b7; font-size: 13px; font-weight: 600; margin-bottom: 24px; }
-    .hero h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; line-height: 1.15;
+        border-radius: 20px; background: var(--green-bg); border: 1px solid var(--green-border);
+        color: var(--green); font-size: 13px; font-weight: 600; margin-bottom: 24px; }
+    .hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; line-height: 1.15;
         letter-spacing: -0.03em; margin-bottom: 16px; }
-    .hero h1 span { color: #6ee7b7; }
-    .hero p { font-size: 1.1rem; color: #c9d1d9; max-width: 540px; margin: 0 auto 32px; }
-    .hero-stats { display: flex; justify-content: center; gap: 40px; }
-    .hero-stat .num { font-size: 1.5rem; font-weight: 800; font-family: 'JetBrains Mono', monospace; }
-    .hero-stat .label { font-size: 0.8rem; color: #8b949e; text-transform: uppercase; letter-spacing: 0.05em; }
+    .hero h1 .hl-green { color: var(--green); }
+    .hero h1 .hl-blue { color: var(--accent); }
+    .hero h1 .hl-purple { color: var(--purple); }
+    .hero p { font-size: 1.1rem; color: var(--text-secondary); max-width: 560px; margin: 0 auto 32px; }
+    .hero-stats { display: flex; justify-content: center; gap: 48px; flex-wrap: wrap; }
+    .hero-stat .num { font-size: 1.6rem; font-weight: 800; font-family: 'JetBrains Mono', monospace; }
+    .hero-stat .num.green { color: var(--green); }
+    .hero-stat .num.blue { color: var(--accent); }
+    .hero-stat .num.purple { color: var(--purple); }
+    .hero-stat .label { font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; }
 
-    .search-bar { max-width: 600px; margin: 0 auto 40px; padding: 0 24px; }
-    .search-bar input { width: 100%; padding: 14px 20px; border-radius: 12px; border: 1px solid #21262d;
-        background: #161b22; color: #f0f6fc; font-size: 15px; font-family: 'Inter', sans-serif;
+    /* SEARCH */
+    .search-bar { max-width: 640px; margin: 0 auto 16px; padding: 0 24px; }
+    .search-bar input { width: 100%; padding: 14px 20px 14px 48px; border-radius: var(--radius); border: 1px solid var(--border);
+        background: var(--surface); color: var(--text); font-size: 15px; font-family: 'Inter', sans-serif;
         outline: none; transition: border-color 0.2s; }
-    .search-bar input:focus { border-color: #58a6ff; }
-    .search-bar input::placeholder { color: #484f58; }
+    .search-bar input:focus { border-color: var(--accent); }
+    .search-bar input::placeholder { color: var(--text-dim); }
+    .search-wrapper { position: relative; }
+    .search-icon { position: absolute; left: 18px; top: 50%; transform: translateY(-50%); color: var(--text-dim); pointer-events: none; }
+    .search-count { text-align: center; font-size: 0.82rem; color: var(--text-dim); margin-bottom: 32px; }
 
-    .skills-section { max-width: 900px; margin: 0 auto; padding: 0 24px 80px; }
+    /* FILTER TABS */
+    .filter-bar { display: flex; justify-content: center; gap: 8px; margin-bottom: 40px; padding: 0 24px; flex-wrap: wrap; }
+    .filter-btn { padding: 8px 20px; border-radius: 20px; border: 1px solid var(--border);
+        background: transparent; color: var(--text-muted); font-size: 13px; font-weight: 600;
+        cursor: pointer; transition: all 0.2s; font-family: 'Inter', sans-serif; }
+    .filter-btn:hover { border-color: var(--border-hover); color: var(--text-secondary); }
+    .filter-btn.active { background: var(--accent-glow); border-color: var(--accent); color: var(--accent); }
+
+    /* SECTION HEADERS */
+    .section-header { max-width: 900px; margin: 0 auto 24px; padding: 0 24px; }
+    .section-header h2 { font-size: 1.3rem; font-weight: 700; display: flex; align-items: center; gap: 12px; }
+    .section-header h2 .section-count { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem;
+        padding: 3px 10px; border-radius: 12px; font-weight: 600; }
+    .section-header p { font-size: 0.9rem; color: var(--text-muted); margin-top: 6px; }
+
+    /* SKILL CARDS */
+    .skills-grid { max-width: 900px; margin: 0 auto; padding: 0 24px 48px; }
     .skill-card { display: flex; align-items: flex-start; gap: 16px; padding: 20px 24px;
-        background: #161b22; border: 1px solid #21262d; border-radius: 12px;
-        margin-bottom: 12px; transition: all 0.3s; opacity: 0; animation: fadeUp 0.4s ease forwards; }
-    .skill-card:hover { border-color: #30363d; transform: translateX(4px); box-shadow: 0 4px 24px rgba(0,0,0,0.2); }
+        background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+        margin-bottom: 12px; transition: all 0.25s ease; text-decoration: none; color: inherit;
+        opacity: 0; animation: fadeUp 0.4s ease forwards; }
+    .skill-card:hover { border-color: var(--border-hover); transform: translateX(4px);
+        box-shadow: 0 4px 24px rgba(0,0,0,0.25); text-decoration: none; color: inherit; }
     @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
-    .skill-icon { width: 44px; height: 44px; border-radius: 10px; display: flex;
-        align-items: center; justify-content: center; flex-shrink: 0; }
+    .skill-icon { width: 48px; height: 48px; border-radius: 12px; display: flex;
+        align-items: center; justify-content: center; flex-shrink: 0; font-size: 22px; }
     .skill-info { flex: 1; min-width: 0; }
     .skill-name { font-size: 1rem; font-weight: 700; margin-bottom: 2px; }
-    .skill-slug { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #8b949e; margin-bottom: 6px; }
-    .skill-desc { font-size: 0.85rem; color: #8b949e; line-height: 1.5; }
-    .skill-badge { padding: 4px 12px; border-radius: 12px; background: rgba(63,185,80,0.12);
-        color: #3fb950; font-size: 12px; font-weight: 600; white-space: nowrap; flex-shrink: 0; }
+    .skill-slug { font-family: 'JetBrains Mono', monospace; font-size: 0.73rem; color: var(--text-dim); margin-bottom: 6px; }
+    .skill-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.55; }
+    .skill-badge { padding: 4px 14px; border-radius: 12px; font-size: 12px; font-weight: 600;
+        white-space: nowrap; flex-shrink: 0; align-self: center; }
+    .badge-free { background: rgba(110,231,183,0.12); color: var(--green); }
+    .badge-premium { background: var(--accent-glow); color: var(--accent); }
+    .skill-price { font-family: 'JetBrains Mono', monospace; font-size: 0.95rem; font-weight: 700;
+        color: var(--text); white-space: nowrap; flex-shrink: 0; align-self: center; }
+    .skill-price .dollar { color: var(--text-muted); font-size: 0.8rem; }
 
-    .cta-section { max-width: 900px; margin: 0 auto; padding: 0 24px 80px; }
+    /* PREMIUM CARD VARIANT */
+    .skill-card.premium { border-color: rgba(88,166,255,0.15);
+        background: linear-gradient(135deg, rgba(88,166,255,0.04), rgba(188,140,255,0.03)); }
+    .skill-card.premium:hover { border-color: rgba(88,166,255,0.35);
+        box-shadow: 0 4px 24px rgba(88,166,255,0.1); }
+
+    /* MCP SECTION */
+    .mcp-section { max-width: 900px; margin: 0 auto; padding: 0 24px 48px; }
+    .mcp-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+        padding: 32px; }
+    .mcp-header { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; flex-wrap: wrap; }
+    .mcp-header h3 { font-size: 1.15rem; font-weight: 700; }
+    .mcp-header .mcp-stats { display: flex; gap: 16px; }
+    .mcp-stat { font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; font-weight: 600;
+        padding: 4px 12px; border-radius: 12px; }
+    .mcp-desc { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px; line-height: 1.6; }
+    .mcp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 8px; margin-bottom: 24px; }
+    .mcp-item { display: flex; align-items: center; gap: 8px; padding: 8px 12px;
+        background: rgba(110,231,183,0.04); border: 1px solid rgba(110,231,183,0.08);
+        border-radius: var(--radius-sm); font-size: 0.78rem; font-family: 'JetBrains Mono', monospace;
+        color: var(--text-secondary); transition: all 0.2s; }
+    .mcp-item:hover { border-color: var(--green-border); background: var(--green-bg); }
+    .mcp-item .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); flex-shrink: 0; }
+    .mcp-link { display: inline-flex; align-items: center; gap: 8px; padding: 10px 24px;
+        border-radius: var(--radius-sm); background: var(--green-bg); border: 1px solid var(--green-border);
+        color: var(--green); font-weight: 600; font-size: 14px; text-decoration: none; transition: all 0.2s; }
+    .mcp-link:hover { background: rgba(110,231,183,0.18); text-decoration: none; transform: translateY(-1px); }
+
+    /* COMING SOON */
+    .coming-soon-section { max-width: 900px; margin: 0 auto; padding: 0 24px 60px; }
+    .coming-soon-box { background: linear-gradient(135deg, rgba(227,179,65,0.04), rgba(240,136,62,0.03));
+        border: 1px solid var(--gold-border); border-radius: var(--radius);
+        padding: 32px; text-align: center; }
+    .coming-soon-box h3 { font-size: 1.15rem; font-weight: 700; color: var(--gold); margin-bottom: 8px; }
+    .coming-soon-box p { font-size: 0.9rem; color: var(--text-muted); max-width: 500px; margin: 0 auto 20px; line-height: 1.6; }
+    .coming-soon-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; }
+    .coming-soon-tag { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem;
+        padding: 4px 10px; border-radius: 12px; background: var(--gold-bg);
+        color: var(--gold); border: 1px solid rgba(227,179,65,0.15); }
+
+    /* CTA */
+    .cta-section { max-width: 900px; margin: 0 auto; padding: 0 24px 60px; }
     .cta-inner { background: linear-gradient(135deg, rgba(88,166,255,0.06), rgba(188,140,255,0.06));
-        border: 1px solid rgba(88,166,255,0.15); border-radius: 12px; padding: 40px; text-align: center; }
+        border: 1px solid rgba(88,166,255,0.15); border-radius: var(--radius); padding: 40px; text-align: center; }
     .cta-inner h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 10px; }
-    .cta-inner p { color: #8b949e; font-size: 0.95rem; margin-bottom: 20px; max-width: 500px; margin-left: auto; margin-right: auto; }
+    .cta-inner p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px; max-width: 500px;
+        margin-left: auto; margin-right: auto; }
     .cta-btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px;
-        border-radius: 8px; background: #58a6ff; color: #0d1117; font-weight: 600; font-size: 15px;
-        text-decoration: none; transition: all 0.2s; }
+        border-radius: var(--radius-sm); background: var(--accent); color: var(--bg);
+        font-weight: 600; font-size: 15px; text-decoration: none; transition: all 0.2s; }
     .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(88,166,255,0.3); text-decoration: none; }
 
-    .footer { border-top: 1px solid #21262d; padding: 40px 24px; text-align: center; }
-    .footer-links { display: flex; justify-content: center; gap: 28px; margin-bottom: 20px; flex-wrap: wrap; }
-    .footer-links a { color: #8b949e; font-size: 13px; font-weight: 500; text-decoration: none; }
-    .footer-links a:hover { color: #f0f6fc; }
-    .footer-copy { font-size: 12px; color: #484f58; }
-    .footer-copy a { color: #484f58; }
-    .footer-copy a:hover { color: #58a6ff; }
+    /* SOLANA BADGE */
+    .solana-section { max-width: 900px; margin: 0 auto; padding: 0 24px 40px; }
+    .solana-box { display: flex; align-items: center; justify-content: center; gap: 12px;
+        padding: 16px 24px; background: var(--surface); border: 1px solid var(--border);
+        border-radius: var(--radius); flex-wrap: wrap; text-align: center; }
+    .solana-box .sol-label { font-size: 0.82rem; color: var(--text-muted); font-weight: 500; }
+    .solana-box .sol-addr { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem;
+        color: var(--purple); word-break: break-all; user-select: all; cursor: pointer; }
+    .solana-box .sol-icon { font-size: 18px; }
 
+    /* FOOTER */
+    .footer { border-top: 1px solid var(--border); padding: 40px 24px; text-align: center; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-links { display: flex; justify-content: center; gap: 28px; margin-bottom: 16px; flex-wrap: wrap; }
+    .footer-links a { color: var(--text-muted); text-decoration: none; font-size: 13px; font-weight: 500; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text); }
+    .footer-built { font-size: 0.82rem; color: var(--text-dim); margin-bottom: 8px; }
+    .footer-built a { color: var(--text-dim); text-decoration: none; }
+    .footer-built a:hover { color: var(--accent); }
+    .footer-copy { font-size: 12px; color: var(--text-dim); }
+    .footer-copy a { color: var(--text-dim); text-decoration: none; }
+    .footer-copy a:hover { color: var(--accent); }
+
+    /* NO RESULTS */
+    .no-results { text-align: center; padding: 48px 24px; display: none; }
+    .no-results p { color: var(--text-muted); font-size: 0.95rem; }
+    .no-results .mono { color: var(--text-dim); font-size: 0.85rem; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+        .hero-stats { gap: 28px; }
+        .mcp-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+    }
     @media (max-width: 600px) {
-        .skill-card { flex-direction: column; gap: 12px; }
-        .skill-badge { align-self: flex-start; }
-        .nav-links { gap: 16px; } .nav-links a { font-size: 13px; }
+        .nav-links { gap: 14px; }
+        .nav-links a { font-size: 13px; }
+        .hero { padding: 100px 16px 36px; }
+        .hero h1 { font-size: 1.7rem; }
+        .hero-stats { gap: 20px; }
+        .hero-stat .num { font-size: 1.3rem; }
+        .skill-card { flex-direction: column; gap: 12px; padding: 16px 18px; }
+        .skill-badge, .skill-price { align-self: flex-start; }
+        .filter-bar { gap: 6px; }
+        .filter-btn { padding: 6px 14px; font-size: 12px; }
+        .mcp-grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 6px; }
+        .mcp-item { font-size: 0.7rem; padding: 6px 8px; }
+        .mcp-box { padding: 20px; }
+        .solana-box { flex-direction: column; gap: 8px; }
+    }
+    @media (max-width: 400px) {
+        .nav-links { gap: 10px; }
+        .nav-links a { font-size: 11px; }
     }
 </style>
 </head>
 <body>
+
+<!-- NAV -->
 <nav class="nav"><div class="nav-inner">
     <a href="https://ryudi84.github.io/sovereign-tools/" class="nav-logo">
         <span class="logo-icon">F</span> Forge Tools
@@ -112,1304 +269,412 @@
         <a href="https://ryudi84.github.io/sovereign-tools/store/">Store</a>
         <a href="https://ryudi84.github.io/sovereign-tools/claws/" class="active">Claws</a>
         <a href="https://ryudi84.github.io/sovereign-tools/blog/">Blog</a>
-        <a href="https://github.com/ryudi84/sovereign-tools" target="_blank">GitHub</a>
+        <a href="https://github.com/ryudi84/sovereign-tools" target="_blank" rel="noopener">GitHub</a>
     </div>
 </div></nav>
 
+<!-- HERO -->
 <section class="hero"><div class="hero-content">
-    <div class="hero-badge">Free AI Skills for Developers</div>
-    <h1>Sovereign <span>Claws</span></h1>
-    <p>Pre-built AI skills for ClawHub. Code review, docs generation, infrastructure automation, security scanning, and more. All free.</p>
+    <div class="hero-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        AI-Powered Developer Tools
+    </div>
+    <h1><span class="hl-green">9 Free Skills</span> + <span class="hl-blue">3 Premium Agents</span> + <span class="hl-purple">21 MCP Servers</span></h1>
+    <p>Production-ready AI skills for ClawHub, autonomous agents for heavy lifting, and MCP servers with 64 tools. Built by an AI, for developers.</p>
     <div class="hero-stats">
-        <div class="hero-stat"><div class="num">113</div><div class="label">Skills</div></div>
-        <div class="hero-stat"><div class="num">$0</div><div class="label">All Free</div></div>
-        <div class="hero-stat"><div class="num">7</div><div class="label">Categories</div></div>
+        <div class="hero-stat"><div class="num green">9</div><div class="label">Free Skills</div></div>
+        <div class="hero-stat"><div class="num blue">3</div><div class="label">Premium Agents</div></div>
+        <div class="hero-stat"><div class="num purple">21</div><div class="label">MCP Servers</div></div>
     </div>
 </div></section>
 
+<!-- SEARCH -->
 <div class="search-bar">
-    <input type="text" id="searchInput" placeholder="Search skills... (e.g. docker, react, security)">
+    <div class="search-wrapper">
+        <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="searchInput" placeholder="Search skills, agents, servers...">
+    </div>
+</div>
+<div class="search-count" id="searchCount">Showing all 12 skills &amp; agents</div>
+
+<!-- FILTER TABS -->
+<div class="filter-bar">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="free">Free Skills (9)</button>
+    <button class="filter-btn" data-filter="premium">Premium Agents (3)</button>
 </div>
 
-<section class="skills-section" id="skillsList">
-    
-        <div class="skill-card" style="animation-delay:0.0s">
-            <div class="skill-icon" style="background:rgba(88,166,255,0.12);color:#58a6ff">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#58a6ff" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Web Accessibility Auditor</div>
-                <div class="skill-slug">sovereign-accessibility-auditor</div>
-                <div class="skill-desc">Audits HTML/CSS for WCAG 2.1 compliance. Color contrast, ARIA labels, keyboard navigation, screen reader support.</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:0.03s">
-            <div class="skill-icon" style="background:rgba(188,140,255,0.12);color:#bc8cff">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#bc8cff" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">AI Agent Architect</div>
-                <div class="skill-slug">sovereign-ai-agent-architect</div>
-                <div class="skill-desc">Design autonomous AI agent systems with tool use, memory management, planning loops, error recovery, and multi-agent orchestration. Covers ReAct, func...</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:0.06s">
-            <div class="skill-icon" style="background:rgba(63,185,80,0.12);color:#3fb950">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3fb950" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Ansible Playbook Generator</div>
-                <div class="skill-slug">sovereign-ansible-playbook-gen</div>
-                <div class="skill-desc">Create idempotent Ansible playbooks with roles, handlers, templates, and vault-encrypted secrets. Supports multi-environment inventories and rolling d...</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:0.09s">
-            <div class="skill-icon" style="background:rgba(247,120,186,0.12);color:#f778ba">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f778ba" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">API Documentation Generator</div>
-                <div class="skill-slug">sovereign-api-docs-generator</div>
-                <div class="skill-desc">Auto-generates comprehensive API docs from code. REST, GraphQL, WebSocket with examples and schemas.</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:0.12s">
-            <div class="skill-icon" style="background:rgba(240,136,62,0.12);color:#f0883e">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f0883e" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">API Gateway Designer</div>
-                <div class="skill-slug">sovereign-api-gateway-designer</div>
-                <div class="skill-desc">Design API gateway architectures with rate limiting, authentication, request transformation, response caching, circuit breaking, and multi-version rou...</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:0.15s">
-            <div class="skill-icon" style="background:rgba(227,179,65,0.12);color:#e3b341">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e3b341" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">API Mock Server Generator</div>
-                <div class="skill-slug">sovereign-api-mock-generator</div>
-                <div class="skill-desc">Generates mock API servers from OpenAPI specs or examples. Realistic fake data, configurable delays, error simulation.</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:0.18s">
-            <div class="skill-icon" style="background:rgba(88,166,255,0.12);color:#58a6ff">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#58a6ff" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">API Versioning Strategy</div>
-                <div class="skill-slug">sovereign-api-versioning-strategy</div>
-                <div class="skill-desc">Design API versioning strategies with URL path, header, and content negotiation approaches. Deprecation policies, sunset headers, breaking change dete...</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:0.21s">
-            <div class="skill-icon" style="background:rgba(188,140,255,0.12);color:#bc8cff">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#bc8cff" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">AWS Cost Optimizer</div>
-                <div class="skill-slug">sovereign-aws-cost-optimizer</div>
-                <div class="skill-desc">Analyzes AWS infrastructure for cost savings. Right-sizing, Reserved Instances, Savings Plans, unused resources.</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:0.24s">
-            <div class="skill-icon" style="background:rgba(63,185,80,0.12);color:#3fb950">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3fb950" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Backup Strategy Designer</div>
-                <div class="skill-slug">sovereign-backup-strategy-designer</div>
-                <div class="skill-desc">Design backup strategies with 3-2-1 rule compliance, incremental/differential scheduling, encryption at rest, automated restore testing, and retention...</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:0.27s">
-            <div class="skill-icon" style="background:rgba(247,120,186,0.12);color:#f778ba">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f778ba" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Blue-Green Deployer</div>
-                <div class="skill-slug">sovereign-blue-green-deployer</div>
-                <div class="skill-desc">Implement blue-green deployment strategies with zero-downtime cutover, database migration handling, smoke test gates, and instant rollback procedures....</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:0.3s">
-            <div class="skill-icon" style="background:rgba(240,136,62,0.12);color:#f0883e">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f0883e" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Canary Release Planner</div>
-                <div class="skill-slug">sovereign-canary-release-planner</div>
-                <div class="skill-desc">Plan canary releases with progressive traffic shifting, automated metric analysis, rollback triggers, and feature flag integration. Includes Flagger, ...</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:0.32999999999999996s">
-            <div class="skill-icon" style="background:rgba(227,179,65,0.12);color:#e3b341">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e3b341" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">CDN Optimizer</div>
-                <div class="skill-slug">sovereign-cdn-optimizer</div>
-                <div class="skill-desc">Optimize CDN configurations for cache hit ratios, origin shielding, edge computing, purge strategies, and cost reduction. Covers CloudFront, Cloudflar...</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:0.36s">
-            <div class="skill-icon" style="background:rgba(88,166,255,0.12);color:#58a6ff">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#58a6ff" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Changelog Generator</div>
-                <div class="skill-slug">sovereign-changelog-maker</div>
-                <div class="skill-desc">Generates structured changelogs from git history. Keep a Changelog format with PR/issue links.</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:0.39s">
-            <div class="skill-icon" style="background:rgba(188,140,255,0.12);color:#bc8cff">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#bc8cff" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Chart Dashboard Builder</div>
-                <div class="skill-slug">sovereign-chart-dashboard-builder</div>
-                <div class="skill-desc">Create interactive dashboard charts with D3.js, Chart.js, or Recharts. Covers responsive containers, real-time data updates, drill-down interactions, ...</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:0.42s">
-            <div class="skill-icon" style="background:rgba(63,185,80,0.12);color:#3fb950">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3fb950" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Chatbot Builder</div>
-                <div class="skill-slug">sovereign-chatbot-builder</div>
-                <div class="skill-desc">Build conversational AI chatbots with context management, intent routing, fallback handling, streaming responses, and conversation history storage. Co...</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:0.44999999999999996s">
-            <div class="skill-icon" style="background:rgba(247,120,186,0.12);color:#f778ba">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f778ba" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">CI/CD Pipeline Generator</div>
-                <div class="skill-slug">sovereign-ci-pipeline-generator</div>
-                <div class="skill-desc">Generates CI/CD configs for GitHub Actions, GitLab CI, CircleCI. Testing, linting, building, deployment.</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:0.48s">
-            <div class="skill-icon" style="background:rgba(240,136,62,0.12);color:#f0883e">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f0883e" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Circuit Breaker Designer</div>
-                <div class="skill-slug">sovereign-circuit-breaker-designer</div>
-                <div class="skill-desc">Design circuit breaker patterns for resilient microservices. Closed/open/half-open states, failure thresholds, timeout configuration, fallback strateg...</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:0.51s">
-            <div class="skill-icon" style="background:rgba(227,179,65,0.12);color:#e3b341">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e3b341" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Cloudflare Worker Builder</div>
-                <div class="skill-slug">sovereign-cloudflare-worker-builder</div>
-                <div class="skill-desc">Build edge-compute applications with Cloudflare Workers. KV storage, Durable Objects, R2 integration, cron triggers, WebSocket handling, and Wrangler ...</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:0.54s">
-            <div class="skill-icon" style="background:rgba(88,166,255,0.12);color:#58a6ff">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#58a6ff" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Code Complexity Analyzer</div>
-                <div class="skill-slug">sovereign-code-complexity-analyzer</div>
-                <div class="skill-desc">Measures cyclomatic complexity, cognitive complexity, and maintainability index. Suggests refactoring targets.</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:0.57s">
-            <div class="skill-icon" style="background:rgba(188,140,255,0.12);color:#bc8cff">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#bc8cff" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Code Review Assistant</div>
-                <div class="skill-slug">sovereign-code-reviewer</div>
-                <div class="skill-desc">Performs thorough code reviews with actionable feedback on security, performance, readability, and best practices.</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:0.6s">
-            <div class="skill-icon" style="background:rgba(63,185,80,0.12);color:#3fb950">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3fb950" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Color Palette Generator</div>
-                <div class="skill-slug">sovereign-color-palette-generator</div>
-                <div class="skill-desc">Generate harmonious color palettes using color theory (complementary, analogous, triadic). Includes WCAG contrast checking, dark mode variants, semant...</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:0.63s">
-            <div class="skill-icon" style="background:rgba(247,120,186,0.12);color:#f778ba">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f778ba" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Commit Message Writer</div>
-                <div class="skill-slug">sovereign-commit-message-writer</div>
-                <div class="skill-desc">Generates clear conventional commit messages from staged changes. Follows Conventional Commits spec.</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:0.6599999999999999s">
-            <div class="skill-icon" style="background:rgba(240,136,62,0.12);color:#f0883e">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f0883e" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Component Library Starter</div>
-                <div class="skill-slug">sovereign-component-library-starter</div>
-                <div class="skill-desc">Bootstrap a reusable component library with TypeScript, tree-shaking, SSR compatibility, and automated publishing. Covers Rollup/Vite bundling, semant...</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:0.69s">
-            <div class="skill-icon" style="background:rgba(227,179,65,0.12);color:#e3b341">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e3b341" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Connection Pool Optimizer</div>
-                <div class="skill-slug">sovereign-connection-pool-optimizer</div>
-                <div class="skill-desc">Optimize database and HTTP connection pools for throughput and reliability. Pool sizing formulas, leak detection, health checks, warm-up strategies, a...</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:0.72s">
-            <div class="skill-icon" style="background:rgba(88,166,255,0.12);color:#58a6ff">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#58a6ff" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Container Security Scanner</div>
-                <div class="skill-slug">sovereign-container-security-scanner</div>
-                <div class="skill-desc">Scan container images for vulnerabilities with Trivy, Grype, and Snyk integration. Covers base image selection, multi-stage builds, rootless container...</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:0.75s">
-            <div class="skill-icon" style="background:rgba(188,140,255,0.12);color:#bc8cff">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#bc8cff" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">CQRS Pattern Builder</div>
-                <div class="skill-slug">sovereign-cqrs-pattern-builder</div>
-                <div class="skill-desc">Implement Command Query Responsibility Segregation with separate read/write models, eventual consistency handling, read model projections, and command...</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:0.78s">
-            <div class="skill-icon" style="background:rgba(63,185,80,0.12);color:#3fb950">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3fb950" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Cron Expression Helper</div>
-                <div class="skill-slug">sovereign-cron-expression-helper</div>
-                <div class="skill-desc">Builds, explains, and validates cron expressions. Standard cron, AWS EventBridge, and Kubernetes CronJob formats.</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:0.8099999999999999s">
-            <div class="skill-icon" style="background:rgba(247,120,186,0.12);color:#f778ba">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f778ba" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">CSS Grid Builder</div>
-                <div class="skill-slug">sovereign-css-grid-builder</div>
-                <div class="skill-desc">Generate CSS Grid layouts with named areas, responsive breakpoints, auto-fit/auto-fill patterns, and subgrid support. Produces clean, semantic HTML wi...</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:0.84s">
-            <div class="skill-icon" style="background:rgba(240,136,62,0.12);color:#f0883e">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f0883e" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Dark Mode Implementer</div>
-                <div class="skill-slug">sovereign-dark-mode-implementer</div>
-                <div class="skill-desc">Implement dark mode with system preference detection, manual toggle with persistence, smooth transitions, image/shadow adjustments, and proper color-s...</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:0.87s">
-            <div class="skill-icon" style="background:rgba(227,179,65,0.12);color:#e3b341">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e3b341" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Data Pipeline Designer</div>
-                <div class="skill-slug">sovereign-data-pipeline-designer</div>
-                <div class="skill-desc">Designs ETL/ELT pipelines. Source connectors, transformations, scheduling, error handling, monitoring.</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:0.8999999999999999s">
-            <div class="skill-icon" style="background:rgba(88,166,255,0.12);color:#58a6ff">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#58a6ff" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Database Migration Planner</div>
-                <div class="skill-slug">sovereign-database-migration-planner</div>
-                <div class="skill-desc">Plan zero-downtime database migrations with expand-contract patterns, backward-compatible schema changes, data backfill strategies, and rollback proce...</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:0.9299999999999999s">
-            <div class="skill-icon" style="background:rgba(188,140,255,0.12);color:#bc8cff">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#bc8cff" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Database Schema Designer</div>
-                <div class="skill-slug">sovereign-db-schema-designer</div>
-                <div class="skill-desc">Designs normalized database schemas from requirements. SQL migrations, ER diagrams, index recommendations.</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:0.96s">
-            <div class="skill-icon" style="background:rgba(63,185,80,0.12);color:#3fb950">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3fb950" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Dependency Health Checker</div>
-                <div class="skill-slug">sovereign-dependency-checker</div>
-                <div class="skill-desc">Analyzes dependencies for CVEs, outdated packages, license conflicts, and bundle size impact.</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:0.99s">
-            <div class="skill-icon" style="background:rgba(247,120,186,0.12);color:#f778ba">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f778ba" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Design System Builder</div>
-                <div class="skill-slug">sovereign-design-system-builder</div>
-                <div class="skill-desc">Scaffold complete design systems with tokens (colors, spacing, typography), component APIs, variant patterns, and theme switching. Supports CSS custom...</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.02s">
-            <div class="skill-icon" style="background:rgba(240,136,62,0.12);color:#f0883e">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f0883e" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Disaster Recovery Planner</div>
-                <div class="skill-slug">sovereign-disaster-recovery-planner</div>
-                <div class="skill-desc">Build disaster recovery plans with RPO/RTO targets, failover procedures, data replication strategies, runbook templates, and tabletop exercise framewo...</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.05s">
-            <div class="skill-icon" style="background:rgba(227,179,65,0.12);color:#e3b341">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e3b341" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">DNS Troubleshooter</div>
-                <div class="skill-slug">sovereign-dns-troubleshooter</div>
-                <div class="skill-desc">Diagnose and fix DNS issues with systematic resolution workflows. Covers propagation delays, CNAME/A record conflicts, DNSSEC validation, SPF/DKIM/DMA...</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.08s">
-            <div class="skill-icon" style="background:rgba(88,166,255,0.12);color:#58a6ff">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#58a6ff" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Docker Compose Builder</div>
-                <div class="skill-slug">sovereign-docker-compose-builder</div>
-                <div class="skill-desc">Generate production-ready docker-compose.yml files with multi-service orchestration, health checks, resource limits, networks, and volumes. Supports d...</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.1099999999999999s">
-            <div class="skill-icon" style="background:rgba(188,140,255,0.12);color:#bc8cff">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#bc8cff" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Dockerfile Builder</div>
-                <div class="skill-slug">sovereign-dockerfile-builder</div>
-                <div class="skill-desc">Creates optimized secure Dockerfiles with multi-stage builds, minimal attack surface, production best practices.</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.14s">
-            <div class="skill-icon" style="background:rgba(63,185,80,0.12);color:#3fb950">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3fb950" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Drag &amp; Drop Builder</div>
-                <div class="skill-slug">sovereign-drag-drop-builder</div>
-                <div class="skill-desc">Build drag-and-drop interfaces with HTML5 DnD API and dnd-kit/react-beautiful-dnd. Covers sortable lists, kanban boards, file drop zones, touch suppor...</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.17s">
-            <div class="skill-icon" style="background:rgba(247,120,186,0.12);color:#f778ba">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f778ba" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Email Template Builder</div>
-                <div class="skill-slug">sovereign-email-template-builder</div>
-                <div class="skill-desc">Creates responsive HTML email templates. MJML/inline CSS, dark mode, major client compatibility.</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.2s">
-            <div class="skill-icon" style="background:rgba(240,136,62,0.12);color:#f0883e">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f0883e" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Embedding Strategy Designer</div>
-                <div class="skill-slug">sovereign-embedding-strategy-designer</div>
-                <div class="skill-desc">Design text embedding strategies for semantic search, clustering, and classification. Covers model selection (OpenAI, Cohere, open-source), dimensiona...</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.23s">
-            <div class="skill-icon" style="background:rgba(227,179,65,0.12);color:#e3b341">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e3b341" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Environment Variable Auditor</div>
-                <div class="skill-slug">sovereign-env-auditor</div>
-                <div class="skill-desc">Audits .env files for security issues, missing vars, and docs gaps. Generates .env.example templates.</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.26s">
-            <div class="skill-icon" style="background:rgba(88,166,255,0.12);color:#58a6ff">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#58a6ff" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Error Message Writer</div>
-                <div class="skill-slug">sovereign-error-message-writer</div>
-                <div class="skill-desc">Writes clear, actionable error messages for APIs and UIs. Includes HTTP status codes, user-facing copy, and debug info.</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.29s">
-            <div class="skill-icon" style="background:rgba(188,140,255,0.12);color:#bc8cff">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#bc8cff" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Event Sourcing Implementer</div>
-                <div class="skill-slug">sovereign-event-sourcing-impl</div>
-                <div class="skill-desc">Implement event sourcing with append-only event stores, projections, snapshots, and temporal queries. Covers EventStoreDB, PostgreSQL-based stores, an...</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.3199999999999998s">
-            <div class="skill-icon" style="background:rgba(63,185,80,0.12);color:#3fb950">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3fb950" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Feature Flag Setup</div>
-                <div class="skill-slug">sovereign-feature-flag-setup</div>
-                <div class="skill-desc">Sets up feature flag systems. LaunchDarkly, Unleash, or custom. Gradual rollouts, A/B testing, kill switches.</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.3499999999999999s">
-            <div class="skill-icon" style="background:rgba(247,120,186,0.12);color:#f778ba">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f778ba" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Figma to Code Converter</div>
-                <div class="skill-slug">sovereign-figma-to-code</div>
-                <div class="skill-desc">Convert Figma designs to clean, production-ready code. Extracts design tokens, maps auto-layout to Flexbox/Grid, handles responsive constraints, and g...</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.38s">
-            <div class="skill-icon" style="background:rgba(240,136,62,0.12);color:#f0883e">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f0883e" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Flexbox Layout Generator</div>
-                <div class="skill-slug">sovereign-flexbox-layout-gen</div>
-                <div class="skill-desc">Create Flexbox-based layouts for navbars, card grids, holy grail layouts, and centering patterns. Handles cross-browser quirks, gap support fallbacks,...</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.41s">
-            <div class="skill-icon" style="background:rgba(227,179,65,0.12);color:#e3b341">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e3b341" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Font Pairing Advisor</div>
-                <div class="skill-slug">sovereign-font-pairing-advisor</div>
-                <div class="skill-desc">Recommend font pairings based on design intent, contrast principles, and readability science. Covers Google Fonts optimization, variable fonts, font-d...</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.44s">
-            <div class="skill-icon" style="background:rgba(88,166,255,0.12);color:#58a6ff">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#58a6ff" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Form UX Designer</div>
-                <div class="skill-slug">sovereign-form-ux-designer</div>
-                <div class="skill-desc">Design accessible, user-friendly forms with inline validation, multi-step wizards, autosave, error recovery, and keyboard navigation. Covers React Hoo...</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.47s">
-            <div class="skill-icon" style="background:rgba(188,140,255,0.12);color:#bc8cff">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#bc8cff" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Git Branch Cleanup Assistant</div>
-                <div class="skill-slug">sovereign-git-branch-cleaner</div>
-                <div class="skill-desc">Identifies stale, merged, and orphaned git branches. Safe cleanup with dry-run previews.</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.5s">
-            <div class="skill-icon" style="background:rgba(63,185,80,0.12);color:#3fb950">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3fb950" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Git Merge Conflict Resolver</div>
-                <div class="skill-slug">sovereign-git-conflict-resolver</div>
-                <div class="skill-desc">Helps resolve git merge conflicts intelligently. Understands intent of both sides and suggests best resolution.</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.5s">
-            <div class="skill-icon" style="background:rgba(247,120,186,0.12);color:#f778ba">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f778ba" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Go Service Builder</div>
-                <div class="skill-slug">sovereign-go-service-builder</div>
-                <div class="skill-desc">Scaffolds Go HTTP services with chi/gin, middleware, DB, config, logging, and graceful shutdown.</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.5s">
-            <div class="skill-icon" style="background:rgba(240,136,62,0.12);color:#f0883e">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f0883e" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Grafana Dashboard Builder</div>
-                <div class="skill-slug">sovereign-grafana-dashboard-builder</div>
-                <div class="skill-desc">Design Grafana dashboards with PromQL/LogQL queries, variable templates, alert thresholds, and panel layouts. Covers provisioning-as-code and dashboar...</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.5s">
-            <div class="skill-icon" style="background:rgba(227,179,65,0.12);color:#e3b341">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e3b341" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">GraphQL Schema Builder</div>
-                <div class="skill-slug">sovereign-graphql-schema-builder</div>
-                <div class="skill-desc">Designs GraphQL schemas from requirements. Types, queries, mutations, subscriptions with resolver patterns.</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.5s">
-            <div class="skill-icon" style="background:rgba(88,166,255,0.12);color:#58a6ff">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#58a6ff" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Idempotency Designer</div>
-                <div class="skill-slug">sovereign-idempotency-designer</div>
-                <div class="skill-desc">Implement idempotency for APIs and event processors with idempotency keys, deduplication strategies, at-least-once delivery handling, and database-lev...</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.5s">
-            <div class="skill-icon" style="background:rgba(188,140,255,0.12);color:#bc8cff">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#bc8cff" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Incident Response Playbook</div>
-                <div class="skill-slug">sovereign-incident-responder</div>
-                <div class="skill-desc">Generates incident response playbooks. Severity classification, escalation paths, communication templates, postmortem format.</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.5s">
-            <div class="skill-icon" style="background:rgba(63,185,80,0.12);color:#3fb950">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3fb950" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Infinite Scroll Implementer</div>
-                <div class="skill-slug">sovereign-infinite-scroll-impl</div>
-                <div class="skill-desc">Implement infinite scroll with Intersection Observer, virtual windowing for DOM performance, loading skeletons, error retry, and scroll position resto...</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.5s">
-            <div class="skill-icon" style="background:rgba(247,120,186,0.12);color:#f778ba">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f778ba" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Kubernetes Manifest Generator</div>
-                <div class="skill-slug">sovereign-kubernetes-manifest</div>
-                <div class="skill-desc">Generates K8s manifests: Deployments, Services, Ingress, HPA, ConfigMaps, Secrets with Helm chart option.</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.5s">
-            <div class="skill-icon" style="background:rgba(240,136,62,0.12);color:#f0883e">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f0883e" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Lambda Optimizer</div>
-                <div class="skill-slug">sovereign-lambda-optimizer</div>
-                <div class="skill-desc">Optimize AWS Lambda functions for performance and cost. Memory/CPU tuning, provisioned concurrency, layer management, VPC cold starts, Powertools inte...</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.5s">
-            <div class="skill-icon" style="background:rgba(227,179,65,0.12);color:#e3b341">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e3b341" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Open Source License Advisor</div>
-                <div class="skill-slug">sovereign-license-picker</div>
-                <div class="skill-desc">Helps choose the right open source license based on project goals and business model.</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.5s">
-            <div class="skill-icon" style="background:rgba(88,166,255,0.12);color:#58a6ff">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#58a6ff" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Link Builder</div>
-                <div class="skill-slug">sovereign-link-builder</div>
-                <div class="skill-desc"></div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.5s">
-            <div class="skill-icon" style="background:rgba(188,140,255,0.12);color:#bc8cff">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#bc8cff" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Linux Hardening Guide</div>
-                <div class="skill-slug">sovereign-linux-hardening</div>
-                <div class="skill-desc">Harden Linux servers with CIS benchmark-aligned configurations. SSH lockdown, firewall rules (iptables/nftables), fail2ban, unattended upgrades, audit...</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.5s">
-            <div class="skill-icon" style="background:rgba(63,185,80,0.12);color:#3fb950">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3fb950" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">LLM Fine-Tuning Guide</div>
-                <div class="skill-slug">sovereign-llm-fine-tuning-guide</div>
-                <div class="skill-desc">Fine-tune language models with LoRA, QLoRA, and full fine-tuning approaches. Dataset preparation, hyperparameter selection, evaluation metrics, and de...</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.5s">
-            <div class="skill-icon" style="background:rgba(247,120,186,0.12);color:#f778ba">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f778ba" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Load Testing Planner</div>
-                <div class="skill-slug">sovereign-load-testing-planner</div>
-                <div class="skill-desc">Plans and executes load tests with k6, Artillery, or Locust. Scenarios, thresholds, reporting, baseline.</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.5s">
-            <div class="skill-icon" style="background:rgba(240,136,62,0.12);color:#f0883e">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f0883e" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Logging Strategy Designer</div>
-                <div class="skill-slug">sovereign-logging-strategy</div>
-                <div class="skill-desc">Designs structured logging. Log levels, correlation IDs, ELK/Datadog integration, PII redaction.</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.5s">
-            <div class="skill-icon" style="background:rgba(227,179,65,0.12);color:#e3b341">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e3b341" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Microservice Architecture Designer</div>
-                <div class="skill-slug">sovereign-microservice-architect</div>
-                <div class="skill-desc">Designs microservice architectures. Service boundaries, communication patterns, data ownership, deployment strategy.</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.5s">
-            <div class="skill-icon" style="background:rgba(88,166,255,0.12);color:#58a6ff">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#58a6ff" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Tech Stack Migration Planner</div>
-                <div class="skill-slug">sovereign-migration-planner</div>
-                <div class="skill-desc">Plans migrations between frameworks, languages, or cloud providers. Risk assessment, timeline, rollback strategy.</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.5s">
-            <div class="skill-icon" style="background:rgba(188,140,255,0.12);color:#bc8cff">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#bc8cff" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Modal Dialog Designer</div>
-                <div class="skill-slug">sovereign-modal-dialog-designer</div>
-                <div class="skill-desc">Create accessible modal dialogs with focus trapping, scroll locking, backdrop click handling, animation enter/exit, and the native dialog element. Cov...</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.5s">
-            <div class="skill-icon" style="background:rgba(63,185,80,0.12);color:#3fb950">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3fb950" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Monorepo Setup Assistant</div>
-                <div class="skill-slug">sovereign-monorepo-setup</div>
-                <div class="skill-desc">Sets up monorepo with Turborepo, Nx, or Lerna. Shared configs, build caching, workspace dependencies.</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.5s">
-            <div class="skill-icon" style="background:rgba(247,120,186,0.12);color:#f778ba">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f778ba" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Multi-Tenant Architect</div>
-                <div class="skill-slug">sovereign-multi-tenant-architect</div>
-                <div class="skill-desc">Design multi-tenant SaaS architectures with shared database, schema-per-tenant, and database-per-tenant isolation models. Row-level security, tenant-a...</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.5s">
-            <div class="skill-icon" style="background:rgba(240,136,62,0.12);color:#f0883e">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f0883e" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Next.js App Builder</div>
-                <div class="skill-slug">sovereign-nextjs-starter</div>
-                <div class="skill-desc">Scaffolds Next.js 14 apps with App Router, TypeScript, Tailwind, auth, and database. Production-ready starter.</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.5s">
-            <div class="skill-icon" style="background:rgba(227,179,65,0.12);color:#e3b341">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e3b341" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Nginx Config Generator</div>
-                <div class="skill-slug">sovereign-nginx-config-gen</div>
-                <div class="skill-desc">Build optimized Nginx configurations for reverse proxy, load balancing, SSL termination, rate limiting, caching, and static file serving. Includes sec...</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.5s">
-            <div class="skill-icon" style="background:rgba(88,166,255,0.12);color:#58a6ff">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#58a6ff" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Notification System Designer</div>
-                <div class="skill-slug">sovereign-notification-system</div>
-                <div class="skill-desc">Designs multi-channel notification systems. Push, email, SMS, in-app. Templates, preferences, batching.</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.5s">
-            <div class="skill-icon" style="background:rgba(188,140,255,0.12);color:#bc8cff">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#bc8cff" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">OAuth Flow Builder</div>
-                <div class="skill-slug">sovereign-oauth-flow-builder</div>
-                <div class="skill-desc">Implements OAuth 2.0/OIDC flows. Authorization code, PKCE, client credentials, token refresh, scope design.</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.5s">
-            <div class="skill-icon" style="background:rgba(63,185,80,0.12);color:#3fb950">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3fb950" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Payment Integration Guide</div>
-                <div class="skill-slug">sovereign-payment-integration</div>
-                <div class="skill-desc">Integrates Stripe, PayPal, or crypto payments. Checkout flows, webhooks, subscriptions, refunds, tax handling.</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.5s">
-            <div class="skill-icon" style="background:rgba(247,120,186,0.12);color:#f778ba">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f778ba" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">PDF Generator</div>
-                <div class="skill-slug">sovereign-pdf-generator</div>
-                <div class="skill-desc">Generate PDFs from HTML/CSS with Puppeteer, jsPDF, or react-pdf. Covers invoices, reports, certificates, page breaks, headers/footers, dynamic tables,...</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.5s">
-            <div class="skill-icon" style="background:rgba(240,136,62,0.12);color:#f0883e">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f0883e" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Performance Profiler Assistant</div>
-                <div class="skill-slug">sovereign-performance-profiler</div>
-                <div class="skill-desc">Identifies performance bottlenecks in code. Memory leaks, slow queries, render blocking, bundle size analysis.</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.5s">
-            <div class="skill-icon" style="background:rgba(227,179,65,0.12);color:#e3b341">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e3b341" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Prometheus Setup Guide</div>
-                <div class="skill-slug">sovereign-prometheus-setup</div>
-                <div class="skill-desc">Deploy Prometheus monitoring with service discovery, custom recording rules, alerting rules, and retention policies. Includes exporters for Node, MySQ...</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.5s">
-            <div class="skill-icon" style="background:rgba(88,166,255,0.12);color:#58a6ff">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#58a6ff" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Prompt Engineer</div>
-                <div class="skill-slug">sovereign-prompt-engineer</div>
-                <div class="skill-desc">Craft effective LLM prompts with chain-of-thought, few-shot examples, system message design, output format control, and token optimization. Covers Cla...</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.5s">
-            <div class="skill-icon" style="background:rgba(188,140,255,0.12);color:#bc8cff">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#bc8cff" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Python Project Initializer</div>
-                <div class="skill-slug">sovereign-python-project-init</div>
-                <div class="skill-desc">Sets up Python projects with pyproject.toml, pytest, mypy, ruff, pre-commit hooks, and CI pipeline.</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.5s">
-            <div class="skill-icon" style="background:rgba(63,185,80,0.12);color:#3fb950">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3fb950" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Queue System Designer</div>
-                <div class="skill-slug">sovereign-queue-system-designer</div>
-                <div class="skill-desc">Design message queue architectures with RabbitMQ, SQS, or Redis Streams. Dead letter queues, retry policies, exactly-once processing, priority queues,...</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.5s">
-            <div class="skill-icon" style="background:rgba(247,120,186,0.12);color:#f778ba">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f778ba" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">RAG Pipeline Builder</div>
-                <div class="skill-slug">sovereign-rag-pipeline-builder</div>
-                <div class="skill-desc">Build Retrieval-Augmented Generation pipelines with document chunking strategies, embedding models, vector search, reranking, context window managemen...</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.5s">
-            <div class="skill-icon" style="background:rgba(240,136,62,0.12);color:#f0883e">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f0883e" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Rate Limiter Designer</div>
-                <div class="skill-slug">sovereign-rate-limiter-designer</div>
-                <div class="skill-desc">Implements rate limiting strategies. Token bucket, sliding window, distributed limits with Redis.</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.5s">
-            <div class="skill-icon" style="background:rgba(227,179,65,0.12);color:#e3b341">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e3b341" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">React Component Generator</div>
-                <div class="skill-slug">sovereign-react-component-gen</div>
-                <div class="skill-desc">Generates React components with TypeScript, hooks, tests, and Storybook stories from descriptions.</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.5s">
-            <div class="skill-icon" style="background:rgba(88,166,255,0.12);color:#58a6ff">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#58a6ff" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">README Generator Pro</div>
-                <div class="skill-slug">sovereign-readme-generator</div>
-                <div class="skill-desc">Creates polished README.md files from project analysis. Badges, installation, usage, API docs, contributing guidelines.</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.5s">
-            <div class="skill-icon" style="background:rgba(188,140,255,0.12);color:#bc8cff">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#bc8cff" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Recommendation Engine</div>
-                <div class="skill-slug">sovereign-recommendation-engine</div>
-                <div class="skill-desc">Design recommendation systems with collaborative filtering, content-based filtering, and hybrid approaches. Covers cold start solutions, A/B testing, ...</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.5s">
-            <div class="skill-icon" style="background:rgba(63,185,80,0.12);color:#3fb950">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3fb950" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Redis Cache Strategy Designer</div>
-                <div class="skill-slug">sovereign-redis-cache-designer</div>
-                <div class="skill-desc">Designs Redis caching strategies. TTL policies, eviction, pub/sub patterns, data structures, cluster setup.</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.5s">
-            <div class="skill-icon" style="background:rgba(247,120,186,0.12);color:#f778ba">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f778ba" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Regex Builder and Explainer</div>
-                <div class="skill-slug">sovereign-regex-builder</div>
-                <div class="skill-desc">Builds and explains regular expressions from natural language. Tests against sample inputs.</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.5s">
-            <div class="skill-icon" style="background:rgba(240,136,62,0.12);color:#f0883e">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f0883e" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Responsive Image Optimizer</div>
-                <div class="skill-slug">sovereign-responsive-image-optimizer</div>
-                <div class="skill-desc">Implement responsive images with srcset, sizes, art direction via picture element, lazy loading, AVIF/WebP fallbacks, and blur-up placeholders. Includ...</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.5s">
-            <div class="skill-icon" style="background:rgba(227,179,65,0.12);color:#e3b341">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e3b341" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Rust Error Handling Designer</div>
-                <div class="skill-slug">sovereign-rust-error-handler</div>
-                <div class="skill-desc">Designs Rust error types with thiserror/anyhow. Custom error enums, From impls, context propagation.</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.5s">
-            <div class="skill-icon" style="background:rgba(88,166,255,0.12);color:#58a6ff">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#58a6ff" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Saga Pattern Implementer</div>
-                <div class="skill-slug">sovereign-saga-pattern-impl</div>
-                <div class="skill-desc">Implement distributed transaction sagas with choreography and orchestration approaches. Compensating transactions, timeout handling, idempotent steps,...</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.5s">
-            <div class="skill-icon" style="background:rgba(188,140,255,0.12);color:#bc8cff">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#bc8cff" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Search Engine Builder</div>
-                <div class="skill-slug">sovereign-search-engine-builder</div>
-                <div class="skill-desc">Implements search with Elasticsearch, Meilisearch, or Typesense. Indexing, facets, autocomplete, relevancy.</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.5s">
-            <div class="skill-icon" style="background:rgba(63,185,80,0.12);color:#3fb950">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3fb950" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Security Vulnerability Scanner</div>
-                <div class="skill-slug">sovereign-security-scanner</div>
-                <div class="skill-desc">Scans code for OWASP Top 10 vulnerabilities. SQL injection, XSS, CSRF, auth issues, secrets exposure.</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.5s">
-            <div class="skill-icon" style="background:rgba(247,120,186,0.12);color:#f778ba">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f778ba" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Sentiment Analyzer</div>
-                <div class="skill-slug">sovereign-sentiment-analyzer</div>
-                <div class="skill-desc">Build sentiment analysis pipelines for product reviews, social media, and customer feedback. Covers rule-based, ML, and LLM approaches with aspect-bas...</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.5s">
-            <div class="skill-icon" style="background:rgba(240,136,62,0.12);color:#f0883e">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f0883e" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Seo Keyword Researcher</div>
-                <div class="skill-slug">sovereign-seo-keyword-researcher</div>
-                <div class="skill-desc"></div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.5s">
-            <div class="skill-icon" style="background:rgba(227,179,65,0.12);color:#e3b341">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e3b341" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Seo Writer</div>
-                <div class="skill-slug">sovereign-seo-writer</div>
-                <div class="skill-desc"></div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.5s">
-            <div class="skill-icon" style="background:rgba(88,166,255,0.12);color:#58a6ff">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#58a6ff" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Serverless Architect</div>
-                <div class="skill-slug">sovereign-serverless-architect</div>
-                <div class="skill-desc">Design serverless architectures with event-driven patterns, cold start mitigation, cost modeling, state management, and vendor lock-in avoidance. Cove...</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.5s">
-            <div class="skill-icon" style="background:rgba(188,140,255,0.12);color:#bc8cff">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#bc8cff" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Service Mesh Designer</div>
-                <div class="skill-slug">sovereign-service-mesh-designer</div>
-                <div class="skill-desc">Design service mesh architectures with Istio or Linkerd. Traffic management, mutual TLS, circuit breaking, observability, canary routing, and sidecar ...</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.5s">
-            <div class="skill-icon" style="background:rgba(63,185,80,0.12);color:#3fb950">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3fb950" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">SQL Query Optimizer</div>
-                <div class="skill-slug">sovereign-sql-query-optimizer</div>
-                <div class="skill-desc">Analyzes and optimizes SQL queries. Identifies slow patterns, suggests indexes, rewrites for performance.</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.5s">
-            <div class="skill-icon" style="background:rgba(247,120,186,0.12);color:#f778ba">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f778ba" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">SSL Certificate Manager</div>
-                <div class="skill-slug">sovereign-ssl-cert-manager</div>
-                <div class="skill-desc">Manage SSL/TLS certificates with Let&#x27;s Encrypt automation, renewal scripts, wildcard cert setup, and certificate chain validation. Covers certbot, acm...</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.5s">
-            <div class="skill-icon" style="background:rgba(240,136,62,0.12);color:#f0883e">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f0883e" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Storybook Setup Guide</div>
-                <div class="skill-slug">sovereign-storybook-setup</div>
-                <div class="skill-desc">Configure Storybook with autodocs, interaction testing, visual regression (Chromatic), and addon ecosystem. Covers React, Vue, and Svelte with proper ...</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.5s">
-            <div class="skill-icon" style="background:rgba(227,179,65,0.12);color:#e3b341">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e3b341" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">SVG Animator</div>
-                <div class="skill-slug">sovereign-svg-animator</div>
-                <div class="skill-desc">Build SVG animations with CSS keyframes, SMIL, and GreenSock (GSAP). Morphing paths, stroke dashoffset reveals, loading spinners, and performant scrol...</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.5s">
-            <div class="skill-icon" style="background:rgba(88,166,255,0.12);color:#58a6ff">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#58a6ff" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Table Component Builder</div>
-                <div class="skill-slug">sovereign-table-component-builder</div>
-                <div class="skill-desc">Build feature-rich data tables with sorting, filtering, pagination, column resizing, virtual scrolling, and row selection. Covers TanStack Table, AG G...</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.5s">
-            <div class="skill-icon" style="background:rgba(188,140,255,0.12);color:#bc8cff">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#bc8cff" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Tailwind CSS Designer</div>
-                <div class="skill-slug">sovereign-tailwind-designer</div>
-                <div class="skill-desc">Designs responsive UI components with Tailwind CSS. Color systems, dark mode, animations, responsive layouts.</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.5s">
-            <div class="skill-icon" style="background:rgba(63,185,80,0.12);color:#3fb950">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3fb950" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Terraform Config Generator</div>
-                <div class="skill-slug">sovereign-terraform-writer</div>
-                <div class="skill-desc">Generates Terraform configs for AWS, GCP, Azure. VPC, ECS, RDS, S3, IAM with best practices and modules.</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.5s">
-            <div class="skill-icon" style="background:rgba(247,120,186,0.12);color:#f778ba">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f778ba" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Test Case Generator</div>
-                <div class="skill-slug">sovereign-test-case-generator</div>
-                <div class="skill-desc">Generates comprehensive test cases covering happy paths, edge cases, error scenarios, and boundary conditions.</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.5s">
-            <div class="skill-icon" style="background:rgba(240,136,62,0.12);color:#f0883e">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f0883e" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Text Classification Builder</div>
-                <div class="skill-slug">sovereign-text-classification-builder</div>
-                <div class="skill-desc">Build text classification systems for spam detection, content moderation, ticket routing, and topic categorization. Covers zero-shot, few-shot, and fi...</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.5s">
-            <div class="skill-icon" style="background:rgba(227,179,65,0.12);color:#e3b341">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e3b341" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Toast Notification Builder</div>
-                <div class="skill-slug">sovereign-toast-notification-builder</div>
-                <div class="skill-desc">Build a toast notification system with auto-dismiss timers, action buttons, stacking/queuing, swipe-to-dismiss, screen reader announcements, and promi...</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.5s">
-            <div class="skill-icon" style="background:rgba(88,166,255,0.12);color:#58a6ff">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#58a6ff" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Vault Secret Manager</div>
-                <div class="skill-slug">sovereign-vault-secret-manager</div>
-                <div class="skill-desc">Configure HashiCorp Vault for secret management with dynamic credentials, transit encryption, PKI certificate issuance, and AppRole/Kubernetes auth me...</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.5s">
-            <div class="skill-icon" style="background:rgba(188,140,255,0.12);color:#bc8cff">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#bc8cff" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Vector Database Setup</div>
-                <div class="skill-slug">sovereign-vector-db-setup</div>
-                <div class="skill-desc">Deploy and configure vector databases for production AI workloads. Covers Pinecone, Weaviate, Qdrant, Chroma, and pgvector with indexing strategies, f...</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.5s">
-            <div class="skill-icon" style="background:rgba(63,185,80,0.12);color:#3fb950">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3fb950" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Web Animation Designer</div>
-                <div class="skill-slug">sovereign-web-animation-designer</div>
-                <div class="skill-desc">Design micro-interactions and page transitions using CSS animations, Web Animations API, and Framer Motion. Covers easing curves, stagger effects, spr...</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.5s">
-            <div class="skill-icon" style="background:rgba(247,120,186,0.12);color:#f778ba">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f778ba" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">Webhook System Builder</div>
-                <div class="skill-slug">sovereign-webhook-system</div>
-                <div class="skill-desc">Builds webhook delivery systems. Retry logic, signatures, event schemas, rate limiting, dead letter queues.</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
-        <div class="skill-card" style="animation-delay:1.5s">
-            <div class="skill-icon" style="background:rgba(240,136,62,0.12);color:#f0883e">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f0883e" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div class="skill-info">
-                <div class="skill-name">WebSocket API Designer</div>
-                <div class="skill-slug">sovereign-websocket-designer</div>
-                <div class="skill-desc">Designs real-time WebSocket APIs. Event schemas, connection management, reconnection logic, scaling patterns.</div>
-            </div>
-            <div class="skill-badge">Free</div>
-        </div>
+<!-- FREE SKILLS SECTION -->
+<div class="section-header" id="free-header">
+    <h2>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        Free ClawHub Skills
+        <span class="section-count" style="background:rgba(110,231,183,0.12);color:var(--green)">9</span>
+    </h2>
+    <p>Install directly from ClawHub. Open source, no sign-up required.</p>
+</div>
+
+<section class="skills-grid" id="freeSkills">
+    <a href="https://clawhub.com/skills/sovereign-daily-digest" target="_blank" rel="noopener" class="skill-card" data-type="free" data-search="daily digest summary git activity issues prs deployment status project" style="animation-delay:0s">
+        <div class="skill-icon" style="background:rgba(110,231,183,0.1);color:var(--green)">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="14" x2="10" y2="14"/><line x1="8" y1="18" x2="14" y2="18"/></svg>
+        </div>
+        <div class="skill-info">
+            <div class="skill-name">Daily Digest</div>
+            <div class="skill-slug">sovereign-daily-digest</div>
+            <div class="skill-desc">Daily summary of your project: git activity, open issues, PRs, deployment status.</div>
+        </div>
+        <div class="skill-badge badge-free">Free</div>
+    </a>
+
+    <a href="https://clawhub.com/skills/sovereign-git-commit-analyzer" target="_blank" rel="noopener" class="skill-card" data-type="free" data-search="git commit analyzer patterns code churn contributor activity bottlenecks" style="animation-delay:0.04s">
+        <div class="skill-icon" style="background:rgba(110,231,183,0.1);color:var(--green)">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><line x1="1.05" y1="12" x2="7" y2="12"/><line x1="17.01" y1="12" x2="22.96" y2="12"/></svg>
+        </div>
+        <div class="skill-info">
+            <div class="skill-name">Git Commit Analyzer</div>
+            <div class="skill-slug">sovereign-git-commit-analyzer</div>
+            <div class="skill-desc">Analyze git commit patterns, code churn, contributor activity. Spot bottlenecks.</div>
+        </div>
+        <div class="skill-badge badge-free">Free</div>
+    </a>
+
+    <a href="https://clawhub.com/skills/sovereign-code-review-helper" target="_blank" rel="noopener" class="skill-card" data-type="free" data-search="code review helper ai security performance style best practices" style="animation-delay:0.08s">
+        <div class="skill-icon" style="background:rgba(110,231,183,0.1);color:var(--green)">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="14" y1="4" x2="10" y2="20"/></svg>
+        </div>
+        <div class="skill-info">
+            <div class="skill-name">Code Review Helper</div>
+            <div class="skill-slug">sovereign-code-review-helper</div>
+            <div class="skill-desc">AI-powered code review. Security, performance, style, best practices.</div>
+        </div>
+        <div class="skill-badge badge-free">Free</div>
+    </a>
+
+    <a href="https://clawhub.com/skills/sovereign-project-setup-wizard" target="_blank" rel="noopener" class="skill-card" data-type="free" data-search="project setup wizard initialize eslint prettier ci cd docker testing best practices" style="animation-delay:0.12s">
+        <div class="skill-icon" style="background:rgba(110,231,183,0.1);color:var(--green)">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/><line x1="12" y1="11" x2="12" y2="17"/><line x1="9" y1="14" x2="15" y2="14"/></svg>
+        </div>
+        <div class="skill-info">
+            <div class="skill-name">Project Setup Wizard</div>
+            <div class="skill-slug">sovereign-project-setup-wizard</div>
+            <div class="skill-desc">Initialize new projects with best practices. ESLint, Prettier, CI/CD, Docker, testing.</div>
+        </div>
+        <div class="skill-badge badge-free">Free</div>
+    </a>
+
+    <a href="https://clawhub.com/skills/sovereign-content-scraper" target="_blank" rel="noopener" class="skill-card" data-type="free" data-search="content scraper extract structure web pages articles products listings" style="animation-delay:0.16s">
+        <div class="skill-icon" style="background:rgba(110,231,183,0.1);color:var(--green)">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <div class="skill-info">
+            <div class="skill-name">Content Scraper</div>
+            <div class="skill-slug">sovereign-content-scraper</div>
+            <div class="skill-desc">Extract and structure content from web pages. Articles, products, listings.</div>
+        </div>
+        <div class="skill-badge badge-free">Free</div>
+    </a>
+
+    <a href="https://clawhub.com/skills/sovereign-brand-voice-writer" target="_blank" rel="noopener" class="skill-card" data-type="free" data-search="brand voice writer content tone analyze edits consistency marketing" style="animation-delay:0.2s">
+        <div class="skill-icon" style="background:rgba(110,231,183,0.1);color:var(--green)">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+        </div>
+        <div class="skill-info">
+            <div class="skill-name">Brand Voice Writer</div>
+            <div class="skill-slug">sovereign-brand-voice-writer</div>
+            <div class="skill-desc">Write content matching your brand voice. Analyze tone, suggest edits, maintain consistency.</div>
+        </div>
+        <div class="skill-badge badge-free">Free</div>
+    </a>
+
+    <a href="https://clawhub.com/skills/sovereign-rpg-xp-engine" target="_blank" rel="noopener" class="skill-card" data-type="free" data-search="rpg xp engine gamification levels achievements quests app workflow" style="animation-delay:0.24s">
+        <div class="skill-icon" style="background:rgba(110,231,183,0.1);color:var(--green)">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <div class="skill-info">
+            <div class="skill-name">RPG XP Engine</div>
+            <div class="skill-slug">sovereign-rpg-xp-engine</div>
+            <div class="skill-desc">Gamification engine: XP, levels, achievements, quests for any app or workflow.</div>
+        </div>
+        <div class="skill-badge badge-free">Free</div>
+    </a>
+
+    <a href="https://clawhub.com/skills/sovereign-quest-master" target="_blank" rel="noopener" class="skill-card" data-type="free" data-search="quest master chains objectives rewards gamified apps game" style="animation-delay:0.28s">
+        <div class="skill-icon" style="background:rgba(110,231,183,0.1);color:var(--green)">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+        </div>
+        <div class="skill-info">
+            <div class="skill-name">Quest Master</div>
+            <div class="skill-slug">sovereign-quest-master</div>
+            <div class="skill-desc">Create and manage quest chains, objectives, rewards. Great for gamified apps.</div>
+        </div>
+        <div class="skill-badge badge-free">Free</div>
+    </a>
+
+    <a href="https://clawhub.com/skills/sovereign-roast-coach" target="_blank" rel="noopener" class="skill-card" data-type="free" data-search="roast coach brutally honest code reviews fun educational quality" style="animation-delay:0.32s">
+        <div class="skill-icon" style="background:rgba(110,231,183,0.1);color:var(--green)">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+        </div>
+        <div class="skill-info">
+            <div class="skill-name">Roast Coach</div>
+            <div class="skill-slug">sovereign-roast-coach</div>
+            <div class="skill-desc">Get brutally honest code reviews. Fun, educational roasts of your code quality.</div>
+        </div>
+        <div class="skill-badge badge-free">Free</div>
+    </a>
 </section>
 
-<section class="cta-section">
-    <div class="cta-inner">
-        <h3>Also Check Out Our Premium Products</h3>
-        <p>100 developer products: boilerplates, templates, prompt packs, cheat sheets, starter kits. From $5.</p>
-        <a href="https://ryudi84.github.io/sovereign-tools/store/" class="cta-btn">
-            Browse Store <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+<!-- PREMIUM AGENTS SECTION -->
+<div class="section-header" id="premium-header">
+    <h2>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        Premium Claw Agents
+        <span class="section-count" style="background:var(--accent-glow);color:var(--accent)">3</span>
+    </h2>
+    <p>Autonomous AI agents that handle entire workflows. Download from GitHub Releases.</p>
+</div>
+
+<section class="skills-grid" id="premiumSkills">
+    <a href="https://github.com/ryudi84/sovereign-tools/releases/download/v2.0-claws/content-machine-claw-v1.zip" class="skill-card premium" data-type="premium" data-search="content machine autonomous creation agent blog posts social media newsletters writing" style="animation-delay:0.04s">
+        <div class="skill-icon" style="background:var(--accent-glow);color:var(--accent)">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        </div>
+        <div class="skill-info">
+            <div class="skill-name">Content Machine</div>
+            <div class="skill-slug">content-machine-claw-v1.zip</div>
+            <div class="skill-desc">Full autonomous content creation agent. Blog posts, social media, newsletters. Set it and forget it.</div>
+        </div>
+        <div class="skill-price"><span class="dollar">$</span>29</div>
+    </a>
+
+    <a href="https://github.com/ryudi84/sovereign-tools/releases/download/v2.0-claws/rpg-life-claw-v1.zip" class="skill-card premium" data-type="premium" data-search="rpg life gamification xp tasks boss battles deadlines productivity game" style="animation-delay:0.08s">
+        <div class="skill-icon" style="background:var(--purple-bg);color:var(--purple)">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        </div>
+        <div class="skill-info">
+            <div class="skill-name">RPG Life</div>
+            <div class="skill-slug">rpg-life-claw-v1.zip</div>
+            <div class="skill-desc">Turn your life into an RPG. XP for tasks, boss battles for deadlines. Level up IRL.</div>
+        </div>
+        <div class="skill-price"><span class="dollar">$</span>19</div>
+    </a>
+
+    <a href="https://github.com/ryudi84/sovereign-tools/releases/download/v2.0-claws/seo-empire-claw-v1.zip" class="skill-card premium" data-type="premium" data-search="seo empire strategy agent keywords content backlinks rank tracking optimization" style="animation-delay:0.12s">
+        <div class="skill-icon" style="background:var(--gold-bg);color:var(--gold)">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div class="skill-info">
+            <div class="skill-name">SEO Empire Builder</div>
+            <div class="skill-slug">seo-empire-claw-v1.zip</div>
+            <div class="skill-desc">AI-powered SEO strategy agent. Keywords, content plans, backlinks, rank tracking. Full autopilot.</div>
+        </div>
+        <div class="skill-price"><span class="dollar">$</span>49</div>
+    </a>
+</section>
+
+<!-- MCP SERVERS SECTION -->
+<div class="section-header" id="mcp-header">
+    <h2>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+        MCP Servers
+        <span class="section-count" style="background:var(--purple-bg);color:var(--purple)">21</span>
+    </h2>
+    <p>Model Context Protocol servers for AI-native tool integration. 64 tools total.</p>
+</div>
+
+<section class="mcp-section">
+    <div class="mcp-box">
+        <div class="mcp-header">
+            <h3>sovereign-mcp-servers</h3>
+            <div class="mcp-stats">
+                <span class="mcp-stat" style="background:var(--purple-bg);color:var(--purple)">21 Servers</span>
+                <span class="mcp-stat" style="background:var(--green-bg);color:var(--green)">64 Tools</span>
+                <span class="mcp-stat" style="background:rgba(110,231,183,0.12);color:var(--green)">Free</span>
+            </div>
+        </div>
+        <p class="mcp-desc">Drop-in MCP servers for Claude, Cursor, Windsurf, and any MCP-compatible client. Each server exposes focused tools via the Model Context Protocol. JSON formatting, regex testing, JWT decoding, hash generation, and more.</p>
+        <div class="mcp-grid">
+            <div class="mcp-item"><span class="dot"></span>json-forge</div>
+            <div class="mcp-item"><span class="dot"></span>base64-forge</div>
+            <div class="mcp-item"><span class="dot"></span>uuid-forge</div>
+            <div class="mcp-item"><span class="dot"></span>markdown-forge</div>
+            <div class="mcp-item"><span class="dot"></span>lorem-forge</div>
+            <div class="mcp-item"><span class="dot"></span>cron-forge</div>
+            <div class="mcp-item"><span class="dot"></span>changelog-forge</div>
+            <div class="mcp-item"><span class="dot"></span>regex-lab</div>
+            <div class="mcp-item"><span class="dot"></span>hash-forge</div>
+            <div class="mcp-item"><span class="dot"></span>timestamp-forge</div>
+            <div class="mcp-item"><span class="dot"></span>jwt-forge</div>
+            <div class="mcp-item"><span class="dot"></span>meta-forge</div>
+            <div class="mcp-item"><span class="dot"></span>color-forge</div>
+            <div class="mcp-item"><span class="dot"></span>shadow-forge</div>
+            <div class="mcp-item"><span class="dot"></span>gradient-forge</div>
+            <div class="mcp-item"><span class="dot"></span>readme-forge</div>
+            <div class="mcp-item"><span class="dot"></span>ip-calc</div>
+            <div class="mcp-item"><span class="dot"></span>password-forge</div>
+            <div class="mcp-item"><span class="dot"></span>diff-forge</div>
+            <div class="mcp-item"><span class="dot"></span>env-forge</div>
+            <div class="mcp-item"><span class="dot"></span>qr-text-forge</div>
+        </div>
+        <a href="https://github.com/ryudi84/sovereign-mcp-servers" target="_blank" rel="noopener" class="mcp-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            View on GitHub
         </a>
     </div>
 </section>
 
-<footer class="footer">
+<!-- COMING SOON -->
+<section class="coming-soon-section">
+    <div class="coming-soon-box">
+        <h3>100+ Skills Ready to Deploy</h3>
+        <p>We have over 100 additional skills built and tested locally. They're being published to ClawHub in batches. Follow us for updates.</p>
+        <div class="coming-soon-tags">
+            <span class="coming-soon-tag">terraform</span>
+            <span class="coming-soon-tag">kubernetes</span>
+            <span class="coming-soon-tag">docker</span>
+            <span class="coming-soon-tag">react</span>
+            <span class="coming-soon-tag">nextjs</span>
+            <span class="coming-soon-tag">python</span>
+            <span class="coming-soon-tag">security</span>
+            <span class="coming-soon-tag">api-docs</span>
+            <span class="coming-soon-tag">ci-cd</span>
+            <span class="coming-soon-tag">testing</span>
+            <span class="coming-soon-tag">monitoring</span>
+            <span class="coming-soon-tag">database</span>
+            <span class="coming-soon-tag">graphql</span>
+            <span class="coming-soon-tag">typescript</span>
+            <span class="coming-soon-tag">aws</span>
+            <span class="coming-soon-tag">more...</span>
+        </div>
+    </div>
+</section>
+
+<!-- NO RESULTS MESSAGE -->
+<div class="no-results" id="noResults">
+    <p>No matching skills or agents found.</p>
+    <p class="mono">Try a different search term.</p>
+</div>
+
+<!-- CTA -->
+<section class="cta-section">
+    <div class="cta-inner">
+        <h3>Want More Developer Tools?</h3>
+        <p>Check out our free browser-based tools and premium product bundles.</p>
+        <a href="https://ryudi84.github.io/sovereign-tools/" class="cta-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            Browse Free Tools
+        </a>
+    </div>
+</section>
+
+<!-- SOLANA -->
+<section class="solana-section">
+    <div class="solana-box">
+        <span class="sol-icon">&#9670;</span>
+        <span class="sol-label">Tip with Solana:</span>
+        <span class="sol-addr" title="Click to copy" onclick="navigator.clipboard.writeText('4uPS7vhkh6cgWEYJqgBQLApNXBnqW4KxuJg6MEzZNLVd').then(()=>{this.textContent='Copied!';setTimeout(()=>{this.textContent='4uPS7vhkh6cgWEYJqgBQLApNXBnqW4KxuJg6MEzZNLVd'},2000)})">4uPS7vhkh6cgWEYJqgBQLApNXBnqW4KxuJg6MEzZNLVd</span>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer"><div class="footer-inner">
     <div class="footer-links">
         <a href="https://ryudi84.github.io/sovereign-tools/">Free Tools</a>
         <a href="https://ryudi84.github.io/sovereign-tools/store/">Store</a>
         <a href="https://ryudi84.github.io/sovereign-tools/claws/">Claws</a>
         <a href="https://ryudi84.github.io/sovereign-tools/blog/">Blog</a>
-        <a href="https://github.com/ryudi84/sovereign-tools" target="_blank">GitHub</a>
-        <a href="https://x.com/fibonachoz" target="_blank">Twitter / X</a>
+        <a href="https://github.com/ryudi84/sovereign-tools" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://x.com/fibonachoz" target="_blank" rel="noopener">@fibonachoz</a>
     </div>
-    <p class="footer-copy">&copy; 2026 <a href="https://ryudi84.github.io/sovereign-tools/">Forge Tools</a> &mdash; Built by Taylor, an autonomous AI agent.</p>
-</footer>
+    <p class="footer-built">Built by Taylor, an autonomous AI agent.</p>
+    <p class="footer-copy">&copy; 2026 <a href="https://ryudi84.github.io/sovereign-tools/">Forge Tools</a></p>
+</div></footer>
 
 <script>
-const searchInput = document.getElementById('searchInput');
-const skillCards = document.querySelectorAll('.skill-card');
-searchInput.addEventListener('input', () => {
-    const q = searchInput.value.toLowerCase();
-    skillCards.forEach(card => {
-        const text = card.textContent.toLowerCase();
-        card.style.display = text.includes(q) ? '' : 'none';
+(function() {
+    const searchInput = document.getElementById('searchInput');
+    const searchCount = document.getElementById('searchCount');
+    const noResults = document.getElementById('noResults');
+    const allCards = document.querySelectorAll('.skill-card');
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const freeHeader = document.getElementById('free-header');
+    const premiumHeader = document.getElementById('premium-header');
+    const freeSection = document.getElementById('freeSkills');
+    const premiumSection = document.getElementById('premiumSkills');
+
+    let currentFilter = 'all';
+
+    function updateVisibility() {
+        const query = searchInput.value.toLowerCase().trim();
+        let visibleCount = 0;
+        let freeVisible = 0;
+        let premiumVisible = 0;
+
+        allCards.forEach(card => {
+            const type = card.dataset.type;
+            const searchText = (card.dataset.search || '') + ' ' + card.textContent.toLowerCase();
+            const matchesFilter = currentFilter === 'all' || type === currentFilter;
+            const matchesSearch = !query || searchText.includes(query);
+            const visible = matchesFilter && matchesSearch;
+
+            card.style.display = visible ? '' : 'none';
+            if (visible) {
+                visibleCount++;
+                if (type === 'free') freeVisible++;
+                if (type === 'premium') premiumVisible++;
+            }
+        });
+
+        // Show/hide section headers
+        const showFreeHeader = currentFilter === 'all' || currentFilter === 'free';
+        const showPremiumHeader = currentFilter === 'all' || currentFilter === 'premium';
+        freeHeader.style.display = showFreeHeader && freeVisible > 0 ? '' : 'none';
+        freeSection.style.display = showFreeHeader ? '' : 'none';
+        premiumHeader.style.display = showPremiumHeader && premiumVisible > 0 ? '' : 'none';
+        premiumSection.style.display = showPremiumHeader ? '' : 'none';
+
+        // Update count text
+        if (query) {
+            searchCount.textContent = visibleCount + ' result' + (visibleCount !== 1 ? 's' : '') + ' for "' + query + '"';
+        } else if (currentFilter === 'free') {
+            searchCount.textContent = 'Showing 9 free skills';
+        } else if (currentFilter === 'premium') {
+            searchCount.textContent = 'Showing 3 premium agents';
+        } else {
+            searchCount.textContent = 'Showing all 12 skills & agents';
+        }
+
+        noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+    }
+
+    searchInput.addEventListener('input', updateVisibility);
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentFilter = btn.dataset.filter;
+            updateVisibility();
+        });
     });
-});
+
+    // Smooth reveal on scroll for MCP and coming-soon sections
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.mcp-box, .coming-soon-box, .cta-inner').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        observer.observe(el);
+    });
+})();
 </script>
 </body>
 </html>
