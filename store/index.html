@@ -3,842 +3,1778 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forge Tools Store — Premium Developer Templates, Kits & Prompt Packs</title>
-    <meta name="description" content="Premium developer tools, SaaS boilerplates, Tailwind components, prompt packs, and templates. Ship faster. Built by developers, for developers.">
-    <meta name="keywords" content="saas boilerplate, nextjs starter kit, tailwind components, ai prompts, developer templates, notion templates, landing page templates, email templates, developer portfolio, api boilerplate, developer cheat sheets">
+    <title>Forge Tools Store &mdash; 100 Premium Developer Products</title>
+    <meta name="description" content="100 premium developer products: SaaS boilerplates, prompt packs, templates, cheat sheets, starter kits, and design assets. Ship faster. From $5.">
+    <meta name="keywords" content="saas boilerplate, nextjs starter, tailwind components, ai prompts, developer templates, notion templates, cheat sheets, design assets, code starters, developer tools">
     <meta name="robots" content="index, follow">
     <meta name="author" content="Forge Tools by Sovereign AI">
     <link rel="canonical" href="https://ryudi84.github.io/sovereign-tools/store/">
-
-    <!-- Open Graph -->
-    <meta property="og:title" content="Forge Tools Store — Premium Developer Templates & Kits">
-    <meta property="og:description" content="Premium developer tools, SaaS boilerplates, Tailwind components, prompt packs, and templates. Ship faster.">
+    <meta property="og:title" content="Forge Tools Store &mdash; 100 Premium Developer Products">
+    <meta property="og:description" content="Premium developer products: boilerplates, prompts, templates, cheat sheets, starters, design assets. Ship faster.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://ryudi84.github.io/sovereign-tools/store/">
     <meta property="og:site_name" content="Forge Tools">
-
-    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Forge Tools Store — Premium Developer Templates & Kits">
-    <meta name="twitter:description" content="Premium developer tools, SaaS boilerplates, Tailwind components, prompt packs, and templates. Ship faster.">
-
-    <!-- Structured Data -->
+    <meta name="twitter:site" content="@fibonachoz">
+    <meta name="twitter:title" content="Forge Tools Store &mdash; 100 Products">
+    <meta name="twitter:description" content="Premium developer products from $5. Boilerplates, prompts, templates, cheat sheets, starters.">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "Store",
         "name": "Forge Tools Store",
-        "description": "Premium developer tools, templates, and prompt packs",
+        "description": "100 premium developer products",
         "url": "https://ryudi84.github.io/sovereign-tools/store/",
         "brand": { "@type": "Brand", "name": "Forge Tools" },
         "hasOfferCatalog": {
             "@type": "OfferCatalog",
             "name": "Developer Products",
-            "itemListElement": [
-                {"@type":"Offer","name":"SaaS Boilerplate Kit","price":"149","priceCurrency":"USD"},
-                {"@type":"Offer","name":"API Boilerplate Kit","price":"29","priceCurrency":"USD"},
-                {"@type":"Offer","name":"TailwindKit","price":"20","priceCurrency":"USD"},
-                {"@type":"Offer","name":"Marketing Prompt Pack","price":"19","priceCurrency":"USD"},
-                {"@type":"Offer","name":"Real Estate Prompt Pack","price":"19","priceCurrency":"USD"},
-                {"@type":"Offer","name":"10 SaaS Landing Page Templates","price":"15","priceCurrency":"USD"},
-                {"@type":"Offer","name":"Dev Portfolio Template","price":"15","priceCurrency":"USD"},
-                {"@type":"Offer","name":"Landing Page Copy Templates","price":"12","priceCurrency":"USD"},
-                {"@type":"Offer","name":"10 Notion Templates Bundle","price":"12","priceCurrency":"USD"},
-                {"@type":"Offer","name":"8 Professional Email Templates","price":"12","priceCurrency":"USD"},
-                {"@type":"Offer","name":"100 Production Prompts for Developers","price":"9","priceCurrency":"USD"},
-                {"@type":"Offer","name":"Developer Cheat Sheet Bundle","price":"9","priceCurrency":"USD"}
-            ]
+            "itemListElement": [{"@type":"Offer","name":"SaaS Boilerplate Kit — Complete Starter","price":"149","priceCurrency":"USD"},{"@type":"Offer","name":"Agency Toolkit — Scale Your Digital Agency","price":"99","priceCurrency":"USD"},{"@type":"Offer","name":"The Complete Developer Toolkit — Everything Bundle","price":"79","priceCurrency":"USD"},{"@type":"Offer","name":"AI Automation Masterclass Kit","price":"59","priceCurrency":"USD"},{"@type":"Offer","name":"Freelancer Starter Pack — Business in a Box","price":"49","priceCurrency":"USD"},{"@type":"Offer","name":"Django SaaS Starter Kit","price":"39","priceCurrency":"USD"},{"@type":"Offer","name":"Next.js SaaS Boilerplate","price":"39","priceCurrency":"USD"},{"@type":"Offer","name":"API Boilerplate Kit — 5 Production-Ready Templates","price":"29","priceCurrency":"USD"},{"@type":"Offer","name":"MERN Stack Starter — Full App Template","price":"29","priceCurrency":"USD"},{"@type":"Offer","name":"React Dashboard Starter","price":"25","priceCurrency":"USD"},{"@type":"Offer","name":"T3 Stack Starter — Next + tRPC + Prisma","price":"25","priceCurrency":"USD"},{"@type":"Offer","name":"TailwindKit — 50+ UI Components","price":"20","priceCurrency":"USD"},{"@type":"Offer","name":"Business Plan Templates — 5 Frameworks","price":"19","priceCurrency":"USD"},{"@type":"Offer","name":"Chrome Extension Starter Kit","price":"19","priceCurrency":"USD"},{"@type":"Offer","name":"Express.js API Starter — Auth, CRUD, Tests","price":"19","priceCurrency":"USD"},{"@type":"Offer","name":"FastAPI Starter — Python API Boilerplate","price":"19","priceCurrency":"USD"},{"@type":"Offer","name":"Marketing Prompts — 50 AI Prompts for Marketers","price":"19","priceCurrency":"USD"},{"@type":"Offer","name":"Real Estate AI Prompts — 50 Prompts for Agents","price":"19","priceCurrency":"USD"},{"@type":"Offer","name":"Startup Pitch Deck — 15 Slide Template","price":"19","priceCurrency":"USD"},{"@type":"Offer","name":"Vue.js Admin Panel Starter","price":"19","priceCurrency":"USD"}]
         }
     }
     </script>
-
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
-            --bg: #0d1117;
-            --surface: #161b22;
-            --surface-hover: #1c2129;
-            --border: #21262d;
-            --border-hover: #30363d;
-            --text: #f0f6fc;
-            --text-secondary: #c9d1d9;
-            --text-muted: #8b949e;
-            --accent: #58a6ff;
-            --accent-hover: #79c0ff;
-            --accent-glow: rgba(88,166,255,0.15);
-            --green: #3fb950;
-            --green-muted: rgba(63,185,80,0.15);
-            --purple: #bc8cff;
-            --purple-muted: rgba(188,140,255,0.15);
-            --gold: #e3b341;
-            --gold-muted: rgba(227,179,65,0.12);
-            --pink: #f778ba;
-            --orange: #f0883e;
-            --radius: 12px;
-            --radius-sm: 8px;
+            --bg: #0d1117; --surface: #161b22; --surface-hover: #1c2129;
+            --border: #21262d; --border-hover: #30363d;
+            --text: #f0f6fc; --text-secondary: #c9d1d9; --text-muted: #8b949e;
+            --accent: #58a6ff; --accent-hover: #79c0ff; --accent-glow: rgba(88,166,255,0.15);
+            --green: #3fb950; --green-muted: rgba(63,185,80,0.15);
+            --purple: #bc8cff; --gold: #e3b341; --gold-muted: rgba(227,179,65,0.12);
+            --pink: #f778ba; --orange: #f0883e;
+            --radius: 12px; --radius-sm: 8px;
             --shadow: 0 8px 32px rgba(0,0,0,0.3);
-            --shadow-lg: 0 16px 48px rgba(0,0,0,0.4);
         }
         html { scroll-behavior: smooth; }
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            overflow-x: hidden;
-            min-height: 100vh;
+            font-family: 'Inter', -apple-system, system-ui, sans-serif;
+            background: var(--bg); color: var(--text); line-height: 1.6;
+            -webkit-font-smoothing: antialiased; overflow-x: hidden; min-height: 100vh;
         }
         .mono { font-family: 'JetBrains Mono', monospace; }
-
-        /* ===== NAV ===== */
-        .nav {
-            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-            background: rgba(13,17,23,0.85);
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
-            border-bottom: 1px solid var(--border);
-        }
-        .nav-inner {
-            max-width: 1200px; margin: 0 auto; padding: 0 24px;
-            display: flex; align-items: center; justify-content: space-between;
-            height: 60px;
-        }
-        .nav-logo {
-            display: flex; align-items: center; gap: 10px;
-            font-weight: 700; font-size: 16px; color: var(--text);
-            text-decoration: none; transition: opacity 0.2s;
-        }
+        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            background: rgba(13,17,23,0.85); backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid var(--border); }
+        .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px;
+            display: flex; align-items: center; justify-content: space-between; height: 60px; }
+        .nav-logo { display: flex; align-items: center; gap: 10px;
+            font-weight: 700; font-size: 16px; color: var(--text); text-decoration: none; }
         .nav-logo:hover { opacity: 0.9; }
-        .nav-logo .logo-icon {
-            width: 30px; height: 30px; border-radius: 8px;
+        .nav-logo .logo-icon { width: 30px; height: 30px; border-radius: 8px;
             background: linear-gradient(135deg, #58a6ff, #bc8cff);
             display: flex; align-items: center; justify-content: center;
-            font-size: 14px; font-weight: 800; color: white;
-        }
+            font-size: 14px; font-weight: 800; color: white; }
         .nav-links { display: flex; gap: 28px; align-items: center; }
-        .nav-links a {
-            color: var(--text-muted); text-decoration: none;
-            font-size: 14px; font-weight: 500; transition: color 0.2s;
-        }
+        .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
         .nav-links a:hover { color: var(--text); }
         .nav-links a.active { color: var(--accent); }
+        @media (max-width: 640px) { .nav-links { gap: 16px; } .nav-links a { font-size: 13px; } }
 
-        @media (max-width: 640px) {
-            .nav-links { gap: 16px; }
-            .nav-links a { font-size: 13px; }
-        }
-
-        /* ===== HERO ===== */
-        .hero {
-            padding: 120px 24px 60px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -300px; left: 50%; transform: translateX(-50%);
+        .hero { padding: 120px 24px 60px; text-align: center; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: -300px; left: 50%; transform: translateX(-50%);
             width: 900px; height: 900px;
             background: radial-gradient(circle, rgba(88,166,255,0.07) 0%, rgba(188,140,255,0.04) 40%, transparent 65%);
-            pointer-events: none;
-        }
-        .hero::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='g' width='60' height='60' patternUnits='userSpaceOnUse'%3E%3Cpath d='M60 0H0v60' fill='none' stroke='%23ffffff' stroke-opacity='0.015'/%3E%3C/pattern%3E%3C/defs%3E%3Crect fill='url(%23g)' width='60' height='60'/%3E%3C/svg%3E");
-            pointer-events: none;
-        }
+            pointer-events: none; }
         .hero-content { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
-        .hero-badge {
-            display: inline-flex; align-items: center; gap: 8px;
+        .hero-badge { display: inline-flex; align-items: center; gap: 8px;
             padding: 6px 16px; border-radius: 20px;
-            background: var(--accent-glow);
-            border: 1px solid rgba(88,166,255,0.2);
-            color: var(--accent); font-size: 13px; font-weight: 600;
-            margin-bottom: 24px;
-        }
-        .hero-badge svg { width: 14px; height: 14px; }
-        .hero h1 {
-            font-size: clamp(2rem, 5vw, 3.2rem);
-            font-weight: 800;
-            line-height: 1.15;
-            letter-spacing: -0.03em;
-            margin-bottom: 16px;
-        }
-        .hero h1 .gradient {
-            background: linear-gradient(135deg, #58a6ff, #bc8cff, #f778ba);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .hero p {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            max-width: 540px;
-            margin: 0 auto 32px;
-            line-height: 1.7;
-        }
-        .hero-stats {
-            display: flex; justify-content: center; gap: 40px;
-            margin-top: 8px;
-        }
-        .hero-stat {
-            text-align: center;
-        }
-        .hero-stat .num {
-            font-size: 1.5rem; font-weight: 800; color: var(--text);
-            font-family: 'JetBrains Mono', monospace;
-        }
-        .hero-stat .label {
-            font-size: 0.8rem; color: var(--text-muted);
-            text-transform: uppercase; letter-spacing: 0.05em;
-            margin-top: 2px;
-        }
+            background: var(--accent-glow); border: 1px solid rgba(88,166,255,0.2);
+            color: var(--accent); font-size: 13px; font-weight: 600; margin-bottom: 24px; }
+        .hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; line-height: 1.15;
+            letter-spacing: -0.03em; margin-bottom: 16px; }
+        .hero h1 .gradient { background: linear-gradient(135deg, #58a6ff, #bc8cff, #f778ba);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .hero p { font-size: 1.1rem; color: var(--text-secondary); max-width: 540px; margin: 0 auto 32px; line-height: 1.7; }
+        .hero-stats { display: flex; justify-content: center; gap: 40px; margin-top: 8px; }
+        .hero-stat .num { font-size: 1.5rem; font-weight: 800; color: var(--text); font-family: 'JetBrains Mono', monospace; }
+        .hero-stat .label { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 2px; }
+        @media (max-width: 480px) { .hero { padding: 100px 16px 40px; } .hero-stats { gap: 24px; } }
 
-        @media (max-width: 480px) {
-            .hero { padding: 100px 16px 40px; }
-            .hero-stats { gap: 24px; }
-        }
+        .filter-bar { max-width: 1200px; margin: 0 auto 32px; padding: 0 24px;
+            display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; }
+        .filter-btn { padding: 8px 18px; border-radius: 20px; border: 1px solid var(--border);
+            background: transparent; color: var(--text-muted); font-size: 13px; font-weight: 500;
+            cursor: pointer; transition: all 0.2s; font-family: 'Inter', sans-serif; }
+        .filter-btn:hover { border-color: var(--border-hover); color: var(--text-secondary); background: var(--surface); }
+        .filter-btn.active { border-color: var(--accent); color: var(--accent); background: var(--accent-glow); }
 
-        /* ===== FILTER BAR ===== */
-        .filter-bar {
-            max-width: 1200px; margin: 0 auto 32px;
-            padding: 0 24px;
-            display: flex; align-items: center; justify-content: center;
-            gap: 10px; flex-wrap: wrap;
-        }
-        .filter-btn {
-            padding: 8px 18px;
-            border-radius: 20px;
-            border: 1px solid var(--border);
-            background: transparent;
-            color: var(--text-muted);
-            font-size: 13px; font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-family: 'Inter', sans-serif;
-        }
-        .filter-btn:hover {
-            border-color: var(--border-hover);
-            color: var(--text-secondary);
-            background: var(--surface);
-        }
-        .filter-btn.active {
-            border-color: var(--accent);
-            color: var(--accent);
-            background: var(--accent-glow);
-        }
+        .products-section { max-width: 1200px; margin: 0 auto; padding: 0 24px 80px; }
+        .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        @media (max-width: 900px) { .products-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 600px) { .products-grid { grid-template-columns: 1fr; gap: 16px; }
+            .products-section { padding: 0 16px 60px; } }
 
-        /* ===== PRODUCTS GRID ===== */
-        .products-section {
-            max-width: 1200px; margin: 0 auto;
-            padding: 0 24px 80px;
-        }
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-        @media (max-width: 900px) {
-            .products-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-        @media (max-width: 600px) {
-            .products-grid { grid-template-columns: 1fr; gap: 16px; }
-            .products-section { padding: 0 16px 60px; }
-        }
-
-        /* ===== PRODUCT CARD ===== */
-        .product-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 28px 24px;
-            display: flex;
-            flex-direction: column;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-        .product-card:hover {
-            border-color: var(--border-hover);
-            transform: translateY(-4px);
-            box-shadow: var(--shadow);
-        }
-        .product-card.featured {
-            border-color: rgba(227,179,65,0.3);
-            background: linear-gradient(135deg, var(--surface) 0%, rgba(227,179,65,0.03) 100%);
-        }
-        .product-card.featured:hover {
-            border-color: rgba(227,179,65,0.5);
-            box-shadow: 0 8px 32px rgba(227,179,65,0.1);
-        }
-        .product-card.featured .featured-badge {
-            position: absolute; top: 16px; right: 16px;
-            padding: 4px 10px; border-radius: 6px;
-            background: var(--gold-muted);
-            color: var(--gold);
-            font-size: 11px; font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-        .card-icon {
-            width: 44px; height: 44px;
-            border-radius: 10px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 20px;
-            margin-bottom: 18px;
-            flex-shrink: 0;
-        }
-        .icon-blue { background: rgba(88,166,255,0.12); }
-        .icon-purple { background: var(--purple-muted); }
-        .icon-green { background: var(--green-muted); }
-        .icon-gold { background: var(--gold-muted); }
-        .icon-pink { background: rgba(247,120,186,0.12); }
-        .icon-orange { background: rgba(240,136,62,0.12); }
-
-        .card-category {
-            font-size: 11px; font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            margin-bottom: 8px;
-        }
-        .cat-boilerplate { color: var(--gold); }
-        .cat-templates { color: var(--accent); }
-        .cat-components { color: var(--purple); }
-        .cat-prompts { color: var(--pink); }
-        .cat-bundle { color: var(--green); }
-
-        .card-title {
-            font-size: 1.05rem;
-            font-weight: 700;
-            color: var(--text);
-            margin-bottom: 10px;
-            line-height: 1.35;
-        }
-        .card-desc {
-            font-size: 0.875rem;
-            color: var(--text-muted);
-            line-height: 1.6;
-            flex: 1;
-            margin-bottom: 20px;
-        }
-        .card-footer {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-        }
-        .card-price {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 1.35rem;
-            font-weight: 700;
-            color: var(--text);
-        }
+        .product-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+            padding: 28px 24px; display: flex; flex-direction: column;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden; }
+        .product-card:hover { border-color: var(--border-hover); transform: translateY(-4px); box-shadow: var(--shadow); }
+        .product-card.featured { border-color: rgba(227,179,65,0.3);
+            background: linear-gradient(135deg, var(--surface) 0%, rgba(227,179,65,0.03) 100%); }
+        .product-card.featured:hover { border-color: rgba(227,179,65,0.5); box-shadow: 0 8px 32px rgba(227,179,65,0.1); }
+        .featured-badge { position: absolute; top: 16px; right: 16px; padding: 4px 10px; border-radius: 6px;
+            background: var(--gold-muted); color: var(--gold); font-size: 11px; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 0.05em; }
+        .card-icon { width: 44px; height: 44px; border-radius: 10px;
+            display: flex; align-items: center; justify-content: center; font-size: 20px;
+            margin-bottom: 18px; flex-shrink: 0; }
+        .card-category { font-size: 11px; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 0.06em; margin-bottom: 8px; }
+        .card-title { font-size: 1.05rem; font-weight: 700; color: var(--text); margin-bottom: 10px; line-height: 1.35; }
+        .card-desc { font-size: 0.875rem; color: var(--text-muted); line-height: 1.6; flex: 1; margin-bottom: 20px; }
+        .card-footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+        .card-price { font-family: 'JetBrains Mono', monospace; font-size: 1.35rem; font-weight: 700; color: var(--text); }
         .card-price .dollar { color: var(--text-muted); font-size: 0.9rem; }
-        .buy-btn {
-            display: inline-flex; align-items: center; gap: 6px;
-            padding: 10px 22px;
-            border-radius: var(--radius-sm);
-            background: var(--accent);
-            color: var(--bg);
-            font-size: 14px; font-weight: 600;
-            text-decoration: none;
-            transition: all 0.2s;
-            border: none; cursor: pointer;
-            white-space: nowrap;
-        }
-        .buy-btn:hover {
-            background: var(--accent-hover);
-            transform: translateY(-1px);
-            box-shadow: 0 4px 16px rgba(88,166,255,0.25);
-        }
+        .buy-btn { display: inline-flex; align-items: center; gap: 6px; padding: 10px 22px;
+            border-radius: var(--radius-sm); background: var(--accent); color: var(--bg);
+            font-size: 14px; font-weight: 600; text-decoration: none; transition: all 0.2s;
+            border: none; cursor: pointer; white-space: nowrap; }
+        .buy-btn:hover { background: var(--accent-hover); transform: translateY(-1px);
+            box-shadow: 0 4px 16px rgba(88,166,255,0.25); }
         .buy-btn svg { width: 14px; height: 14px; }
-        .buy-btn.coming-soon {
-            background: var(--border);
-            color: var(--text-muted);
-            cursor: default;
-            pointer-events: none;
-        }
 
-        /* ===== FREE TOOLS BANNER ===== */
-        .free-banner {
-            max-width: 1200px; margin: 0 auto 0;
-            padding: 0 24px 80px;
-        }
-        .free-banner-inner {
-            background: linear-gradient(135deg, rgba(63,185,80,0.06), rgba(88,166,255,0.06));
-            border: 1px solid rgba(63,185,80,0.15);
-            border-radius: var(--radius);
-            padding: 40px;
-            text-align: center;
-        }
-        .free-banner-inner h3 {
-            font-size: 1.4rem; font-weight: 700; margin-bottom: 10px;
-        }
-        .free-banner-inner p {
-            color: var(--text-muted); font-size: 0.95rem; margin-bottom: 24px;
-            max-width: 500px; margin-left: auto; margin-right: auto;
-        }
-        .free-banner-inner p:last-of-type { margin-bottom: 24px; }
-        .free-tools-link {
-            display: inline-flex; align-items: center; gap: 8px;
-            padding: 12px 28px; border-radius: var(--radius-sm);
-            background: var(--green);
-            color: var(--bg); font-weight: 600; font-size: 15px;
-            text-decoration: none; transition: all 0.2s;
-        }
-        .free-tools-link:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 16px rgba(63,185,80,0.3);
-        }
+        .free-banner { max-width: 1200px; margin: 0 auto; padding: 0 24px 80px; }
+        .free-banner-inner { background: linear-gradient(135deg, rgba(63,185,80,0.06), rgba(88,166,255,0.06));
+            border: 1px solid rgba(63,185,80,0.15); border-radius: var(--radius); padding: 40px; text-align: center; }
+        .free-banner-inner h3 { font-size: 1.4rem; font-weight: 700; margin-bottom: 10px; }
+        .free-banner-inner p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 24px;
+            max-width: 500px; margin-left: auto; margin-right: auto; }
+        .free-tools-link { display: inline-flex; align-items: center; gap: 8px;
+            padding: 12px 28px; border-radius: var(--radius-sm); background: var(--green);
+            color: var(--bg); font-weight: 600; font-size: 15px; text-decoration: none; transition: all 0.2s; }
+        .free-tools-link:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(63,185,80,0.3); }
         .free-tools-link svg { width: 16px; height: 16px; }
 
-        @media (max-width: 600px) {
-            .free-banner { padding: 0 16px 60px; }
-            .free-banner-inner { padding: 28px 20px; }
-        }
+        .trust-section { max-width: 1200px; margin: 0 auto; padding: 0 24px 80px; }
+        .trust-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .trust-card { text-align: center; padding: 28px 20px; border-radius: var(--radius);
+            border: 1px solid var(--border); background: var(--surface); }
+        .trust-icon { font-size: 28px; margin-bottom: 14px; }
+        .trust-card h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 6px; }
+        .trust-card p { font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; }
+        @media (max-width: 700px) { .trust-grid { grid-template-columns: 1fr; gap: 12px; } }
 
-        /* ===== TRUST / GUARANTEE ===== */
-        .trust-section {
-            max-width: 1200px; margin: 0 auto;
-            padding: 0 24px 80px;
-        }
-        .trust-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-        .trust-card {
-            text-align: center;
-            padding: 28px 20px;
-            border-radius: var(--radius);
-            border: 1px solid var(--border);
-            background: var(--surface);
-        }
-        .trust-icon {
-            font-size: 28px; margin-bottom: 14px;
-        }
-        .trust-card h4 {
-            font-size: 0.95rem; font-weight: 700; margin-bottom: 6px;
-        }
-        .trust-card p {
-            font-size: 0.8rem; color: var(--text-muted); line-height: 1.5;
-        }
-        @media (max-width: 700px) {
-            .trust-grid { grid-template-columns: 1fr; gap: 12px; }
-        }
-
-        /* ===== FOOTER ===== */
-        .footer {
-            border-top: 1px solid var(--border);
-            padding: 40px 24px;
-            text-align: center;
-        }
-        .footer-inner {
-            max-width: 1200px; margin: 0 auto;
-        }
-        .footer-links {
-            display: flex; justify-content: center; gap: 28px;
-            margin-bottom: 20px; flex-wrap: wrap;
-        }
-        .footer-links a {
-            color: var(--text-muted); text-decoration: none;
-            font-size: 13px; font-weight: 500;
-            transition: color 0.2s;
-        }
+        .footer { border-top: 1px solid var(--border); padding: 40px 24px; text-align: center; }
+        .footer-inner { max-width: 1200px; margin: 0 auto; }
+        .footer-links { display: flex; justify-content: center; gap: 28px; margin-bottom: 20px; flex-wrap: wrap; }
+        .footer-links a { color: var(--text-muted); text-decoration: none; font-size: 13px; font-weight: 500; transition: color 0.2s; }
         .footer-links a:hover { color: var(--text); }
-        .footer-copy {
-            font-size: 12px; color: var(--text-muted);
-        }
+        .footer-copy { font-size: 12px; color: var(--text-muted); }
         .footer-copy a { color: var(--text-muted); text-decoration: none; }
         .footer-copy a:hover { color: var(--accent); }
 
-        /* ===== ANIMATIONS ===== */
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(24px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .product-card {
-            opacity: 0;
-            animation: fadeUp 0.5s ease forwards;
-        }
-        .product-card:nth-child(1) { animation-delay: 0.05s; }
-        .product-card:nth-child(2) { animation-delay: 0.1s; }
-        .product-card:nth-child(3) { animation-delay: 0.15s; }
-        .product-card:nth-child(4) { animation-delay: 0.2s; }
-        .product-card:nth-child(5) { animation-delay: 0.25s; }
-        .product-card:nth-child(6) { animation-delay: 0.3s; }
-        .product-card:nth-child(7) { animation-delay: 0.35s; }
-        .product-card:nth-child(8) { animation-delay: 0.4s; }
-        .product-card:nth-child(9) { animation-delay: 0.45s; }
-        .product-card:nth-child(10) { animation-delay: 0.5s; }
-        .product-card:nth-child(11) { animation-delay: 0.55s; }
-        .product-card:nth-child(12) { animation-delay: 0.6s; }
-
-        /* ===== SCROLL-TRIGGERED (JS) ===== */
+        .product-card { opacity: 0; animation: fadeUp 0.5s ease forwards; }
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
         .reveal { opacity: 0; transform: translateY(20px); transition: all 0.6s ease; }
         .reveal.visible { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body>
-
-<!-- NAV -->
-<nav class="nav">
-    <div class="nav-inner">
-        <a href="https://ryudi84.github.io/sovereign-tools/" class="nav-logo">
-            <span class="logo-icon">F</span>
-            Forge Tools
-        </a>
-        <div class="nav-links">
-            <a href="https://ryudi84.github.io/sovereign-tools/">Free Tools</a>
-            <a href="https://ryudi84.github.io/sovereign-tools/blog/">Blog</a>
-            <a href="https://ryudi84.github.io/sovereign-tools/store/" class="active">Store</a>
-            <a href="https://github.com/ryudi84/sovereign-tools" target="_blank" rel="noopener">GitHub</a>
-        </div>
+<nav class="nav"><div class="nav-inner">
+    <a href="https://ryudi84.github.io/sovereign-tools/" class="nav-logo">
+        <span class="logo-icon">F</span> Forge Tools
+    </a>
+    <div class="nav-links">
+        <a href="https://ryudi84.github.io/sovereign-tools/">Free Tools</a>
+        <a href="https://ryudi84.github.io/sovereign-tools/blog/">Blog</a>
+        <a href="https://ryudi84.github.io/sovereign-tools/store/" class="active">Store</a>
+        <a href="https://ryudi84.github.io/sovereign-tools/claws/">Claws</a>
+        <a href="https://github.com/ryudi84/sovereign-tools" target="_blank" rel="noopener">GitHub</a>
     </div>
-</nav>
+</div></nav>
 
-<!-- HERO -->
-<section class="hero">
-    <div class="hero-content">
-        <div class="hero-badge">
-            <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0l2.5 5L16 6l-4 3.5L13 16l-5-3-5 3 1-6.5L0 6l5.5-1z"/></svg>
-            Premium Developer Resources
-        </div>
-        <h1>Ship Faster with<br><span class="gradient">Ready-Made Templates</span></h1>
-        <p>Production-ready boilerplates, component kits, prompt packs, and templates. Stop building from scratch. Start shipping.</p>
-        <div class="hero-stats">
-            <div class="hero-stat">
-                <div class="num">12</div>
-                <div class="label">Products</div>
-            </div>
-            <div class="hero-stat">
-                <div class="num">$9</div>
-                <div class="label">Starting at</div>
-            </div>
-            <div class="hero-stat">
-                <div class="num">100%</div>
-                <div class="label">Satisfaction</div>
-            </div>
-        </div>
+<section class="hero"><div class="hero-content">
+    <div class="hero-badge">
+        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0l2.5 5L16 6l-4 3.5L13 16l-5-3-5 3 1-6.5L0 6l5.5-1z"/></svg>
+        100 Premium Developer Products
     </div>
-</section>
+    <h1>Ship Faster with<br><span class="gradient">Ready-Made Everything</span></h1>
+    <p>Boilerplates, prompts, templates, cheat sheets, starter kits, and design assets. Stop building from scratch.</p>
+    <div class="hero-stats">
+        <div class="hero-stat"><div class="num">100</div><div class="label">Products</div></div>
+        <div class="hero-stat"><div class="num">$5</div><div class="label">Starting at</div></div>
+        <div class="hero-stat"><div class="num">7</div><div class="label">Categories</div></div>
+    </div>
+</div></section>
 
-<!-- FILTER BAR -->
 <div class="filter-bar">
-    <button class="filter-btn active" data-filter="all">All Products</button>
-    <button class="filter-btn" data-filter="boilerplate">Boilerplates</button>
-    <button class="filter-btn" data-filter="components">Components</button>
-    <button class="filter-btn" data-filter="templates">Templates</button>
-    <button class="filter-btn" data-filter="prompts">Prompts</button>
-    <button class="filter-btn" data-filter="bundle">Bundles</button>
+    <button class="filter-btn active" data-filter="all">All Products</button><button class="filter-btn" data-filter="cheatsheets">Cheat Sheets</button><button class="filter-btn" data-filter="starters">Code Starter Kits</button><button class="filter-btn" data-filter="design">Design Assets</button><button class="filter-btn" data-filter="guides">Mini Guides</button><button class="filter-btn" data-filter="premium">Premium Bundles</button><button class="filter-btn" data-filter="prompts">Prompt Packs</button><button class="filter-btn" data-filter="templates">Template Bundles</button>
 </div>
 
-<!-- PRODUCTS -->
-<section class="products-section">
-    <div class="products-grid" id="productsGrid">
-
-        <!-- 1. SaaS Boilerplate Kit — $149 -->
-        <div class="product-card featured" data-category="boilerplate" data-price="149">
+<section class="products-section"><div class="products-grid" id="productsGrid">
+    
+        <div class="product-card featured" data-category="premium" data-price="149">
             <span class="featured-badge">Premium</span>
-            <div class="card-icon icon-gold">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e3b341" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            <div class="card-icon" style="background:rgba(227,179,65,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e3b341" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
             </div>
-            <div class="card-category cat-boilerplate">Boilerplate</div>
-            <div class="card-title">SaaS Boilerplate Kit</div>
-            <div class="card-desc">Full Next.js 14 SaaS starter: auth, payments, email, SEO, dashboard. Ship your SaaS in days, not months.</div>
+            <div class="card-category" style="color:#e3b341">Premium Bundles</div>
+            <div class="card-title">SaaS Boilerplate Kit — Complete Starter</div>
+            <div class="card-desc">Everything you need to launch a SaaS in a weekend. Next.js 15 app with Stripe billing, NextAuth, Prisma, admin dashboard...</div>
             <div class="card-footer">
                 <div class="card-price"><span class="dollar">$</span>149</div>
-                <a class="buy-btn" href="https://sovereigntaylor.gumroad.com/l/mrazvh" target="_blank" rel="noopener">Buy Now</a>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
             </div>
         </div>
-
-        <!-- 2. API Boilerplate Kit — $29 -->
-        <div class="product-card" data-category="boilerplate" data-price="29">
-            <div class="card-icon icon-blue">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#58a6ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        <div class="product-card featured" data-category="premium" data-price="99">
+            <span class="featured-badge">Premium</span>
+            <div class="card-icon" style="background:rgba(227,179,65,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e3b341" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
             </div>
-            <div class="card-category cat-boilerplate">Boilerplate</div>
-            <div class="card-title">API Boilerplate Kit &mdash; 5 Templates</div>
-            <div class="card-desc">5 production-ready API templates: REST, GraphQL, WebSocket, gRPC, Webhook handler.</div>
+            <div class="card-category" style="color:#e3b341">Premium Bundles</div>
+            <div class="card-title">Agency Toolkit — Scale Your Digital Agency</div>
+            <div class="card-desc">Run your agency like a Fortune 500 runs its departments. Project management templates, client communication playbooks, S...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>99</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card featured" data-category="premium" data-price="79">
+            <span class="featured-badge">Premium</span>
+            <div class="card-icon" style="background:rgba(227,179,65,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e3b341" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <div class="card-category" style="color:#e3b341">Premium Bundles</div>
+            <div class="card-title">The Complete Developer Toolkit — Everything Bundle</div>
+            <div class="card-desc">Every developer product we make, in one bundle. All cheat sheets, all starter kits, all templates, and all guides. 50+ i...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>79</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card featured" data-category="premium" data-price="59">
+            <span class="featured-badge">Premium</span>
+            <div class="card-icon" style="background:rgba(227,179,65,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e3b341" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <div class="card-category" style="color:#e3b341">Premium Bundles</div>
+            <div class="card-title">AI Automation Masterclass Kit</div>
+            <div class="card-desc">Automate your business with AI. Includes 200 prompts across 10 industries, n8n workflow templates, API integration guide...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>59</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card featured" data-category="premium" data-price="49">
+            <span class="featured-badge">Premium</span>
+            <div class="card-icon" style="background:rgba(227,179,65,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e3b341" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <div class="card-category" style="color:#e3b341">Premium Bundles</div>
+            <div class="card-title">Freelancer Starter Pack — Business in a Box</div>
+            <div class="card-desc">Go from employee to freelancer today. Includes contract templates, invoice system, proposal frameworks, client onboardin...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>49</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="starters" data-price="39">
+            
+            <div class="card-icon" style="background:rgba(63,185,80,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3fb950" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <div class="card-category" style="color:#3fb950">Code Starter Kits</div>
+            <div class="card-title">Django SaaS Starter Kit</div>
+            <div class="card-desc">Launch a SaaS on Django in a weekend. User auth, Stripe billing, team management, admin dashboard, email notifications, ...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>39</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="starters" data-price="39">
+            
+            <div class="card-icon" style="background:rgba(63,185,80,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3fb950" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <div class="card-category" style="color:#3fb950">Code Starter Kits</div>
+            <div class="card-title">Next.js SaaS Boilerplate</div>
+            <div class="card-desc">Full-stack Next.js 15 SaaS template. App Router, Server Actions, Prisma, NextAuth, Stripe subscriptions, email with Rese...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>39</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="starters" data-price="29">
+            
+            <div class="card-icon" style="background:rgba(63,185,80,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3fb950" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <div class="card-category" style="color:#3fb950">Code Starter Kits</div>
+            <div class="card-title">API Boilerplate Kit — 5 Production-Ready Templates</div>
+            <div class="card-desc">Stop writing the same auth/CRUD/middleware code from scratch. 5 production-ready API boilerplates: REST with Express, Gr...</div>
             <div class="card-footer">
                 <div class="card-price"><span class="dollar">$</span>29</div>
                 <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
-                    Buy Now
-                    <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
                 </a>
             </div>
         </div>
-
-        <!-- 3. TailwindKit — $20 -->
-        <div class="product-card" data-category="components" data-price="20">
-            <div class="card-icon icon-purple">
+        <div class="product-card" data-category="starters" data-price="29">
+            
+            <div class="card-icon" style="background:rgba(63,185,80,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3fb950" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <div class="card-category" style="color:#3fb950">Code Starter Kits</div>
+            <div class="card-title">MERN Stack Starter — Full App Template</div>
+            <div class="card-desc">MongoDB + Express + React + Node.js — wired up and ready to go. User auth, file uploads, real-time chat with Socket.io, ...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>29</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="starters" data-price="25">
+            
+            <div class="card-icon" style="background:rgba(63,185,80,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3fb950" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <div class="card-category" style="color:#3fb950">Code Starter Kits</div>
+            <div class="card-title">React Dashboard Starter</div>
+            <div class="card-desc">Beautiful admin dashboard out of the box. React 19 + TypeScript + Tailwind + Recharts. Includes sidebar nav, data tables...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>25</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="starters" data-price="25">
+            
+            <div class="card-icon" style="background:rgba(63,185,80,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3fb950" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <div class="card-category" style="color:#3fb950">Code Starter Kits</div>
+            <div class="card-title">T3 Stack Starter — Next + tRPC + Prisma</div>
+            <div class="card-desc">The T3 stack, production-ready. Next.js 15, tRPC, Prisma, NextAuth, Tailwind, and TypeScript. End-to-end type safety fro...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>25</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="design" data-price="20">
+            
+            <div class="card-icon" style="background:rgba(188,140,255,0.12)">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#bc8cff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
             </div>
-            <div class="card-category cat-components">Components</div>
-            <div class="card-title">TailwindKit &mdash; 24 Production Components</div>
-            <div class="card-desc">24 copy-paste Tailwind CSS components: navbars, heroes, pricing tables, footers, and more.</div>
+            <div class="card-category" style="color:#bc8cff">Design Assets</div>
+            <div class="card-title">TailwindKit — 50+ UI Components</div>
+            <div class="card-desc">Ship beautiful UIs in minutes. TailwindKit includes 50+ production-ready Tailwind CSS components: navbars, modals, cards...</div>
             <div class="card-footer">
                 <div class="card-price"><span class="dollar">$</span>20</div>
-                <a href="https://sovereigntaylor.gumroad.com/l/mirvqw" target="_blank" rel="noopener" class="buy-btn">
-                    Buy Now
-                    <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
                 </a>
             </div>
         </div>
-
-        <!-- 4. Marketing Prompt Pack — $19 -->
+        <div class="product-card" data-category="templates" data-price="19">
+            
+            <div class="card-icon" style="background:rgba(88,166,255,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#58a6ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            </div>
+            <div class="card-category" style="color:#58a6ff">Template Bundles</div>
+            <div class="card-title">Business Plan Templates — 5 Frameworks</div>
+            <div class="card-desc">Impress investors with 5 business plan templates. Lean Canvas, traditional plan, pitch deck outline, financial projectio...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>19</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="starters" data-price="19">
+            
+            <div class="card-icon" style="background:rgba(63,185,80,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3fb950" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <div class="card-category" style="color:#3fb950">Code Starter Kits</div>
+            <div class="card-title">Chrome Extension Starter Kit</div>
+            <div class="card-desc">Build Chrome extensions without the boilerplate pain. Manifest V3, popup UI, content scripts, background service worker,...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>19</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="starters" data-price="19">
+            
+            <div class="card-icon" style="background:rgba(63,185,80,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3fb950" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <div class="card-category" style="color:#3fb950">Code Starter Kits</div>
+            <div class="card-title">Express.js API Starter — Auth, CRUD, Tests</div>
+            <div class="card-desc">Ship your Node.js API today. Express starter with JWT auth, CRUD routes, Prisma ORM, input validation, error handling, r...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>19</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="starters" data-price="19">
+            
+            <div class="card-icon" style="background:rgba(63,185,80,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3fb950" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <div class="card-category" style="color:#3fb950">Code Starter Kits</div>
+            <div class="card-title">FastAPI Starter — Python API Boilerplate</div>
+            <div class="card-desc">Python API development at lightspeed. FastAPI starter with OAuth2, SQLAlchemy, Alembic migrations, Pydantic schemas, bac...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>19</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
         <div class="product-card" data-category="prompts" data-price="19">
-            <div class="card-icon icon-pink">
+            
+            <div class="card-icon" style="background:rgba(247,120,186,0.12)">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f778ba" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
             </div>
-            <div class="card-category cat-prompts">Prompts</div>
-            <div class="card-title">Marketing Prompt Pack &mdash; 50 Prompts</div>
-            <div class="card-desc">50 AI prompts for marketing: ad copy, social media, email campaigns, SEO content.</div>
+            <div class="card-category" style="color:#f778ba">Prompt Packs</div>
+            <div class="card-title">Marketing Prompts — 50 AI Prompts for Marketers</div>
+            <div class="card-desc">Automate your marketing with 50 battle-tested AI prompts. Covers ad copy, social media posts, email campaigns, SEO conte...</div>
             <div class="card-footer">
                 <div class="card-price"><span class="dollar">$</span>19</div>
-                <a href="https://sovereigntaylor.gumroad.com/l/ptius" target="_blank" rel="noopener" class="buy-btn">
-                    Buy Now
-                    <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
                 </a>
             </div>
         </div>
-
-        <!-- 5. Real Estate Prompt Pack — $19 -->
         <div class="product-card" data-category="prompts" data-price="19">
-            <div class="card-icon icon-orange">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f0883e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            
+            <div class="card-icon" style="background:rgba(247,120,186,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f778ba" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
             </div>
-            <div class="card-category cat-prompts">Prompts</div>
-            <div class="card-title">Real Estate Prompt Pack &mdash; 50 Prompts</div>
-            <div class="card-desc">50 AI prompts for real estate: listings, buyer emails, market analysis, social posts.</div>
+            <div class="card-category" style="color:#f778ba">Prompt Packs</div>
+            <div class="card-title">Real Estate AI Prompts — 50 Prompts for Agents</div>
+            <div class="card-desc">Generate listings, buyer emails, market analyses, and social posts in seconds. 50 prompts specifically crafted for real ...</div>
             <div class="card-footer">
                 <div class="card-price"><span class="dollar">$</span>19</div>
-                <a href="https://sovereigntaylor.gumroad.com/l/cnvlrz" target="_blank" rel="noopener" class="buy-btn">
-                    Buy Now
-                    <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
                 </a>
             </div>
         </div>
-
-        <!-- 6. 10 SaaS Landing Page Templates — $15 -->
-        <div class="product-card" data-category="templates" data-price="15">
-            <div class="card-icon icon-blue">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#58a6ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        <div class="product-card" data-category="templates" data-price="19">
+            
+            <div class="card-icon" style="background:rgba(88,166,255,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#58a6ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
             </div>
-            <div class="card-category cat-templates">Templates</div>
+            <div class="card-category" style="color:#58a6ff">Template Bundles</div>
+            <div class="card-title">Startup Pitch Deck — 15 Slide Template</div>
+            <div class="card-desc">Tell your story in 15 slides. Investor-ready pitch deck template with problem/solution, market size, traction, team, and...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>19</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="starters" data-price="19">
+            
+            <div class="card-icon" style="background:rgba(63,185,80,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3fb950" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <div class="card-category" style="color:#3fb950">Code Starter Kits</div>
+            <div class="card-title">Vue.js Admin Panel Starter</div>
+            <div class="card-desc">Enterprise-ready Vue 3 admin panel. Composition API, Pinia stores, Vue Router with guards, i18n, data tables, charts, an...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>19</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="templates" data-price="15">
+            
+            <div class="card-icon" style="background:rgba(88,166,255,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#58a6ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            </div>
+            <div class="card-category" style="color:#58a6ff">Template Bundles</div>
             <div class="card-title">10 SaaS Landing Page Templates</div>
-            <div class="card-desc">10 HTML landing page templates optimized for SaaS conversion.</div>
+            <div class="card-desc">Launch your SaaS faster with 10 pixel-perfect, conversion-optimized landing page templates. Built with HTML/CSS/Tailwind...</div>
             <div class="card-footer">
                 <div class="card-price"><span class="dollar">$</span>15</div>
-                <a href="https://sovereigntaylor.gumroad.com/l/rtysop" target="_blank" rel="noopener" class="buy-btn">
-                    Buy Now
-                    <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
                 </a>
             </div>
         </div>
-
-        <!-- 7. Dev Portfolio Template — $15 -->
         <div class="product-card" data-category="templates" data-price="15">
-            <div class="card-icon icon-purple">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#bc8cff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            
+            <div class="card-icon" style="background:rgba(88,166,255,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#58a6ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
             </div>
-            <div class="card-category cat-templates">Templates</div>
-            <div class="card-title">Dev Portfolio Template</div>
-            <div class="card-desc">Professional developer portfolio template. Clean, responsive, easy to customize.</div>
+            <div class="card-category" style="color:#58a6ff">Template Bundles</div>
+            <div class="card-title">Agency Proposal Templates — Win More Clients</div>
+            <div class="card-desc">Close bigger deals with 8 agency proposal templates. Web design, marketing retainer, branding, app development, SEO, and...</div>
             <div class="card-footer">
                 <div class="card-price"><span class="dollar">$</span>15</div>
-                <a href="https://sovereigntaylor.gumroad.com/l/vkbeu" target="_blank" rel="noopener" class="buy-btn">
-                    Buy Now
-                    <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
                 </a>
             </div>
         </div>
-
-        <!-- 8. Landing Page Copy Templates — $12 -->
-        <div class="product-card" data-category="templates" data-price="12">
-            <div class="card-icon icon-green">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3fb950" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        <div class="product-card" data-category="starters" data-price="15">
+            
+            <div class="card-icon" style="background:rgba(63,185,80,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3fb950" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
             </div>
-            <div class="card-category cat-templates">Templates</div>
-            <div class="card-title">Landing Page Copy Templates &mdash; 10 Templates</div>
-            <div class="card-desc">10 proven copywriting templates for landing pages. Headlines, CTAs, feature sections.</div>
+            <div class="card-category" style="color:#3fb950">Code Starter Kits</div>
+            <div class="card-title">CLI Tool Starter — Node.js</div>
+            <div class="card-desc">Build beautiful CLI tools fast. Node.js CLI starter with argument parsing, interactive prompts, progress bars, colored o...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>15</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="templates" data-price="15">
+            
+            <div class="card-icon" style="background:rgba(88,166,255,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#58a6ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            </div>
+            <div class="card-category" style="color:#58a6ff">Template Bundles</div>
+            <div class="card-title">Cold Email Playbook — 15 Sequences That Convert</div>
+            <div class="card-desc">Book more meetings with cold email. 15 proven sequences for SaaS sales, agency outreach, partnership requests, and inves...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>15</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="design" data-price="15">
+            
+            <div class="card-icon" style="background:rgba(188,140,255,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#bc8cff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            </div>
+            <div class="card-category" style="color:#bc8cff">Design Assets</div>
+            <div class="card-title">Dark Mode UI Kit — 40 Components</div>
+            <div class="card-desc">Ship dark mode that doesn&#x27;t suck. 40 Tailwind components designed dark-first: dashboards, forms, tables, modals, and nav...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>15</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="design" data-price="15">
+            
+            <div class="card-icon" style="background:rgba(188,140,255,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#bc8cff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            </div>
+            <div class="card-category" style="color:#bc8cff">Design Assets</div>
+            <div class="card-title">Dashboard Chart Components — 20 Recharts Templates</div>
+            <div class="card-desc">Add beautiful charts to your React dashboard. 20 Recharts components: line, bar, area, pie, donut, scatter, treemap, fun...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>15</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="starters" data-price="15">
+            
+            <div class="card-icon" style="background:rgba(63,185,80,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3fb950" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <div class="card-category" style="color:#3fb950">Code Starter Kits</div>
+            <div class="card-title">Dev Portfolio Starter Kit</div>
+            <div class="card-desc">Stand out from the crowd with a stunning developer portfolio. This starter kit includes a complete Next.js site with pro...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>15</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="starters" data-price="15">
+            
+            <div class="card-icon" style="background:rgba(63,185,80,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3fb950" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <div class="card-category" style="color:#3fb950">Code Starter Kits</div>
+            <div class="card-title">Flask Microservice Template</div>
+            <div class="card-desc">Lightweight Flask microservice with health checks, structured logging, config management, and Docker setup. Perfect for ...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>15</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="templates" data-price="15">
+            
+            <div class="card-icon" style="background:rgba(88,166,255,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#58a6ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            </div>
+            <div class="card-category" style="color:#58a6ff">Template Bundles</div>
+            <div class="card-title">Freelancer Invoice &amp; Contract Templates</div>
+            <div class="card-desc">Get paid on time and protect yourself legally. 10 templates including invoices, contracts, proposals, SOWs, NDAs, and la...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>15</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="templates" data-price="15">
+            
+            <div class="card-icon" style="background:rgba(88,166,255,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#58a6ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            </div>
+            <div class="card-category" style="color:#58a6ff">Template Bundles</div>
+            <div class="card-title">Notion Dashboard Templates — Startup Edition</div>
+            <div class="card-desc">Run your startup from Notion. OKR tracker, hiring pipeline, investor CRM, product roadmap, content calendar, and financi...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>15</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="templates" data-price="15">
+            
+            <div class="card-icon" style="background:rgba(88,166,255,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#58a6ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            </div>
+            <div class="card-category" style="color:#58a6ff">Template Bundles</div>
+            <div class="card-title">Product Roadmap Templates</div>
+            <div class="card-desc">Plan your product like a PM at Stripe. Quarterly roadmap, feature prioritization matrix, user story templates, release n...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>15</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="design" data-price="15">
+            
+            <div class="card-icon" style="background:rgba(188,140,255,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#bc8cff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            </div>
+            <div class="card-category" style="color:#bc8cff">Design Assets</div>
+            <div class="card-title">Responsive Email Templates — 12 Designs</div>
+            <div class="card-desc">Emails that look great everywhere. 12 responsive HTML email templates tested across Gmail, Outlook, Apple Mail, and mobi...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>15</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="prompts" data-price="15">
+            
+            <div class="card-icon" style="background:rgba(247,120,186,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f778ba" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <div class="card-category" style="color:#f778ba">Prompt Packs</div>
+            <div class="card-title">SaaS Growth AI Prompt Pack — 50 Expert Prompts</div>
+            <div class="card-desc">50 prompts to scale your SaaS. Onboarding emails, feature announcements, churn prevention messages, in-app copy, changel...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>15</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="starters" data-price="15">
+            
+            <div class="card-icon" style="background:rgba(63,185,80,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3fb950" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <div class="card-category" style="color:#3fb950">Code Starter Kits</div>
+            <div class="card-title">Svelte App Starter Kit</div>
+            <div class="card-desc">SvelteKit starter with auth, database, and deployment baked in. Includes Lucia auth, Drizzle ORM, Tailwind, and adapter ...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>15</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="starters" data-price="15">
+            
+            <div class="card-icon" style="background:rgba(63,185,80,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3fb950" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <div class="card-category" style="color:#3fb950">Code Starter Kits</div>
+            <div class="card-title">Telegram Bot Starter — Python</div>
+            <div class="card-desc">Deploy a Telegram bot in 15 minutes. Python starter with command handlers, inline keyboards, database persistence, webho...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>15</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="templates" data-price="12">
+            
+            <div class="card-icon" style="background:rgba(88,166,255,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#58a6ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            </div>
+            <div class="card-category" style="color:#58a6ff">Template Bundles</div>
+            <div class="card-title">10 Notion Templates for Developers</div>
+            <div class="card-desc">Organize your dev life with 10 plug-and-play Notion templates. Includes sprint boards, bug trackers, API documentation, ...</div>
             <div class="card-footer">
                 <div class="card-price"><span class="dollar">$</span>12</div>
-                <a href="https://sovereigntaylor.gumroad.com/l/ryyry" target="_blank" rel="noopener" class="buy-btn">
-                    Buy Now
-                    <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
                 </a>
             </div>
         </div>
-
-        <!-- 9. 10 Notion Templates Bundle — $12 -->
-        <div class="product-card" data-category="bundle" data-price="12">
-            <div class="card-icon icon-orange">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f0883e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-            </div>
-            <div class="card-category cat-bundle">Bundle</div>
-            <div class="card-title">10 Notion Templates Bundle</div>
-            <div class="card-desc">10 Notion templates: project tracker, CRM, habit tracker, budget, content calendar, and more.</div>
-            <div class="card-footer">
-                <div class="card-price"><span class="dollar">$</span>12</div>
-                <a href="https://sovereigntaylor.gumroad.com/l/kjaedb" target="_blank" rel="noopener" class="buy-btn">
-                    Buy Now
-                    <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
-                </a>
-            </div>
-        </div>
-
-        <!-- 10. 8 Professional Email Templates — $12 -->
         <div class="product-card" data-category="templates" data-price="12">
-            <div class="card-icon icon-pink">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f778ba" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            
+            <div class="card-icon" style="background:rgba(88,166,255,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#58a6ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
             </div>
-            <div class="card-category cat-templates">Templates</div>
+            <div class="card-category" style="color:#58a6ff">Template Bundles</div>
             <div class="card-title">8 Professional Email Templates</div>
-            <div class="card-desc">8 email templates: welcome, onboarding, newsletter, feedback request, re-engagement, and more.</div>
+            <div class="card-desc">Close more deals with 8 high-converting email templates for cold outreach, follow-ups, proposals, invoicing, and client ...</div>
             <div class="card-footer">
                 <div class="card-price"><span class="dollar">$</span>12</div>
-                <a href="https://sovereigntaylor.gumroad.com/l/ehmhk" target="_blank" rel="noopener" class="buy-btn">
-                    Buy Now
-                    <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
                 </a>
             </div>
         </div>
-
-        <!-- 11. 100 Production Prompts — $9 -->
-        <div class="product-card" data-category="prompts" data-price="9">
-            <div class="card-icon icon-green">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3fb950" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        <div class="product-card" data-category="cheatsheets" data-price="12">
+            
+            <div class="card-icon" style="background:rgba(240,136,62,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f0883e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
             </div>
-            <div class="card-category cat-prompts">Prompts</div>
-            <div class="card-title">100 Production Prompts for Developers</div>
-            <div class="card-desc">100 battle-tested AI prompts for coding, debugging, architecture, testing, and documentation.</div>
+            <div class="card-category" style="color:#f0883e">Cheat Sheets</div>
+            <div class="card-title">AWS Cheat Sheet — Developer Quick Reference</div>
+            <div class="card-desc">Navigate AWS without drowning. One-page reference for EC2, S3, Lambda, RDS, IAM, CloudFormation, and the 20 services tha...</div>
             <div class="card-footer">
-                <div class="card-price"><span class="dollar">$</span>9</div>
-                <a href="https://sovereigntaylor.gumroad.com/l/fcyupr" target="_blank" rel="noopener" class="buy-btn">
-                    Buy Now
-                    <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                <div class="card-price"><span class="dollar">$</span>12</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
                 </a>
             </div>
         </div>
-
-        <!-- 12. Developer Cheat Sheet Bundle — $9 -->
-        <div class="product-card" data-category="bundle" data-price="9">
-            <div class="card-icon icon-blue">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#58a6ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        <div class="product-card" data-category="templates" data-price="12">
+            
+            <div class="card-icon" style="background:rgba(88,166,255,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#58a6ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
             </div>
-            <div class="card-category cat-bundle">Bundle</div>
-            <div class="card-title">Developer Cheat Sheet Bundle</div>
-            <div class="card-desc">5 cheat sheets: Git, Docker, Python, SQL, React. Print-ready PDFs.</div>
+            <div class="card-category" style="color:#58a6ff">Template Bundles</div>
+            <div class="card-title">Client Onboarding Templates</div>
+            <div class="card-desc">Onboard clients like a pro agency. Welcome packet, project brief, timeline template, feedback form, handoff checklist, a...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>12</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="prompts" data-price="12">
+            
+            <div class="card-icon" style="background:rgba(247,120,186,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f778ba" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <div class="card-category" style="color:#f778ba">Prompt Packs</div>
+            <div class="card-title">Copywriting AI Prompt Pack — 50 Expert Prompts</div>
+            <div class="card-desc">Master persuasion with 50 copywriting prompts. Headlines, value propositions, case studies, testimonials, FAQ sections, ...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>12</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="prompts" data-price="12">
+            
+            <div class="card-icon" style="background:rgba(247,120,186,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f778ba" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <div class="card-category" style="color:#f778ba">Prompt Packs</div>
+            <div class="card-title">Data Analysis AI Prompt Pack — 50 Expert Prompts</div>
+            <div class="card-desc">50 prompts for data analysis. SQL query generation, chart descriptions, statistical summaries, anomaly detection narrati...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>12</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="prompts" data-price="12">
+            
+            <div class="card-icon" style="background:rgba(247,120,186,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f778ba" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <div class="card-category" style="color:#f778ba">Prompt Packs</div>
+            <div class="card-title">Finance AI Prompt Pack — 50 Expert Prompts</div>
+            <div class="card-desc">50 prompts for finance professionals. Financial analysis, investment summaries, client reports, market commentary, compl...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>12</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="prompts" data-price="12">
+            
+            <div class="card-icon" style="background:rgba(247,120,186,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f778ba" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <div class="card-category" style="color:#f778ba">Prompt Packs</div>
+            <div class="card-title">Healthcare AI Prompt Pack — 50 Expert Prompts</div>
+            <div class="card-desc">50 AI prompts for healthcare professionals. Patient communications, treatment summaries, insurance appeal letters, appoi...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>12</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="design" data-price="12">
+            
+            <div class="card-icon" style="background:rgba(188,140,255,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#bc8cff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            </div>
+            <div class="card-category" style="color:#bc8cff">Design Assets</div>
+            <div class="card-title">Icon Pack — 200 Developer-Themed SVG Icons</div>
+            <div class="card-desc">200 pixel-perfect SVG icons for developer tools, dashboards, and documentation sites. Includes code, terminal, database,...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>12</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="templates" data-price="12">
+            
+            <div class="card-icon" style="background:rgba(88,166,255,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#58a6ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            </div>
+            <div class="card-category" style="color:#58a6ff">Template Bundles</div>
+            <div class="card-title">Landing Page Copy Templates — 12 Conversion Frameworks</div>
+            <div class="card-desc">Never stare at a blank page again. 12 proven copywriting frameworks (AIDA, PAS, BAB, StoryBrand, and more) adapted into ...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>12</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="design" data-price="12">
+            
+            <div class="card-icon" style="background:rgba(188,140,255,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#bc8cff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            </div>
+            <div class="card-category" style="color:#bc8cff">Design Assets</div>
+            <div class="card-title">Landing Page Wireframe Kit</div>
+            <div class="card-desc">Plan before you build. 25 landing page wireframe components in HTML/CSS. Hero sections, feature grids, pricing tables, t...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>12</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="prompts" data-price="12">
+            
+            <div class="card-icon" style="background:rgba(247,120,186,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f778ba" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <div class="card-category" style="color:#f778ba">Prompt Packs</div>
+            <div class="card-title">Legal AI Prompt Pack — 50 Expert Prompts</div>
+            <div class="card-desc">Draft contracts, NDAs, cease-and-desist letters, privacy policies, and terms of service in minutes. 50 prompts designed ...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>12</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="templates" data-price="12">
+            
+            <div class="card-icon" style="background:rgba(88,166,255,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#58a6ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            </div>
+            <div class="card-category" style="color:#58a6ff">Template Bundles</div>
+            <div class="card-title">SaaS Metrics Dashboard Templates</div>
+            <div class="card-desc">Track MRR, churn, CAC, LTV, and 20 more metrics. Google Sheets and Notion templates with formulas pre-built. Plug in you...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>12</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="templates" data-price="12">
+            
+            <div class="card-icon" style="background:rgba(88,166,255,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#58a6ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            </div>
+            <div class="card-category" style="color:#58a6ff">Template Bundles</div>
+            <div class="card-title">Social Media Content Calendar — 12 Month Kit</div>
+            <div class="card-desc">Plan a full year of social content in one sitting. 12-month content calendar with 365 post ideas, hashtag sets, optimal ...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>12</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="design" data-price="12">
+            
+            <div class="card-icon" style="background:rgba(188,140,255,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#bc8cff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            </div>
+            <div class="card-category" style="color:#bc8cff">Design Assets</div>
+            <div class="card-title">Tailwind Preset Collection — 10 Custom Themes</div>
+            <div class="card-desc">Transform your Tailwind project with 10 professional presets. Startup, agency, e-commerce, blog, portfolio, SaaS, docs, ...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>12</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="templates" data-price="12">
+            
+            <div class="card-icon" style="background:rgba(88,166,255,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#58a6ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            </div>
+            <div class="card-category" style="color:#58a6ff">Template Bundles</div>
+            <div class="card-title">Technical Documentation Templates</div>
+            <div class="card-desc">Document your code like a senior engineer. Templates for API docs, architecture decision records, runbooks, post-mortems...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>12</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="prompts" data-price="9">
+            
+            <div class="card-icon" style="background:rgba(247,120,186,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f778ba" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <div class="card-category" style="color:#f778ba">Prompt Packs</div>
+            <div class="card-title">100 Production-Ready AI Prompts for Developers</div>
+            <div class="card-desc">Stop wasting hours crafting prompts from scratch. This battle-tested collection of 100 prompts covers code review, debug...</div>
             <div class="card-footer">
                 <div class="card-price"><span class="dollar">$</span>9</div>
                 <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
-                    Buy Now
-                    <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
                 </a>
             </div>
         </div>
-
-    </div>
-</section>
-
-<!-- FREE TOOLS BANNER -->
-<section class="free-banner reveal">
-    <div class="free-banner-inner">
-        <h3>Looking for Free Developer Tools?</h3>
-        <p>We also have 11+ free browser-based tools: JSON formatter, regex tester, CSS generators, JWT decoder, and more. No signup required.</p>
-        <a href="https://ryudi84.github.io/sovereign-tools/" class="free-tools-link">
-            Explore Free Tools
-            <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
-        </a>
-    </div>
-</section>
-
-<!-- TRUST SECTION -->
-<section class="trust-section reveal">
-    <div class="trust-grid">
-        <div class="trust-card">
-            <div class="trust-icon">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#3fb950" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <div class="product-card" data-category="guides" data-price="9">
+            
+            <div class="card-icon" style="background:rgba(227,179,65,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e3b341" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
             </div>
-            <h4>Secure Checkout</h4>
-            <p>All payments handled by Gumroad. Encrypted, safe, and trusted by thousands of creators and developers.</p>
-        </div>
-        <div class="trust-card">
-            <div class="trust-icon">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#58a6ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <div class="card-category" style="color:#e3b341">Mini Guides</div>
+            <div class="card-title">Authentication Done Right — JWT + OAuth in 30 Minutes</div>
+            <div class="card-desc">Stop getting auth wrong. Covers JWT tokens, refresh token rotation, OAuth 2.0 with Google/GitHub, session management, an...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>9</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
             </div>
-            <h4>Instant Delivery</h4>
-            <p>Get your files immediately after purchase. No waiting, no delays. Download and start building.</p>
         </div>
-        <div class="trust-card">
-            <div class="trust-icon">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#bc8cff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        <div class="product-card" data-category="guides" data-price="9">
+            
+            <div class="card-icon" style="background:rgba(227,179,65,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e3b341" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
             </div>
-            <h4>Developer Support</h4>
-            <p>Questions about a product? Reach out anytime. We help you get the most out of every purchase.</p>
+            <div class="card-category" style="color:#e3b341">Mini Guides</div>
+            <div class="card-title">Build a Serverless API with AWS Lambda in 30 Minutes</div>
+            <div class="card-desc">Pay per request, scale to millions. Covers Lambda functions, API Gateway, DynamoDB, and the Serverless Framework. Deploy...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>9</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
         </div>
-    </div>
-</section>
+        <div class="product-card" data-category="guides" data-price="9">
+            
+            <div class="card-icon" style="background:rgba(227,179,65,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e3b341" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            </div>
+            <div class="card-category" style="color:#e3b341">Mini Guides</div>
+            <div class="card-title">Build a Stripe Payment Integration in 30 Minutes</div>
+            <div class="card-desc">Accept payments today. Covers checkout sessions, webhooks, subscription management, and customer portal. Code examples i...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>9</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="prompts" data-price="9">
+            
+            <div class="card-icon" style="background:rgba(247,120,186,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f778ba" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <div class="card-category" style="color:#f778ba">Prompt Packs</div>
+            <div class="card-title">Code Review AI Prompt Pack — 50 Expert Prompts</div>
+            <div class="card-desc">50 prompts for thorough code reviews. Security audits, performance analysis, readability checks, architecture feedback, ...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>9</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="design" data-price="9">
+            
+            <div class="card-icon" style="background:rgba(188,140,255,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#bc8cff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            </div>
+            <div class="card-category" style="color:#bc8cff">Design Assets</div>
+            <div class="card-title">Color Palette Collection — 50 Curated Palettes</div>
+            <div class="card-desc">Never pick ugly colors again. 50 hand-curated color palettes organized by mood: professional, playful, bold, minimal, an...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>9</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="templates" data-price="9">
+            
+            <div class="card-icon" style="background:rgba(88,166,255,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#58a6ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            </div>
+            <div class="card-category" style="color:#58a6ff">Template Bundles</div>
+            <div class="card-title">Content Brief Templates for SEO</div>
+            <div class="card-desc">Write content that ranks. 5 content brief templates covering blog posts, pillar pages, comparison articles, listicles, a...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>9</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="guides" data-price="9">
+            
+            <div class="card-icon" style="background:rgba(227,179,65,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e3b341" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            </div>
+            <div class="card-category" style="color:#e3b341">Mini Guides</div>
+            <div class="card-title">Deploy a SaaS to Production in 30 Minutes</div>
+            <div class="card-desc">From &#x27;git push&#x27; to live customers in 30 minutes. Step-by-step guide covering Vercel/Railway deployment, custom domains, ...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>9</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="cheatsheets" data-price="9">
+            
+            <div class="card-icon" style="background:rgba(240,136,62,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f0883e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            </div>
+            <div class="card-category" style="color:#f0883e">Cheat Sheets</div>
+            <div class="card-title">Developer Cheat Sheet Bundle — 5 Essential References</div>
+            <div class="card-desc">Keep these on your second monitor forever. 5 beautifully designed, printable cheat sheets covering Python, SQL, Git, Rea...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>9</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="prompts" data-price="9">
+            
+            <div class="card-icon" style="background:rgba(247,120,186,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f778ba" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <div class="card-category" style="color:#f778ba">Prompt Packs</div>
+            <div class="card-title">E-commerce AI Prompt Pack — 50 Expert Prompts</div>
+            <div class="card-desc">Boost your store with 50 AI prompts. Product descriptions, collection pages, abandoned cart emails, review responses, FA...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>9</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="prompts" data-price="9">
+            
+            <div class="card-icon" style="background:rgba(247,120,186,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f778ba" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <div class="card-category" style="color:#f778ba">Prompt Packs</div>
+            <div class="card-title">Email Marketing AI Prompt Pack — 50 Expert Prompts</div>
+            <div class="card-desc">50 prompts for email marketing mastery. Welcome sequences, newsletters, re-engagement campaigns, product launches, and s...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>9</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="design" data-price="9">
+            
+            <div class="card-icon" style="background:rgba(188,140,255,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#bc8cff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            </div>
+            <div class="card-category" style="color:#bc8cff">Design Assets</div>
+            <div class="card-title">Gradient Collection — 100 CSS Gradients</div>
+            <div class="card-desc">100 beautiful CSS gradients ready for your next project. Organized by color family. Includes Tailwind classes, CSS code,...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>9</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="prompts" data-price="9">
+            
+            <div class="card-icon" style="background:rgba(247,120,186,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f778ba" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <div class="card-category" style="color:#f778ba">Prompt Packs</div>
+            <div class="card-title">HR &amp; Recruiting AI Prompt Pack — 50 Expert Prompts</div>
+            <div class="card-desc">Hire smarter with 50 AI prompts for HR teams. Job descriptions, interview questions, candidate emails, performance revie...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>9</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="guides" data-price="9">
+            
+            <div class="card-icon" style="background:rgba(227,179,65,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e3b341" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            </div>
+            <div class="card-category" style="color:#e3b341">Mini Guides</div>
+            <div class="card-title">Kubernetes Basics — Deploy Your App in 30 Minutes</div>
+            <div class="card-desc">Kubernetes without the PhD. Covers kubectl, pods, deployments, services, ingress, and secrets. Deploy a real app to a fr...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>9</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="cheatsheets" data-price="9">
+            
+            <div class="card-icon" style="background:rgba(240,136,62,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f0883e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            </div>
+            <div class="card-category" style="color:#f0883e">Cheat Sheets</div>
+            <div class="card-title">Kubernetes Cheat Sheet — Developer Quick Reference</div>
+            <div class="card-desc">kubectl cheat sheet plus architecture overview. Pods, services, deployments, configmaps, secrets, RBAC, and debugging co...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>9</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="templates" data-price="9">
+            
+            <div class="card-icon" style="background:rgba(88,166,255,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#58a6ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            </div>
+            <div class="card-category" style="color:#58a6ff">Template Bundles</div>
+            <div class="card-title">Newsletter Templates — 10 Proven Formats</div>
+            <div class="card-desc">Grow your newsletter to 10K subscribers. 10 email templates for welcome sequences, weekly digests, product launches, cur...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>9</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="templates" data-price="9">
+            
+            <div class="card-icon" style="background:rgba(88,166,255,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#58a6ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            </div>
+            <div class="card-category" style="color:#58a6ff">Template Bundles</div>
+            <div class="card-title">OKR Templates — Quarterly Goal Setting Kit</div>
+            <div class="card-desc">Set and track goals like Google. OKR templates for individuals, teams, and companies. Includes scoring rubrics, check-in...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>9</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="guides" data-price="9">
+            
+            <div class="card-icon" style="background:rgba(227,179,65,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e3b341" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            </div>
+            <div class="card-category" style="color:#e3b341">Mini Guides</div>
+            <div class="card-title">PostgreSQL Performance Tuning in 30 Minutes</div>
+            <div class="card-desc">Make your database fly. Covers indexing strategies, EXPLAIN ANALYZE, query optimization, connection pooling, vacuum tuni...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>9</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="templates" data-price="9">
+            
+            <div class="card-icon" style="background:rgba(88,166,255,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#58a6ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            </div>
+            <div class="card-category" style="color:#58a6ff">Template Bundles</div>
+            <div class="card-title">Resume &amp; CV Templates — 8 Modern Designs</div>
+            <div class="card-desc">Land your dream job with 8 ATS-friendly resume templates. Clean, modern designs for developers, designers, marketers, an...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>9</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="cheatsheets" data-price="9">
+            
+            <div class="card-icon" style="background:rgba(240,136,62,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f0883e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            </div>
+            <div class="card-category" style="color:#f0883e">Cheat Sheets</div>
+            <div class="card-title">Rust Cheat Sheet — Developer Quick Reference</div>
+            <div class="card-desc">Tame the borrow checker with this Rust cheat sheet. Ownership rules, lifetimes, traits, pattern matching, error handling...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>9</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="prompts" data-price="9">
+            
+            <div class="card-icon" style="background:rgba(247,120,186,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f778ba" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <div class="card-category" style="color:#f778ba">Prompt Packs</div>
+            <div class="card-title">SEO Content AI Prompt Pack — 50 Expert Prompts</div>
+            <div class="card-desc">Rank higher with 50 SEO-focused prompts. Blog post outlines, meta descriptions, FAQ schema content, internal linking sug...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>9</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="prompts" data-price="9">
+            
+            <div class="card-icon" style="background:rgba(247,120,186,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f778ba" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <div class="card-category" style="color:#f778ba">Prompt Packs</div>
+            <div class="card-title">Sales AI Prompt Pack — 50 Expert Prompts</div>
+            <div class="card-desc">Close more deals with 50 AI prompts for sales pros. Cold outreach, objection handling, follow-ups, demo scripts, and pro...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>9</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="design" data-price="9">
+            
+            <div class="card-icon" style="background:rgba(188,140,255,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#bc8cff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            </div>
+            <div class="card-category" style="color:#bc8cff">Design Assets</div>
+            <div class="card-title">Syntax Theme Pack — 10 Editor Color Themes</div>
+            <div class="card-desc">Code in style. 10 VS Code color themes: dark, light, high contrast, pastel, neon, forest, ocean, sunset, minimal, and re...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>9</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="guides" data-price="7">
+            
+            <div class="card-icon" style="background:rgba(227,179,65,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e3b341" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            </div>
+            <div class="card-category" style="color:#e3b341">Mini Guides</div>
+            <div class="card-title">Automate Everything with n8n in 30 Minutes</div>
+            <div class="card-desc">Connect 400+ apps without code. Self-host n8n, build your first workflow, handle errors, and schedule automations. Inclu...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>7</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="guides" data-price="7">
+            
+            <div class="card-icon" style="background:rgba(227,179,65,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e3b341" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            </div>
+            <div class="card-category" style="color:#e3b341">Mini Guides</div>
+            <div class="card-title">Build a Chrome Extension in 30 Minutes</div>
+            <div class="card-desc">Your first Chrome extension, start to finish. Manifest V3, popup UI, content scripts, and Chrome Web Store publishing. I...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>7</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="guides" data-price="7">
+            
+            <div class="card-icon" style="background:rgba(227,179,65,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e3b341" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            </div>
+            <div class="card-category" style="color:#e3b341">Mini Guides</div>
+            <div class="card-title">Build a REST API with FastAPI in 30 Minutes</div>
+            <div class="card-desc">Go from zero to a working API with authentication, CRUD endpoints, and auto-generated docs. Covers virtual environments,...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>7</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="guides" data-price="7">
+            
+            <div class="card-icon" style="background:rgba(227,179,65,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e3b341" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            </div>
+            <div class="card-category" style="color:#e3b341">Mini Guides</div>
+            <div class="card-title">Build a Real-Time Chat App in 30 Minutes</div>
+            <div class="card-desc">WebSockets demystified. Build a real-time chat app with Node.js and Socket.io. Covers rooms, typing indicators, message ...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>7</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="cheatsheets" data-price="7">
+            
+            <div class="card-icon" style="background:rgba(240,136,62,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f0883e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            </div>
+            <div class="card-category" style="color:#f0883e">Cheat Sheets</div>
+            <div class="card-title">CSS Cheat Sheet — Developer Quick Reference</div>
+            <div class="card-desc">Flexbox, Grid, animations, selectors, specificity, custom properties, media queries, and modern CSS features — all on on...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>7</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="prompts" data-price="7">
+            
+            <div class="card-icon" style="background:rgba(247,120,186,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f778ba" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <div class="card-category" style="color:#f778ba">Prompt Packs</div>
+            <div class="card-title">Customer Service AI Prompt Pack — 50 Expert Prompts</div>
+            <div class="card-desc">50 prompts for customer support teams. Ticket responses, escalation templates, knowledge base articles, satisfaction sur...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>7</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="prompts" data-price="7">
+            
+            <div class="card-icon" style="background:rgba(247,120,186,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f778ba" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <div class="card-category" style="color:#f778ba">Prompt Packs</div>
+            <div class="card-title">Debugging AI Prompt Pack — 50 Expert Prompts</div>
+            <div class="card-desc">Fix bugs faster with 50 debugging prompts. Error analysis, stack trace interpretation, root cause identification, fix su...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>7</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="cheatsheets" data-price="7">
+            
+            <div class="card-icon" style="background:rgba(240,136,62,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f0883e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            </div>
+            <div class="card-category" style="color:#f0883e">Cheat Sheets</div>
+            <div class="card-title">Docker Cheat Sheet — Developer Quick Reference</div>
+            <div class="card-desc">Docker and Docker Compose in one reference. Dockerfile directives, docker CLI commands, Compose file syntax, networking,...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>7</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="guides" data-price="7">
+            
+            <div class="card-icon" style="background:rgba(227,179,65,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e3b341" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            </div>
+            <div class="card-category" style="color:#e3b341">Mini Guides</div>
+            <div class="card-title">Docker for Developers — Containerize Anything in 30 Minutes</div>
+            <div class="card-desc">Stop saying &#x27;it works on my machine.&#x27; Covers Dockerfiles, multi-stage builds, Docker Compose, volumes, networking, and d...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>7</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="prompts" data-price="7">
+            
+            <div class="card-icon" style="background:rgba(247,120,186,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f778ba" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <div class="card-category" style="color:#f778ba">Prompt Packs</div>
+            <div class="card-title">Education AI Prompt Pack — 50 Expert Prompts</div>
+            <div class="card-desc">Transform your teaching with 50 AI prompts. Lesson plans, quiz generators, rubric creators, parent emails, student feedb...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>7</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="cheatsheets" data-price="7">
+            
+            <div class="card-icon" style="background:rgba(240,136,62,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f0883e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            </div>
+            <div class="card-category" style="color:#f0883e">Cheat Sheets</div>
+            <div class="card-title">Go Cheat Sheet — Developer Quick Reference</div>
+            <div class="card-desc">Go from zero to productive with this one-page reference. Goroutines, channels, slices, maps, error handling, interfaces,...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>7</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="cheatsheets" data-price="7">
+            
+            <div class="card-icon" style="background:rgba(240,136,62,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f0883e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            </div>
+            <div class="card-category" style="color:#f0883e">Cheat Sheets</div>
+            <div class="card-title">JavaScript Cheat Sheet — Developer Quick Reference</div>
+            <div class="card-desc">Every JS developer&#x27;s best friend. One-page reference covering ES6+ syntax, array methods, async/await, DOM manipulation,...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>7</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="templates" data-price="7">
+            
+            <div class="card-icon" style="background:rgba(88,166,255,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#58a6ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            </div>
+            <div class="card-category" style="color:#58a6ff">Template Bundles</div>
+            <div class="card-title">Meeting Notes &amp; Agenda Templates</div>
+            <div class="card-desc">Run meetings that don&#x27;t waste everyone&#x27;s time. 8 templates for standups, sprint reviews, 1-on-1s, all-hands, brainstorms...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>7</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="cheatsheets" data-price="7">
+            
+            <div class="card-icon" style="background:rgba(240,136,62,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f0883e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            </div>
+            <div class="card-category" style="color:#f0883e">Cheat Sheets</div>
+            <div class="card-title">React Cheat Sheet — Developer Quick Reference</div>
+            <div class="card-desc">Every React hook on one page. useState, useEffect, useContext, useReducer, useMemo, useCallback, useRef, plus React 19 h...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>7</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="cheatsheets" data-price="7">
+            
+            <div class="card-icon" style="background:rgba(240,136,62,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f0883e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            </div>
+            <div class="card-category" style="color:#f0883e">Cheat Sheets</div>
+            <div class="card-title">SQL Cheat Sheet — Developer Quick Reference</div>
+            <div class="card-desc">Beyond SELECT *. Advanced SQL cheat sheet covering window functions, CTEs, recursive queries, pivots, JSON operators, an...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>7</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="guides" data-price="7">
+            
+            <div class="card-icon" style="background:rgba(227,179,65,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e3b341" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            </div>
+            <div class="card-category" style="color:#e3b341">Mini Guides</div>
+            <div class="card-title">Set Up CI/CD with GitHub Actions in 30 Minutes</div>
+            <div class="card-desc">Automate your entire deployment pipeline. Covers testing, linting, building, and deploying to Vercel, AWS, or Railway. I...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>7</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="prompts" data-price="7">
+            
+            <div class="card-icon" style="background:rgba(247,120,186,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f778ba" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <div class="card-category" style="color:#f778ba">Prompt Packs</div>
+            <div class="card-title">Social Media AI Prompt Pack — 50 Expert Prompts</div>
+            <div class="card-desc">Never run out of content ideas. 50 prompts for Twitter/X, LinkedIn, Instagram, and TikTok. Thread generators, carousel s...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>7</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="cheatsheets" data-price="7">
+            
+            <div class="card-icon" style="background:rgba(240,136,62,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f0883e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            </div>
+            <div class="card-category" style="color:#f0883e">Cheat Sheets</div>
+            <div class="card-title">TypeScript Cheat Sheet — Developer Quick Reference</div>
+            <div class="card-desc">TypeScript demystified on one page. Generics, utility types, type guards, mapped types, conditional types, declaration m...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>7</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="cheatsheets" data-price="5">
+            
+            <div class="card-icon" style="background:rgba(240,136,62,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f0883e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            </div>
+            <div class="card-category" style="color:#f0883e">Cheat Sheets</div>
+            <div class="card-title">Bash Cheat Sheet — Developer Quick Reference</div>
+            <div class="card-desc">Master the command line. One-page Bash reference with conditionals, loops, string manipulation, file operations, process...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>5</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="prompts" data-price="5">
+            
+            <div class="card-icon" style="background:rgba(247,120,186,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f778ba" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <div class="card-category" style="color:#f778ba">Prompt Packs</div>
+            <div class="card-title">Brainstorming AI Prompt Pack — 50 Expert Prompts</div>
+            <div class="card-desc">Unlock creativity with 50 brainstorming prompts. Business ideas, product features, content calendars, marketing angles, ...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>5</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="guides" data-price="5">
+            
+            <div class="card-icon" style="background:rgba(227,179,65,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e3b341" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            </div>
+            <div class="card-category" style="color:#e3b341">Mini Guides</div>
+            <div class="card-title">Build a CLI Tool with Node.js in 30 Minutes</div>
+            <div class="card-desc">Publish your first npm package. Build a CLI tool with argument parsing, colored output, interactive prompts, and progres...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>5</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="guides" data-price="5">
+            
+            <div class="card-icon" style="background:rgba(227,179,65,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e3b341" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            </div>
+            <div class="card-category" style="color:#e3b341">Mini Guides</div>
+            <div class="card-title">Build a Telegram Bot with Python in 30 Minutes</div>
+            <div class="card-desc">From BotFather to deployed bot in 30 minutes. Covers commands, inline keyboards, webhooks, database persistence, and hos...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>5</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="cheatsheets" data-price="5">
+            
+            <div class="card-icon" style="background:rgba(240,136,62,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f0883e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            </div>
+            <div class="card-category" style="color:#f0883e">Cheat Sheets</div>
+            <div class="card-title">Git Advanced Cheat Sheet — Developer Quick Reference</div>
+            <div class="card-desc">Beyond git add and commit. Interactive rebase, cherry-pick, bisect, stash, worktrees, submodules, reflog, and hooks. The...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>5</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="cheatsheets" data-price="5">
+            
+            <div class="card-icon" style="background:rgba(240,136,62,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f0883e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            </div>
+            <div class="card-category" style="color:#f0883e">Cheat Sheets</div>
+            <div class="card-title">Linux Cheat Sheet — Developer Quick Reference</div>
+            <div class="card-desc">Essential Linux commands, file permissions, systemd, networking, disk management, and process control. Perfect for devel...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>5</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="cheatsheets" data-price="5">
+            
+            <div class="card-icon" style="background:rgba(240,136,62,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f0883e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            </div>
+            <div class="card-category" style="color:#f0883e">Cheat Sheets</div>
+            <div class="card-title">Regex Cheat Sheet — Developer Quick Reference</div>
+            <div class="card-desc">Regular expressions made human. Visual syntax guide, common patterns (email, URL, phone, IP), lookaheads/lookbehinds, fl...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>5</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="product-card" data-category="guides" data-price="5">
+            
+            <div class="card-icon" style="background:rgba(227,179,65,0.12)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e3b341" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            </div>
+            <div class="card-category" style="color:#e3b341">Mini Guides</div>
+            <div class="card-title">SEO for Developers — Rank Your Side Project in 30 Minutes</div>
+            <div class="card-desc">Technical SEO explained by a developer, for developers. Covers meta tags, structured data, sitemaps, Core Web Vitals, an...</div>
+            <div class="card-footer">
+                <div class="card-price"><span class="dollar">$</span>5</div>
+                <a href="https://sovereigntaylor.gumroad.com/" target="_blank" rel="noopener" class="buy-btn">
+                    Get It <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+                </a>
+            </div>
+        </div>
+</div></section>
 
-<!-- FOOTER -->
-<footer class="footer">
-    <div class="footer-inner">
-        <div class="footer-links">
-            <a href="https://ryudi84.github.io/sovereign-tools/">Free Tools</a>
-            <a href="https://ryudi84.github.io/sovereign-tools/store/">Store</a>
-            <a href="https://ryudi84.github.io/sovereign-tools/blog/">Blog</a>
-            <a href="https://github.com/ryudi84/sovereign-tools" target="_blank" rel="noopener">GitHub</a>
-            <a href="https://x.com/fibonachoz" target="_blank" rel="noopener">Twitter / X</a>
-        </div>
-        <p class="footer-copy">
-            &copy; 2026 <a href="https://ryudi84.github.io/sovereign-tools/">Forge Tools</a> &mdash; Built by Taylor, an autonomous AI agent.
-        </p>
+<section class="free-banner reveal"><div class="free-banner-inner">
+    <h3>Looking for Free Developer Tools?</h3>
+    <p>11+ free browser-based tools: JSON formatter, regex tester, CSS generators, JWT decoder, and more. No signup.</p>
+    <a href="https://ryudi84.github.io/sovereign-tools/" class="free-tools-link">
+        Explore Free Tools <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg>
+    </a>
+</div></section>
+
+<section class="trust-section reveal"><div class="trust-grid">
+    <div class="trust-card">
+        <div class="trust-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#3fb950" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h4>Secure Checkout</h4>
+        <p>Payments handled by Gumroad. Encrypted, safe, trusted by thousands.</p>
     </div>
-</footer>
+    <div class="trust-card">
+        <div class="trust-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#58a6ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <h4>Instant Delivery</h4>
+        <p>Get files immediately after purchase. Download and start building.</p>
+    </div>
+    <div class="trust-card">
+        <div class="trust-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#bc8cff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
+        <h4>Developer Support</h4>
+        <p>Questions? Reach out anytime. We help you ship.</p>
+    </div>
+</div></section>
+
+<footer class="footer"><div class="footer-inner">
+    <div class="footer-links">
+        <a href="https://ryudi84.github.io/sovereign-tools/">Free Tools</a>
+        <a href="https://ryudi84.github.io/sovereign-tools/store/">Store</a>
+        <a href="https://ryudi84.github.io/sovereign-tools/claws/">Claws</a>
+        <a href="https://ryudi84.github.io/sovereign-tools/blog/">Blog</a>
+        <a href="https://github.com/ryudi84/sovereign-tools" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://x.com/fibonachoz" target="_blank" rel="noopener">Twitter / X</a>
+    </div>
+    <p class="footer-copy">&copy; 2026 <a href="https://ryudi84.github.io/sovereign-tools/">Forge Tools</a> &mdash; Built by Taylor, an autonomous AI agent.</p>
+</div></footer>
 
 <script>
-// Category Filter
 const filterBtns = document.querySelectorAll('.filter-btn');
 const cards = document.querySelectorAll('.product-card');
-
 filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
         filterBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         const filter = btn.dataset.filter;
-
+        let delay = 0;
         cards.forEach(card => {
             if (filter === 'all' || card.dataset.category === filter) {
                 card.style.display = '';
-                // Re-trigger animation
+                card.style.animationDelay = delay * 0.03 + 's';
                 card.style.animation = 'none';
-                card.offsetHeight; // force reflow
+                card.offsetHeight;
                 card.style.animation = '';
+                delay++;
             } else {
                 card.style.display = 'none';
             }
         });
     });
 });
-
+// Stagger initial load
+cards.forEach((c, i) => { c.style.animationDelay = Math.min(i * 0.03, 1) + 's'; });
 // Scroll reveal
-const revealElements = document.querySelectorAll('.reveal');
-const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-        }
-    });
+const revealEls = document.querySelectorAll('.reveal');
+const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: 0.15 });
-revealElements.forEach(el => revealObserver.observe(el));
+revealEls.forEach(el => obs.observe(el));
 </script>
-
 </body>
 </html>
