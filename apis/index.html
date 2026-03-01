@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free APIs — Text Processing, SEO Analysis, Web Scraping | Sovereign AI</title>
+    <meta name="description" content="Free REST APIs: Text processing (14 endpoints), SEO analyzer (7 endpoints), web scraper (9 endpoints). No signup. CORS enabled. Built on Cloudflare Workers for global edge performance.">
+    <meta name="keywords" content="free api, text api, seo api, web scraper api, dns lookup api, meta tag extractor, word count api, slug generator api, hash api, password generator api, cloudflare workers api">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://ryudi84.github.io/sovereign-tools/apis/">
+    <meta property="og:title" content="Free APIs — Text, SEO, Scraping">
+    <meta property="og:description" content="30+ free API endpoints for text processing, SEO analysis, and web scraping. No signup. CORS enabled.">
+    <meta property="og:type" content="website">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0f172a; color: #e2e8f0; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
+        h1 { font-size: 2.5rem; color: #f8fafc; margin-bottom: 8px; }
+        .subtitle { font-size: 1.1rem; color: #94a3b8; margin-bottom: 40px; }
+        .api-card { background: #1e293b; border-radius: 12px; padding: 24px; margin-bottom: 24px; border: 1px solid #334155; }
+        .api-card h2 { color: #3b82f6; font-size: 1.4rem; margin-bottom: 8px; }
+        .api-card .url { font-family: monospace; font-size: 14px; color: #22c55e; background: #0f172a; padding: 6px 12px; border-radius: 6px; display: inline-block; margin-bottom: 12px; }
+        .api-card .desc { color: #94a3b8; margin-bottom: 16px; line-height: 1.5; }
+        .endpoints { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 8px; }
+        .endpoint { font-size: 13px; padding: 6px 10px; background: #0f172a; border-radius: 4px; font-family: monospace; }
+        .endpoint .method { color: #22c55e; font-weight: 600; }
+        .badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 600; margin-left: 8px; }
+        .badge.live { background: rgba(34, 197, 94, 0.15); color: #22c55e; }
+        .badge.free { background: rgba(59, 130, 246, 0.15); color: #60a5fa; }
+        .badge.count { background: rgba(168, 85, 247, 0.15); color: #a78bfa; }
+        .try-btn { display: inline-block; padding: 8px 16px; background: #3b82f6; color: white; border-radius: 6px; text-decoration: none; font-size: 13px; font-weight: 600; margin-top: 12px; }
+        .try-btn:hover { background: #2563eb; }
+        pre { background: #0f172a; padding: 16px; border-radius: 8px; overflow-x: auto; font-size: 13px; margin-top: 12px; color: #94a3b8; }
+        pre code { color: #e2e8f0; }
+        .nav { display: flex; gap: 16px; margin-bottom: 32px; }
+        .nav a { color: #64748b; text-decoration: none; font-size: 14px; }
+        .nav a:hover { color: #f8fafc; }
+        .footer { text-align: center; padding: 40px 0 20px; color: #475569; font-size: 13px; }
+        .footer a { color: #64748b; text-decoration: none; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <nav class="nav">
+        <a href="../">Tools</a>
+        <a href="../store/">Store</a>
+        <a href="../claws/">Claws</a>
+        <a href="./" style="color:#3b82f6;font-weight:600">APIs</a>
+    </nav>
+
+    <h1>Free APIs</h1>
+    <p class="subtitle">30+ REST API endpoints. No signup. No API key. CORS enabled. Powered by Cloudflare Workers.</p>
+
+    <!-- Text API -->
+    <div class="api-card">
+        <h2>Text Utility API <span class="badge live">LIVE</span> <span class="badge free">FREE</span> <span class="badge count">14 endpoints</span></h2>
+        <div class="url">https://text-api.ryudi84.workers.dev</div>
+        <div class="desc">Text processing endpoints: lorem ipsum, slugify, truncate, email extraction, URL extraction, word count, case conversion (camel/snake/pascal/kebab), HTML stripping, markdown-to-text, UUID generation, SHA hashing, Base64 encode/decode, secure password generation.</div>
+        <div class="endpoints">
+            <div class="endpoint"><span class="method">GET</span> /api/lorem</div>
+            <div class="endpoint"><span class="method">GET</span> /api/slug</div>
+            <div class="endpoint"><span class="method">GET</span> /api/truncate</div>
+            <div class="endpoint"><span class="method">POST</span> /api/extract-emails</div>
+            <div class="endpoint"><span class="method">POST</span> /api/extract-urls</div>
+            <div class="endpoint"><span class="method">POST</span> /api/word-count</div>
+            <div class="endpoint"><span class="method">POST</span> /api/case-convert</div>
+            <div class="endpoint"><span class="method">POST</span> /api/strip-html</div>
+            <div class="endpoint"><span class="method">POST</span> /api/markdown-to-text</div>
+            <div class="endpoint"><span class="method">GET</span> /api/uuid</div>
+            <div class="endpoint"><span class="method">POST</span> /api/hash</div>
+            <div class="endpoint"><span class="method">POST</span> /api/base64/encode</div>
+            <div class="endpoint"><span class="method">POST</span> /api/base64/decode</div>
+            <div class="endpoint"><span class="method">GET</span> /api/password</div>
+        </div>
+        <pre><code>curl "https://text-api.ryudi84.workers.dev/api/slug?text=Hello+World"
+# {"original":"Hello World","slug":"hello-world"}</code></pre>
+        <a href="https://text-api.ryudi84.workers.dev/" class="try-btn" target="_blank">Try it</a>
+    </div>
+
+    <!-- SEO API -->
+    <div class="api-card">
+        <h2>SEO Analyzer API <span class="badge live">LIVE</span> <span class="badge free">FREE</span> <span class="badge count">7 endpoints</span></h2>
+        <div class="url">https://seo-api.ryudi84.workers.dev</div>
+        <div class="desc">Comprehensive SEO analysis: full audit with scoring, lightweight performance metrics, robots.txt parsing, sitemap discovery, security headers audit, structured data extraction (JSON-LD, microdata), and social media preview generation.</div>
+        <div class="endpoints">
+            <div class="endpoint"><span class="method">GET</span> /api/analyze</div>
+            <div class="endpoint"><span class="method">GET</span> /api/lighthouse-lite</div>
+            <div class="endpoint"><span class="method">GET</span> /api/robots</div>
+            <div class="endpoint"><span class="method">GET</span> /api/sitemap</div>
+            <div class="endpoint"><span class="method">GET</span> /api/headers-audit</div>
+            <div class="endpoint"><span class="method">GET</span> /api/structured-data</div>
+            <div class="endpoint"><span class="method">GET</span> /api/social-preview</div>
+        </div>
+        <pre><code>curl "https://seo-api.ryudi84.workers.dev/api/analyze?url=https://example.com"
+# {"score":78,"meta":{"title":"Example Domain",...},"issues":[...]}</code></pre>
+        <a href="https://seo-api.ryudi84.workers.dev/" class="try-btn" target="_blank">Try it</a>
+    </div>
+
+    <!-- Scraper API -->
+    <div class="api-card">
+        <h2>Scraper API <span class="badge live">LIVE</span> <span class="badge free">FREE</span> <span class="badge count">9 endpoints</span></h2>
+        <div class="url">https://scraper-api.ryudi84.workers.dev</div>
+        <div class="desc">Web data extraction: fetch any URL, extract meta tags (Open Graph, Twitter), extract all links, get HTTP headers, DNS lookup (A, AAAA, MX, TXT, NS), WHOIS via RDAP, SSL certificate info, site status check, and IP geolocation.</div>
+        <div class="endpoints">
+            <div class="endpoint"><span class="method">GET</span> /api/fetch</div>
+            <div class="endpoint"><span class="method">GET</span> /api/meta</div>
+            <div class="endpoint"><span class="method">GET</span> /api/links</div>
+            <div class="endpoint"><span class="method">GET</span> /api/headers</div>
+            <div class="endpoint"><span class="method">GET</span> /api/dns</div>
+            <div class="endpoint"><span class="method">GET</span> /api/whois-lite</div>
+            <div class="endpoint"><span class="method">GET</span> /api/ssl</div>
+            <div class="endpoint"><span class="method">GET</span> /api/status</div>
+            <div class="endpoint"><span class="method">GET</span> /api/ip</div>
+        </div>
+        <pre><code>curl "https://scraper-api.ryudi84.workers.dev/api/dns?domain=github.com"
+# {"domain":"github.com","records":{"A":["4.228.31.150"],"MX":[...]}}</code></pre>
+        <a href="https://scraper-api.ryudi84.workers.dev/" class="try-btn" target="_blank">Try it</a>
+    </div>
+
+    <div class="footer">
+        Built by <a href="https://github.com/ryudi84">Sovereign AI</a> | All APIs run on Cloudflare's global edge network
+    </div>
+</div>
+</body>
+</html>
