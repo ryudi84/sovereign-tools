@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B2B Leads Finder — Find Business Contacts, Emails & Decision-Makers | Free Trial on Apify</title>
+    <meta name="description" content="Find B2B leads with verified emails, phone numbers, and company data. An Apollo/ZoomInfo alternative at 1/10th the cost. Filter by title, industry, location, and company size.">
+    <meta name="keywords" content="b2b leads finder, lead generation tool, find business emails, sales prospecting, apollo alternative, zoominfo alternative, business contacts, email finder">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://ryudi84.github.io/sovereign-tools/b2b-leads-finder.html">
+
+    <meta property="og:title" content="B2B Leads Finder — Apollo/ZoomInfo Alternative at 1/10th the Cost">
+    <meta property="og:description" content="Find decision-makers with verified emails and phone numbers. Filter by job title, industry, location, and company size. Pay per lead.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ryudi84.github.io/sovereign-tools/b2b-leads-finder.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="B2B Leads Finder — The Affordable Apollo Alternative">
+    <meta name="twitter:description" content="Find B2B contacts with verified emails for $0.01/lead. Filter by title, industry, location. No subscription required.">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "B2B Leads Finder",
+        "applicationCategory": "WebApplication",
+        "operatingSystem": "Cloud",
+        "description": "Find B2B leads with verified emails, phone numbers, and company data. Filter by job title, industry, location, and company size.",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD",
+            "description": "Free trial. $0.01 per lead."
+        },
+        "author": {
+            "@type": "Organization",
+            "name": "Sovereign Taylor",
+            "url": "https://apify.com/sovereigntaylor"
+        },
+        "url": "https://apify.com/sovereigntaylor/b2b-leads-finder"
+    }
+    </script>
+
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --navy: #0f172a; --navy-light: #1e293b;
+            --blue: #3b82f6; --blue-dark: #2563eb; --blue-glow: rgba(59,130,246,0.3);
+            --green: #10b981; --purple: #8b5cf6; --purple-dark: #7c3aed; --purple-glow: rgba(139,92,246,0.3);
+            --orange: #f59e0b; --red: #ef4444;
+            --white: #ffffff; --gray-50: #f8fafc; --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0; --gray-300: #cbd5e1; --gray-400: #94a3b8;
+            --gray-500: #64748b; --gray-600: #475569; --gray-700: #334155;
+            --gray-800: #1e293b; --gray-900: #0f172a;
+            --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            --mono: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', 'Courier New', monospace;
+        }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font); color: var(--gray-700); line-height: 1.6; background: var(--white); -webkit-font-smoothing: antialiased; }
+
+        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(15,23,42,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.1); padding: 0 2rem; }
+        .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+        .nav-brand { color: var(--white); font-weight: 700; font-size: 1.1rem; text-decoration: none; }
+        .nav-brand span { color: var(--purple); }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { color: var(--gray-400); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--white); }
+        .nav-cta { background: var(--purple); color: var(--white) !important; padding: 0.5rem 1.2rem; border-radius: 8px; font-weight: 600; transition: all 0.2s; }
+        .nav-cta:hover { background: var(--purple-dark); transform: translateY(-1px); }
+
+        .hero { background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%); padding: 8rem 2rem 5rem; text-align: center; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle at 40% 50%, rgba(139,92,246,0.08) 0%, transparent 50%), radial-gradient(circle at 60% 50%, rgba(59,130,246,0.06) 0%, transparent 50%); }
+        .hero-content { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; }
+        .hero-badge { display: inline-block; background: rgba(139,92,246,0.15); border: 1px solid rgba(139,92,246,0.3); color: var(--purple); padding: 0.4rem 1rem; border-radius: 50px; font-size: 0.85rem; font-weight: 600; margin-bottom: 1.5rem; }
+        .hero h1 { color: var(--white); font-size: clamp(2.2rem,5vw,3.5rem); font-weight: 800; line-height: 1.15; margin-bottom: 1.2rem; letter-spacing: -0.02em; }
+        .hero h1 .gradient-text { background: linear-gradient(135deg, var(--purple) 0%, #a78bfa 50%, var(--blue) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .hero p { color: var(--gray-400); font-size: 1.2rem; max-width: 650px; margin: 0 auto 2rem; line-height: 1.7; }
+        .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 2rem; border-radius: 10px; font-weight: 600; font-size: 1rem; text-decoration: none; transition: all 0.25s; border: none; cursor: pointer; }
+        .btn-primary { background: var(--purple); color: var(--white); box-shadow: 0 4px 15px var(--purple-glow); }
+        .btn-primary:hover { background: var(--purple-dark); transform: translateY(-2px); box-shadow: 0 8px 25px var(--purple-glow); }
+        .btn-secondary { background: rgba(255,255,255,0.08); color: var(--white); border: 1px solid rgba(255,255,255,0.15); }
+        .btn-secondary:hover { background: rgba(255,255,255,0.12); transform: translateY(-2px); }
+
+        .hero-stats { display: flex; justify-content: center; gap: 3rem; margin-top: 3rem; flex-wrap: wrap; }
+        .hero-stat { text-align: center; }
+        .hero-stat .value { font-size: 2rem; font-weight: 800; color: var(--white); }
+        .hero-stat .label { font-size: 0.85rem; color: var(--gray-400); margin-top: 0.2rem; }
+
+        .section { padding: 5rem 2rem; }
+        .section-dark { background: var(--gray-50); }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 3rem; }
+        .section-header h2 { font-size: clamp(1.8rem,3vw,2.4rem); color: var(--gray-900); font-weight: 800; margin-bottom: 0.8rem; letter-spacing: -0.02em; }
+        .section-header p { color: var(--gray-500); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+
+        .compare-table { max-width: 800px; margin: 0 auto; border-collapse: collapse; width: 100%; }
+        .compare-table th, .compare-table td { padding: 1rem 1.5rem; text-align: left; border-bottom: 1px solid var(--gray-200); }
+        .compare-table th { font-weight: 700; color: var(--gray-900); font-size: 0.95rem; }
+        .compare-table td { font-size: 0.95rem; color: var(--gray-600); }
+        .compare-table thead th { background: var(--gray-50); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gray-500); }
+        .compare-table .highlight { background: rgba(139,92,246,0.05); }
+        .compare-table .highlight td { color: var(--gray-900); font-weight: 600; }
+        .compare-table .check { color: var(--green); font-weight: 700; }
+        .compare-table .cross { color: var(--gray-300); }
+        .compare-table .price-cell { color: var(--purple); font-weight: 700; }
+
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
+        .feature-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: 12px; padding: 2rem; transition: all 0.3s; }
+        .feature-card:hover { border-color: var(--purple); box-shadow: 0 8px 30px rgba(139,92,246,0.1); transform: translateY(-3px); }
+        .feature-icon { width: 48px; height: 48px; background: linear-gradient(135deg, rgba(139,92,246,0.1), rgba(59,130,246,0.1)); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; margin-bottom: 1rem; }
+        .feature-card h3 { font-size: 1.15rem; color: var(--gray-900); margin-bottom: 0.5rem; font-weight: 700; }
+        .feature-card p { color: var(--gray-500); font-size: 0.95rem; line-height: 1.6; }
+
+        .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+        .step { text-align: center; padding: 2rem 1.5rem; }
+        .step-number { width: 56px; height: 56px; background: linear-gradient(135deg, var(--purple), var(--blue)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--white); font-weight: 800; font-size: 1.3rem; margin: 0 auto 1.2rem; }
+        .step h3 { font-size: 1.2rem; color: var(--gray-900); margin-bottom: 0.6rem; font-weight: 700; }
+        .step p { color: var(--gray-500); font-size: 0.95rem; }
+
+        .output-block { background: var(--navy); border-radius: 12px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.2); }
+        .output-header { background: var(--navy-light); padding: 0.8rem 1.5rem; display: flex; align-items: center; gap: 0.5rem; }
+        .output-dot { width: 12px; height: 12px; border-radius: 50%; }
+        .output-dot.red { background: #ef4444; } .output-dot.yellow { background: #f59e0b; } .output-dot.green { background: #10b981; }
+        .output-title { color: var(--gray-400); font-size: 0.85rem; margin-left: 0.5rem; font-family: var(--mono); }
+        .output-body { padding: 1.5rem; overflow-x: auto; }
+        .output-body pre { font-family: var(--mono); font-size: 0.82rem; line-height: 1.65; color: var(--gray-300); }
+        .output-body .key { color: #7dd3fc; } .output-body .str { color: #86efac; } .output-body .num { color: #fbbf24; } .output-body .bool { color: #c084fc; } .output-body .null { color: #94a3b8; }
+
+        .usecases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+        .usecase-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: 12px; padding: 1.8rem; transition: all 0.3s; }
+        .usecase-card:hover { border-color: var(--blue); box-shadow: 0 8px 30px rgba(59,130,246,0.08); transform: translateY(-2px); }
+        .usecase-icon { font-size: 1.8rem; margin-bottom: 0.8rem; }
+        .usecase-card h3 { font-size: 1.05rem; color: var(--gray-900); margin-bottom: 0.4rem; font-weight: 700; }
+        .usecase-card p { color: var(--gray-500); font-size: 0.9rem; }
+
+        .pricing-box { max-width: 700px; margin: 0 auto; background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%); border-radius: 16px; padding: 3rem; text-align: center; color: var(--white); position: relative; overflow: hidden; }
+        .pricing-box::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 50% 0%, rgba(139,92,246,0.15), transparent 60%); }
+        .pricing-box > * { position: relative; z-index: 1; }
+        .pricing-box h2 { font-size: 2rem; margin-bottom: 0.5rem; color: var(--white); }
+        .pricing-box .price { font-size: 3rem; font-weight: 800; margin: 1rem 0; color: #a78bfa; }
+        .pricing-box .price span { font-size: 1rem; color: var(--gray-400); font-weight: 400; }
+        .pricing-box .price-note { color: var(--gray-400); margin-bottom: 2rem; }
+        .pricing-features { text-align: left; max-width: 400px; margin: 0 auto 2rem; }
+        .pricing-features li { list-style: none; padding: 0.4rem 0; color: var(--gray-300); font-size: 0.95rem; }
+        .pricing-features li::before { content: '\2713'; color: var(--green); font-weight: 700; margin-right: 0.8rem; }
+
+        .code-tabs { display: flex; gap: 0; }
+        .code-tab { padding: 0.7rem 1.5rem; background: var(--navy-light); color: var(--gray-400); border: none; cursor: pointer; font-size: 0.9rem; font-weight: 600; font-family: var(--font); transition: all 0.2s; border-top-left-radius: 8px; border-top-right-radius: 8px; }
+        .code-tab.active { background: var(--navy); color: var(--white); }
+        .code-panel { display: none; background: var(--navy); border-radius: 0 12px 12px 12px; padding: 1.5rem; overflow-x: auto; }
+        .code-panel.active { display: block; }
+        .code-panel pre { font-family: var(--mono); font-size: 0.85rem; line-height: 1.6; color: var(--gray-300); }
+        .code-panel .kw { color: var(--purple); } .code-panel .fn { color: #7dd3fc; } .code-panel .str { color: #86efac; } .code-panel .cm { color: var(--gray-500); } .code-panel .num { color: #fbbf24; } .code-panel .bool { color: #c084fc; }
+
+        .faq-list { max-width: 800px; margin: 0 auto; }
+        .faq-item { border-bottom: 1px solid var(--gray-200); }
+        .faq-question { width: 100%; background: none; border: none; padding: 1.3rem 0; font-size: 1.05rem; font-weight: 600; color: var(--gray-900); text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-family: var(--font); transition: color 0.2s; }
+        .faq-question:hover { color: var(--purple); }
+        .faq-arrow { font-size: 1.2rem; transition: transform 0.3s; color: var(--gray-400); }
+        .faq-item.open .faq-arrow { transform: rotate(180deg); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; }
+        .faq-item.open .faq-answer { max-height: 300px; padding-bottom: 1.3rem; }
+        .faq-answer p { color: var(--gray-500); font-size: 0.95rem; line-height: 1.7; }
+
+        .footer { background: var(--navy); color: var(--gray-400); padding: 3rem 2rem; text-align: center; }
+        .footer-links { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+        .footer-links a { color: var(--gray-400); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+        .footer-links a:hover { color: var(--white); }
+        .footer p { font-size: 0.85rem; }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero { padding: 7rem 1.5rem 3rem; }
+            .section { padding: 3rem 1.5rem; }
+            .features-grid, .steps, .usecases-grid { grid-template-columns: 1fr; }
+            .pricing-box { padding: 2rem 1.5rem; }
+            .hero-buttons { flex-direction: column; align-items: center; }
+            .hero-stats { gap: 1.5rem; }
+            .compare-table { font-size: 0.85rem; }
+            .compare-table th, .compare-table td { padding: 0.7rem; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="nav">
+    <div class="nav-inner">
+        <a href="index.html" class="nav-brand">Sovereign<span>Tools</span></a>
+        <ul class="nav-links">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#compare">Compare</a></li>
+            <li><a href="#output">Output</a></li>
+            <li><a href="#use-cases">Use Cases</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#api">API</a></li>
+            <li><a href="https://apify.com/sovereigntaylor/b2b-leads-finder" class="nav-cta" target="_blank">Try Free</a></li>
+        </ul>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="hero-content">
+        <div class="hero-badge">Apollo Alternative &middot; Verified Emails &middot; $0.01/lead</div>
+        <h1>Find <span class="gradient-text">B2B Leads</span> with Verified Emails & Phone Numbers</h1>
+        <p>The Apollo/ZoomInfo alternative that costs 1/10th the price. Find decision-makers by job title, industry, location, and company size. Verified emails included.</p>
+        <div class="hero-buttons">
+            <a href="https://apify.com/sovereigntaylor/b2b-leads-finder" class="btn btn-primary" target="_blank">&#9654; Start Free Trial</a>
+            <a href="#compare" class="btn btn-secondary">&#128200; See Comparison</a>
+        </div>
+        <div class="hero-stats">
+            <div class="hero-stat">
+                <div class="value">$0.01</div>
+                <div class="label">per lead</div>
+            </div>
+            <div class="hero-stat">
+                <div class="value">1,000</div>
+                <div class="label">leads per run</div>
+            </div>
+            <div class="hero-stat">
+                <div class="value">7</div>
+                <div class="label">company sizes</div>
+            </div>
+            <div class="hero-stat">
+                <div class="value">0</div>
+                <div class="label">subscriptions needed</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="features">
+    <div class="container">
+        <div class="section-header">
+            <h2>Enterprise-Grade Lead Generation, Pay-Per-Lead</h2>
+            <p>Every feature you need to build qualified prospect lists.</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">&#128236;</div>
+                <h3>Verified Email Discovery</h3>
+                <p>Find and verify email addresses using MX record validation and email pattern discovery. Get deliverable emails, not guesses.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#128222;</div>
+                <h3>Phone Number Extraction</h3>
+                <p>Extract phone numbers from company websites and public directories. Direct dials and main lines included when available.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#127919;</div>
+                <h3>Precision Targeting</h3>
+                <p>Filter by job title (CEO, CTO, VP Sales), industry (SaaS, Healthcare, Finance), location (city/state/country), and company size (startup to enterprise).</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#127959;</div>
+                <h3>Company Intelligence</h3>
+                <p>Get company name, website, industry, employee count, and location alongside each contact. Full context for personalized outreach.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#128279;</div>
+                <h3>Domain-Based Search</h3>
+                <p>Already have target companies? Provide domain names directly and extract leadership contacts from company websites.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#128176;</div>
+                <h3>No Subscription Lock-In</h3>
+                <p>Pay per lead, not per month. No annual contracts, no seat limits, no hidden fees. 100 leads = $1.00. Scale up or down freely.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section section-dark" id="compare">
+    <div class="container">
+        <div class="section-header">
+            <h2>Why Pay $200/mo for Leads?</h2>
+            <p>Compare our per-lead pricing against monthly subscription tools.</p>
+        </div>
+        <table class="compare-table">
+            <thead>
+                <tr><th>Feature</th><th>B2B Leads Finder</th><th>Apollo.io</th><th>ZoomInfo</th></tr>
+            </thead>
+            <tbody>
+                <tr class="highlight"><td>Price</td><td class="price-cell">$0.01/lead</td><td>$49-119/mo</td><td>$15,000+/yr</td></tr>
+                <tr><td>Email Verification</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td></tr>
+                <tr><td>Phone Numbers</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td></tr>
+                <tr><td>Title Filtering</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td></tr>
+                <tr><td>Industry Filtering</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td></tr>
+                <tr><td>Company Size Filter</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td></tr>
+                <tr><td>API Access</td><td class="check">&#10003;</td><td>Paid add-on</td><td>Enterprise only</td></tr>
+                <tr><td>No Monthly Fee</td><td class="check">&#10003;</td><td class="cross">&#10007;</td><td class="cross">&#10007;</td></tr>
+                <tr><td>No Seat Limits</td><td class="check">&#10003;</td><td class="cross">&#10007;</td><td class="cross">&#10007;</td></tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<section class="section" id="how-it-works">
+    <div class="container">
+        <div class="section-header">
+            <h2>How It Works</h2>
+            <p>From search criteria to qualified leads in three steps.</p>
+        </div>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Define Your ICP</h3>
+                <p>Enter a job title (e.g., "VP of Marketing"), choose an industry, set a location, and pick a company size range. Or provide specific company domains.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Run the Search</h3>
+                <p>The tool scans company websites, public directories, and professional profiles. It discovers email patterns, verifies deliverability, and extracts phone numbers.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Export & Outreach</h3>
+                <p>Download your leads as CSV for your CRM, JSON for your pipeline, or push via API. Each lead has name, title, email, phone, company, and website.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section section-dark" id="output">
+    <div class="container">
+        <div class="section-header">
+            <h2>Sample Output</h2>
+            <p>Rich contact data ready for your sales pipeline.</p>
+        </div>
+        <div class="output-block">
+            <div class="output-header">
+                <div class="output-dot red"></div><div class="output-dot yellow"></div><div class="output-dot green"></div>
+                <span class="output-title">leads.json</span>
+            </div>
+            <div class="output-body">
+                <pre>[
+  {
+    <span class="key">"name"</span>: <span class="str">"Sarah Chen"</span>,
+    <span class="key">"title"</span>: <span class="str">"Chief Technology Officer"</span>,
+    <span class="key">"email"</span>: <span class="str">"sarah.chen@acmetech.com"</span>,
+    <span class="key">"emailVerified"</span>: <span class="bool">true</span>,
+    <span class="key">"phone"</span>: <span class="str">"+1 (415) 555-0847"</span>,
+    <span class="key">"company"</span>: <span class="str">"Acme Technologies"</span>,
+    <span class="key">"companyWebsite"</span>: <span class="str">"https://acmetech.com"</span>,
+    <span class="key">"industry"</span>: <span class="str">"Technology"</span>,
+    <span class="key">"companySize"</span>: <span class="str">"201-500"</span>,
+    <span class="key">"location"</span>: <span class="str">"San Francisco, CA"</span>,
+    <span class="key">"linkedinUrl"</span>: <span class="str">"https://linkedin.com/in/sarah-chen-cto"</span>,
+    <span class="key">"source"</span>: <span class="str">"company_website"</span>
+  }
+]</pre>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="use-cases">
+    <div class="container">
+        <div class="section-header">
+            <h2>Use Cases</h2>
+            <p>Sales, marketing, and recruiting teams all benefit from verified B2B contacts.</p>
+        </div>
+        <div class="usecases-grid">
+            <div class="usecase-card">
+                <div class="usecase-icon">&#128188;</div>
+                <h3>Sales Prospecting</h3>
+                <p>Build targeted prospect lists of decision-makers. Filter by title and industry to focus on your ideal customer profile.</p>
+            </div>
+            <div class="usecase-card">
+                <div class="usecase-icon">&#128231;</div>
+                <h3>Email Campaigns</h3>
+                <p>Get verified emails for cold outreach campaigns. Higher deliverability means better open rates and more meetings booked.</p>
+            </div>
+            <div class="usecase-card">
+                <div class="usecase-icon">&#127919;</div>
+                <h3>Account-Based Marketing</h3>
+                <p>Target specific companies by providing their domains. Extract the full leadership team for multi-touch ABM campaigns.</p>
+            </div>
+            <div class="usecase-card">
+                <div class="usecase-icon">&#128101;</div>
+                <h3>Recruiting</h3>
+                <p>Find CTOs, engineering managers, and technical leads at target companies. Build sourcing pipelines for hard-to-fill roles.</p>
+            </div>
+            <div class="usecase-card">
+                <div class="usecase-icon">&#128200;</div>
+                <h3>Market Research</h3>
+                <p>Map the leadership landscape across industries. Analyze company sizes, title distributions, and geographic concentrations.</p>
+            </div>
+            <div class="usecase-card">
+                <div class="usecase-icon">&#129309;</div>
+                <h3>Partnership Development</h3>
+                <p>Find business development and partnership leads at potential partner companies. Start conversations with the right people.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section section-dark" id="pricing">
+    <div class="container">
+        <div class="pricing-box">
+            <h2>Pay Per Lead. No Subscription.</h2>
+            <p class="price-note">The simplest pricing in B2B lead gen.</p>
+            <div class="price">$0.01 <span>per lead</span></div>
+            <p class="price-note">100 leads = $1. 1,000 leads = $10. That simple.</p>
+            <ul class="pricing-features">
+                <li>Free trial with Apify credits</li>
+                <li>Verified emails included</li>
+                <li>Phone numbers when available</li>
+                <li>Full company data</li>
+                <li>API access at no extra cost</li>
+                <li>No monthly fees or seat limits</li>
+            </ul>
+            <a href="https://apify.com/sovereigntaylor/b2b-leads-finder" class="btn btn-primary" target="_blank">Start Free Trial</a>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="api">
+    <div class="container">
+        <div class="section-header">
+            <h2>API Quick Start</h2>
+            <p>Integrate lead generation into your sales pipeline.</p>
+        </div>
+        <div>
+            <div class="code-tabs">
+                <button class="code-tab active" onclick="showTab(event, 'js')">JavaScript</button>
+                <button class="code-tab" onclick="showTab(event, 'python')">Python</button>
+                <button class="code-tab" onclick="showTab(event, 'curl')">cURL</button>
+            </div>
+            <div class="code-panel active" id="tab-js">
+                <pre><span class="kw">import</span> { ApifyClient } <span class="kw">from</span> <span class="str">'apify-client'</span>;
+
+<span class="kw">const</span> client = <span class="kw">new</span> <span class="fn">ApifyClient</span>({ <span class="fn">token</span>: <span class="str">'YOUR_API_TOKEN'</span> });
+
+<span class="kw">const</span> run = <span class="kw">await</span> client.<span class="fn">actor</span>(<span class="str">'sovereigntaylor/b2b-leads-finder'</span>).<span class="fn">call</span>({
+  <span class="fn">searchQuery</span>: <span class="str">'CTO'</span>,
+  <span class="fn">industry</span>: <span class="str">'SaaS'</span>,
+  <span class="fn">location</span>: <span class="str">'San Francisco, CA'</span>,
+  <span class="fn">companySize</span>: <span class="str">'51-200'</span>,
+  <span class="fn">maxResults</span>: <span class="num">100</span>,
+  <span class="fn">includeEmails</span>: <span class="bool">true</span>,
+  <span class="fn">includePhones</span>: <span class="bool">true</span>
+});
+
+<span class="kw">const</span> { items } = <span class="kw">await</span> client.<span class="fn">dataset</span>(run.defaultDatasetId).<span class="fn">listItems</span>();
+console.<span class="fn">log</span>(<span class="str">`Found ${items.length} leads`</span>);</pre>
+            </div>
+            <div class="code-panel" id="tab-python">
+                <pre><span class="kw">from</span> apify_client <span class="kw">import</span> ApifyClient
+
+client = <span class="fn">ApifyClient</span>(<span class="str">"YOUR_API_TOKEN"</span>)
+
+run = client.<span class="fn">actor</span>(<span class="str">"sovereigntaylor/b2b-leads-finder"</span>).<span class="fn">call</span>(run_input={
+    <span class="str">"searchQuery"</span>: <span class="str">"CTO"</span>,
+    <span class="str">"industry"</span>: <span class="str">"SaaS"</span>,
+    <span class="str">"location"</span>: <span class="str">"San Francisco, CA"</span>,
+    <span class="str">"companySize"</span>: <span class="str">"51-200"</span>,
+    <span class="str">"maxResults"</span>: <span class="num">100</span>,
+    <span class="str">"includeEmails"</span>: <span class="bool">True</span>,
+    <span class="str">"includePhones"</span>: <span class="bool">True</span>
+})
+
+items = client.<span class="fn">dataset</span>(run[<span class="str">"defaultDatasetId"</span>]).<span class="fn">list_items</span>().items
+<span class="kw">for</span> lead <span class="kw">in</span> items:
+    <span class="fn">print</span>(f<span class="str">'{lead["name"]} | {lead["title"]} | {lead["email"]}'</span>)</pre>
+            </div>
+            <div class="code-panel" id="tab-curl">
+                <pre><span class="cm"># Start the actor run</span>
+curl -X POST <span class="str">"https://api.apify.com/v2/acts/sovereigntaylor~b2b-leads-finder/runs?token=YOUR_API_TOKEN"</span> \
+  -H <span class="str">"Content-Type: application/json"</span> \
+  -d <span class="str">'{
+    "searchQuery": "CTO",
+    "industry": "SaaS",
+    "location": "San Francisco, CA",
+    "companySize": "51-200",
+    "maxResults": 100,
+    "includeEmails": true,
+    "includePhones": true
+  }'</span>
+
+<span class="cm"># Download leads as CSV for your CRM</span>
+curl <span class="str">"https://api.apify.com/v2/datasets/DATASET_ID/items?token=YOUR_API_TOKEN&format=csv"</span></pre>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section section-dark" id="faq">
+    <div class="container">
+        <div class="section-header"><h2>Frequently Asked Questions</h2></div>
+        <div class="faq-list">
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">How are emails verified?<span class="faq-arrow">&#9660;</span></button>
+                <div class="faq-answer"><p>Emails are verified using MX record validation and SMTP checks. The tool discovers email patterns from company websites (e.g., first.last@company.com) and verifies that the mailbox exists. Each verified email is marked with emailVerified: true.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">What is the email hit rate?<span class="faq-arrow">&#9660;</span></button>
+                <div class="faq-answer"><p>Typical email discovery rate is 60-80% of leads. Phone number discovery is lower, around 20-40%. Rates vary by industry and company size. Tech companies and larger firms tend to have higher discovery rates.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">Where does the data come from?<span class="faq-arrow">&#9660;</span></button>
+                <div class="faq-answer"><p>The tool aggregates publicly available data from company websites, team pages, about pages, and public professional directories. It does not access any private databases or violate any login-protected resources.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">Can I search by company domain?<span class="faq-arrow">&#9660;</span></button>
+                <div class="faq-answer"><p>Yes. Provide a list of company domains (e.g., ["stripe.com", "notion.so"]) and the tool will scrape team/about pages directly to find contacts. This is faster and more accurate than keyword-based search.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">Is this GDPR compliant?<span class="faq-arrow">&#9660;</span></button>
+                <div class="faq-answer"><p>The tool collects publicly available business contact data. You are responsible for ensuring your use of the data complies with GDPR, CAN-SPAM, and other applicable regulations in your jurisdiction. We recommend using it for legitimate business-to-business communications.</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-links">
+            <a href="https://apify.com/sovereigntaylor/b2b-leads-finder" target="_blank">Apify Store</a>
+            <a href="https://apify.com/sovereigntaylor" target="_blank">All Our Actors</a>
+            <a href="https://github.com/ryudi84" target="_blank">GitHub</a>
+            <a href="index.html">More Tools</a>
+        </div>
+        <p>Built by Sovereign Taylor &middot; Powered by Apify</p>
+    </div>
+</footer>
+
+<script>
+function showTab(e, tabId) {
+    document.querySelectorAll('.code-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.code-panel').forEach(p => p.classList.remove('active'));
+    e.target.classList.add('active');
+    document.getElementById('tab-' + tabId).classList.add('active');
+}
+function toggleFaq(btn) { btn.parentElement.classList.toggle('open'); }
+</script>
+
+</body>
+</html>

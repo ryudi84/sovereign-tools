@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website to Markdown — Convert Any Website to Clean Markdown for AI & RAG | Free Trial on Apify</title>
+    <meta name="description" content="Crawl any website and convert to clean Markdown for AI/RAG pipelines, LLM training, embeddings, and knowledge bases. Strip boilerplate, chunk for vector DBs.">
+    <meta name="keywords" content="website to markdown, html to markdown, web scraper for ai, rag pipeline, llm training data, web crawler, markdown converter, vector database, embeddings">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://ryudi84.github.io/sovereign-tools/website-to-markdown.html">
+
+    <meta property="og:title" content="Website to Markdown — AI/RAG Data Pipeline">
+    <meta property="og:description" content="Convert any website to clean Markdown optimized for AI. Built-in chunking for vector databases, metadata extraction, and boilerplate removal.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ryudi84.github.io/sovereign-tools/website-to-markdown.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Website to Markdown — AI/RAG Data Pipeline">
+    <meta name="twitter:description" content="Crawl websites and convert to clean Markdown for LLMs, RAG, embeddings. Built-in chunking and metadata extraction.">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Website to Markdown",
+        "applicationCategory": "WebApplication",
+        "operatingSystem": "Cloud",
+        "description": "Crawl any website and convert pages to clean Markdown optimized for AI/RAG pipelines, LLM training, embeddings, and knowledge bases.",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD",
+            "description": "Free trial. Pay-per-event pricing."
+        },
+        "author": {
+            "@type": "Organization",
+            "name": "Sovereign Taylor",
+            "url": "https://apify.com/sovereigntaylor"
+        },
+        "url": "https://apify.com/sovereigntaylor/website-to-markdown"
+    }
+    </script>
+
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --navy: #0f172a; --navy-light: #1e293b;
+            --blue: #3b82f6; --blue-dark: #2563eb; --blue-glow: rgba(59,130,246,0.3);
+            --green: #10b981; --green-dark: #059669; --green-glow: rgba(16,185,129,0.3);
+            --purple: #8b5cf6; --orange: #f59e0b;
+            --white: #ffffff; --gray-50: #f8fafc; --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0; --gray-300: #cbd5e1; --gray-400: #94a3b8;
+            --gray-500: #64748b; --gray-600: #475569; --gray-700: #334155;
+            --gray-800: #1e293b; --gray-900: #0f172a;
+            --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            --mono: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', 'Courier New', monospace;
+        }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font); color: var(--gray-700); line-height: 1.6; background: var(--white); -webkit-font-smoothing: antialiased; }
+
+        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(15,23,42,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.1); padding: 0 2rem; }
+        .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+        .nav-brand { color: var(--white); font-weight: 700; font-size: 1.1rem; text-decoration: none; }
+        .nav-brand span { color: var(--green); }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { color: var(--gray-400); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--white); }
+        .nav-cta { background: var(--green); color: var(--white) !important; padding: 0.5rem 1.2rem; border-radius: 8px; font-weight: 600; transition: all 0.2s; }
+        .nav-cta:hover { background: var(--green-dark); transform: translateY(-1px); }
+
+        .hero { background: linear-gradient(135deg, var(--navy) 0%, #0d1b2a 50%, #1b2a4a 100%); padding: 8rem 2rem 5rem; text-align: center; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle at 30% 60%, rgba(16,185,129,0.07) 0%, transparent 50%), radial-gradient(circle at 70% 40%, rgba(139,92,246,0.06) 0%, transparent 50%); }
+        .hero-content { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; }
+        .hero-badge { display: inline-block; background: rgba(16,185,129,0.15); border: 1px solid rgba(16,185,129,0.3); color: var(--green); padding: 0.4rem 1rem; border-radius: 50px; font-size: 0.85rem; font-weight: 600; margin-bottom: 1.5rem; }
+        .hero h1 { color: var(--white); font-size: clamp(2.2rem,5vw,3.5rem); font-weight: 800; line-height: 1.15; margin-bottom: 1.2rem; letter-spacing: -0.02em; }
+        .hero h1 .gradient-text { background: linear-gradient(135deg, var(--green) 0%, #34d399 50%, var(--blue) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .hero p { color: var(--gray-400); font-size: 1.2rem; max-width: 650px; margin: 0 auto 2rem; line-height: 1.7; }
+        .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 2rem; border-radius: 10px; font-weight: 600; font-size: 1rem; text-decoration: none; transition: all 0.25s; border: none; cursor: pointer; }
+        .btn-primary { background: var(--green); color: var(--white); box-shadow: 0 4px 15px var(--green-glow); }
+        .btn-primary:hover { background: var(--green-dark); transform: translateY(-2px); box-shadow: 0 8px 25px var(--green-glow); }
+        .btn-secondary { background: rgba(255,255,255,0.08); color: var(--white); border: 1px solid rgba(255,255,255,0.15); }
+        .btn-secondary:hover { background: rgba(255,255,255,0.12); transform: translateY(-2px); }
+
+        .hero-code { margin-top: 3rem; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 1.5rem; text-align: left; max-width: 700px; margin-left: auto; margin-right: auto; overflow-x: auto; }
+        .hero-code pre { font-family: var(--mono); font-size: 0.85rem; line-height: 1.6; color: var(--gray-300); }
+        .hero-code .comment { color: var(--gray-500); }
+        .hero-code .string { color: var(--green); }
+        .hero-code .number { color: var(--orange); }
+        .hero-code .property { color: var(--blue); }
+        .hero-code .bool { color: var(--purple); }
+
+        .section { padding: 5rem 2rem; }
+        .section-dark { background: var(--gray-50); }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 3rem; }
+        .section-header h2 { font-size: clamp(1.8rem,3vw,2.4rem); color: var(--gray-900); font-weight: 800; margin-bottom: 0.8rem; letter-spacing: -0.02em; }
+        .section-header p { color: var(--gray-500); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
+        .feature-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: 12px; padding: 2rem; transition: all 0.3s; }
+        .feature-card:hover { border-color: var(--green); box-shadow: 0 8px 30px rgba(16,185,129,0.1); transform: translateY(-3px); }
+        .feature-icon { width: 48px; height: 48px; background: linear-gradient(135deg, rgba(16,185,129,0.1), rgba(59,130,246,0.1)); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; margin-bottom: 1rem; }
+        .feature-card h3 { font-size: 1.15rem; color: var(--gray-900); margin-bottom: 0.5rem; font-weight: 700; }
+        .feature-card p { color: var(--gray-500); font-size: 0.95rem; line-height: 1.6; }
+
+        .pipeline { display: flex; align-items: center; justify-content: center; gap: 0; flex-wrap: wrap; margin: 2rem 0; }
+        .pipeline-step { background: var(--white); border: 2px solid var(--gray-200); border-radius: 12px; padding: 1.5rem 2rem; text-align: center; min-width: 180px; transition: all 0.3s; }
+        .pipeline-step:hover { border-color: var(--green); transform: translateY(-2px); }
+        .pipeline-step .icon { font-size: 2rem; margin-bottom: 0.5rem; }
+        .pipeline-step h3 { font-size: 1rem; color: var(--gray-900); font-weight: 700; margin-bottom: 0.3rem; }
+        .pipeline-step p { color: var(--gray-500); font-size: 0.8rem; }
+        .pipeline-arrow { font-size: 1.5rem; color: var(--green); padding: 0 0.5rem; font-weight: 700; }
+
+        .output-block { background: var(--navy); border-radius: 12px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.2); }
+        .output-header { background: var(--navy-light); padding: 0.8rem 1.5rem; display: flex; align-items: center; gap: 0.5rem; }
+        .output-dot { width: 12px; height: 12px; border-radius: 50%; }
+        .output-dot.red { background: #ef4444; } .output-dot.yellow { background: #f59e0b; } .output-dot.green { background: #10b981; }
+        .output-title { color: var(--gray-400); font-size: 0.85rem; margin-left: 0.5rem; font-family: var(--mono); }
+        .output-body { padding: 1.5rem; overflow-x: auto; }
+        .output-body pre { font-family: var(--mono); font-size: 0.82rem; line-height: 1.65; color: var(--gray-300); }
+        .output-body .key { color: #7dd3fc; } .output-body .str { color: #86efac; } .output-body .num { color: #fbbf24; } .output-body .bool { color: #c084fc; }
+
+        .usecases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+        .usecase-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: 12px; padding: 1.8rem; transition: all 0.3s; }
+        .usecase-card:hover { border-color: var(--purple); box-shadow: 0 8px 30px rgba(139,92,246,0.08); transform: translateY(-2px); }
+        .usecase-icon { font-size: 1.8rem; margin-bottom: 0.8rem; }
+        .usecase-card h3 { font-size: 1.05rem; color: var(--gray-900); margin-bottom: 0.4rem; font-weight: 700; }
+        .usecase-card p { color: var(--gray-500); font-size: 0.9rem; }
+
+        .pricing-box { max-width: 700px; margin: 0 auto; background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%); border-radius: 16px; padding: 3rem; text-align: center; color: var(--white); position: relative; overflow: hidden; }
+        .pricing-box::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 50% 0%, rgba(16,185,129,0.12), transparent 60%); }
+        .pricing-box > * { position: relative; z-index: 1; }
+        .pricing-box h2 { font-size: 2rem; margin-bottom: 0.5rem; color: var(--white); }
+        .pricing-box .price { font-size: 3rem; font-weight: 800; margin: 1rem 0; color: var(--green); }
+        .pricing-box .price span { font-size: 1rem; color: var(--gray-400); font-weight: 400; }
+        .pricing-box .price-note { color: var(--gray-400); margin-bottom: 2rem; }
+        .pricing-features { text-align: left; max-width: 400px; margin: 0 auto 2rem; }
+        .pricing-features li { list-style: none; padding: 0.4rem 0; color: var(--gray-300); font-size: 0.95rem; }
+        .pricing-features li::before { content: '\2713'; color: var(--green); font-weight: 700; margin-right: 0.8rem; }
+
+        .code-tabs { display: flex; gap: 0; }
+        .code-tab { padding: 0.7rem 1.5rem; background: var(--navy-light); color: var(--gray-400); border: none; cursor: pointer; font-size: 0.9rem; font-weight: 600; font-family: var(--font); transition: all 0.2s; border-top-left-radius: 8px; border-top-right-radius: 8px; }
+        .code-tab.active { background: var(--navy); color: var(--white); }
+        .code-panel { display: none; background: var(--navy); border-radius: 0 12px 12px 12px; padding: 1.5rem; overflow-x: auto; }
+        .code-panel.active { display: block; }
+        .code-panel pre { font-family: var(--mono); font-size: 0.85rem; line-height: 1.6; color: var(--gray-300); }
+        .code-panel .kw { color: var(--purple); } .code-panel .fn { color: #7dd3fc; } .code-panel .str { color: #86efac; } .code-panel .cm { color: var(--gray-500); } .code-panel .num { color: #fbbf24; } .code-panel .bool { color: #c084fc; }
+
+        .faq-list { max-width: 800px; margin: 0 auto; }
+        .faq-item { border-bottom: 1px solid var(--gray-200); }
+        .faq-question { width: 100%; background: none; border: none; padding: 1.3rem 0; font-size: 1.05rem; font-weight: 600; color: var(--gray-900); text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-family: var(--font); transition: color 0.2s; }
+        .faq-question:hover { color: var(--green); }
+        .faq-arrow { font-size: 1.2rem; transition: transform 0.3s; color: var(--gray-400); }
+        .faq-item.open .faq-arrow { transform: rotate(180deg); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; }
+        .faq-item.open .faq-answer { max-height: 300px; padding-bottom: 1.3rem; }
+        .faq-answer p { color: var(--gray-500); font-size: 0.95rem; line-height: 1.7; }
+
+        .footer { background: var(--navy); color: var(--gray-400); padding: 3rem 2rem; text-align: center; }
+        .footer-links { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+        .footer-links a { color: var(--gray-400); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+        .footer-links a:hover { color: var(--white); }
+        .footer p { font-size: 0.85rem; }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero { padding: 7rem 1.5rem 3rem; }
+            .section { padding: 3rem 1.5rem; }
+            .features-grid, .usecases-grid { grid-template-columns: 1fr; }
+            .pricing-box { padding: 2rem 1.5rem; }
+            .hero-buttons { flex-direction: column; align-items: center; }
+            .pipeline { flex-direction: column; }
+            .pipeline-arrow { transform: rotate(90deg); }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="nav">
+    <div class="nav-inner">
+        <a href="index.html" class="nav-brand">Sovereign<span>Tools</span></a>
+        <ul class="nav-links">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#pipeline">Pipeline</a></li>
+            <li><a href="#output">Output</a></li>
+            <li><a href="#use-cases">Use Cases</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#api">API</a></li>
+            <li><a href="https://apify.com/sovereigntaylor/website-to-markdown" class="nav-cta" target="_blank">Try Free</a></li>
+        </ul>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="hero-content">
+        <div class="hero-badge">AI/RAG Optimized &middot; Built-in Chunking &middot; Vector DB Ready</div>
+        <h1>Convert Any Website to <span class="gradient-text">Clean Markdown</span> for AI</h1>
+        <p>Crawl websites and extract content as clean Markdown optimized for RAG pipelines, LLM fine-tuning, embeddings, and knowledge bases. Built-in chunking for vector databases.</p>
+        <div class="hero-buttons">
+            <a href="https://apify.com/sovereigntaylor/website-to-markdown" class="btn btn-primary" target="_blank">&#9654; Start Free Trial</a>
+            <a href="#output" class="btn btn-secondary">&#128203; View Sample Output</a>
+        </div>
+        <div class="hero-code">
+            <pre><span class="comment">// Crawl docs, strip boilerplate, chunk for embeddings</span>
+{
+  <span class="property">"startUrls"</span>: [<span class="string">"https://docs.python.org/3/"</span>],
+  <span class="property">"maxPages"</span>: <span class="number">500</span>,
+  <span class="property">"removeNavigation"</span>: <span class="bool">true</span>,
+  <span class="property">"chunkSize"</span>: <span class="number">1500</span>,
+  <span class="property">"outputFormat"</span>: <span class="string">"markdown"</span>
+}</pre>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="features">
+    <div class="container">
+        <div class="section-header">
+            <h2>Purpose-Built for AI Data Pipelines</h2>
+            <p>Not just another scraper. This is a complete web-to-AI data pipeline.</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">&#128196;</div>
+                <h3>Clean Markdown Output</h3>
+                <p>Converts HTML to clean, well-structured Markdown. Preserves headings, lists, code blocks, links, and tables. Strips all boilerplate.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#9986;</div>
+                <h3>Smart Content Extraction</h3>
+                <p>Automatically removes navigation, headers, footers, sidebars, cookie banners, ads, and popups. Extracts only the main content.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#128218;</div>
+                <h3>Built-in Chunking</h3>
+                <p>Split content into configurable chunks (e.g., 1,500 chars) with overlap for vector database ingestion. Optimized for OpenAI, Pinecone, and Weaviate.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#128269;</div>
+                <h3>Metadata Extraction</h3>
+                <p>Captures title, description, author, Open Graph tags, JSON-LD structured data, word count, and reading time for each page.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#127760;</div>
+                <h3>Full Site Crawling</h3>
+                <p>Follow internal links up to 10 levels deep. Filter by URL patterns, use sitemaps, and set rate limits. Crawl from 1 page to 10,000.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#9881;</div>
+                <h3>Three Output Formats</h3>
+                <p>Choose Markdown (recommended for AI), plain text, or cleaned HTML. Markdown preserves structure while being token-efficient for LLMs.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section section-dark" id="pipeline">
+    <div class="container">
+        <div class="section-header">
+            <h2>The AI Data Pipeline</h2>
+            <p>From raw website to AI-ready data in one step.</p>
+        </div>
+        <div class="pipeline">
+            <div class="pipeline-step">
+                <div class="icon">&#127760;</div>
+                <h3>Website</h3>
+                <p>Any URL or sitemap</p>
+            </div>
+            <div class="pipeline-arrow">&#10140;</div>
+            <div class="pipeline-step">
+                <div class="icon">&#128296;</div>
+                <h3>Crawl & Clean</h3>
+                <p>Strip nav, ads, popups</p>
+            </div>
+            <div class="pipeline-arrow">&#10140;</div>
+            <div class="pipeline-step">
+                <div class="icon">&#128196;</div>
+                <h3>Markdown</h3>
+                <p>Clean, structured text</p>
+            </div>
+            <div class="pipeline-arrow">&#10140;</div>
+            <div class="pipeline-step">
+                <div class="icon">&#9986;</div>
+                <h3>Chunk</h3>
+                <p>Split with overlap</p>
+            </div>
+            <div class="pipeline-arrow">&#10140;</div>
+            <div class="pipeline-step">
+                <div class="icon">&#129504;</div>
+                <h3>AI / RAG</h3>
+                <p>Embeddings, LLMs, KBs</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="output">
+    <div class="container">
+        <div class="section-header">
+            <h2>Sample Output</h2>
+            <p>Structured, chunked, metadata-rich. Ready for your vector DB.</p>
+        </div>
+        <div class="output-block">
+            <div class="output-header">
+                <div class="output-dot red"></div><div class="output-dot yellow"></div><div class="output-dot green"></div>
+                <span class="output-title">output.json</span>
+            </div>
+            <div class="output-body">
+                <pre>[
+  {
+    <span class="key">"url"</span>: <span class="str">"https://docs.python.org/3/tutorial/introduction.html"</span>,
+    <span class="key">"title"</span>: <span class="str">"3. An Informal Introduction to Python"</span>,
+    <span class="key">"markdown"</span>: <span class="str">"# An Informal Introduction to Python\n\nIn the following examples, input and output are distinguished by the presence or absence of prompts...\n\n## Using Python as a Calculator\n\n### Numbers\n\nThe interpreter acts as a simple calculator..."</span>,
+    <span class="key">"wordCount"</span>: <span class="num">2847</span>,
+    <span class="key">"readingTime"</span>: <span class="str">"12 min"</span>,
+    <span class="key">"metadata"</span>: {
+      <span class="key">"description"</span>: <span class="str">"An informal introduction to Python 3"</span>,
+      <span class="key">"author"</span>: <span class="str">"Python Software Foundation"</span>,
+      <span class="key">"language"</span>: <span class="str">"en"</span>
+    },
+    <span class="key">"chunks"</span>: [
+      {
+        <span class="key">"text"</span>: <span class="str">"# An Informal Introduction to Python\n\nIn the following examples..."</span>,
+        <span class="key">"index"</span>: <span class="num">0</span>,
+        <span class="key">"charCount"</span>: <span class="num">1500</span>
+      }
+    ]
+  }
+]</pre>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section section-dark" id="use-cases">
+    <div class="container">
+        <div class="section-header">
+            <h2>Use Cases</h2>
+            <p>From RAG chatbots to LLM training — power every AI workflow.</p>
+        </div>
+        <div class="usecases-grid">
+            <div class="usecase-card">
+                <div class="usecase-icon">&#129504;</div>
+                <h3>RAG Pipelines</h3>
+                <p>Ingest documentation, knowledge bases, and support articles into vector databases. Build retrieval-augmented generation systems with clean, chunked data.</p>
+            </div>
+            <div class="usecase-card">
+                <div class="usecase-icon">&#128300;</div>
+                <h3>LLM Fine-Tuning</h3>
+                <p>Create high-quality training datasets from websites. Clean markdown preserves structure while removing noise that degrades model performance.</p>
+            </div>
+            <div class="usecase-card">
+                <div class="usecase-icon">&#128172;</div>
+                <h3>AI Chatbots</h3>
+                <p>Build chatbots that can answer questions about any website. Feed documentation into your chatbot's knowledge base in minutes, not hours.</p>
+            </div>
+            <div class="usecase-card">
+                <div class="usecase-icon">&#128209;</div>
+                <h3>Content Migration</h3>
+                <p>Migrate website content to new platforms. Export entire sites as clean Markdown for import into CMS, wikis, or documentation tools.</p>
+            </div>
+            <div class="usecase-card">
+                <div class="usecase-icon">&#128202;</div>
+                <h3>Content Analysis</h3>
+                <p>Analyze competitor websites, industry blogs, and news sources. Extract clean text for sentiment analysis, topic modeling, and NLP research.</p>
+            </div>
+            <div class="usecase-card">
+                <div class="usecase-icon">&#128230;</div>
+                <h3>Data Archival</h3>
+                <p>Archive websites as clean, readable Markdown. Preserve content structure without the overhead of full HTML snapshots.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="pricing">
+    <div class="container">
+        <div class="pricing-box">
+            <h2>Pay Per Page Crawled</h2>
+            <p class="price-note">Simple pricing. No subscriptions. No setup fees.</p>
+            <div class="price">~$0.003 <span>per page</span></div>
+            <p class="price-note">Crawl 1,000 pages for about $3. Free trial included.</p>
+            <ul class="pricing-features">
+                <li>Free trial with Apify credits</li>
+                <li>Markdown, text, or HTML output</li>
+                <li>Built-in chunking for vector DBs</li>
+                <li>Metadata and structured data extraction</li>
+                <li>Sitemap and link-following support</li>
+                <li>REST API and scheduled runs</li>
+            </ul>
+            <a href="https://apify.com/sovereigntaylor/website-to-markdown" class="btn btn-primary" target="_blank">Start Free Trial</a>
+        </div>
+    </div>
+</section>
+
+<section class="section section-dark" id="api">
+    <div class="container">
+        <div class="section-header">
+            <h2>API Quick Start</h2>
+            <p>Feed your AI pipeline programmatically.</p>
+        </div>
+        <div>
+            <div class="code-tabs">
+                <button class="code-tab active" onclick="showTab(event, 'js')">JavaScript</button>
+                <button class="code-tab" onclick="showTab(event, 'python')">Python</button>
+                <button class="code-tab" onclick="showTab(event, 'curl')">cURL</button>
+            </div>
+            <div class="code-panel active" id="tab-js">
+                <pre><span class="kw">import</span> { ApifyClient } <span class="kw">from</span> <span class="str">'apify-client'</span>;
+
+<span class="kw">const</span> client = <span class="kw">new</span> <span class="fn">ApifyClient</span>({ <span class="fn">token</span>: <span class="str">'YOUR_API_TOKEN'</span> });
+
+<span class="kw">const</span> run = <span class="kw">await</span> client.<span class="fn">actor</span>(<span class="str">'sovereigntaylor/website-to-markdown'</span>).<span class="fn">call</span>({
+  <span class="fn">startUrls</span>: [<span class="str">'https://docs.python.org/3/'</span>],
+  <span class="fn">maxPages</span>: <span class="num">500</span>,
+  <span class="fn">removeNavigation</span>: <span class="bool">true</span>,
+  <span class="fn">chunkSize</span>: <span class="num">1500</span>,
+  <span class="fn">outputFormat</span>: <span class="str">'markdown'</span>
+});
+
+<span class="kw">const</span> { items } = <span class="kw">await</span> client.<span class="fn">dataset</span>(run.defaultDatasetId).<span class="fn">listItems</span>();
+<span class="cm">// Each item has: url, title, markdown, wordCount, metadata, chunks[]</span>
+console.<span class="fn">log</span>(<span class="str">`Converted ${items.length} pages to markdown`</span>);</pre>
+            </div>
+            <div class="code-panel" id="tab-python">
+                <pre><span class="kw">from</span> apify_client <span class="kw">import</span> ApifyClient
+
+client = <span class="fn">ApifyClient</span>(<span class="str">"YOUR_API_TOKEN"</span>)
+
+run = client.<span class="fn">actor</span>(<span class="str">"sovereigntaylor/website-to-markdown"</span>).<span class="fn">call</span>(run_input={
+    <span class="str">"startUrls"</span>: [<span class="str">"https://docs.python.org/3/"</span>],
+    <span class="str">"maxPages"</span>: <span class="num">500</span>,
+    <span class="str">"removeNavigation"</span>: <span class="bool">True</span>,
+    <span class="str">"chunkSize"</span>: <span class="num">1500</span>,
+    <span class="str">"outputFormat"</span>: <span class="str">"markdown"</span>
+})
+
+items = client.<span class="fn">dataset</span>(run[<span class="str">"defaultDatasetId"</span>]).<span class="fn">list_items</span>().items
+
+<span class="cm"># Feed chunks directly into your vector DB</span>
+<span class="kw">for</span> page <span class="kw">in</span> items:
+    <span class="kw">for</span> chunk <span class="kw">in</span> page.get(<span class="str">"chunks"</span>, []):
+        <span class="fn">print</span>(f<span class="str">'Chunk {chunk["index"]}: {chunk["charCount"]} chars'</span>)</pre>
+            </div>
+            <div class="code-panel" id="tab-curl">
+                <pre><span class="cm"># Start the actor run</span>
+curl -X POST <span class="str">"https://api.apify.com/v2/acts/sovereigntaylor~website-to-markdown/runs?token=YOUR_API_TOKEN"</span> \
+  -H <span class="str">"Content-Type: application/json"</span> \
+  -d <span class="str">'{
+    "startUrls": ["https://docs.python.org/3/"],
+    "maxPages": 500,
+    "removeNavigation": true,
+    "chunkSize": 1500,
+    "outputFormat": "markdown"
+  }'</span>
+
+<span class="cm"># Download results as JSON</span>
+curl <span class="str">"https://api.apify.com/v2/datasets/DATASET_ID/items?token=YOUR_API_TOKEN"</span></pre>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="faq">
+    <div class="container">
+        <div class="section-header"><h2>Frequently Asked Questions</h2></div>
+        <div class="faq-list">
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">What websites can this crawl?<span class="faq-arrow">&#9660;</span></button>
+                <div class="faq-answer"><p>Any publicly accessible website. Documentation sites, blogs, news sites, wikis, and knowledge bases work best. Sites with heavy JavaScript rendering may require the browser-based crawling mode.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">How does chunking work?<span class="faq-arrow">&#9660;</span></button>
+                <div class="faq-answer"><p>Set a chunk size (e.g., 1,500 characters) and overlap (e.g., 200 characters). The tool splits content into chunks of that size with the specified overlap between consecutive chunks, preserving context for embedding models.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">Which vector databases are compatible?<span class="faq-arrow">&#9660;</span></button>
+                <div class="faq-answer"><p>The output works with any vector database: Pinecone, Weaviate, Chroma, Qdrant, Milvus, pgvector, and more. The chunked text output can be directly embedded using OpenAI, Cohere, or any embedding model.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">Does it respect robots.txt?<span class="faq-arrow">&#9660;</span></button>
+                <div class="faq-answer"><p>The crawler can be configured to follow or ignore robots.txt. We recommend respecting it. You can also set rate limits (requests per minute) to be gentle on target servers.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">Can I filter which pages are crawled?<span class="faq-arrow">&#9660;</span></button>
+                <div class="faq-answer"><p>Yes. Use URL include patterns (e.g., "/docs/") to only crawl specific sections, or exclude patterns (e.g., "\\.(pdf|zip)$") to skip certain file types. You can also provide a sitemap URL for precise control.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">How is this different from web scraping?<span class="faq-arrow">&#9660;</span></button>
+                <div class="faq-answer"><p>Traditional scrapers extract raw HTML. This tool is purpose-built for AI: it removes boilerplate, converts to clean Markdown, extracts metadata, and chunks output for vector databases. It is an end-to-end AI data pipeline.</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-links">
+            <a href="https://apify.com/sovereigntaylor/website-to-markdown" target="_blank">Apify Store</a>
+            <a href="https://apify.com/sovereigntaylor" target="_blank">All Our Actors</a>
+            <a href="https://github.com/ryudi84" target="_blank">GitHub</a>
+            <a href="index.html">More Tools</a>
+        </div>
+        <p>Built by Sovereign Taylor &middot; Powered by Apify</p>
+    </div>
+</footer>
+
+<script>
+function showTab(e, tabId) {
+    document.querySelectorAll('.code-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.code-panel').forEach(p => p.classList.remove('active'));
+    e.target.classList.add('active');
+    document.getElementById('tab-' + tabId).classList.add('active');
+}
+function toggleFaq(btn) { btn.parentElement.classList.toggle('open'); }
+</script>
+
+</body>
+</html>

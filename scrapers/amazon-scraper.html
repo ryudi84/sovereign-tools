@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon Product Scraper — Scrape Prices, Reviews & Data from 11 Marketplaces | Free Trial on Apify</title>
+    <meta name="description" content="Scrape Amazon product data across 11 marketplaces. Extract prices, ratings, reviews, ASINs, seller info, and Best Seller Rank. Pay-per-event pricing.">
+    <meta name="keywords" content="amazon scraper, amazon product data, amazon price tracker, scrape amazon, amazon api alternative, product research, amazon asin scraper">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://ryudi84.github.io/sovereign-tools/amazon-scraper.html">
+
+    <meta property="og:title" content="Amazon Product Scraper — 11 Marketplaces, One Tool">
+    <meta property="og:description" content="Scrape product titles, prices, ratings, reviews, ASINs, and seller data from Amazon US, UK, DE, FR, JP, and 6 more marketplaces.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ryudi84.github.io/sovereign-tools/amazon-scraper.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Amazon Product Scraper — 11 Marketplaces, One Tool">
+    <meta name="twitter:description" content="Extract prices, ratings, reviews, ASINs from 11 Amazon marketplaces. Sort, filter, and export in seconds.">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Amazon Product Scraper",
+        "applicationCategory": "WebApplication",
+        "operatingSystem": "Cloud",
+        "description": "Scrape Amazon product data from 11 marketplaces. Extract prices, ratings, reviews, ASINs, seller info, and Best Seller Rank at scale.",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD",
+            "description": "Free trial available. Pay-per-event pricing."
+        },
+        "author": {
+            "@type": "Organization",
+            "name": "Sovereign Taylor",
+            "url": "https://apify.com/sovereigntaylor"
+        },
+        "url": "https://apify.com/sovereigntaylor/amazon-scraper"
+    }
+    </script>
+
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --navy: #0f172a; --navy-light: #1e293b;
+            --blue: #3b82f6; --blue-dark: #2563eb; --blue-glow: rgba(59,130,246,0.3);
+            --green: #10b981; --purple: #8b5cf6; --orange: #f59e0b;
+            --white: #ffffff; --gray-50: #f8fafc; --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0; --gray-300: #cbd5e1; --gray-400: #94a3b8;
+            --gray-500: #64748b; --gray-600: #475569; --gray-700: #334155;
+            --gray-800: #1e293b; --gray-900: #0f172a;
+            --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            --mono: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', 'Courier New', monospace;
+            --amazon-orange: #ff9900;
+        }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font); color: var(--gray-700); line-height: 1.6; background: var(--white); -webkit-font-smoothing: antialiased; }
+
+        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(15,23,42,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.1); padding: 0 2rem; }
+        .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+        .nav-brand { color: var(--white); font-weight: 700; font-size: 1.1rem; text-decoration: none; }
+        .nav-brand span { color: var(--blue); }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { color: var(--gray-400); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--white); }
+        .nav-cta { background: var(--amazon-orange); color: var(--navy) !important; padding: 0.5rem 1.2rem; border-radius: 8px; font-weight: 700; transition: all 0.2s; }
+        .nav-cta:hover { background: #e68a00; transform: translateY(-1px); }
+
+        .hero { background: linear-gradient(135deg, var(--navy) 0%, #1a1a2e 50%, #16213e 100%); padding: 8rem 2rem 5rem; text-align: center; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle at 40% 40%, rgba(255,153,0,0.06) 0%, transparent 50%), radial-gradient(circle at 60% 60%, rgba(59,130,246,0.06) 0%, transparent 50%); }
+        .hero-content { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; }
+        .hero-badge { display: inline-block; background: rgba(255,153,0,0.15); border: 1px solid rgba(255,153,0,0.3); color: var(--amazon-orange); padding: 0.4rem 1rem; border-radius: 50px; font-size: 0.85rem; font-weight: 600; margin-bottom: 1.5rem; }
+        .hero h1 { color: var(--white); font-size: clamp(2.2rem,5vw,3.5rem); font-weight: 800; line-height: 1.15; margin-bottom: 1.2rem; letter-spacing: -0.02em; }
+        .hero h1 .gradient-text { background: linear-gradient(135deg, var(--amazon-orange) 0%, #fbbf24 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .hero p { color: var(--gray-400); font-size: 1.2rem; max-width: 650px; margin: 0 auto 2rem; line-height: 1.7; }
+        .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 2rem; border-radius: 10px; font-weight: 600; font-size: 1rem; text-decoration: none; transition: all 0.25s; border: none; cursor: pointer; }
+        .btn-primary { background: var(--amazon-orange); color: var(--navy); box-shadow: 0 4px 15px rgba(255,153,0,0.3); }
+        .btn-primary:hover { background: #e68a00; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(255,153,0,0.3); }
+        .btn-secondary { background: rgba(255,255,255,0.08); color: var(--white); border: 1px solid rgba(255,255,255,0.15); }
+        .btn-secondary:hover { background: rgba(255,255,255,0.12); transform: translateY(-2px); }
+
+        .hero-code { margin-top: 3rem; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 1.5rem; text-align: left; max-width: 700px; margin-left: auto; margin-right: auto; overflow-x: auto; }
+        .hero-code pre { font-family: var(--mono); font-size: 0.85rem; line-height: 1.6; color: var(--gray-300); }
+        .hero-code .comment { color: var(--gray-500); }
+        .hero-code .keyword { color: var(--purple); }
+        .hero-code .string { color: var(--green); }
+        .hero-code .number { color: var(--orange); }
+        .hero-code .property { color: var(--blue); }
+
+        .section { padding: 5rem 2rem; }
+        .section-dark { background: var(--gray-50); }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 3rem; }
+        .section-header h2 { font-size: clamp(1.8rem,3vw,2.4rem); color: var(--gray-900); font-weight: 800; margin-bottom: 0.8rem; letter-spacing: -0.02em; }
+        .section-header p { color: var(--gray-500); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
+        .feature-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: 12px; padding: 2rem; transition: all 0.3s; }
+        .feature-card:hover { border-color: var(--amazon-orange); box-shadow: 0 8px 30px rgba(255,153,0,0.1); transform: translateY(-3px); }
+        .feature-icon { width: 48px; height: 48px; background: linear-gradient(135deg, rgba(255,153,0,0.1), rgba(251,191,36,0.1)); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; margin-bottom: 1rem; }
+        .feature-card h3 { font-size: 1.15rem; color: var(--gray-900); margin-bottom: 0.5rem; font-weight: 700; }
+        .feature-card p { color: var(--gray-500); font-size: 0.95rem; line-height: 1.6; }
+
+        .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+        .step { text-align: center; padding: 2rem 1.5rem; }
+        .step-number { width: 56px; height: 56px; background: linear-gradient(135deg, var(--amazon-orange), #fbbf24); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--navy); font-weight: 800; font-size: 1.3rem; margin: 0 auto 1.2rem; }
+        .step h3 { font-size: 1.2rem; color: var(--gray-900); margin-bottom: 0.6rem; font-weight: 700; }
+        .step p { color: var(--gray-500); font-size: 0.95rem; }
+
+        .marketplace-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; max-width: 800px; margin: 0 auto; }
+        .marketplace-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: 10px; padding: 1rem; text-align: center; font-weight: 600; color: var(--gray-700); font-size: 0.9rem; transition: all 0.2s; }
+        .marketplace-card:hover { border-color: var(--amazon-orange); transform: translateY(-2px); }
+        .marketplace-flag { font-size: 1.5rem; display: block; margin-bottom: 0.4rem; }
+
+        .output-block { background: var(--navy); border-radius: 12px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.2); }
+        .output-header { background: var(--navy-light); padding: 0.8rem 1.5rem; display: flex; align-items: center; gap: 0.5rem; }
+        .output-dot { width: 12px; height: 12px; border-radius: 50%; }
+        .output-dot.red { background: #ef4444; } .output-dot.yellow { background: #f59e0b; } .output-dot.green { background: #10b981; }
+        .output-title { color: var(--gray-400); font-size: 0.85rem; margin-left: 0.5rem; font-family: var(--mono); }
+        .output-body { padding: 1.5rem; overflow-x: auto; }
+        .output-body pre { font-family: var(--mono); font-size: 0.82rem; line-height: 1.65; color: var(--gray-300); }
+        .output-body .key { color: #7dd3fc; } .output-body .str { color: #86efac; } .output-body .num { color: #fbbf24; } .output-body .bool { color: #c084fc; }
+
+        .usecases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+        .usecase-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: 12px; padding: 1.8rem; transition: all 0.3s; }
+        .usecase-card:hover { border-color: var(--green); box-shadow: 0 8px 30px rgba(16,185,129,0.08); transform: translateY(-2px); }
+        .usecase-icon { font-size: 1.8rem; margin-bottom: 0.8rem; }
+        .usecase-card h3 { font-size: 1.05rem; color: var(--gray-900); margin-bottom: 0.4rem; font-weight: 700; }
+        .usecase-card p { color: var(--gray-500); font-size: 0.9rem; }
+
+        .pricing-box { max-width: 700px; margin: 0 auto; background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%); border-radius: 16px; padding: 3rem; text-align: center; color: var(--white); position: relative; overflow: hidden; }
+        .pricing-box::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 50% 0%, rgba(255,153,0,0.12), transparent 60%); }
+        .pricing-box > * { position: relative; z-index: 1; }
+        .pricing-box h2 { font-size: 2rem; margin-bottom: 0.5rem; color: var(--white); }
+        .pricing-box .price { font-size: 3rem; font-weight: 800; margin: 1rem 0; color: var(--amazon-orange); }
+        .pricing-box .price span { font-size: 1rem; color: var(--gray-400); font-weight: 400; }
+        .pricing-box .price-note { color: var(--gray-400); margin-bottom: 2rem; }
+        .pricing-features { text-align: left; max-width: 400px; margin: 0 auto 2rem; }
+        .pricing-features li { list-style: none; padding: 0.4rem 0; color: var(--gray-300); font-size: 0.95rem; }
+        .pricing-features li::before { content: '\2713'; color: var(--green); font-weight: 700; margin-right: 0.8rem; }
+
+        .code-tabs { display: flex; gap: 0; }
+        .code-tab { padding: 0.7rem 1.5rem; background: var(--navy-light); color: var(--gray-400); border: none; cursor: pointer; font-size: 0.9rem; font-weight: 600; font-family: var(--font); transition: all 0.2s; border-top-left-radius: 8px; border-top-right-radius: 8px; }
+        .code-tab.active { background: var(--navy); color: var(--white); }
+        .code-panel { display: none; background: var(--navy); border-radius: 0 12px 12px 12px; padding: 1.5rem; overflow-x: auto; }
+        .code-panel.active { display: block; }
+        .code-panel pre { font-family: var(--mono); font-size: 0.85rem; line-height: 1.6; color: var(--gray-300); }
+        .code-panel .kw { color: var(--purple); } .code-panel .fn { color: #7dd3fc; } .code-panel .str { color: #86efac; } .code-panel .cm { color: var(--gray-500); } .code-panel .num { color: #fbbf24; }
+
+        .faq-list { max-width: 800px; margin: 0 auto; }
+        .faq-item { border-bottom: 1px solid var(--gray-200); }
+        .faq-question { width: 100%; background: none; border: none; padding: 1.3rem 0; font-size: 1.05rem; font-weight: 600; color: var(--gray-900); text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-family: var(--font); transition: color 0.2s; }
+        .faq-question:hover { color: var(--amazon-orange); }
+        .faq-arrow { font-size: 1.2rem; transition: transform 0.3s; color: var(--gray-400); }
+        .faq-item.open .faq-arrow { transform: rotate(180deg); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; }
+        .faq-item.open .faq-answer { max-height: 300px; padding-bottom: 1.3rem; }
+        .faq-answer p { color: var(--gray-500); font-size: 0.95rem; line-height: 1.7; }
+
+        .footer { background: var(--navy); color: var(--gray-400); padding: 3rem 2rem; text-align: center; }
+        .footer-links { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+        .footer-links a { color: var(--gray-400); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+        .footer-links a:hover { color: var(--white); }
+        .footer p { font-size: 0.85rem; }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero { padding: 7rem 1.5rem 3rem; }
+            .section { padding: 3rem 1.5rem; }
+            .features-grid, .steps, .usecases-grid { grid-template-columns: 1fr; }
+            .marketplace-grid { grid-template-columns: repeat(3, 1fr); }
+            .pricing-box { padding: 2rem 1.5rem; }
+            .hero-buttons { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="nav">
+    <div class="nav-inner">
+        <a href="index.html" class="nav-brand">Sovereign<span>Tools</span></a>
+        <ul class="nav-links">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#marketplaces">Marketplaces</a></li>
+            <li><a href="#output">Output</a></li>
+            <li><a href="#use-cases">Use Cases</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#api">API</a></li>
+            <li><a href="https://apify.com/sovereigntaylor/amazon-scraper" class="nav-cta" target="_blank">Try Free</a></li>
+        </ul>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="hero-content">
+        <div class="hero-badge">11 Marketplaces &middot; Price Tracking &middot; ASIN Lookup</div>
+        <h1>Scrape <span class="gradient-text">Amazon Product Data</span> from 11 Marketplaces</h1>
+        <p>Extract product titles, prices, ratings, reviews, ASINs, seller info, and Best Seller Rank. Sort by price, reviews, or recency. Export to JSON, CSV, or Excel.</p>
+        <div class="hero-buttons">
+            <a href="https://apify.com/sovereigntaylor/amazon-scraper" class="btn btn-primary" target="_blank">&#9654; Start Free Trial</a>
+            <a href="#output" class="btn btn-secondary">&#128203; View Sample Output</a>
+        </div>
+        <div class="hero-code">
+            <pre><span class="comment">// Search any product across any Amazon marketplace</span>
+{
+  <span class="property">"searchQuery"</span>: <span class="string">"wireless headphones"</span>,
+  <span class="property">"marketplace"</span>: <span class="string">"amazon.com"</span>,
+  <span class="property">"maxProducts"</span>: <span class="number">100</span>,
+  <span class="property">"sortBy"</span>: <span class="string">"review-rank"</span>
+}</pre>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="features">
+    <div class="container">
+        <div class="section-header">
+            <h2>Amazon Data Extraction Made Simple</h2>
+            <p>From product research to competitive intelligence, get the data you need.</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">&#127760;</div>
+                <h3>11 Amazon Marketplaces</h3>
+                <p>Scrape from Amazon.com, .co.uk, .de, .fr, .it, .es, .ca, .com.au, .co.jp, .in, and .com.br. One tool for global product intelligence.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#128176;</div>
+                <h3>Price & Currency Data</h3>
+                <p>Get current prices, original prices, discount percentages, and currency in the marketplace's local format. Track prices over time.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#11088;</div>
+                <h3>Ratings & Reviews</h3>
+                <p>Extract star ratings, review counts, and review text. Analyze customer sentiment across products, brands, and categories.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#128270;</div>
+                <h3>Smart Sorting & Filtering</h3>
+                <p>Sort by relevance, price (low/high), customer reviews, or newest arrivals. Filter by min/max price range.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#9889;</div>
+                <h3>Up to 10,000 Products</h3>
+                <p>Automatic pagination across hundreds of search pages. Scale from 10 quick results to full category scrapes.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#128737;</div>
+                <h3>Anti-Detection Built In</h3>
+                <p>Residential proxy rotation, automatic retries, CAPTCHA handling, and randomized delays. Get data reliably even at scale.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section section-dark" id="marketplaces">
+    <div class="container">
+        <div class="section-header">
+            <h2>Supported Marketplaces</h2>
+            <p>Scrape product data from any of these 11 Amazon regions.</p>
+        </div>
+        <div class="marketplace-grid">
+            <div class="marketplace-card"><span class="marketplace-flag">&#127482;&#127480;</span>Amazon.com</div>
+            <div class="marketplace-card"><span class="marketplace-flag">&#127468;&#127463;</span>Amazon.co.uk</div>
+            <div class="marketplace-card"><span class="marketplace-flag">&#127465;&#127466;</span>Amazon.de</div>
+            <div class="marketplace-card"><span class="marketplace-flag">&#127467;&#127479;</span>Amazon.fr</div>
+            <div class="marketplace-card"><span class="marketplace-flag">&#127470;&#127481;</span>Amazon.it</div>
+            <div class="marketplace-card"><span class="marketplace-flag">&#127466;&#127480;</span>Amazon.es</div>
+            <div class="marketplace-card"><span class="marketplace-flag">&#127464;&#127462;</span>Amazon.ca</div>
+            <div class="marketplace-card"><span class="marketplace-flag">&#127462;&#127482;</span>Amazon.com.au</div>
+            <div class="marketplace-card"><span class="marketplace-flag">&#127471;&#127477;</span>Amazon.co.jp</div>
+            <div class="marketplace-card"><span class="marketplace-flag">&#127470;&#127475;</span>Amazon.in</div>
+            <div class="marketplace-card"><span class="marketplace-flag">&#127463;&#127479;</span>Amazon.com.br</div>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="how-it-works">
+    <div class="container">
+        <div class="section-header">
+            <h2>How It Works</h2>
+            <p>Three steps from keyword to structured product data.</p>
+        </div>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Enter a Search Query</h3>
+                <p>Type any product keyword like "wireless headphones" or "yoga mat". Select your target marketplace and sorting preference.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Set Limits & Filters</h3>
+                <p>Choose how many products to scrape (up to 10,000). Optionally filter by price range. The scraper handles everything else.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Download Your Data</h3>
+                <p>Get clean JSON, CSV, or Excel with product titles, prices, ASINs, ratings, images, and URLs. Integrate via API or webhooks.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section section-dark" id="output">
+    <div class="container">
+        <div class="section-header">
+            <h2>Sample Output</h2>
+            <p>Structured product data ready for analysis.</p>
+        </div>
+        <div class="output-block">
+            <div class="output-header">
+                <div class="output-dot red"></div><div class="output-dot yellow"></div><div class="output-dot green"></div>
+                <span class="output-title">output.json</span>
+            </div>
+            <div class="output-body">
+                <pre>[
+  {
+    <span class="key">"title"</span>: <span class="str">"Sony WH-1000XM5 Wireless Noise Cancelling Headphones"</span>,
+    <span class="key">"price"</span>: <span class="num">298.00</span>,
+    <span class="key">"originalPrice"</span>: <span class="num">399.99</span>,
+    <span class="key">"currency"</span>: <span class="str">"USD"</span>,
+    <span class="key">"rating"</span>: <span class="num">4.6</span>,
+    <span class="key">"reviewCount"</span>: <span class="num">12847</span>,
+    <span class="key">"asin"</span>: <span class="str">"B0BX2L8PBT"</span>,
+    <span class="key">"isPrime"</span>: <span class="bool">true</span>,
+    <span class="key">"seller"</span>: <span class="str">"Amazon.com"</span>,
+    <span class="key">"imageUrl"</span>: <span class="str">"https://m.media-amazon.com/images/I/..."</span>,
+    <span class="key">"productUrl"</span>: <span class="str">"https://amazon.com/dp/B0BX2L8PBT"</span>,
+    <span class="key">"marketplace"</span>: <span class="str">"amazon.com"</span>
+  }
+]</pre>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="use-cases">
+    <div class="container">
+        <div class="section-header">
+            <h2>Use Cases</h2>
+            <p>Amazon data powers decisions across e-commerce, marketing, and research.</p>
+        </div>
+        <div class="usecases-grid">
+            <div class="usecase-card">
+                <div class="usecase-icon">&#128184;</div>
+                <h3>Price Monitoring</h3>
+                <p>Track competitor prices across marketplaces. Get alerts when prices drop or products go on sale. Optimize your own pricing strategy.</p>
+            </div>
+            <div class="usecase-card">
+                <div class="usecase-icon">&#128269;</div>
+                <h3>Product Research</h3>
+                <p>Find winning products by analyzing ratings, review counts, and sales velocity. Validate product ideas before investing in inventory.</p>
+            </div>
+            <div class="usecase-card">
+                <div class="usecase-icon">&#128202;</div>
+                <h3>Market Analysis</h3>
+                <p>Map competitive landscapes, identify market gaps, and track category trends across 11 Amazon regions worldwide.</p>
+            </div>
+            <div class="usecase-card">
+                <div class="usecase-icon">&#128640;</div>
+                <h3>Amazon FBA Research</h3>
+                <p>Find low-competition, high-demand niches for your FBA business. Analyze review sentiment and identify product improvement opportunities.</p>
+            </div>
+            <div class="usecase-card">
+                <div class="usecase-icon">&#128161;</div>
+                <h3>Brand Monitoring</h3>
+                <p>Track your brand and competitors across all Amazon marketplaces. Monitor reviews, pricing changes, and new product launches.</p>
+            </div>
+            <div class="usecase-card">
+                <div class="usecase-icon">&#128218;</div>
+                <h3>Academic Research</h3>
+                <p>Collect large-scale e-commerce datasets for pricing studies, consumer behavior analysis, and marketplace dynamics research.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section section-dark" id="pricing">
+    <div class="container">
+        <div class="pricing-box">
+            <h2>Pay Only for Products Scraped</h2>
+            <p class="price-note">No subscriptions. No API keys. Pay-per-event pricing.</p>
+            <div class="price">~$1.00 <span>per 1,000 products</span></div>
+            <p class="price-note">Free trial included. No credit card to start.</p>
+            <ul class="pricing-features">
+                <li>Free trial with Apify credits</li>
+                <li>All 11 marketplaces included</li>
+                <li>Residential proxies built in</li>
+                <li>Export JSON, CSV, Excel</li>
+                <li>REST API and webhook support</li>
+                <li>Schedule recurring scrapes</li>
+            </ul>
+            <a href="https://apify.com/sovereigntaylor/amazon-scraper" class="btn btn-primary" target="_blank">Start Free Trial</a>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="api">
+    <div class="container">
+        <div class="section-header">
+            <h2>API Quick Start</h2>
+            <p>Integrate Amazon scraping into any workflow.</p>
+        </div>
+        <div>
+            <div class="code-tabs">
+                <button class="code-tab active" onclick="showTab(event, 'js')">JavaScript</button>
+                <button class="code-tab" onclick="showTab(event, 'python')">Python</button>
+                <button class="code-tab" onclick="showTab(event, 'curl')">cURL</button>
+            </div>
+            <div class="code-panel active" id="tab-js">
+                <pre><span class="kw">import</span> { ApifyClient } <span class="kw">from</span> <span class="str">'apify-client'</span>;
+
+<span class="kw">const</span> client = <span class="kw">new</span> <span class="fn">ApifyClient</span>({ <span class="fn">token</span>: <span class="str">'YOUR_API_TOKEN'</span> });
+
+<span class="kw">const</span> run = <span class="kw">await</span> client.<span class="fn">actor</span>(<span class="str">'sovereigntaylor/amazon-scraper'</span>).<span class="fn">call</span>({
+  <span class="fn">searchQuery</span>: <span class="str">'wireless headphones'</span>,
+  <span class="fn">marketplace</span>: <span class="str">'amazon.com'</span>,
+  <span class="fn">maxProducts</span>: <span class="num">100</span>,
+  <span class="fn">sortBy</span>: <span class="str">'review-rank'</span>
+});
+
+<span class="kw">const</span> { items } = <span class="kw">await</span> client.<span class="fn">dataset</span>(run.defaultDatasetId).<span class="fn">listItems</span>();
+console.<span class="fn">log</span>(<span class="str">`Found ${items.length} products`</span>);</pre>
+            </div>
+            <div class="code-panel" id="tab-python">
+                <pre><span class="kw">from</span> apify_client <span class="kw">import</span> ApifyClient
+
+client = <span class="fn">ApifyClient</span>(<span class="str">"YOUR_API_TOKEN"</span>)
+
+run = client.<span class="fn">actor</span>(<span class="str">"sovereigntaylor/amazon-scraper"</span>).<span class="fn">call</span>(run_input={
+    <span class="str">"searchQuery"</span>: <span class="str">"wireless headphones"</span>,
+    <span class="str">"marketplace"</span>: <span class="str">"amazon.com"</span>,
+    <span class="str">"maxProducts"</span>: <span class="num">100</span>,
+    <span class="str">"sortBy"</span>: <span class="str">"review-rank"</span>
+})
+
+items = client.<span class="fn">dataset</span>(run[<span class="str">"defaultDatasetId"</span>]).<span class="fn">list_items</span>().items
+<span class="kw">for</span> item <span class="kw">in</span> items:
+    <span class="fn">print</span>(f<span class="str">'{item["title"]} - ${item["price"]}'</span>)</pre>
+            </div>
+            <div class="code-panel" id="tab-curl">
+                <pre><span class="cm"># Start the actor run</span>
+curl -X POST <span class="str">"https://api.apify.com/v2/acts/sovereigntaylor~amazon-scraper/runs?token=YOUR_API_TOKEN"</span> \
+  -H <span class="str">"Content-Type: application/json"</span> \
+  -d <span class="str">'{
+    "searchQuery": "wireless headphones",
+    "marketplace": "amazon.com",
+    "maxProducts": 100,
+    "sortBy": "review-rank"
+  }'</span>
+
+<span class="cm"># Get results</span>
+curl <span class="str">"https://api.apify.com/v2/datasets/DATASET_ID/items?token=YOUR_API_TOKEN&format=csv"</span></pre>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section section-dark" id="faq">
+    <div class="container">
+        <div class="section-header"><h2>Frequently Asked Questions</h2></div>
+        <div class="faq-list">
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">Which Amazon marketplaces are supported?<span class="faq-arrow">&#9660;</span></button>
+                <div class="faq-answer"><p>All 11 major Amazon marketplaces: US, UK, Germany, France, Italy, Spain, Canada, Australia, Japan, India, and Brazil. Select your target marketplace in the input configuration.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">Can I track prices over time?<span class="faq-arrow">&#9660;</span></button>
+                <div class="faq-answer"><p>Yes. Schedule the scraper to run daily, weekly, or at custom intervals. Each run stores results in a separate dataset, allowing you to track price changes and trends over time.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">Does it handle Amazon's anti-bot detection?<span class="faq-arrow">&#9660;</span></button>
+                <div class="faq-answer"><p>Yes. The scraper uses residential proxy rotation, automatic retries, randomized delays, and CAPTCHA detection. Proxy usage is strongly recommended and enabled by default.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">What data fields are included?<span class="faq-arrow">&#9660;</span></button>
+                <div class="faq-answer"><p>Each product includes: title, current price, original price, currency, star rating, review count, ASIN, Prime eligibility, seller name, image URL, product URL, and marketplace identifier.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">Is there a product limit?<span class="faq-arrow">&#9660;</span></button>
+                <div class="faq-answer"><p>You can scrape up to 10,000 products per run. For larger datasets, run multiple searches with different keywords or categories. The scraper automatically paginates through search result pages.</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-links">
+            <a href="https://apify.com/sovereigntaylor/amazon-scraper" target="_blank">Apify Store</a>
+            <a href="https://apify.com/sovereigntaylor" target="_blank">All Our Actors</a>
+            <a href="https://github.com/ryudi84" target="_blank">GitHub</a>
+            <a href="index.html">More Tools</a>
+        </div>
+        <p>Built by Sovereign Taylor &middot; Powered by Apify</p>
+    </div>
+</footer>
+
+<script>
+function showTab(e, tabId) {
+    document.querySelectorAll('.code-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.code-panel').forEach(p => p.classList.remove('active'));
+    e.target.classList.add('active');
+    document.getElementById('tab-' + tabId).classList.add('active');
+}
+function toggleFaq(btn) { btn.parentElement.classList.toggle('open'); }
+</script>
+
+</body>
+</html>

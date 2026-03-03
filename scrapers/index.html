@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sovereign Tools — Premium Web Scrapers & Data Extraction Tools | Apify</title>
+    <meta name="description" content="Premium web scraping tools for Google Maps, Amazon, LinkedIn, B2B leads, and AI data pipelines. Extract structured data at scale. Free trial on Apify.">
+    <meta name="keywords" content="web scraper, data extraction, google maps scraper, amazon scraper, linkedin scraper, b2b leads, website to markdown, apify actors">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://ryudi84.github.io/sovereign-tools/">
+
+    <meta property="og:title" content="Sovereign Tools — Premium Web Scrapers on Apify">
+    <meta property="og:description" content="5 premium data extraction tools: Google Maps, Amazon, LinkedIn Jobs, B2B Leads, and Website to Markdown. Free trial.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ryudi84.github.io/sovereign-tools/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Sovereign Tools — Premium Web Scrapers">
+    <meta name="twitter:description" content="Extract data from Google Maps, Amazon, LinkedIn, and more. 5 premium scrapers with free trials.">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Sovereign Tools",
+        "description": "Premium web scraping and data extraction tools powered by Apify.",
+        "url": "https://ryudi84.github.io/sovereign-tools/",
+        "author": {
+            "@type": "Organization",
+            "name": "Sovereign Taylor",
+            "url": "https://apify.com/sovereigntaylor"
+        }
+    }
+    </script>
+
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --navy: #0f172a; --navy-light: #1e293b;
+            --blue: #3b82f6; --blue-dark: #2563eb; --blue-glow: rgba(59,130,246,0.3);
+            --green: #10b981; --purple: #8b5cf6; --orange: #f59e0b;
+            --linkedin: #0a66c2; --amazon-orange: #ff9900;
+            --white: #ffffff; --gray-50: #f8fafc; --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0; --gray-300: #cbd5e1; --gray-400: #94a3b8;
+            --gray-500: #64748b; --gray-600: #475569; --gray-700: #334155;
+            --gray-800: #1e293b; --gray-900: #0f172a;
+            --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            --mono: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', 'Courier New', monospace;
+        }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font); color: var(--gray-700); line-height: 1.6; background: var(--white); -webkit-font-smoothing: antialiased; }
+
+        /* Nav */
+        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(15,23,42,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.1); padding: 0 2rem; }
+        .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+        .nav-brand { color: var(--white); font-weight: 700; font-size: 1.2rem; text-decoration: none; letter-spacing: -0.01em; }
+        .nav-brand span { color: var(--blue); }
+        .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+        .nav-links a { color: var(--gray-400); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--white); }
+        .nav-cta { background: var(--blue); color: var(--white) !important; padding: 0.5rem 1.2rem; border-radius: 8px; font-weight: 600; transition: all 0.2s; }
+        .nav-cta:hover { background: var(--blue-dark); transform: translateY(-1px); }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, var(--navy) 0%, #0d1b2a 40%, #1a1a3e 70%, var(--navy-light) 100%);
+            padding: 8rem 2rem 5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle at 30% 40%, rgba(59,130,246,0.07) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 60%, rgba(139,92,246,0.06) 0%, transparent 50%),
+                        radial-gradient(circle at 50% 50%, rgba(16,185,129,0.04) 0%, transparent 50%);
+            animation: heroGlow 20s ease-in-out infinite alternate;
+        }
+        @keyframes heroGlow { 0% { transform: translate(0,0); } 100% { transform: translate(-2%,2%); } }
+        .hero-content { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
+        .hero-badge { display: inline-block; background: rgba(59,130,246,0.12); border: 1px solid rgba(59,130,246,0.25); color: var(--blue); padding: 0.4rem 1rem; border-radius: 50px; font-size: 0.85rem; font-weight: 600; margin-bottom: 1.5rem; letter-spacing: 0.02em; }
+        .hero h1 { color: var(--white); font-size: clamp(2.5rem,5vw,3.8rem); font-weight: 800; line-height: 1.12; margin-bottom: 1.2rem; letter-spacing: -0.03em; }
+        .hero h1 .gradient-text { background: linear-gradient(135deg, var(--blue) 0%, var(--purple) 50%, var(--green) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .hero p { color: var(--gray-400); font-size: 1.2rem; max-width: 600px; margin: 0 auto 2rem; line-height: 1.7; }
+        .hero-stats { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; }
+        .hero-stat { text-align: center; }
+        .hero-stat .value { font-size: 2.2rem; font-weight: 800; color: var(--white); }
+        .hero-stat .label { font-size: 0.85rem; color: var(--gray-400); margin-top: 0.2rem; }
+
+        /* Section */
+        .section { padding: 5rem 2rem; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 3rem; }
+        .section-header h2 { font-size: clamp(1.8rem,3vw,2.4rem); color: var(--gray-900); font-weight: 800; margin-bottom: 0.8rem; letter-spacing: -0.02em; }
+        .section-header p { color: var(--gray-500); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+
+        /* Tool Cards */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .tool-card {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            transition: all 0.35s;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            display: block;
+            color: inherit;
+        }
+
+        .tool-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: var(--card-accent, var(--blue));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .tool-card:hover {
+            border-color: var(--card-accent, var(--blue));
+            box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+            transform: translateY(-4px);
+        }
+
+        .tool-card:hover::before { opacity: 1; }
+
+        .tool-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .tool-card h3 {
+            font-size: 1.3rem;
+            color: var(--gray-900);
+            margin-bottom: 0.6rem;
+            font-weight: 700;
+        }
+
+        .tool-card .desc {
+            color: var(--gray-500);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1.2rem;
+        }
+
+        .tool-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tool-tag {
+            background: var(--gray-100);
+            color: var(--gray-600);
+            padding: 0.25rem 0.7rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .tool-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: var(--card-accent, var(--blue));
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: gap 0.2s;
+        }
+
+        .tool-card:hover .tool-cta { gap: 0.7rem; }
+
+        .tool-cta-arrow { transition: transform 0.2s; }
+        .tool-card:hover .tool-cta-arrow { transform: translateX(3px); }
+
+        /* Specific card colors */
+        .tool-card.maps { --card-accent: #3b82f6; }
+        .tool-card.maps .tool-icon { background: linear-gradient(135deg, rgba(59,130,246,0.12), rgba(96,165,250,0.12)); }
+        .tool-card.amazon { --card-accent: #ff9900; }
+        .tool-card.amazon .tool-icon { background: linear-gradient(135deg, rgba(255,153,0,0.12), rgba(251,191,36,0.12)); }
+        .tool-card.markdown { --card-accent: #10b981; }
+        .tool-card.markdown .tool-icon { background: linear-gradient(135deg, rgba(16,185,129,0.12), rgba(52,211,153,0.12)); }
+        .tool-card.b2b { --card-accent: #8b5cf6; }
+        .tool-card.b2b .tool-icon { background: linear-gradient(135deg, rgba(139,92,246,0.12), rgba(167,139,250,0.12)); }
+        .tool-card.linkedin { --card-accent: #0a66c2; }
+        .tool-card.linkedin .tool-icon { background: linear-gradient(135deg, rgba(10,102,194,0.12), rgba(59,130,246,0.12)); }
+
+        /* All Actors Section */
+        .all-actors {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+            color: var(--white);
+        }
+        .all-actors h2 { font-size: 2rem; margin-bottom: 0.8rem; font-weight: 800; }
+        .all-actors p { color: var(--gray-400); font-size: 1.1rem; margin-bottom: 2rem; max-width: 500px; margin-left: auto; margin-right: auto; }
+        .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 2rem; border-radius: 10px; font-weight: 600; font-size: 1rem; text-decoration: none; transition: all 0.25s; border: none; cursor: pointer; }
+        .btn-primary { background: var(--blue); color: var(--white); box-shadow: 0 4px 15px var(--blue-glow); }
+        .btn-primary:hover { background: var(--blue-dark); transform: translateY(-2px); box-shadow: 0 8px 25px var(--blue-glow); }
+
+        /* Footer */
+        .footer { background: var(--navy); color: var(--gray-400); padding: 3rem 2rem; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); }
+        .footer-links { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+        .footer-links a { color: var(--gray-400); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+        .footer-links a:hover { color: var(--white); }
+        .footer p { font-size: 0.85rem; }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero { padding: 7rem 1.5rem 3rem; }
+            .section { padding: 3rem 1.5rem; }
+            .tools-grid { grid-template-columns: 1fr; }
+            .hero-stats { gap: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="nav">
+    <div class="nav-inner">
+        <a href="index.html" class="nav-brand">Sovereign<span>Tools</span></a>
+        <ul class="nav-links">
+            <li><a href="#tools">Tools</a></li>
+            <li><a href="https://apify.com/sovereigntaylor" target="_blank">Apify Store</a></li>
+            <li><a href="https://github.com/ryudi84" target="_blank">GitHub</a></li>
+            <li><a href="https://apify.com/sovereigntaylor" class="nav-cta" target="_blank">Browse All 127+</a></li>
+        </ul>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="hero-content">
+        <div class="hero-badge">Open Source &middot; Pay-Per-Event &middot; API Access</div>
+        <h1>Premium <span class="gradient-text">Data Extraction</span> Tools</h1>
+        <p>Extract structured data from the web's biggest platforms. Google Maps, Amazon, LinkedIn, and more. No API keys needed. Free trials on every tool.</p>
+        <div class="hero-stats">
+            <div class="hero-stat">
+                <div class="value">127+</div>
+                <div class="label">scrapers on Apify</div>
+            </div>
+            <div class="hero-stat">
+                <div class="value">5</div>
+                <div class="label">premium tools</div>
+            </div>
+            <div class="hero-stat">
+                <div class="value">$0</div>
+                <div class="label">to start</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="tools">
+    <div class="container">
+        <div class="section-header">
+            <h2>Our Top 5 Tools</h2>
+            <p>Each tool is battle-tested, production-ready, and backed by a free trial.</p>
+        </div>
+        <div class="tools-grid">
+
+            <a href="google-maps-scraper.html" class="tool-card maps">
+                <div class="tool-icon">&#127758;</div>
+                <h3>Google Maps Scraper</h3>
+                <p class="desc">Extract business names, addresses, phone numbers, reviews, ratings, and websites from Google Maps. 15 languages, geo-targeting, up to 5,000 results per run.</p>
+                <div class="tool-tags">
+                    <span class="tool-tag">Lead Generation</span>
+                    <span class="tool-tag">15 Languages</span>
+                    <span class="tool-tag">Geo-Targeting</span>
+                    <span class="tool-tag">Reviews</span>
+                </div>
+                <div class="tool-cta">
+                    View Details <span class="tool-cta-arrow">&#8594;</span>
+                </div>
+            </a>
+
+            <a href="amazon-scraper.html" class="tool-card amazon">
+                <div class="tool-icon">&#128722;</div>
+                <h3>Amazon Product Scraper</h3>
+                <p class="desc">Scrape product titles, prices, ratings, reviews, ASINs, and seller data from 11 Amazon marketplaces worldwide. Sort, filter, and export in seconds.</p>
+                <div class="tool-tags">
+                    <span class="tool-tag">11 Marketplaces</span>
+                    <span class="tool-tag">Price Tracking</span>
+                    <span class="tool-tag">ASIN Lookup</span>
+                    <span class="tool-tag">Reviews</span>
+                </div>
+                <div class="tool-cta">
+                    View Details <span class="tool-cta-arrow">&#8594;</span>
+                </div>
+            </a>
+
+            <a href="website-to-markdown.html" class="tool-card markdown">
+                <div class="tool-icon">&#128196;</div>
+                <h3>Website to Markdown</h3>
+                <p class="desc">Convert any website to clean Markdown for AI/RAG pipelines. Built-in chunking for vector databases, metadata extraction, and boilerplate removal. The AI data pipeline.</p>
+                <div class="tool-tags">
+                    <span class="tool-tag">AI/RAG Ready</span>
+                    <span class="tool-tag">Chunking</span>
+                    <span class="tool-tag">Vector DB</span>
+                    <span class="tool-tag">LLM Training</span>
+                </div>
+                <div class="tool-cta">
+                    View Details <span class="tool-cta-arrow">&#8594;</span>
+                </div>
+            </a>
+
+            <a href="b2b-leads-finder.html" class="tool-card b2b">
+                <div class="tool-icon">&#128188;</div>
+                <h3>B2B Leads Finder</h3>
+                <p class="desc">Find decision-makers with verified emails and phone numbers. Filter by job title, industry, location, and company size. The Apollo/ZoomInfo alternative at $0.01/lead.</p>
+                <div class="tool-tags">
+                    <span class="tool-tag">Verified Emails</span>
+                    <span class="tool-tag">Phone Numbers</span>
+                    <span class="tool-tag">$0.01/lead</span>
+                    <span class="tool-tag">No Subscription</span>
+                </div>
+                <div class="tool-cta">
+                    View Details <span class="tool-cta-arrow">&#8594;</span>
+                </div>
+            </a>
+
+            <a href="linkedin-jobs-scraper.html" class="tool-card linkedin">
+                <div class="tool-icon">&#128188;</div>
+                <h3>LinkedIn Jobs Scraper</h3>
+                <p class="desc">Scrape LinkedIn public job listings at scale. Titles, companies, salaries, full descriptions, requirements, and benefits. 7 filters. No login required.</p>
+                <div class="tool-tags">
+                    <span class="tool-tag">No Login Needed</span>
+                    <span class="tool-tag">Salary Data</span>
+                    <span class="tool-tag">7 Filters</span>
+                    <span class="tool-tag">Full Descriptions</span>
+                </div>
+                <div class="tool-cta">
+                    View Details <span class="tool-cta-arrow">&#8594;</span>
+                </div>
+            </a>
+
+        </div>
+    </div>
+</section>
+
+<section class="all-actors">
+    <h2>127+ More Scrapers on Apify</h2>
+    <p>From eBay to TikTok, Zillow to YouTube. We have a scraper for almost every platform.</p>
+    <a href="https://apify.com/sovereigntaylor" class="btn btn-primary" target="_blank">Browse All Actors</a>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-links">
+            <a href="https://apify.com/sovereigntaylor" target="_blank">Apify Store</a>
+            <a href="https://github.com/ryudi84" target="_blank">GitHub</a>
+            <a href="google-maps-scraper.html">Google Maps</a>
+            <a href="amazon-scraper.html">Amazon</a>
+            <a href="website-to-markdown.html">Website to MD</a>
+            <a href="b2b-leads-finder.html">B2B Leads</a>
+            <a href="linkedin-jobs-scraper.html">LinkedIn Jobs</a>
+        </div>
+        <p>Built by Sovereign Taylor &middot; Powered by Apify</p>
+    </div>
+</footer>
+
+</body>
+</html>

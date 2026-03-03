@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkedIn Jobs Scraper — Scrape Job Listings, Salaries & Company Data | Free Trial on Apify</title>
+    <meta name="description" content="Scrape LinkedIn job listings at scale. Extract job titles, companies, salaries, descriptions, and requirements. Filter by location, type, experience level. No login required.">
+    <meta name="keywords" content="linkedin jobs scraper, scrape linkedin jobs, linkedin job data, job listings scraper, linkedin api alternative, job market research, salary data scraper">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://ryudi84.github.io/sovereign-tools/linkedin-jobs-scraper.html">
+
+    <meta property="og:title" content="LinkedIn Jobs Scraper — Extract Job Listings at Scale">
+    <meta property="og:description" content="Scrape LinkedIn public job listings. Titles, companies, salaries, descriptions, requirements. No login needed. Pay-per-event.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ryudi84.github.io/sovereign-tools/linkedin-jobs-scraper.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="LinkedIn Jobs Scraper — No Login Required">
+    <meta name="twitter:description" content="Extract LinkedIn job listings with titles, salaries, descriptions. Filter by location, job type, experience level. Free trial.">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "LinkedIn Jobs Scraper",
+        "applicationCategory": "WebApplication",
+        "operatingSystem": "Cloud",
+        "description": "Scrape LinkedIn public job listings at scale. Extract titles, companies, salaries, descriptions, and requirements. No login needed.",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD",
+            "description": "Free trial. Pay-per-event pricing."
+        },
+        "author": {
+            "@type": "Organization",
+            "name": "Sovereign Taylor",
+            "url": "https://apify.com/sovereigntaylor"
+        },
+        "url": "https://apify.com/sovereigntaylor/linkedin-jobs-scraper"
+    }
+    </script>
+
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --navy: #0f172a; --navy-light: #1e293b;
+            --blue: #3b82f6; --blue-dark: #2563eb; --blue-glow: rgba(59,130,246,0.3);
+            --linkedin: #0a66c2; --linkedin-dark: #004182; --linkedin-glow: rgba(10,102,194,0.3);
+            --green: #10b981; --purple: #8b5cf6; --orange: #f59e0b;
+            --white: #ffffff; --gray-50: #f8fafc; --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0; --gray-300: #cbd5e1; --gray-400: #94a3b8;
+            --gray-500: #64748b; --gray-600: #475569; --gray-700: #334155;
+            --gray-800: #1e293b; --gray-900: #0f172a;
+            --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            --mono: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', 'Courier New', monospace;
+        }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font); color: var(--gray-700); line-height: 1.6; background: var(--white); -webkit-font-smoothing: antialiased; }
+
+        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(15,23,42,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.1); padding: 0 2rem; }
+        .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+        .nav-brand { color: var(--white); font-weight: 700; font-size: 1.1rem; text-decoration: none; }
+        .nav-brand span { color: var(--linkedin); }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { color: var(--gray-400); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--white); }
+        .nav-cta { background: var(--linkedin); color: var(--white) !important; padding: 0.5rem 1.2rem; border-radius: 8px; font-weight: 600; transition: all 0.2s; }
+        .nav-cta:hover { background: var(--linkedin-dark); transform: translateY(-1px); }
+
+        .hero { background: linear-gradient(135deg, var(--navy) 0%, #0d1b2a 50%, #162447 100%); padding: 8rem 2rem 5rem; text-align: center; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle at 35% 55%, rgba(10,102,194,0.08) 0%, transparent 50%), radial-gradient(circle at 65% 45%, rgba(59,130,246,0.05) 0%, transparent 50%); }
+        .hero-content { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; }
+        .hero-badge { display: inline-block; background: rgba(10,102,194,0.15); border: 1px solid rgba(10,102,194,0.3); color: var(--linkedin); padding: 0.4rem 1rem; border-radius: 50px; font-size: 0.85rem; font-weight: 600; margin-bottom: 1.5rem; }
+        .hero h1 { color: var(--white); font-size: clamp(2.2rem,5vw,3.5rem); font-weight: 800; line-height: 1.15; margin-bottom: 1.2rem; letter-spacing: -0.02em; }
+        .hero h1 .gradient-text { background: linear-gradient(135deg, var(--linkedin) 0%, #3b82f6 50%, #60a5fa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .hero p { color: var(--gray-400); font-size: 1.2rem; max-width: 650px; margin: 0 auto 2rem; line-height: 1.7; }
+        .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 2rem; border-radius: 10px; font-weight: 600; font-size: 1rem; text-decoration: none; transition: all 0.25s; border: none; cursor: pointer; }
+        .btn-primary { background: var(--linkedin); color: var(--white); box-shadow: 0 4px 15px var(--linkedin-glow); }
+        .btn-primary:hover { background: var(--linkedin-dark); transform: translateY(-2px); box-shadow: 0 8px 25px var(--linkedin-glow); }
+        .btn-secondary { background: rgba(255,255,255,0.08); color: var(--white); border: 1px solid rgba(255,255,255,0.15); }
+        .btn-secondary:hover { background: rgba(255,255,255,0.12); transform: translateY(-2px); }
+
+        .hero-code { margin-top: 3rem; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 1.5rem; text-align: left; max-width: 700px; margin-left: auto; margin-right: auto; overflow-x: auto; }
+        .hero-code pre { font-family: var(--mono); font-size: 0.85rem; line-height: 1.6; color: var(--gray-300); }
+        .hero-code .comment { color: var(--gray-500); }
+        .hero-code .string { color: var(--green); }
+        .hero-code .number { color: var(--orange); }
+        .hero-code .property { color: var(--blue); }
+        .hero-code .bool { color: var(--purple); }
+
+        .section { padding: 5rem 2rem; }
+        .section-dark { background: var(--gray-50); }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 3rem; }
+        .section-header h2 { font-size: clamp(1.8rem,3vw,2.4rem); color: var(--gray-900); font-weight: 800; margin-bottom: 0.8rem; letter-spacing: -0.02em; }
+        .section-header p { color: var(--gray-500); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
+        .feature-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: 12px; padding: 2rem; transition: all 0.3s; }
+        .feature-card:hover { border-color: var(--linkedin); box-shadow: 0 8px 30px rgba(10,102,194,0.1); transform: translateY(-3px); }
+        .feature-icon { width: 48px; height: 48px; background: linear-gradient(135deg, rgba(10,102,194,0.1), rgba(59,130,246,0.1)); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; margin-bottom: 1rem; }
+        .feature-card h3 { font-size: 1.15rem; color: var(--gray-900); margin-bottom: 0.5rem; font-weight: 700; }
+        .feature-card p { color: var(--gray-500); font-size: 0.95rem; line-height: 1.6; }
+
+        .filter-tags { display: flex; flex-wrap: wrap; gap: 0.8rem; justify-content: center; max-width: 900px; margin: 0 auto; }
+        .filter-tag { background: var(--white); border: 1px solid var(--gray-200); border-radius: 50px; padding: 0.5rem 1.2rem; font-size: 0.9rem; color: var(--gray-600); font-weight: 500; transition: all 0.2s; }
+        .filter-tag:hover { border-color: var(--linkedin); color: var(--linkedin); transform: translateY(-1px); }
+        .filter-tag .label { color: var(--gray-400); font-size: 0.8rem; }
+
+        .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+        .step { text-align: center; padding: 2rem 1.5rem; }
+        .step-number { width: 56px; height: 56px; background: linear-gradient(135deg, var(--linkedin), var(--blue)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--white); font-weight: 800; font-size: 1.3rem; margin: 0 auto 1.2rem; }
+        .step h3 { font-size: 1.2rem; color: var(--gray-900); margin-bottom: 0.6rem; font-weight: 700; }
+        .step p { color: var(--gray-500); font-size: 0.95rem; }
+
+        .output-block { background: var(--navy); border-radius: 12px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.2); }
+        .output-header { background: var(--navy-light); padding: 0.8rem 1.5rem; display: flex; align-items: center; gap: 0.5rem; }
+        .output-dot { width: 12px; height: 12px; border-radius: 50%; }
+        .output-dot.red { background: #ef4444; } .output-dot.yellow { background: #f59e0b; } .output-dot.green { background: #10b981; }
+        .output-title { color: var(--gray-400); font-size: 0.85rem; margin-left: 0.5rem; font-family: var(--mono); }
+        .output-body { padding: 1.5rem; overflow-x: auto; }
+        .output-body pre { font-family: var(--mono); font-size: 0.82rem; line-height: 1.65; color: var(--gray-300); }
+        .output-body .key { color: #7dd3fc; } .output-body .str { color: #86efac; } .output-body .num { color: #fbbf24; } .output-body .bool { color: #c084fc; } .output-body .null { color: #94a3b8; }
+
+        .usecases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+        .usecase-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: 12px; padding: 1.8rem; transition: all 0.3s; }
+        .usecase-card:hover { border-color: var(--green); box-shadow: 0 8px 30px rgba(16,185,129,0.08); transform: translateY(-2px); }
+        .usecase-icon { font-size: 1.8rem; margin-bottom: 0.8rem; }
+        .usecase-card h3 { font-size: 1.05rem; color: var(--gray-900); margin-bottom: 0.4rem; font-weight: 700; }
+        .usecase-card p { color: var(--gray-500); font-size: 0.9rem; }
+
+        .pricing-box { max-width: 700px; margin: 0 auto; background: linear-gradient(135deg, var(--navy) 0%, #162447 50%, var(--navy-light) 100%); border-radius: 16px; padding: 3rem; text-align: center; color: var(--white); position: relative; overflow: hidden; }
+        .pricing-box::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 50% 0%, rgba(10,102,194,0.15), transparent 60%); }
+        .pricing-box > * { position: relative; z-index: 1; }
+        .pricing-box h2 { font-size: 2rem; margin-bottom: 0.5rem; color: var(--white); }
+        .pricing-box .price { font-size: 3rem; font-weight: 800; margin: 1rem 0; color: #60a5fa; }
+        .pricing-box .price span { font-size: 1rem; color: var(--gray-400); font-weight: 400; }
+        .pricing-box .price-note { color: var(--gray-400); margin-bottom: 2rem; }
+        .pricing-features { text-align: left; max-width: 400px; margin: 0 auto 2rem; }
+        .pricing-features li { list-style: none; padding: 0.4rem 0; color: var(--gray-300); font-size: 0.95rem; }
+        .pricing-features li::before { content: '\2713'; color: var(--green); font-weight: 700; margin-right: 0.8rem; }
+
+        .code-tabs { display: flex; gap: 0; }
+        .code-tab { padding: 0.7rem 1.5rem; background: var(--navy-light); color: var(--gray-400); border: none; cursor: pointer; font-size: 0.9rem; font-weight: 600; font-family: var(--font); transition: all 0.2s; border-top-left-radius: 8px; border-top-right-radius: 8px; }
+        .code-tab.active { background: var(--navy); color: var(--white); }
+        .code-panel { display: none; background: var(--navy); border-radius: 0 12px 12px 12px; padding: 1.5rem; overflow-x: auto; }
+        .code-panel.active { display: block; }
+        .code-panel pre { font-family: var(--mono); font-size: 0.85rem; line-height: 1.6; color: var(--gray-300); }
+        .code-panel .kw { color: var(--purple); } .code-panel .fn { color: #7dd3fc; } .code-panel .str { color: #86efac; } .code-panel .cm { color: var(--gray-500); } .code-panel .num { color: #fbbf24; } .code-panel .bool { color: #c084fc; }
+
+        .faq-list { max-width: 800px; margin: 0 auto; }
+        .faq-item { border-bottom: 1px solid var(--gray-200); }
+        .faq-question { width: 100%; background: none; border: none; padding: 1.3rem 0; font-size: 1.05rem; font-weight: 600; color: var(--gray-900); text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-family: var(--font); transition: color 0.2s; }
+        .faq-question:hover { color: var(--linkedin); }
+        .faq-arrow { font-size: 1.2rem; transition: transform 0.3s; color: var(--gray-400); }
+        .faq-item.open .faq-arrow { transform: rotate(180deg); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; }
+        .faq-item.open .faq-answer { max-height: 300px; padding-bottom: 1.3rem; }
+        .faq-answer p { color: var(--gray-500); font-size: 0.95rem; line-height: 1.7; }
+
+        .footer { background: var(--navy); color: var(--gray-400); padding: 3rem 2rem; text-align: center; }
+        .footer-links { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+        .footer-links a { color: var(--gray-400); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+        .footer-links a:hover { color: var(--white); }
+        .footer p { font-size: 0.85rem; }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero { padding: 7rem 1.5rem 3rem; }
+            .section { padding: 3rem 1.5rem; }
+            .features-grid, .steps, .usecases-grid { grid-template-columns: 1fr; }
+            .pricing-box { padding: 2rem 1.5rem; }
+            .hero-buttons { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="nav">
+    <div class="nav-inner">
+        <a href="index.html" class="nav-brand">Sovereign<span>Tools</span></a>
+        <ul class="nav-links">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#filters">Filters</a></li>
+            <li><a href="#output">Output</a></li>
+            <li><a href="#use-cases">Use Cases</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#api">API</a></li>
+            <li><a href="https://apify.com/sovereigntaylor/linkedin-jobs-scraper" class="nav-cta" target="_blank">Try Free</a></li>
+        </ul>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="hero-content">
+        <div class="hero-badge">No Login Required &middot; Full Job Details &middot; 7 Filters</div>
+        <h1>Scrape <span class="gradient-text">LinkedIn Job Listings</span> at Scale</h1>
+        <p>Extract job titles, companies, salaries, full descriptions, requirements, and benefits from LinkedIn's public job board. Filter by location, job type, experience level, and remote status. No LinkedIn account needed.</p>
+        <div class="hero-buttons">
+            <a href="https://apify.com/sovereigntaylor/linkedin-jobs-scraper" class="btn btn-primary" target="_blank">&#9654; Start Free Trial</a>
+            <a href="#output" class="btn btn-secondary">&#128203; View Sample Output</a>
+        </div>
+        <div class="hero-code">
+            <pre><span class="comment">// Search LinkedIn jobs — no login required</span>
+{
+  <span class="property">"keyword"</span>: <span class="string">"software engineer"</span>,
+  <span class="property">"location"</span>: <span class="string">"San Francisco, CA"</span>,
+  <span class="property">"jobType"</span>: <span class="string">"fulltime"</span>,
+  <span class="property">"remoteFilter"</span>: <span class="string">"remote"</span>,
+  <span class="property">"maxResults"</span>: <span class="number">200</span>,
+  <span class="property">"scrapeJobDetails"</span>: <span class="bool">true</span>
+}</pre>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="features">
+    <div class="container">
+        <div class="section-header">
+            <h2>LinkedIn Job Data Without the Limitations</h2>
+            <p>Full job details, rich filtering, and API access. No login, no rate limits.</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">&#128274;</div>
+                <h3>No Login Required</h3>
+                <p>Scrapes LinkedIn's public job listings. No LinkedIn account, no cookies, no authentication needed. Works completely anonymously.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#128221;</div>
+                <h3>Full Job Descriptions</h3>
+                <p>Optionally visit each job's detail page to extract the complete description, requirements, qualifications, benefits, and application URL.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#127919;</div>
+                <h3>7 Powerful Filters</h3>
+                <p>Filter by keyword, location, time posted, job type, experience level, remote/hybrid/onsite, and max results. Target exactly the jobs you need.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#128176;</div>
+                <h3>Salary Data</h3>
+                <p>Extract salary ranges when provided by employers. Get min, max, and currency for compensation analysis and benchmarking.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#127959;</div>
+                <h3>Company Intelligence</h3>
+                <p>Get company name, logo URL, industry, and size alongside each job listing. Build company-level insights from job posting data.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#128737;</div>
+                <h3>Anti-Detection Built In</h3>
+                <p>Residential proxy rotation and smart rate limiting. LinkedIn is strict about scraping — our tool handles it reliably.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section section-dark" id="filters">
+    <div class="container">
+        <div class="section-header">
+            <h2>Available Filters</h2>
+            <p>Narrow down to exactly the job listings you need.</p>
+        </div>
+        <div class="filter-tags">
+            <div class="filter-tag"><span class="label">Keyword:</span> software engineer</div>
+            <div class="filter-tag"><span class="label">Keyword:</span> data scientist</div>
+            <div class="filter-tag"><span class="label">Keyword:</span> product manager</div>
+            <div class="filter-tag"><span class="label">Location:</span> San Francisco</div>
+            <div class="filter-tag"><span class="label">Location:</span> London, UK</div>
+            <div class="filter-tag"><span class="label">Location:</span> Remote</div>
+            <div class="filter-tag"><span class="label">Type:</span> Full-time</div>
+            <div class="filter-tag"><span class="label">Type:</span> Contract</div>
+            <div class="filter-tag"><span class="label">Type:</span> Internship</div>
+            <div class="filter-tag"><span class="label">Level:</span> Entry</div>
+            <div class="filter-tag"><span class="label">Level:</span> Mid-Senior</div>
+            <div class="filter-tag"><span class="label">Level:</span> Director</div>
+            <div class="filter-tag"><span class="label">Level:</span> Executive</div>
+            <div class="filter-tag"><span class="label">Posted:</span> Past 24h</div>
+            <div class="filter-tag"><span class="label">Posted:</span> Past Week</div>
+            <div class="filter-tag"><span class="label">Workplace:</span> On-site</div>
+            <div class="filter-tag"><span class="label">Workplace:</span> Hybrid</div>
+            <div class="filter-tag"><span class="label">Workplace:</span> Remote</div>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="how-it-works">
+    <div class="container">
+        <div class="section-header">
+            <h2>How It Works</h2>
+            <p>From job search to structured dataset in three steps.</p>
+        </div>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Set Your Search</h3>
+                <p>Enter a job keyword, choose location, set filters for job type, experience level, remote preference, and time posted.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Scrape Listings</h3>
+                <p>The scraper browses LinkedIn's public job board, collects listings, and optionally visits each job page for full details.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Export & Analyze</h3>
+                <p>Download clean JSON, CSV, or Excel. Feed into your ATS, analyze salary trends, or build job market dashboards.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section section-dark" id="output">
+    <div class="container">
+        <div class="section-header">
+            <h2>Sample Output</h2>
+            <p>Rich job data including full descriptions and company info.</p>
+        </div>
+        <div class="output-block">
+            <div class="output-header">
+                <div class="output-dot red"></div><div class="output-dot yellow"></div><div class="output-dot green"></div>
+                <span class="output-title">jobs.json</span>
+            </div>
+            <div class="output-body">
+                <pre>[
+  {
+    <span class="key">"title"</span>: <span class="str">"Senior Software Engineer"</span>,
+    <span class="key">"company"</span>: <span class="str">"Stripe"</span>,
+    <span class="key">"location"</span>: <span class="str">"San Francisco, CA (Remote)"</span>,
+    <span class="key">"salary"</span>: <span class="str">"$180,000 - $250,000/yr"</span>,
+    <span class="key">"jobType"</span>: <span class="str">"Full-time"</span>,
+    <span class="key">"experienceLevel"</span>: <span class="str">"Mid-Senior level"</span>,
+    <span class="key">"postedDate"</span>: <span class="str">"2026-03-01"</span>,
+    <span class="key">"applicantCount"</span>: <span class="str">"147 applicants"</span>,
+    <span class="key">"description"</span>: <span class="str">"We're looking for a Senior Software Engineer to join our Payments Infrastructure team. You'll design and build the systems that process billions of dollars..."</span>,
+    <span class="key">"requirements"</span>: [
+      <span class="str">"5+ years of experience with distributed systems"</span>,
+      <span class="str">"Proficiency in Go, Java, or Ruby"</span>,
+      <span class="str">"Experience with payment systems is a plus"</span>
+    ],
+    <span class="key">"companyLogoUrl"</span>: <span class="str">"https://media.licdn.com/dms/image/..."</span>,
+    <span class="key">"jobUrl"</span>: <span class="str">"https://www.linkedin.com/jobs/view/3812..."</span>,
+    <span class="key">"applyUrl"</span>: <span class="str">"https://stripe.com/jobs/listing/..."</span>
+  }
+]</pre>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="use-cases">
+    <div class="container">
+        <div class="section-header">
+            <h2>Use Cases</h2>
+            <p>LinkedIn job data powers decisions across HR, sales, and research.</p>
+        </div>
+        <div class="usecases-grid">
+            <div class="usecase-card">
+                <div class="usecase-icon">&#128200;</div>
+                <h3>Salary Benchmarking</h3>
+                <p>Analyze salary ranges across roles, locations, and industries. Build compensation reports for HR teams, job seekers, and recruiters.</p>
+            </div>
+            <div class="usecase-card">
+                <div class="usecase-icon">&#128269;</div>
+                <h3>Job Market Research</h3>
+                <p>Track hiring trends, skill demand, and industry growth. Monitor which companies are hiring, what roles are hot, and where demand is strongest.</p>
+            </div>
+            <div class="usecase-card">
+                <div class="usecase-icon">&#128101;</div>
+                <h3>Competitive Hiring Intel</h3>
+                <p>Monitor competitor job postings to understand their product roadmap, tech stack, and expansion plans. Job posts reveal strategy.</p>
+            </div>
+            <div class="usecase-card">
+                <div class="usecase-icon">&#128188;</div>
+                <h3>Sales Trigger Events</h3>
+                <p>Companies hiring for specific roles signals budget and intent. Use job postings as sales triggers to time your outreach perfectly.</p>
+            </div>
+            <div class="usecase-card">
+                <div class="usecase-icon">&#127891;</div>
+                <h3>Career Platform Data</h3>
+                <p>Feed job listings into career platforms, job boards, and aggregators. Build niche job boards for specific industries or roles.</p>
+            </div>
+            <div class="usecase-card">
+                <div class="usecase-icon">&#128218;</div>
+                <h3>Academic Research</h3>
+                <p>Study labor market dynamics, skill requirements evolution, remote work trends, and geographic hiring patterns at scale.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section section-dark" id="pricing">
+    <div class="container">
+        <div class="pricing-box">
+            <h2>Pay Per Job Listing Scraped</h2>
+            <p class="price-note">No subscription. No LinkedIn Premium needed.</p>
+            <div class="price">~$1.00 <span>per 1,000 jobs</span></div>
+            <p class="price-note">Scrape 1,000 job listings for about $1. Free trial included.</p>
+            <ul class="pricing-features">
+                <li>Free trial with Apify credits</li>
+                <li>Full job descriptions included</li>
+                <li>Salary data when available</li>
+                <li>No LinkedIn account needed</li>
+                <li>7 search filters</li>
+                <li>API, webhooks, and scheduling</li>
+            </ul>
+            <a href="https://apify.com/sovereigntaylor/linkedin-jobs-scraper" class="btn btn-primary" target="_blank">Start Free Trial</a>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="api">
+    <div class="container">
+        <div class="section-header">
+            <h2>API Quick Start</h2>
+            <p>Integrate LinkedIn job scraping into any pipeline.</p>
+        </div>
+        <div>
+            <div class="code-tabs">
+                <button class="code-tab active" onclick="showTab(event, 'js')">JavaScript</button>
+                <button class="code-tab" onclick="showTab(event, 'python')">Python</button>
+                <button class="code-tab" onclick="showTab(event, 'curl')">cURL</button>
+            </div>
+            <div class="code-panel active" id="tab-js">
+                <pre><span class="kw">import</span> { ApifyClient } <span class="kw">from</span> <span class="str">'apify-client'</span>;
+
+<span class="kw">const</span> client = <span class="kw">new</span> <span class="fn">ApifyClient</span>({ <span class="fn">token</span>: <span class="str">'YOUR_API_TOKEN'</span> });
+
+<span class="kw">const</span> run = <span class="kw">await</span> client.<span class="fn">actor</span>(<span class="str">'sovereigntaylor/linkedin-jobs-scraper'</span>).<span class="fn">call</span>({
+  <span class="fn">keyword</span>: <span class="str">'software engineer'</span>,
+  <span class="fn">location</span>: <span class="str">'San Francisco, CA'</span>,
+  <span class="fn">jobType</span>: <span class="str">'fulltime'</span>,
+  <span class="fn">remoteFilter</span>: <span class="str">'remote'</span>,
+  <span class="fn">maxResults</span>: <span class="num">200</span>,
+  <span class="fn">scrapeJobDetails</span>: <span class="bool">true</span>
+});
+
+<span class="kw">const</span> { items } = <span class="kw">await</span> client.<span class="fn">dataset</span>(run.defaultDatasetId).<span class="fn">listItems</span>();
+console.<span class="fn">log</span>(<span class="str">`Found ${items.length} jobs`</span>);</pre>
+            </div>
+            <div class="code-panel" id="tab-python">
+                <pre><span class="kw">from</span> apify_client <span class="kw">import</span> ApifyClient
+
+client = <span class="fn">ApifyClient</span>(<span class="str">"YOUR_API_TOKEN"</span>)
+
+run = client.<span class="fn">actor</span>(<span class="str">"sovereigntaylor/linkedin-jobs-scraper"</span>).<span class="fn">call</span>(run_input={
+    <span class="str">"keyword"</span>: <span class="str">"software engineer"</span>,
+    <span class="str">"location"</span>: <span class="str">"San Francisco, CA"</span>,
+    <span class="str">"jobType"</span>: <span class="str">"fulltime"</span>,
+    <span class="str">"remoteFilter"</span>: <span class="str">"remote"</span>,
+    <span class="str">"maxResults"</span>: <span class="num">200</span>,
+    <span class="str">"scrapeJobDetails"</span>: <span class="bool">True</span>
+})
+
+items = client.<span class="fn">dataset</span>(run[<span class="str">"defaultDatasetId"</span>]).<span class="fn">list_items</span>().items
+<span class="kw">for</span> job <span class="kw">in</span> items:
+    <span class="fn">print</span>(f<span class="str">'{job["title"]} at {job["company"]} — {job.get("salary", "N/A")}'</span>)</pre>
+            </div>
+            <div class="code-panel" id="tab-curl">
+                <pre><span class="cm"># Start the actor run</span>
+curl -X POST <span class="str">"https://api.apify.com/v2/acts/sovereigntaylor~linkedin-jobs-scraper/runs?token=YOUR_API_TOKEN"</span> \
+  -H <span class="str">"Content-Type: application/json"</span> \
+  -d <span class="str">'{
+    "keyword": "software engineer",
+    "location": "San Francisco, CA",
+    "jobType": "fulltime",
+    "remoteFilter": "remote",
+    "maxResults": 200,
+    "scrapeJobDetails": true
+  }'</span>
+
+<span class="cm"># Download as CSV</span>
+curl <span class="str">"https://api.apify.com/v2/datasets/DATASET_ID/items?token=YOUR_API_TOKEN&format=csv"</span></pre>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section section-dark" id="faq">
+    <div class="container">
+        <div class="section-header"><h2>Frequently Asked Questions</h2></div>
+        <div class="faq-list">
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">Do I need a LinkedIn account?<span class="faq-arrow">&#9660;</span></button>
+                <div class="faq-answer"><p>No. This scraper accesses LinkedIn's public job listings page, which is visible without logging in. No LinkedIn account, Premium subscription, or cookies are required.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">Does it include salary data?<span class="faq-arrow">&#9660;</span></button>
+                <div class="faq-answer"><p>Yes, when employers include salary information in their job postings. About 30-50% of LinkedIn job listings include salary ranges. The scraper extracts these when available.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">What is "scrape full job details"?<span class="faq-arrow">&#9660;</span></button>
+                <div class="faq-answer"><p>When enabled, the scraper visits each job's individual page to extract the complete description, requirements, qualifications, benefits, and application URL. This is slower but provides much richer data than the listing preview alone.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">How many jobs can I scrape per run?<span class="faq-arrow">&#9660;</span></button>
+                <div class="faq-answer"><p>Up to 1,000 jobs per run. LinkedIn shows 25 results per page, and the scraper automatically paginates. For larger datasets, run multiple searches with different keywords or locations.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">Can I schedule recurring scrapes?<span class="faq-arrow">&#9660;</span></button>
+                <div class="faq-answer"><p>Yes. Use Apify's built-in scheduler to run the scraper daily, weekly, or at custom intervals. Combined with the "Past 24 Hours" time filter, you can track new job postings as they appear.</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-links">
+            <a href="https://apify.com/sovereigntaylor/linkedin-jobs-scraper" target="_blank">Apify Store</a>
+            <a href="https://apify.com/sovereigntaylor" target="_blank">All Our Actors</a>
+            <a href="https://github.com/ryudi84" target="_blank">GitHub</a>
+            <a href="index.html">More Tools</a>
+        </div>
+        <p>Built by Sovereign Taylor &middot; Powered by Apify</p>
+    </div>
+</footer>
+
+<script>
+function showTab(e, tabId) {
+    document.querySelectorAll('.code-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.code-panel').forEach(p => p.classList.remove('active'));
+    e.target.classList.add('active');
+    document.getElementById('tab-' + tabId).classList.add('active');
+}
+function toggleFaq(btn) { btn.parentElement.classList.toggle('open'); }
+</script>
+
+</body>
+</html>
