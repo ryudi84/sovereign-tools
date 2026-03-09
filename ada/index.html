@@ -318,10 +318,104 @@ html{scroll-behavior:smooth}
 </div>
 </section>
 
-<!-- Pricing -->
+<!-- Sample Reports Preview -->
+<section class="section" id="reports">
+<div class="section-title">Sample Reports — See What You Get</div>
+<p style="color:var(--muted);margin-bottom:20px">Every report includes detailed violations, severity ratings, fix guidance, and financial exposure analysis. Here's a preview of each tier:</p>
+
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px">
+<!-- Free Report Preview -->
+<div class="card" style="border-top:3px solid var(--success)">
+<h3 style="color:var(--success);margin-bottom:8px">FREE — Homepage Report</h3>
+<div style="background:var(--bg);border-radius:8px;padding:16px;font-family:monospace;font-size:0.7rem;color:var(--muted);line-height:1.6;max-height:280px;overflow:hidden;position:relative">
+ADA TITLE II READINESS REPORT<br>
+==============================<br>
+URL: https://www.yourcity.gov<br>
+Standard: WCAG 2.1 Level AA<br>
+Engine: axe-core 4.9.1 (Deque)<br><br>
+RISK LEVEL: CRITICAL<br><br>
+SUMMARY<br>
+-------<br>
+Critical violations: 4<br>
+Serious violations: 3<br>
+Total instances: 30<br><br>
+FINANCIAL EXPOSURE<br>
+First offense: $525,000<br>
+Repeat offense: $1,050,000<br><br>
+VIOLATIONS<br>
+----------<br>
+1. [CRITICAL] ARIA roles invalid<br>
+2. [SERIOUS] Color contrast fails<br>
+3. [CRITICAL] Images no alt text<br>
+4. [SERIOUS] Links no text<br>
+<div style="position:absolute;bottom:0;left:0;right:0;height:60px;background:linear-gradient(transparent,var(--surface))"></div>
+</div>
+<p style="font-size:0.75rem;color:var(--dim);margin-top:8px;text-align:center">Homepage only &middot; Automated scan &middot; 24hr delivery</p>
+</div>
+
+<!-- $499 Report Preview -->
+<div class="card" style="border-top:3px solid var(--accent)">
+<h3 style="color:var(--accent);margin-bottom:8px">$499 — Full-Site Audit</h3>
+<div style="background:var(--bg);border-radius:8px;padding:16px;font-family:monospace;font-size:0.7rem;color:var(--muted);line-height:1.6;max-height:280px;overflow:hidden;position:relative">
+FULL-SITE ADA COMPLIANCE AUDIT<br>
+================================<br>
+Pages scanned: 47 / 50<br>
+Standard: WCAG 2.1 Level AA<br><br>
+EXECUTIVE SUMMARY<br>
+Critical: 12 | Serious: 23<br>
+Moderate: 18 | Minor: 8<br>
+Total instances: 247<br><br>
+PAGE-BY-PAGE BREAKDOWN<br>
+/index.......... 7 violations<br>
+/about.......... 4 violations<br>
+/services....... 9 violations<br>
+/contact........ 3 violations<br><br>
+DEVELOPER FIX GUIDE<br>
+Priority 1: Form labels (47 inputs)<br>
+Priority 2: Color contrast (23 els)<br>
+Priority 3: Alt text (18 images)<br><br>
+VPAT DOCUMENTATION<br>
+Section 508 mapping included...<br>
+<div style="position:absolute;bottom:0;left:0;right:0;height:60px;background:linear-gradient(transparent,var(--surface))"></div>
+</div>
+<p style="font-size:0.75rem;color:var(--dim);margin-top:8px;text-align:center">Up to 50 pages &middot; Fix guide &middot; VPAT docs &middot; 30-day re-scan</p>
+</div>
+
+<!-- $1999 Report Preview -->
+<div class="card" style="border-top:3px solid var(--accent2)">
+<h3 style="color:var(--accent2);margin-bottom:8px">$1,999 — Priority Package</h3>
+<div style="background:var(--bg);border-radius:8px;padding:16px;font-family:monospace;font-size:0.7rem;color:var(--muted);line-height:1.6;max-height:280px;overflow:hidden;position:relative">
+PRIORITY COMPLIANCE PACKAGE<br>
+============================<br>
+Turnaround: 48 hours<br>
+Pages: Full site (unlimited)<br><br>
+INCLUDES EVERYTHING IN $499 PLUS:<br><br>
+COMPLIANCE STATEMENT<br>
+- Legal-ready template<br>
+- VPAT 2.4 Rev 508 format<br>
+- ICT accessibility report<br><br>
+QUARTERLY MONITORING<br>
+- Automated re-scans (4x/year)<br>
+- Regression alerts<br>
+- Trend dashboard<br><br>
+IMPLEMENTATION SUPPORT<br>
+- 2x guidance calls (30min)<br>
+- Developer Q&amp;A support<br>
+- Priority email support<br><br>
+LEGAL BRIEF SUPPORT<br>
+- Risk assessment memo<br>
+- Remediation timeline...<br>
+<div style="position:absolute;bottom:0;left:0;right:0;height:60px;background:linear-gradient(transparent,var(--surface))"></div>
+</div>
+<p style="font-size:0.75rem;color:var(--dim);margin-top:8px;text-align:center">48hr turnaround &middot; Quarterly monitoring &middot; Legal support</p>
+</div>
+</div>
+</section>
+
+<!-- Pricing — Direct Purchase -->
 <section class="pricing-section" id="pricing">
-<div class="section-title">Services</div>
-<p style="color:var(--muted);margin-bottom:8px">Free scan gets you started. Professional services get you compliant before the deadline.</p>
+<div class="section-title">Purchase Now — Instant Order</div>
+<p style="color:var(--muted);margin-bottom:8px">Select your package and pay securely. We start your audit within 24 hours of payment.</p>
 <div class="pricing-grid">
 <div class="price-card">
 <div class="price-name">Homepage Scan</div>
@@ -334,7 +428,7 @@ html{scroll-behavior:smooth}
 <li>Plain-language explanations</li>
 <li>Email delivery in 24 hours</li>
 </ul>
-<a class="btn btn-secondary btn-sm" href="#contact" style="width:100%;text-align:center">Request Free Scan</a>
+<a class="btn btn-secondary btn-sm" href="#scanner" style="width:100%;text-align:center">Run Free Scan Above</a>
 </div>
 <div class="price-card featured">
 <div class="price-name">Full-Site Audit</div>
@@ -348,8 +442,8 @@ html{scroll-behavior:smooth}
 <li>VPAT-ready documentation</li>
 <li>30-day follow-up re-scan</li>
 </ul>
-<a class="btn btn-primary btn-sm" href="#contact" style="width:100%;text-align:center">Get Full Audit — $499</a>
-<p style="font-size:0.75rem;color:var(--dim);margin-top:8px;text-align:center">Invoice, PO, or credit card accepted</p>
+<a class="btn btn-primary btn-sm" href="https://www.paypal.com/ncp/payment/PLACEHOLDER499" target="_blank" rel="noopener" style="width:100%;text-align:center" id="buy-499">Buy Now — $499</a>
+<p style="font-size:0.75rem;color:var(--dim);margin-top:8px;text-align:center">PayPal &middot; Credit Card &middot; Government PO accepted</p>
 </div>
 <div class="price-card">
 <div class="price-name">Priority Compliance</div>
@@ -363,10 +457,11 @@ html{scroll-behavior:smooth}
 <li>Quarterly monitoring (1 year)</li>
 <li>Legal brief preparation support</li>
 </ul>
-<a class="btn btn-primary btn-sm" href="#contact" style="width:100%;text-align:center">Get Priority Package — $1,999</a>
-<p style="font-size:0.75rem;color:var(--dim);margin-top:8px;text-align:center">Invoice, PO, or credit card accepted</p>
+<a class="btn btn-primary btn-sm" href="https://www.paypal.com/ncp/payment/PLACEHOLDER1999" target="_blank" rel="noopener" style="width:100%;text-align:center" id="buy-1999">Buy Now — $1,999</a>
+<p style="font-size:0.75rem;color:var(--dim);margin-top:8px;text-align:center">PayPal &middot; Credit Card &middot; Government PO accepted</p>
 </div>
 </div>
+<p style="text-align:center;color:var(--dim);font-size:0.8rem;margin-top:16px">After payment, reply to the confirmation email with your website URL. We begin your audit within 24 hours.<br>Government entities: we accept purchase orders and NET-30 invoicing. Email your PO to start immediately.</p>
 </section>
 
 <!-- Methodology -->
@@ -383,46 +478,40 @@ html{scroll-behavior:smooth}
 </ul>
 </div>
 
-<!-- Contact Form -->
+<!-- Order Form -->
 <section class="section" id="contact">
-<div class="section-title">Get Started</div>
+<div class="section-title">Order Your Audit</div>
 <div class="cta-primary" style="text-align:left">
-<h3 style="text-align:center;margin-bottom:16px">Request Your Free ADA Compliance Scan</h3>
-<p style="text-align:center;color:var(--muted);margin-bottom:20px">Fill out the form below and we'll deliver your scan report within 24 hours. No cost, no obligation.</p>
+<h3 style="text-align:center;margin-bottom:16px">Start Your ADA Compliance Audit Now</h3>
+<p style="text-align:center;color:var(--muted);margin-bottom:20px">Select your package, enter your details, and proceed to secure payment. We begin within 24 hours.</p>
 <form action="https://formsubmit.co/yu84cubo@gmail.com" method="POST" style="max-width:500px;margin:0 auto">
-<input type="hidden" name="_subject" value="ADA Scan Request">
+<input type="hidden" name="_subject" value="ADA Audit ORDER">
 <input type="hidden" name="_captcha" value="false">
 <input type="hidden" name="_template" value="table">
 <input type="hidden" name="_next" value="https://ryudi84.github.io/sovereign-tools/ada/thanks.html">
 <div style="margin-bottom:12px">
-<label style="font-size:0.85rem;color:var(--muted);display:block;margin-bottom:4px">Website URL *</label>
-<input type="url" name="website_url" placeholder="https://www.yourcity.gov" required style="width:100%;padding:12px;border-radius:8px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:0.95rem">
+<label style="font-size:0.85rem;color:var(--muted);display:block;margin-bottom:4px">Select Package *</label>
+<select name="package" id="order-package" required style="width:100%;padding:12px;border-radius:8px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:0.95rem" onchange="updateOrderBtn()">
+<option value="full_audit_499">Full-Site Audit — $499</option>
+<option value="priority_1999">Priority Compliance — $1,999</option>
+</select>
 </div>
 <div style="margin-bottom:12px">
-<label style="font-size:0.85rem;color:var(--muted);display:block;margin-bottom:4px">Organization Name *</label>
-<input type="text" name="organization" placeholder="City of Springfield" required style="width:100%;padding:12px;border-radius:8px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:0.95rem">
+<label style="font-size:0.85rem;color:var(--muted);display:block;margin-bottom:4px">Website URL to Audit *</label>
+<input type="url" name="website_url" placeholder="https://www.yourcity.gov" required style="width:100%;padding:12px;border-radius:8px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:0.95rem">
 </div>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
 <div>
-<label style="font-size:0.85rem;color:var(--muted);display:block;margin-bottom:4px">Your Name *</label>
-<input type="text" name="name" placeholder="Jane Smith" required style="width:100%;padding:12px;border-radius:8px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:0.95rem">
+<label style="font-size:0.85rem;color:var(--muted);display:block;margin-bottom:4px">Organization *</label>
+<input type="text" name="organization" placeholder="City of Springfield" required style="width:100%;padding:12px;border-radius:8px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:0.95rem">
 </div>
 <div>
 <label style="font-size:0.85rem;color:var(--muted);display:block;margin-bottom:4px">Email *</label>
 <input type="email" name="email" placeholder="jane@city.gov" required style="width:100%;padding:12px;border-radius:8px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:0.95rem">
 </div>
 </div>
-<div style="margin-bottom:16px">
-<label style="font-size:0.85rem;color:var(--muted);display:block;margin-bottom:4px">Service Interested In</label>
-<select name="service" style="width:100%;padding:12px;border-radius:8px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:0.95rem">
-<option value="free_scan">Free Homepage Scan</option>
-<option value="full_audit_499">Full-Site Audit ($499)</option>
-<option value="priority_1999">Priority Compliance ($1,999)</option>
-<option value="just_looking">Just want information</option>
-</select>
-</div>
-<button type="submit" class="btn btn-primary" style="width:100%;text-align:center;padding:16px;font-size:1.05rem">Submit Request</button>
-<p style="font-size:0.75rem;color:var(--dim);text-align:center;margin-top:10px">We respond within 24 hours. Government purchase orders and NET-30 invoicing available.</p>
+<button type="submit" class="btn btn-primary" id="order-btn" style="width:100%;text-align:center;padding:16px;font-size:1.05rem">Place Order — $499</button>
+<p style="font-size:0.75rem;color:var(--dim);text-align:center;margin-top:10px">After submitting, you'll receive a PayPal invoice within 1 hour. Government POs and NET-30 accepted.</p>
 </form>
 </div>
 </section>
@@ -626,6 +715,16 @@ results.innerHTML=html;
 
 // Allow Enter key to trigger scan
 document.getElementById('scan-url').addEventListener('keypress',function(e){if(e.key==='Enter')runScan();});
+
+// Update order button based on package selection
+function updateOrderBtn(){
+const pkg=document.getElementById('order-package');
+const btn=document.getElementById('order-btn');
+if(pkg&&btn){
+if(pkg.value==='priority_1999'){btn.textContent='Place Order — $1,999';}
+else{btn.textContent='Place Order — $499';}
+}
+}
 </script>
 </body>
 </html>
