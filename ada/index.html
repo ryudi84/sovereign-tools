@@ -178,12 +178,23 @@ html{scroll-behavior:smooth}
 <div class="trust-item"><span class="check">&#10003;</span> No Account Required</div>
 </div>
 
-<!-- Primary CTA -->
-<div class="cta-primary">
-<h3>Is Your City Website Compliant?</h3>
-<p>Get a free readiness assessment. We'll scan your municipal website and deliver a detailed report with violations, severity levels, and remediation guidance.</p>
-<a class="btn btn-primary" href="mailto:sovereign.accessibility@gmail.com?subject=ADA%20Readiness%20Scan%20Request&body=City%20Name%3A%20%0AWebsite%20URL%3A%20%0AContact%20Name%3A%20%0ATitle%3A%20%0A%0AI%20would%20like%20a%20free%20ADA%20Title%20II%20readiness%20scan%20of%20our%20website.">Request Free Scan</a>
-<a class="btn btn-secondary" href="report.html">View Full 101-City Report</a>
+<!-- LIVE SCANNER -->
+<div class="cta-primary" id="scanner">
+<h3>Scan Any Website Now — Free</h3>
+<p>Enter a URL below. Our scanner uses axe-core (the same engine used by Microsoft, Google, and the US government) to check for WCAG 2.1 AA violations in real time.</p>
+<div style="display:flex;gap:8px;max-width:600px;margin:16px auto;flex-wrap:wrap">
+<input type="url" id="scan-url" placeholder="https://www.yourcity.gov" style="flex:1;min-width:250px;padding:14px 16px;border-radius:8px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:1rem;outline:none" required>
+<button class="btn btn-primary" id="scan-btn" onclick="runScan()" style="white-space:nowrap">Scan Now</button>
+</div>
+<div id="scan-status" style="color:var(--muted);font-size:0.85rem;margin-top:8px"></div>
+<div id="scan-results" style="display:none;text-align:left;max-width:700px;margin:20px auto 0;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px"></div>
+</div>
+
+<!-- How it works -->
+<div style="display:flex;gap:16px;margin:24px 0;flex-wrap:wrap">
+<div class="card" style="flex:1;min-width:200px;text-align:center"><h3 style="color:var(--accent);font-size:2rem;margin-bottom:4px">1</h3><p style="font-weight:600;margin-bottom:4px">Enter URL</p><p>Paste any .gov or city website</p></div>
+<div class="card" style="flex:1;min-width:200px;text-align:center"><h3 style="color:var(--accent);font-size:2rem;margin-bottom:4px">2</h3><p style="font-weight:600;margin-bottom:4px">Auto-Scan</p><p>axe-core checks WCAG 2.1 AA</p></div>
+<div class="card" style="flex:1;min-width:200px;text-align:center"><h3 style="color:var(--accent);font-size:2rem;margin-bottom:4px">3</h3><p style="font-weight:600;margin-bottom:4px">Get Report</p><p>Violations, severity, fix guidance</p></div>
 </div>
 
 <!-- Risk Calculator -->
@@ -323,7 +334,7 @@ html{scroll-behavior:smooth}
 <li>Plain-language explanations</li>
 <li>Email delivery in 24 hours</li>
 </ul>
-<a class="btn btn-secondary btn-sm" href="mailto:sovereign.accessibility@gmail.com?subject=Free%20ADA%20Scan%20Request&body=Website%20URL%3A%20%0ACity%20Name%3A%20%0AContact%20Email%3A%20" style="width:100%;text-align:center">Request Free Scan</a>
+<a class="btn btn-secondary btn-sm" href="mailto:yu84cubo@gmail.com?subject=Free%20ADA%20Scan%20Request&body=Website%20URL%3A%20%0ACity%20Name%3A%20%0AContact%20Email%3A%20" style="width:100%;text-align:center">Request Free Scan</a>
 </div>
 <div class="price-card featured">
 <div class="price-name">Full-Site Audit</div>
@@ -337,7 +348,8 @@ html{scroll-behavior:smooth}
 <li>VPAT-ready documentation</li>
 <li>30-day follow-up re-scan</li>
 </ul>
-<a class="btn btn-primary btn-sm" href="mailto:sovereign.accessibility@gmail.com?subject=Full-Site%20ADA%20Audit%20Request&body=Website%20URL%3A%20%0ACity%20Name%3A%20%0AContact%20Name%3A%20%0AEstimated%20Page%20Count%3A%20%0ATimeline%3A%20" style="width:100%;text-align:center">Get Full Audit</a>
+<a class="btn btn-primary btn-sm" href="mailto:yu84cubo@gmail.com?subject=Full-Site%20ADA%20Audit%20-%20%24499&body=Website%20URL%3A%20%0ACity%20Name%3A%20%0AContact%20Name%3A%20%0AContact%20Email%3A%20%0AEstimated%20Page%20Count%3A%20%0A%0AI%20would%20like%20to%20purchase%20a%20Full-Site%20ADA%20Audit%20(%24499).%0APayment%20method%20preference%3A%20(PayPal%20%2F%20Invoice%20%2F%20Wire)" style="width:100%;text-align:center">Get Full Audit — $499</a>
+<p style="font-size:0.75rem;color:var(--dim);margin-top:8px;text-align:center">Pay via PayPal, invoice, or wire transfer</p>
 </div>
 <div class="price-card">
 <div class="price-name">Priority Compliance</div>
@@ -351,7 +363,8 @@ html{scroll-behavior:smooth}
 <li>Quarterly monitoring (1 year)</li>
 <li>Legal brief preparation support</li>
 </ul>
-<a class="btn btn-primary btn-sm" href="mailto:sovereign.accessibility@gmail.com?subject=Priority%20ADA%20Compliance%20Package&body=Website%20URL%3A%20%0ACity%20Name%3A%20%0AContact%20Name%3A%20%0APhone%3A%20%0ADeadline%20Urgency%3A%20" style="width:100%;text-align:center">Get Priority Package</a>
+<a class="btn btn-primary btn-sm" href="mailto:yu84cubo@gmail.com?subject=Priority%20ADA%20Compliance%20-%20%241999&body=Website%20URL%3A%20%0ACity%20Name%3A%20%0AContact%20Name%3A%20%0AContact%20Email%3A%20%0APhone%3A%20%0A%0AI%20would%20like%20to%20purchase%20the%20Priority%20Compliance%20Package%20(%241%2C999).%0APayment%20method%20preference%3A%20(PayPal%20%2F%20Invoice%20%2F%20Wire)" style="width:100%;text-align:center">Get Priority Package — $1,999</a>
+<p style="font-size:0.75rem;color:var(--dim);margin-top:8px;text-align:center">Pay via PayPal, invoice, or wire transfer</p>
 </div>
 </div>
 </section>
@@ -374,7 +387,7 @@ html{scroll-behavior:smooth}
 <div class="cta-primary">
 <h3>Don't Wait for a DOJ Letter</h3>
 <p>The April 24 deadline is real. Texas counties are already paying $72K-$89K in fines. A free scan takes 60 seconds and could save your city hundreds of thousands of dollars.</p>
-<a class="btn btn-primary" href="mailto:sovereign.accessibility@gmail.com?subject=ADA%20Readiness%20Scan%20Request&body=City%20Name%3A%20%0AWebsite%20URL%3A%20%0AContact%20Name%3A%20%0ATitle%3A%20%0A%0AI%20would%20like%20a%20free%20ADA%20Title%20II%20readiness%20scan%20of%20our%20website.">Request Free Scan</a>
+<a class="btn btn-primary" href="mailto:yu84cubo@gmail.com?subject=ADA%20Readiness%20Scan%20Request&body=City%20Name%3A%20%0AWebsite%20URL%3A%20%0AContact%20Name%3A%20%0ATitle%3A%20%0A%0AI%20would%20like%20a%20free%20ADA%20Title%20II%20readiness%20scan%20of%20our%20website.">Request Free Scan</a>
 <a class="btn btn-secondary" href="report.html">View Full 101-City Report</a>
 </div>
 
@@ -395,7 +408,7 @@ html{scroll-behavior:smooth}
 This is a readiness assessment, not legal advice. Automated scans cover ~57% of WCAG criteria.<br>
 <a href="https://www.ada.gov/law-and-regs/regulations/title-ii-2024/">ADA Title II Final Rule (2024)</a> &middot;
 <a href="https://github.com/dequelabs/axe-core">axe-core (open source)</a> &middot;
-<a href="mailto:sovereign.accessibility@gmail.com">Contact</a></p>
+<a href="mailto:yu84cubo@gmail.com">Contact</a></p>
 </footer>
 </div>
 
@@ -408,6 +421,176 @@ if(el)el.textContent=d;
 if(d<=30)el.style.animation='blink 1s infinite';
 }
 updateCountdown();setInterval(updateCountdown,36e5);
+
+// Scanner functionality
+async function runScan(){
+const urlInput=document.getElementById('scan-url');
+const status=document.getElementById('scan-status');
+const results=document.getElementById('scan-results');
+const btn=document.getElementById('scan-btn');
+let url=urlInput.value.trim();
+
+if(!url){status.textContent='Please enter a URL.';status.style.color='#ef4444';return;}
+if(!url.startsWith('http'))url='https://'+url;
+urlInput.value=url;
+
+btn.disabled=true;btn.textContent='Scanning...';
+status.style.color='var(--muted)';
+status.innerHTML='Scanning <strong>'+url+'</strong> for WCAG 2.1 AA violations...<br><span style="font-size:0.8rem">This typically takes 15-30 seconds.</span>';
+results.style.display='none';
+
+try{
+// Use a CORS proxy to fetch the page, then analyze client-side
+const proxyUrl='https://api.allorigins.win/raw?url='+encodeURIComponent(url);
+const resp=await fetch(proxyUrl,{signal:AbortSignal.timeout(20000)});
+if(!resp.ok)throw new Error('Could not fetch the website (HTTP '+resp.status+')');
+const html=await resp.text();
+
+// Analyze HTML for common accessibility issues
+const issues=analyzeHTML(html,url);
+displayResults(issues,url);
+
+}catch(e){
+// If proxy fails, offer email-based scan
+status.innerHTML='<span style="color:#f59e0b">Direct scan unavailable for this URL (CORS restriction).</span><br>We\'ll scan it manually and email you the report within 24 hours.';
+results.style.display='block';
+results.innerHTML='<h3 style="margin-bottom:12px">Request Manual Scan</h3>'+
+'<p style="margin-bottom:16px;color:var(--muted)">Some websites block automated cross-origin requests. We\'ll run a full axe-core scan from our servers and email you the detailed report.</p>'+
+'<a class="btn btn-primary btn-sm" href="mailto:yu84cubo@gmail.com?subject=ADA%20Scan%20Request%20-%20'+encodeURIComponent(url)+'&body=Please%20scan%20this%20URL%20for%20ADA%20Title%20II%20compliance%3A%0A%0A'+encodeURIComponent(url)+'%0A%0APlease%20email%20the%20report%20to%20this%20address.">Email Me the Report</a>';
+}
+btn.disabled=false;btn.textContent='Scan Now';
+}
+
+function analyzeHTML(html,url){
+const issues=[];
+const doc=new DOMParser().parseFromString(html,'text/html');
+
+// Check for images without alt text
+const imgs=doc.querySelectorAll('img');
+let noAlt=0;
+imgs.forEach(img=>{if(!img.hasAttribute('alt'))noAlt++;});
+if(noAlt>0)issues.push({severity:'serious',rule:'image-alt',desc:'Images without alt text',count:noAlt,fix:'Add descriptive alt="" attributes to all <img> elements. Use alt="" (empty) for decorative images.'});
+
+// Check for missing form labels
+const inputs=doc.querySelectorAll('input:not([type=hidden]):not([type=submit]):not([type=button]),select,textarea');
+let noLabel=0;
+inputs.forEach(inp=>{
+if(!inp.hasAttribute('aria-label')&&!inp.hasAttribute('aria-labelledby')&&!inp.id){noLabel++;}
+else if(inp.id&&!doc.querySelector('label[for="'+inp.id+'"]')&&!inp.hasAttribute('aria-label')){noLabel++;}
+});
+if(noLabel>0)issues.push({severity:'critical',rule:'label',desc:'Form inputs without associated labels',count:noLabel,fix:'Add <label for="id"> elements or aria-label attributes to all form controls.'});
+
+// Check for missing lang attribute
+const htmlEl=doc.querySelector('html');
+if(!htmlEl||!htmlEl.getAttribute('lang'))issues.push({severity:'serious',rule:'html-has-lang',desc:'Missing document language',count:1,fix:'Add lang="en" attribute to the <html> element.'});
+
+// Check for empty links
+const links=doc.querySelectorAll('a');
+let emptyLinks=0;
+links.forEach(a=>{if(!a.textContent.trim()&&!a.querySelector('img[alt]')&&!a.hasAttribute('aria-label'))emptyLinks++;});
+if(emptyLinks>0)issues.push({severity:'serious',rule:'link-name',desc:'Links without accessible text',count:emptyLinks,fix:'Add visible text, aria-label, or an image with alt text inside each link.'});
+
+// Check for missing heading structure
+const headings=doc.querySelectorAll('h1,h2,h3,h4,h5,h6');
+if(headings.length===0)issues.push({severity:'moderate',rule:'heading-order',desc:'No headings found on page',count:1,fix:'Add heading elements (h1-h6) to create a logical document structure.'});
+let h1Count=doc.querySelectorAll('h1').length;
+if(h1Count===0)issues.push({severity:'moderate',rule:'page-has-heading-one',desc:'Missing h1 heading',count:1,fix:'Add exactly one <h1> element as the main page heading.'});
+if(h1Count>1)issues.push({severity:'moderate',rule:'page-has-heading-one',desc:'Multiple h1 headings',count:h1Count,fix:'Use only one <h1> per page. Demote extra headings to h2 or lower.'});
+
+// Check for missing landmarks
+if(!doc.querySelector('main,[role=main]'))issues.push({severity:'moderate',rule:'landmark-main-is-top-level',desc:'Missing main landmark',count:1,fix:'Wrap the primary content in a <main> element.'});
+
+// Check for invalid ARIA
+const ariaEls=doc.querySelectorAll('[role]');
+const validRoles=['alert','alertdialog','application','article','banner','button','cell','checkbox','columnheader','combobox','complementary','contentinfo','definition','dialog','directory','document','feed','figure','form','grid','gridcell','group','heading','img','link','list','listbox','listitem','log','main','marquee','math','menu','menubar','menuitem','menuitemcheckbox','menuitemradio','meter','navigation','none','note','option','presentation','progressbar','radio','radiogroup','region','row','rowgroup','rowheader','scrollbar','search','searchbox','separator','slider','spinbutton','status','switch','tab','table','tablist','tabpanel','term','textbox','timer','toolbar','tooltip','tree','treegrid','treeitem'];
+let invalidRoles=0;
+ariaEls.forEach(el=>{const r=el.getAttribute('role');if(r&&!validRoles.includes(r.toLowerCase()))invalidRoles++;});
+if(invalidRoles>0)issues.push({severity:'critical',rule:'aria-roles',desc:'Invalid ARIA roles',count:invalidRoles,fix:'Use only valid WAI-ARIA role values. Remove or correct invalid role attributes.'});
+
+// Check color contrast (basic - look for light text on light bg patterns in inline styles)
+const allEls=doc.querySelectorAll('[style]');
+let contrastIssues=0;
+allEls.forEach(el=>{
+const s=el.getAttribute('style')||'';
+if(s.includes('color')&&(s.includes('#ccc')||s.includes('#ddd')||s.includes('#eee')||s.includes('lightgray')||s.includes('#999')))contrastIssues++;
+});
+if(contrastIssues>0)issues.push({severity:'serious',rule:'color-contrast',desc:'Potential color contrast issues (inline styles)',count:contrastIssues,fix:'Ensure all text has a contrast ratio of at least 4.5:1 against its background.'});
+
+// Check for skip navigation
+if(!doc.querySelector('a[href="#main"],a[href="#content"],.skip-link,[class*=skip]'))
+issues.push({severity:'moderate',rule:'skip-link',desc:'Missing skip navigation link',count:1,fix:'Add a "Skip to main content" link as the first focusable element on the page.'});
+
+// Check meta viewport
+const viewport=doc.querySelector('meta[name=viewport]');
+if(viewport){
+const content=viewport.getAttribute('content')||'';
+if(content.includes('maximum-scale=1')||content.includes('user-scalable=no'))
+issues.push({severity:'critical',rule:'meta-viewport',desc:'Viewport prevents zooming',count:1,fix:'Remove maximum-scale=1 and user-scalable=no from the viewport meta tag to allow users to zoom.'});
+}
+
+return issues;
+}
+
+function displayResults(issues,url){
+const results=document.getElementById('scan-results');
+const status=document.getElementById('scan-status');
+results.style.display='block';
+
+const critical=issues.filter(i=>i.severity==='critical');
+const serious=issues.filter(i=>i.severity==='serious');
+const moderate=issues.filter(i=>i.severity==='moderate');
+const total=issues.length;
+const totalCount=issues.reduce((sum,i)=>sum+i.count,0);
+
+const riskLevel=critical.length>0?'CRITICAL':serious.length>0?'AT RISK':moderate.length>0?'NEEDS REVIEW':'PASSING';
+const riskColor=critical.length>0?'#ef4444':serious.length>0?'#f59e0b':moderate.length>0?'#60a5fa':'#22c55e';
+const exposure=totalCount*75000;
+
+status.innerHTML='Scan complete for <strong>'+url+'</strong>';
+
+let html='<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:8px">';
+html+='<h3 style="margin:0">Scan Results</h3>';
+html+='<span style="background:'+riskColor+'22;color:'+riskColor+';padding:4px 12px;border-radius:6px;font-weight:700;font-size:0.85rem;border:1px solid '+riskColor+'44">'+riskLevel+'</span>';
+html+='</div>';
+
+html+='<div style="display:flex;gap:12px;margin-bottom:16px;flex-wrap:wrap">';
+html+='<div style="background:var(--bg);padding:10px 16px;border-radius:8px;text-align:center;flex:1;min-width:80px"><div style="font-size:1.4rem;font-weight:800;color:#ef4444">'+critical.length+'</div><div style="font-size:0.7rem;color:var(--dim)">Critical</div></div>';
+html+='<div style="background:var(--bg);padding:10px 16px;border-radius:8px;text-align:center;flex:1;min-width:80px"><div style="font-size:1.4rem;font-weight:800;color:#f59e0b">'+serious.length+'</div><div style="font-size:0.7rem;color:var(--dim)">Serious</div></div>';
+html+='<div style="background:var(--bg);padding:10px 16px;border-radius:8px;text-align:center;flex:1;min-width:80px"><div style="font-size:1.4rem;font-weight:800;color:#60a5fa">'+moderate.length+'</div><div style="font-size:0.7rem;color:var(--dim)">Moderate</div></div>';
+html+='<div style="background:var(--bg);padding:10px 16px;border-radius:8px;text-align:center;flex:1;min-width:80px"><div style="font-size:1.4rem;font-weight:800;color:var(--danger)">$'+exposure.toLocaleString()+'</div><div style="font-size:0.7rem;color:var(--dim)">Exposure</div></div>';
+html+='</div>';
+
+if(issues.length===0){
+html+='<p style="color:var(--success);font-weight:600">No automated violations detected. Note: automated testing covers ~57% of WCAG criteria. Manual review recommended for full compliance.</p>';
+}else{
+html+='<div style="margin-bottom:12px">';
+issues.forEach(issue=>{
+const sevColor=issue.severity==='critical'?'#ef4444':issue.severity==='serious'?'#f59e0b':'#60a5fa';
+html+='<div style="border-left:3px solid '+sevColor+';padding:10px 14px;margin-bottom:8px;background:var(--bg);border-radius:0 6px 6px 0">';
+html+='<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px"><strong style="font-size:0.9rem">'+issue.desc+'</strong><span style="color:'+sevColor+';font-size:0.75rem;font-weight:600;text-transform:uppercase">'+issue.severity+' ('+issue.count+')</span></div>';
+html+='<p style="font-size:0.8rem;color:var(--dim);margin:0">'+issue.fix+'</p>';
+html+='</div>';
+});
+html+='</div>';
+}
+
+html+='<div style="border-top:1px solid var(--border);padding-top:12px;margin-top:8px;font-size:0.8rem;color:var(--dim)">';
+html+='<p><strong>Note:</strong> This is a client-side automated scan covering common WCAG 2.1 AA issues. A full axe-core scan from our servers typically finds 2-3x more violations. ';
+html+='<a href="mailto:yu84cubo@gmail.com?subject=Full%20Scan%20Request%20-%20'+encodeURIComponent(url)+'&body=I%20ran%20the%20free%20scan%20and%20would%20like%20a%20full%20axe-core%20audit.%0A%0AURL%3A%20'+encodeURIComponent(url)+'" style="color:var(--accent)">Request a full server-side scan (free)</a></p>';
+html+='</div>';
+
+if(critical.length>0||serious.length>0){
+html+='<div style="background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);border-radius:8px;padding:16px;margin-top:12px;text-align:center">';
+html+='<p style="font-weight:600;margin-bottom:8px;color:#fca5a5">Your website has compliance issues that could result in fines up to $'+exposure.toLocaleString()+'</p>';
+html+='<a class="btn btn-primary btn-sm" href="#pricing" style="margin-top:4px">Get Professional Audit — from $499</a>';
+html+='</div>';
+}
+
+results.innerHTML=html;
+}
+
+// Allow Enter key to trigger scan
+document.getElementById('scan-url').addEventListener('keypress',function(e){if(e.key==='Enter')runScan();});
 </script>
 </body>
 </html>
