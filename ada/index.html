@@ -334,7 +334,7 @@ html{scroll-behavior:smooth}
 <li>Plain-language explanations</li>
 <li>Email delivery in 24 hours</li>
 </ul>
-<a class="btn btn-secondary btn-sm" href="mailto:yu84cubo@gmail.com?subject=Free%20ADA%20Scan%20Request&body=Website%20URL%3A%20%0ACity%20Name%3A%20%0AContact%20Email%3A%20" style="width:100%;text-align:center">Request Free Scan</a>
+<a class="btn btn-secondary btn-sm" href="#contact" style="width:100%;text-align:center">Request Free Scan</a>
 </div>
 <div class="price-card featured">
 <div class="price-name">Full-Site Audit</div>
@@ -348,8 +348,8 @@ html{scroll-behavior:smooth}
 <li>VPAT-ready documentation</li>
 <li>30-day follow-up re-scan</li>
 </ul>
-<a class="btn btn-primary btn-sm" href="mailto:yu84cubo@gmail.com?subject=Full-Site%20ADA%20Audit%20-%20%24499&body=Website%20URL%3A%20%0ACity%20Name%3A%20%0AContact%20Name%3A%20%0AContact%20Email%3A%20%0AEstimated%20Page%20Count%3A%20%0A%0AI%20would%20like%20to%20purchase%20a%20Full-Site%20ADA%20Audit%20(%24499).%0APayment%20method%20preference%3A%20(PayPal%20%2F%20Invoice%20%2F%20Wire)" style="width:100%;text-align:center">Get Full Audit — $499</a>
-<p style="font-size:0.75rem;color:var(--dim);margin-top:8px;text-align:center">Pay via PayPal, invoice, or wire transfer</p>
+<a class="btn btn-primary btn-sm" href="#contact" style="width:100%;text-align:center">Get Full Audit — $499</a>
+<p style="font-size:0.75rem;color:var(--dim);margin-top:8px;text-align:center">Invoice, PO, or credit card accepted</p>
 </div>
 <div class="price-card">
 <div class="price-name">Priority Compliance</div>
@@ -363,8 +363,8 @@ html{scroll-behavior:smooth}
 <li>Quarterly monitoring (1 year)</li>
 <li>Legal brief preparation support</li>
 </ul>
-<a class="btn btn-primary btn-sm" href="mailto:yu84cubo@gmail.com?subject=Priority%20ADA%20Compliance%20-%20%241999&body=Website%20URL%3A%20%0ACity%20Name%3A%20%0AContact%20Name%3A%20%0AContact%20Email%3A%20%0APhone%3A%20%0A%0AI%20would%20like%20to%20purchase%20the%20Priority%20Compliance%20Package%20(%241%2C999).%0APayment%20method%20preference%3A%20(PayPal%20%2F%20Invoice%20%2F%20Wire)" style="width:100%;text-align:center">Get Priority Package — $1,999</a>
-<p style="font-size:0.75rem;color:var(--dim);margin-top:8px;text-align:center">Pay via PayPal, invoice, or wire transfer</p>
+<a class="btn btn-primary btn-sm" href="#contact" style="width:100%;text-align:center">Get Priority Package — $1,999</a>
+<p style="font-size:0.75rem;color:var(--dim);margin-top:8px;text-align:center">Invoice, PO, or credit card accepted</p>
 </div>
 </div>
 </section>
@@ -383,32 +383,67 @@ html{scroll-behavior:smooth}
 </ul>
 </div>
 
-<!-- Final CTA -->
-<div class="cta-primary">
-<h3>Don't Wait for a DOJ Letter</h3>
-<p>The April 24 deadline is real. Texas counties are already paying $72K-$89K in fines. A free scan takes 60 seconds and could save your city hundreds of thousands of dollars.</p>
-<a class="btn btn-primary" href="mailto:yu84cubo@gmail.com?subject=ADA%20Readiness%20Scan%20Request&body=City%20Name%3A%20%0AWebsite%20URL%3A%20%0AContact%20Name%3A%20%0ATitle%3A%20%0A%0AI%20would%20like%20a%20free%20ADA%20Title%20II%20readiness%20scan%20of%20our%20website.">Request Free Scan</a>
-<a class="btn btn-secondary" href="report.html">View Full 101-City Report</a>
+<!-- Contact Form -->
+<section class="section" id="contact">
+<div class="section-title">Get Started</div>
+<div class="cta-primary" style="text-align:left">
+<h3 style="text-align:center;margin-bottom:16px">Request Your Free ADA Compliance Scan</h3>
+<p style="text-align:center;color:var(--muted);margin-bottom:20px">Fill out the form below and we'll deliver your scan report within 24 hours. No cost, no obligation.</p>
+<form action="https://formsubmit.co/yu84cubo@gmail.com" method="POST" style="max-width:500px;margin:0 auto">
+<input type="hidden" name="_subject" value="ADA Scan Request">
+<input type="hidden" name="_captcha" value="false">
+<input type="hidden" name="_template" value="table">
+<input type="hidden" name="_next" value="https://ryudi84.github.io/sovereign-tools/ada/thanks.html">
+<div style="margin-bottom:12px">
+<label style="font-size:0.85rem;color:var(--muted);display:block;margin-bottom:4px">Website URL *</label>
+<input type="url" name="website_url" placeholder="https://www.yourcity.gov" required style="width:100%;padding:12px;border-radius:8px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:0.95rem">
 </div>
+<div style="margin-bottom:12px">
+<label style="font-size:0.85rem;color:var(--muted);display:block;margin-bottom:4px">Organization Name *</label>
+<input type="text" name="organization" placeholder="City of Springfield" required style="width:100%;padding:12px;border-radius:8px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:0.95rem">
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
+<div>
+<label style="font-size:0.85rem;color:var(--muted);display:block;margin-bottom:4px">Your Name *</label>
+<input type="text" name="name" placeholder="Jane Smith" required style="width:100%;padding:12px;border-radius:8px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:0.95rem">
+</div>
+<div>
+<label style="font-size:0.85rem;color:var(--muted);display:block;margin-bottom:4px">Email *</label>
+<input type="email" name="email" placeholder="jane@city.gov" required style="width:100%;padding:12px;border-radius:8px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:0.95rem">
+</div>
+</div>
+<div style="margin-bottom:16px">
+<label style="font-size:0.85rem;color:var(--muted);display:block;margin-bottom:4px">Service Interested In</label>
+<select name="service" style="width:100%;padding:12px;border-radius:8px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:0.95rem">
+<option value="free_scan">Free Homepage Scan</option>
+<option value="full_audit_499">Full-Site Audit ($499)</option>
+<option value="priority_1999">Priority Compliance ($1,999)</option>
+<option value="just_looking">Just want information</option>
+</select>
+</div>
+<button type="submit" class="btn btn-primary" style="width:100%;text-align:center;padding:16px;font-size:1.05rem">Submit Request</button>
+<p style="font-size:0.75rem;color:var(--dim);text-align:center;margin-top:10px">We respond within 24 hours. Government purchase orders and NET-30 invoicing available.</p>
+</form>
+</div>
+</section>
 
 <!-- Share -->
 <div style="text-align:center;margin:32px 0">
 <h3 style="font-size:1.1rem;margin-bottom:12px">Share This Data</h3>
 <p style="color:var(--dim);font-size:0.85rem;margin-bottom:12px">Help spread awareness. Every city IT department needs to see this before April 24.</p>
 <div class="share-bar">
-<a class="btn btn-sm" style="background:#000;color:#fff" href="https://twitter.com/intent/tweet?text=78%25%20of%20US%20city%20websites%20fail%20ADA%20Title%20II%20accessibility%20checks.%20Deadline%3A%20April%2024%2C%202026.%20Penalties%20up%20to%20%24150K%20per%20violation.&url=https://ryudi84.github.io/sovereign-tools/ada/" target="_blank" rel="noopener">Share on X</a>
+<a class="btn btn-sm" style="background:#000;color:#fff" href="https://twitter.com/intent/tweet?text=78%25%20of%20US%20city%20websites%20fail%20ADA%20Title%20II%20accessibility.%2046%20days%20left.%20Penalties%20up%20to%20%24150K." target="_blank" rel="noopener">Share on X</a>
 <a class="btn btn-sm" style="background:#0a66c2;color:#fff" href="https://www.linkedin.com/sharing/share-offsite/?url=https://ryudi84.github.io/sovereign-tools/ada/" target="_blank" rel="noopener">Share on LinkedIn</a>
-<a class="btn btn-sm" style="background:#ff4500;color:#fff" href="https://www.reddit.com/submit?url=https://ryudi84.github.io/sovereign-tools/ada/&title=78%25%20of%20US%20City%20Websites%20Fail%20ADA%20Title%20II%20-%20We%20Scanned%20101%20Cities" target="_blank" rel="noopener">Share on Reddit</a>
+<a class="btn btn-sm" style="background:#ff4500;color:#fff" href="https://www.reddit.com/submit?title=78%25%20of%20US%20City%20Websites%20Fail%20ADA%20Title%20II%20-%20We%20Scanned%20101%20Cities" target="_blank" rel="noopener">Share on Reddit</a>
 </div>
 </div>
 
 <footer>
-<p style="margin-bottom:8px"><strong>Sovereign Accessibility Tools</strong></p>
-<p>Data from axe-core WCAG 2.1 AA automated audit &middot; March 2026<br>
-This is a readiness assessment, not legal advice. Automated scans cover ~57% of WCAG criteria.<br>
-<a href="https://www.ada.gov/law-and-regs/regulations/title-ii-2024/">ADA Title II Final Rule (2024)</a> &middot;
-<a href="https://github.com/dequelabs/axe-core">axe-core (open source)</a> &middot;
-<a href="mailto:yu84cubo@gmail.com">Contact</a></p>
+<p style="margin-bottom:8px"><strong>Sovereign Accessibility</strong></p>
+<p>Powered by axe-core (Deque Systems) &middot; WCAG 2.1 AA Standard &middot; March 2026<br>
+This is a technical readiness assessment, not legal advice. Automated scans cover ~57% of WCAG criteria.<br>
+<a href="https://www.ada.gov/law-and-regs/regulations/title-ii-2024/">ADA Title II Final Rule</a> &middot;
+<a href="#contact">Contact Us</a></p>
 </footer>
 </div>
 
@@ -456,7 +491,7 @@ status.innerHTML='<span style="color:#f59e0b">Direct scan unavailable for this U
 results.style.display='block';
 results.innerHTML='<h3 style="margin-bottom:12px">Request Manual Scan</h3>'+
 '<p style="margin-bottom:16px;color:var(--muted)">Some websites block automated cross-origin requests. We\'ll run a full axe-core scan from our servers and email you the detailed report.</p>'+
-'<a class="btn btn-primary btn-sm" href="mailto:yu84cubo@gmail.com?subject=ADA%20Scan%20Request%20-%20'+encodeURIComponent(url)+'&body=Please%20scan%20this%20URL%20for%20ADA%20Title%20II%20compliance%3A%0A%0A'+encodeURIComponent(url)+'%0A%0APlease%20email%20the%20report%20to%20this%20address.">Email Me the Report</a>';
+'<a class="btn btn-primary btn-sm" href="#contact?subject=ADA%20Scan%20Request%20-%20'+encodeURIComponent(url)+'&body=Please%20scan%20this%20URL%20for%20ADA%20Title%20II%20compliance%3A%0A%0A'+encodeURIComponent(url)+'%0A%0APlease%20email%20the%20report%20to%20this%20address.">Email Me the Report</a>';
 }
 btn.disabled=false;btn.textContent='Scan Now';
 }
@@ -576,7 +611,7 @@ html+='</div>';
 
 html+='<div style="border-top:1px solid var(--border);padding-top:12px;margin-top:8px;font-size:0.8rem;color:var(--dim)">';
 html+='<p><strong>Note:</strong> This is a client-side automated scan covering common WCAG 2.1 AA issues. A full axe-core scan from our servers typically finds 2-3x more violations. ';
-html+='<a href="mailto:yu84cubo@gmail.com?subject=Full%20Scan%20Request%20-%20'+encodeURIComponent(url)+'&body=I%20ran%20the%20free%20scan%20and%20would%20like%20a%20full%20axe-core%20audit.%0A%0AURL%3A%20'+encodeURIComponent(url)+'" style="color:var(--accent)">Request a full server-side scan (free)</a></p>';
+html+='<a href="#contact?subject=Full%20Scan%20Request%20-%20'+encodeURIComponent(url)+'&body=I%20ran%20the%20free%20scan%20and%20would%20like%20a%20full%20axe-core%20audit.%0A%0AURL%3A%20'+encodeURIComponent(url)+'" style="color:var(--accent)">Request a full server-side scan (free)</a></p>';
 html+='</div>';
 
 if(critical.length>0||serious.length>0){
