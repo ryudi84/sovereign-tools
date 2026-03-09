@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ADA Title II Readiness Report: 101 US Cities Scanned</title>
+<meta name="description" content="We scanned 101 US city websites for ADA Title II WCAG 2.1 AA compliance. 59 cities have critical or serious violations. April 24, 2026 deadline approaching.">
+<style>
+body{font-family:-apple-system,sans-serif;max-width:1000px;margin:0 auto;padding:20px;background:#0f172a;color:#e2e8f0}
+h1{font-size:1.8rem;text-align:center;margin-bottom:4px}
+.subtitle{text-align:center;color:#94a3b8;margin-bottom:24px}
+.stats{display:flex;justify-content:center;gap:24px;margin:20px 0;flex-wrap:wrap}
+.stat{text-align:center;background:#1e293b;padding:16px 24px;border-radius:8px}
+.stat-num{font-size:2rem;font-weight:800}
+.stat-num.red{color:#ef4444}.stat-num.green{color:#22c55e}.stat-num.blue{color:#60a5fa}
+.stat-label{font-size:0.8rem;color:#64748b}
+table{width:100%;border-collapse:collapse;margin:20px 0}
+th{background:#1e293b;padding:10px;text-align:left;font-size:0.85rem;position:sticky;top:0}
+td{padding:10px;border-bottom:1px solid #1e293b;font-size:0.85rem}
+tr:hover{background:#1e293b}
+.badge{padding:3px 8px;border-radius:4px;font-size:0.75rem;font-weight:600}
+.badge.critical{background:#dc2626;color:#fff}
+.badge.serious{background:#ea580c;color:#fff}
+.badge.moderate{background:#ca8a04;color:#fff}
+.badge.clean{background:#16a34a;color:#fff}
+tr.error td{color:#64748b}
+.cta{text-align:center;background:#1e3a5f;border:1px solid #2563eb;padding:24px;border-radius:12px;margin:24px 0}
+.cta a{color:#60a5fa;font-weight:600;font-size:1.1rem}
+.disclaimer{font-size:0.75rem;color:#64748b;text-align:center;margin:20px 0}
+</style>
+</head>
+<body>
+<h1>ADA Title II Website Readiness Report</h1>
+<p class="subtitle">We scanned 101 US city websites for WCAG 2.1 AA accessibility violations.<br>
+Deadline: <strong>April 24, 2026</strong> | Penalties: up to <strong>$150,000</strong> per violation.</p>
+
+<div class="stats">
+<div class="stat"><div class="stat-num blue">101</div><div class="stat-label">Cities Scanned</div></div>
+<div class="stat"><div class="stat-num red">59</div><div class="stat-label">At Risk</div></div>
+<div class="stat"><div class="stat-num green">23</div><div class="stat-label">Passing</div></div>
+</div>
+
+<div class="cta">
+<a href="https://estipulate-communicatory-michael.ngrok-free.dev/ada">Scan YOUR city website for free &rarr;</a>
+<p style="color:#94a3b8;margin-top:8px;font-size:0.85rem">Free homepage scan. Full site assessment available.</p>
+</div>
+
+<table>
+<tr><th>City</th><th>Violations</th><th>Critical</th><th>Serious</th><th>Other</th><th>Status</th></tr>
+<tr class="critical">
+<td><strong>Irvine, CA</strong><br><small>https://www.cityofirvine.org</small></td>
+<td>10</td>
+<td>3</td>
+<td>3</td>
+<td>4</td>
+<td><span class="badge critical">CRITICAL</span></td>
+</tr>
+<tr class="moderate">
+<td><strong>Tampa, FL</strong><br><small>https://www.tampa.gov</small></td>
+<td>9</td>
+<td>0</td>
+<td>0</td>
+<td>9</td>
+<td><span class="badge moderate">NEEDS WORK</span></td>
+</tr>
+<tr class="critical">
+<td><strong>Riverside, CA</strong><br><small>https://www.riversideca.gov</small></td>
+<td>9</td>
+<td>2</td>
+<td>2</td>
+<td>5</td>
+<td><span class="badge critical">CRITICAL</span></td>
+</tr>
+<tr class="critical">
+<td><strong>Boston, MA</strong><br><small>https://www.boston.gov</small></td>
+<td>8</td>
+<td>2</td>
+<td>1</td>
+<td>5</td>
+<td><span class="badge critical">CRITICAL</span></td>
+</tr>
+<tr class="critical">
+<td><strong>Sacramento, CA</strong><br><small>https://www.cityofsacramento.gov</small></td>
+<td>8</td>
+<td>1</td>
+<td>4</td>
+<td>3</td>
+<td><span class="badge critical">CRITICAL</span></td>
+</tr>
+<tr class="critical">
+<td><strong>Omaha, NE</strong><br><small>https://www.cityofomaha.org</small></td>
+<td>8</td>
+<td>1</td>
+<td>4</td>
+<td>3</td>
+<td><span class="badge critical">CRITICAL</span></td>
+</tr>
+<tr class="critical">
+<td><strong>Wichita, KS</strong><br><small>https://www.wichita.gov</small></td>
+<td>8</td>
+<td>4</td>
+<td>1</td>
+<td>3</td>
+<td><span class="badge critical">CRITICAL</span></td>
+</tr>
+<tr class="critical">
+<td><strong>Tulsa, OK</strong><br><small>https://www.cityoftulsa.org</small></td>
+<td>7</td>
+<td>1</td>
+<td>5</td>
+<td>1</td>
+<td><span class="badge critical">CRITICAL</span></td>
+</tr>
+<tr class="critical">
+<td><strong>Anchorage, AK</strong><br><small>https://www.muni.org</small></td>
+<td>7</td>
+<td>3</td>
+<td>0</td>
+<td>4</td>
+<td><span class="badge critical">CRITICAL</span></td>
+</tr>
+<tr class="serious">
+<td><strong>Spokane, WA</strong><br><small>https://www.spokanecity.org</small></td>
+<td>7</td>
+<td>0</td>
+<td>4</td>
+<td>3</td>
+<td><span class="badge serious">AT RISK</span></td>
+</tr>
+<tr class="serious">
+<td><strong>Modesto, CA</strong><br><small>https://www.modestogov.com</small></td>
+<td>7</td>
+<td>0</td>
+<td>4</td>
+<td>3</td>
+<td><span class="badge serious">AT RISK</span></td>
+</tr>
+<tr class="critical">
+<td><strong>Philadelphia, PA</strong><br><small>https://www.phila.gov</small></td>
+<td>6</td>
+<td>1</td>
+<td>1</td>
+<td>4</td>
+<td><span class="badge critical">CRITICAL</span></td>
+</tr>
+<tr class="critical">
+<td><strong>Newark, NJ</strong><br><small>https://www.newarknj.gov</small></td>
+<td>6</td>
+<td>3</td>
+<td>1</td>
+<td>2</td>
+<td><span class="badge critical">CRITICAL</span></td>
+</tr>
+<tr class="serious">
+<td><strong>Chandler, AZ</strong><br><small>https://www.chandleraz.gov</small></td>
+<td>6</td>
+<td>0</td>
+<td>2</td>
+<td>4</td>
+<td><span class="badge serious">AT RISK</span></td>
+</tr>
+<tr class="critical">
+<td><strong>Chesapeake, VA</strong><br><small>https://www.cityofchesapeake.net</small></td>
+<td>6</td>
+<td>3</td>
+<td>0</td>
+<td>3</td>
+<td><span class="badge critical">CRITICAL</span></td>
+</tr>
+<tr class="critical">
+<td><strong>Norfolk, VA</strong><br><small>https://www.norfolk.gov</small></td>
+<td>6</td>
+<td>3</td>
+<td>1</td>
+<td>2</td>
+<td><span class="badge critical">CRITICAL</span></td>
+</tr>
+<tr class="critical">
+<td><strong>San Bernardino, CA</strong><br><small>https://www.sbcity.org</small></td>
+<td>6</td>
+<td>3</td>
+<td>0</td>
+<td>3</td>
+<td><span class="badge critical">CRITICAL</span></td>
+</tr>
+<tr class="serious">
+<td><strong>Moreno Valley, CA</strong><br><small>https://www.moval.org</small></td>
+<td>6</td>
+<td>0</td>
+<td>3</td>
+<td>3</td>
+<td><span class="badge serious">AT RISK</span></td>
+</tr>
+<tr class="critical">
+<td><strong>Washington, DC</strong><br><small>https://dc.gov</small></td>
+<td>5</td>
+<td>1</td>
+<td>0</td>
+<td>4</td>
+<td><span class="badge critical">CRITICAL</span></td>
+</tr>
+<tr class="serious">
+<td><strong>Memphis, TN</strong><br><small>https://www.memphistn.gov</small></td>
+<td>5</td>
+<td>0</td>
+<td>1</td>
+<td>4</td>
+<td><span class="badge serious">AT RISK</span></td>
+</tr>
+<tr class="critical">
+<td><strong>Baltimore, MD</strong><br><small>https://www.baltimorecity.gov</small></td>
+<td>5</td>
+<td>1</td>
+<td>2</td>
+<td>2</td>
+<td><span class="badge critical">CRITICAL</span></td>
+</tr>
+<tr class="serious">
+<td><strong>Bakersfield, CA</strong><br><small>https://www.bakersfieldcity.us</small></td>
+<td>5</td>
+<td>0</td>
+<td>3</td>
+<td>2</td>
+<td><span class="badge serious">AT RISK</span></td>
+</tr>
+<tr class="serious">
+<td><strong>New Orleans, LA</strong><br><small>https://www.nola.gov</small></td>
+<td>5</td>
+<td>0</td>
+<td>2</td>
+<td>3</td>
+<td><span class="badge serious">AT RISK</span></td>
+</tr>
+<tr class="critical">
+<td><strong>Santa Ana, CA</strong><br><small>https://www.santa-ana.org</small></td>
+<td>5</td>
+<td>1</td>
+<td>1</td>
+<td>3</td>
+<td><span class="badge critical">CRITICAL</span></td>
+</tr>
+<tr class="critical">
+<td><strong>Buffalo, NY</strong><br><small>https://www.buffalony.gov</small></td>
+<td>5</td>
+<td>3</td>
+<td>0</td>
+<td>2</td>
+<td><span class="badge critical">CRITICAL</span></td>
+</tr>
+<tr class="critical">
+<td><strong>Winston-Salem, NC</strong><br><small>https://www.cityofws.org</small></td>
+<td>5</td>
+<td>3</td>
+<td>0</td>
+<td>2</td>
+<td><span class="badge critical">CRITICAL</span></td>
+</tr>
+<tr class="serious">
+<td><strong>Boise, ID</strong><br><small>https://www.cityofboise.org</small></td>
+<td>5</td>
+<td>0</td>
+<td>3</td>
+<td>2</td>
+<td><span class="badge serious">AT RISK</span></td>
+</tr>
+<tr class="critical">
+<td><strong>Richmond, VA</strong><br><small>https://www.rva.gov</small></td>
+<td>5</td>
+<td>1</td>
+<td>1</td>
+<td>3</td>
+<td><span class="badge critical">CRITICAL</span></td>
+</tr>
+<tr class="critical">
+<td><strong>Los Angeles, CA</strong><br><small>https://www.lacity.gov</small></td>
+<td>4</td>
+<td>1</td>
+<td>2</td>
+<td>1</td>
+<td><span class="badge critical">CRITICAL</span></td>
+</tr>
+<tr class="serious">
+<td><strong>Denver, CO</strong><br><small>https://www.denvergov.org</small></td>
+<td>4</td>
+<td>0</td>
+<td>2</td>
+<td>2</td>
+<td><span class="badge serious">AT RISK</span></td>
+</tr>
+<tr class="critical">
+<td><strong>Mesa, AZ</strong><br><small>https://www.mesaaz.gov</small></td>
+<td>4</td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+<td><span class="badge critical">CRITICAL</span></td>
+</tr>
+<tr class="serious">
+<td><strong>Colorado Springs, CO</strong><br><small>https://coloradosprings.gov</small></td>
+<td>4</td>
+<td>0</td>
+<td>2</td>
+<td>2</td>
+<td><span class="badge serious">AT RISK</span></td>
+</tr>
+<tr class="critical">
+<td><strong>Honolulu, HI</strong><br><small>https://www.honolulu.gov</small></td>
+<td>4</td>
+<td>1</td>
+<td>0</td>
+<td>3</td>
+<td><span class="badge critical">CRITICAL</span></td>
+</tr>
+<tr class="serious">
+<td><strong>Corpus Christi, TX</strong><br><small>https://www.cctexas.com</small></td>
+<td>4</td>
+<td>0</td>
+<td>2</td>
+<td>2</td>
+<td><span class="badge serious">AT RISK</span></td>
+</tr>
+<tr class="serious">
+<td><strong>Plano, TX</strong><br><small>https://www.plano.gov</small></td>
+<td>4</td>
+<td>0</td>
+<td>2</td>
+<td>2</td>
+<td><span class="badge serious">AT RISK</span></td>
+</tr>
+<tr class="serious">
+<td><strong>Chicago, IL</strong><br><small>https://www.chicago.gov</small></td>
+<td>3</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td><span class="badge serious">AT RISK</span></td>
+</tr>
+<tr class="serious">
+<td><strong>Phoenix, AZ</strong><br><small>https://www.phoenix.gov</small></td>
+<td>3</td>
+<td>0</td>
+<td>2</td>
+<td>1</td>
+<td><span class="badge serious">AT RISK</span></td>
+</tr>
+<tr class="serious">
+<td><strong>San Jose, CA</strong><br><small>https://www.sanjoseca.gov</small></td>
+<td>3</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td><span class="badge serious">AT RISK</span></td>
+</tr>
+<tr class="moderate">
+<td><strong>Austin, TX</strong><br><small>https://www.austintexas.gov</small></td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+<td>3</td>
+<td><span class="badge moderate">NEEDS WORK</span></td>
+</tr>
+<tr class="critical">
+<td><strong>Oklahoma City, OK</strong><br><small>https://www.okc.gov</small></td>
+<td>3</td>
+<td>1</td>
+<td>0</td>
+<td>2</td>
+<td><span class="badge critical">CRITICAL</span></td>
+</tr>
+<tr class="moderate">
+<td><strong>El Paso, TX</strong><br><small>https://www.elpasotexas.gov</small></td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+<td>3</td>
+<td><span class="badge moderate">NEEDS WORK</span></td>
+</tr>
+<tr class="critical">
+<td><strong>Albuquerque, NM</strong><br><small>https://www.cabq.gov</small></td>
+<td>3</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td><span class="badge critical">CRITICAL</span></td>
+</tr>
+<tr class="serious">
+<td><strong>Kansas City, MO</strong><br><small>https://www.kcmo.gov</small></td>
+<td>3</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td><span class="badge serious">AT RISK</span></td>
+</tr>
+<tr class="serious">
+<td><strong>Atlanta, GA</strong><br><small>https://www.atlantaga.gov</small></td>
+<td>3</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td><span class="badge serious">AT RISK</span></td>
+</tr>
+<tr class="serious">
+<td><strong>Stockton, CA</strong><br><small>https://www.stocktonca.gov</small></td>
+<td>3</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td><span class="badge serious">AT RISK</span></td>
+</tr>
+<tr class="serious">
+<td><strong>Henderson, NV</strong><br><small>https://www.cityofhenderson.com</small></td>
+<td>3</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td><span class="badge serious">AT RISK</span></td>
+</tr>
+<tr class="serious">
+<td><strong>Greensboro, NC</strong><br><small>https://www.greensboro-nc.gov</small></td>
+<td>3</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td><span class="badge serious">AT RISK</span></td>
+</tr>
+<tr class="serious">
+<td><strong>Chula Vista, CA</strong><br><small>https://www.chulavistaca.gov</small></td>
+<td>3</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td><span class="badge serious">AT RISK</span></td>
+</tr>
+<tr class="serious">
+<td><strong>Toledo, OH</strong><br><small>https://toledo.oh.gov</small></td>
+<td>3</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td><span class="badge serious">AT RISK</span></td>
+</tr>
+<tr class="serious">
+<td><strong>Gilbert, AZ</strong><br><small>https://www.gilbertaz.gov</small></td>
+<td>3</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td><span class="badge serious">AT RISK</span></td>
+</tr>
+<tr class="serious">
+<td><strong>Reno, NV</strong><br><small>https://www.reno.gov</small></td>
+<td>3</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td><span class="badge serious">AT RISK</span></td>
+</tr>
+<tr class="serious">
+<td><strong>North Las Vegas, NV</strong><br><small>https://www.cityofnorthlasvegas.com</small></td>
+<td>3</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td><span class="badge serious">AT RISK</span></td>
+</tr>
+<tr class="serious">
+<td><strong>Fremont, CA</strong><br><small>https://www.fremont.gov</small></td>
+<td>3</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td><span class="badge serious">AT RISK</span></td>
+</tr>
+<tr class="serious">
+<td><strong>Baton Rouge, LA</strong><br><small>https://www.brla.gov</small></td>
+<td>3</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td><span class="badge serious">AT RISK</span></td>
+</tr>
+<tr class="moderate">
+<td><strong>Fontana, CA</strong><br><small>https://www.fontana.org</small></td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+<td>3</td>
+<td><span class="badge moderate">NEEDS WORK</span></td>
+</tr>
+<tr class="serious">
+<td><strong>Des Moines, IA</strong><br><small>https://www.dsm.city</small></td>
+<td>3</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td><span class="badge serious">AT RISK</span></td>
+</tr>
+<tr class="serious">
+<td><strong>Fayetteville, NC</strong><br><small>https://www.fayettevillenc.gov</small></td>
+<td>3</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td><span class="badge serious">AT RISK</span></td>
+</tr>
+<tr class="serious">
+<td><strong>Fort Worth, TX</strong><br><small>https://www.fortworthtexas.gov</small></td>
+<td>2</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td><span class="badge serious">AT RISK</span></td>
+</tr>
+<tr class="moderate">
+<td><strong>Nashville, TN</strong><br><small>https://www.nashville.gov</small></td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>2</td>
+<td><span class="badge moderate">NEEDS WORK</span></td>
+</tr>
+<tr class="moderate">
+<td><strong>Las Vegas, NV</strong><br><small>https://www.lasvegasnevada.gov</small></td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>2</td>
+<td><span class="badge moderate">NEEDS WORK</span></td>
+</tr>
+<tr class="moderate">
+<td><strong>Louisville, KY</strong><br><small>https://louisvilleky.gov</small></td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>2</td>
+<td><span class="badge moderate">NEEDS WORK</span></td>
+</tr>
+<tr class="moderate">
+<td><strong>Milwaukee, WI</strong><br><small>https://city.milwaukee.gov</small></td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>2</td>
+<td><span class="badge moderate">NEEDS WORK</span></td>
+</tr>
+<tr class="serious">
+<td><strong>Raleigh, NC</strong><br><small>https://raleighnc.gov</small></td>
+<td>2</td>
+<td>0</td>
+<td>2</td>
+<td>0</td>
+<td><span class="badge serious">AT RISK</span></td>
+</tr>
+<tr class="moderate">
+<td><strong>Minneapolis, MN</strong><br><small>https://www.minneapolismn.gov</small></td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>2</td>
+<td><span class="badge moderate">NEEDS WORK</span></td>
+</tr>
+<tr class="critical">
+<td><strong>Glendale, AZ</strong><br><small>https://www.glendaleaz.com</small></td>
+<td>2</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td><span class="badge critical">CRITICAL</span></td>
+</tr>
+<tr class="moderate">
+<td><strong>Scottsdale, AZ</strong><br><small>https://www.scottsdaleaz.gov</small></td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>2</td>
+<td><span class="badge moderate">NEEDS WORK</span></td>
+</tr>
+<tr class="moderate">
+<td><strong>New York, NY</strong><br><small>https://www.nyc.gov</small></td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td><span class="badge moderate">NEEDS WORK</span></td>
+</tr>
+<tr class="serious">
+<td><strong>San Diego, CA</strong><br><small>https://www.sandiego.gov</small></td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td><span class="badge serious">AT RISK</span></td>
+</tr>
+<tr class="moderate">
+<td><strong>Indianapolis, IN</strong><br><small>https://www.indy.gov</small></td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td><span class="badge moderate">NEEDS WORK</span></td>
+</tr>
+<tr class="moderate">
+<td><strong>Arlington, TX</strong><br><small>https://www.arlingtontx.gov</small></td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td><span class="badge moderate">NEEDS WORK</span></td>
+</tr>
+<tr class="critical">
+<td><strong>Aurora, CO</strong><br><small>https://www.auroragov.org</small></td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td><span class="badge critical">CRITICAL</span></td>
+</tr>
+<tr class="moderate">
+<td><strong>Cleveland, OH</strong><br><small>https://www.clevelandohio.gov</small></td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td><span class="badge moderate">NEEDS WORK</span></td>
+</tr>
+<tr class="moderate">
+<td><strong>Lexington, KY</strong><br><small>https://www.lexingtonky.gov</small></td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td><span class="badge moderate">NEEDS WORK</span></td>
+</tr>
+<tr class="moderate">
+<td><strong>Saint Paul, MN</strong><br><small>https://www.stpaul.gov</small></td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td><span class="badge moderate">NEEDS WORK</span></td>
+</tr>
+<tr class="moderate">
+<td><strong>Pittsburgh, PA</strong><br><small>https://pittsburghpa.gov</small></td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td><span class="badge moderate">NEEDS WORK</span></td>
+</tr>
+<tr class="moderate">
+<td><strong>Madison, WI</strong><br><small>https://www.cityofmadison.com</small></td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td><span class="badge moderate">NEEDS WORK</span></td>
+</tr>
+<tr class="critical">
+<td><strong>Rochester, NY</strong><br><small>https://www.cityofrochester.gov</small></td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td><span class="badge critical">CRITICAL</span></td>
+</tr>
+<tr class="moderate">
+<td><strong>Birmingham, AL</strong><br><small>https://www.birminghamal.gov</small></td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td><span class="badge moderate">NEEDS WORK</span></td>
+</tr>
+<tr class="clean">
+<td><strong>Houston, TX</strong><br><small>https://www.houstontx.gov</small></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td><span class="badge clean">PASSING</span></td>
+</tr>
+<tr class="clean">
+<td><strong>San Antonio, TX</strong><br><small>https://www.sanantonio.gov</small></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td><span class="badge clean">PASSING</span></td>
+</tr>
+<tr class="clean">
+<td><strong>Dallas, TX</strong><br><small>https://www.dallascityhall.com</small></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td><span class="badge clean">PASSING</span></td>
+</tr>
+<tr class="clean">
+<td><strong>Jacksonville, FL</strong><br><small>https://www.coj.net</small></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td><span class="badge clean">PASSING</span></td>
+</tr>
+<tr class="clean">
+<td><strong>Columbus, OH</strong><br><small>https://www.columbus.gov</small></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td><span class="badge clean">PASSING</span></td>
+</tr>
+<tr class="clean">
+<td><strong>Charlotte, NC</strong><br><small>https://www.charlottenc.gov</small></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td><span class="badge clean">PASSING</span></td>
+</tr>
+<tr class="clean">
+<td><strong>San Francisco, CA</strong><br><small>https://www.sf.gov</small></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td><span class="badge clean">PASSING</span></td>
+</tr>
+<tr class="clean">
+<td><strong>Seattle, WA</strong><br><small>https://www.seattle.gov</small></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td><span class="badge clean">PASSING</span></td>
+</tr>
+<tr class="clean">
+<td><strong>Portland, OR</strong><br><small>https://www.portland.gov</small></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td><span class="badge clean">PASSING</span></td>
+</tr>
+<tr class="clean">
+<td><strong>Tucson, AZ</strong><br><small>https://www.tucsonaz.gov</small></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td><span class="badge clean">PASSING</span></td>
+</tr>
+<tr class="clean">
+<td><strong>Fresno, CA</strong><br><small>https://www.fresno.gov</small></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td><span class="badge clean">PASSING</span></td>
+</tr>
+<tr class="clean">
+<td><strong>Long Beach, CA</strong><br><small>https://www.longbeach.gov</small></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td><span class="badge clean">PASSING</span></td>
+</tr>
+<tr class="clean">
+<td><strong>Virginia Beach, VA</strong><br><small>https://www.vbgov.com</small></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td><span class="badge clean">PASSING</span></td>
+</tr>
+<tr class="clean">
+<td><strong>Miami, FL</strong><br><small>https://www.miamigov.com</small></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td><span class="badge clean">PASSING</span></td>
+</tr>
+<tr class="clean">
+<td><strong>Oakland, CA</strong><br><small>https://www.oaklandca.gov</small></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td><span class="badge clean">PASSING</span></td>
+</tr>
+<tr class="clean">
+<td><strong>Anaheim, CA</strong><br><small>https://www.anaheim.net</small></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td><span class="badge clean">PASSING</span></td>
+</tr>
+<tr class="clean">
+<td><strong>Cincinnati, OH</strong><br><small>https://www.cincinnati-oh.gov</small></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td><span class="badge clean">PASSING</span></td>
+</tr>
+<tr class="clean">
+<td><strong>St. Louis, MO</strong><br><small>https://www.stlouis-mo.gov</small></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td><span class="badge clean">PASSING</span></td>
+</tr>
+<tr class="clean">
+<td><strong>Lincoln, NE</strong><br><small>https://www.lincoln.ne.gov</small></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td><span class="badge clean">PASSING</span></td>
+</tr>
+<tr class="clean">
+<td><strong>Irving, TX</strong><br><small>https://www.cityofirving.org</small></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td><span class="badge clean">PASSING</span></td>
+</tr>
+<tr class="clean">
+<td><strong>Garland, TX</strong><br><small>https://www.garlandtx.gov</small></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td><span class="badge clean">PASSING</span></td>
+</tr>
+<tr class="clean">
+<td><strong>Hialeah, FL</strong><br><small>https://www.hialeahfl.gov</small></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td><span class="badge clean">PASSING</span></td>
+</tr>
+<tr class="clean">
+<td><strong>Tacoma, WA</strong><br><small>https://www.cityoftacoma.org</small></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td><span class="badge clean">PASSING</span></td>
+</tr>
+
+</table>
+
+<p class="disclaimer">
+This report was generated on March 09, 2026 using automated WCAG 2.1 AA scanning (axe-core).<br>
+Automated scans cover ~57% of WCAG criteria. This is a readiness assessment, not legal advice.<br>
+Generated by Sovereign Accessibility Tools.
+</p>
+</body>
+</html>

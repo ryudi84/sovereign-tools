@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ADA Title II Website Readiness Scanner | Free WCAG 2.1 AA Assessment</title>
+<meta name="description" content="We scanned 101 US city websites for ADA Title II compliance. 78% fail. Free WCAG 2.1 AA readiness scanner. April 24, 2026 deadline — penalties up to $150,000.">
+<meta property="og:title" content="78% of US City Websites Fail ADA Title II Accessibility Checks">
+<meta property="og:description" content="We scanned 101 of the largest US city websites. 27 have critical violations. Deadline: April 24, 2026. Penalties up to $150K per violation.">
+<meta property="og:type" content="website">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0f172a;color:#e2e8f0;line-height:1.6}
+.container{max-width:800px;margin:0 auto;padding:20px}
+header{text-align:center;padding:40px 0 20px}
+h1{font-size:2rem;color:#fff;margin-bottom:8px}
+h2{font-size:1.4rem;color:#60a5fa;margin:32px 0 12px}
+.deadline{background:#dc2626;color:#fff;display:inline-block;padding:6px 16px;border-radius:4px;font-weight:700;font-size:0.95rem;margin:12px 0;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.8}}
+.subtitle{color:#94a3b8;font-size:1.1rem;max-width:600px;margin:0 auto}
+.penalty{color:#f87171;font-weight:700}
+.stats{display:flex;justify-content:center;gap:24px;margin:20px 0;flex-wrap:wrap}
+.stat{text-align:center;background:#1e293b;padding:16px 24px;border-radius:8px;min-width:120px}
+.stat-num{font-size:2rem;font-weight:800}
+.stat-num.red{color:#ef4444}.stat-num.yellow{color:#eab308}.stat-num.green{color:#22c55e}.stat-num.blue{color:#60a5fa}
+.stat-label{font-size:0.75rem;color:#64748b}
+.cta-box{background:linear-gradient(135deg,#1e3a5f,#1e293b);border:1px solid #2563eb;border-radius:12px;padding:32px;text-align:center;margin:24px 0}
+.cta-btn{display:inline-block;padding:16px 40px;background:#2563eb;color:#fff;border:none;border-radius:8px;font-size:1.1rem;font-weight:700;cursor:pointer;text-decoration:none;margin:8px}
+.cta-btn:hover{background:#1d4ed8}
+.cta-btn.secondary{background:#475569}
+.cta-btn.secondary:hover{background:#334155}
+.card{background:#1e293b;border:1px solid #334155;border-radius:8px;padding:20px;margin:12px 0}
+.card h3{font-size:1rem;color:#60a5fa;margin-bottom:6px}
+.card p{font-size:0.9rem;color:#94a3b8}
+.worst-list{margin:16px 0}
+.worst-item{display:flex;justify-content:space-between;align-items:center;padding:10px 16px;border-bottom:1px solid #1e293b}
+.worst-item:last-child{border-bottom:none}
+.worst-city{font-weight:600}
+.worst-badge{padding:3px 8px;border-radius:4px;font-size:0.75rem;font-weight:600}
+.worst-badge.critical{background:#dc2626;color:#fff}
+.worst-badge.serious{background:#ea580c;color:#fff}
+.methodology{background:#1e293b;border:1px solid #334155;border-radius:8px;padding:24px;margin:24px 0}
+.methodology h3{color:#60a5fa;margin-bottom:8px}
+.methodology p,.methodology li{font-size:0.85rem;color:#94a3b8}
+.methodology ul{margin:8px 0 0 20px}
+footer{text-align:center;padding:40px 0;color:#64748b;font-size:0.8rem}
+footer a{color:#60a5fa}
+@media(max-width:600px){.stats{flex-direction:column;align-items:center}}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<h1>78% of US City Websites Fail ADA Title II</h1>
+<div class="deadline" id="deadline">DEADLINE: April 24, 2026</div>
+<p class="subtitle">We scanned 101 of the largest US city websites for WCAG 2.1 AA accessibility compliance. The results are alarming. Penalties up to <span class="penalty">$150,000 per violation</span>.</p>
+</header>
+
+<div class="stats">
+<div class="stat"><div class="stat-num red">27</div><div class="stat-label">Critical</div></div>
+<div class="stat"><div class="stat-num yellow">32</div><div class="stat-label">At Risk</div></div>
+<div class="stat"><div class="stat-num blue">19</div><div class="stat-label">Needs Work</div></div>
+<div class="stat"><div class="stat-num green">23</div><div class="stat-label">Clean</div></div>
+</div>
+
+<div class="cta-box">
+<h3 style="font-size:1.3rem;margin-bottom:8px">See the Full Report</h3>
+<p style="color:#94a3b8;margin-bottom:16px">View detailed results for all 101 cities — violations, severity, and risk status.</p>
+<a class="cta-btn" href="report.html">View 101-City Report</a>
+</div>
+
+<h2>Worst Offenders</h2>
+<div class="card">
+<div class="worst-list">
+<div class="worst-item"><span class="worst-city">Irvine, CA</span><span><span class="worst-badge critical">3 critical</span> <span class="worst-badge serious">3 serious</span> 10 total</span></div>
+<div class="worst-item"><span class="worst-city">Wichita, KS</span><span><span class="worst-badge critical">4 critical</span> <span class="worst-badge serious">1 serious</span> 8 total</span></div>
+<div class="worst-item"><span class="worst-city">Boston, MA</span><span><span class="worst-badge critical">2 critical</span> <span class="worst-badge serious">1 serious</span> 8 total</span></div>
+<div class="worst-item"><span class="worst-city">Norfolk, VA</span><span><span class="worst-badge critical">3 critical</span> <span class="worst-badge serious">1 serious</span> 6 total</span></div>
+<div class="worst-item"><span class="worst-city">Newark, NJ</span><span><span class="worst-badge critical">3 critical</span> <span class="worst-badge serious">1 serious</span> 6 total</span></div>
+<div class="worst-item"><span class="worst-city">Washington, DC</span><span><span class="worst-badge critical">1 critical</span> 5 total</span></div>
+<div class="worst-item"><span class="worst-city">Los Angeles, CA</span><span><span class="worst-badge critical">1 critical</span> <span class="worst-badge serious">2 serious</span> 4 total</span></div>
+<div class="worst-item"><span class="worst-city">Philadelphia, PA</span><span><span class="worst-badge critical">1 critical</span> <span class="worst-badge serious">1 serious</span> 6 total</span></div>
+</div>
+</div>
+
+<h2>What This Means</h2>
+<div class="card">
+<h3>The ADA Title II Deadline</h3>
+<p>On April 24, 2026, all US state and local government entities with populations of 50,000+ must have websites that conform to WCAG 2.1 Level AA. The DOJ has already begun enforcement — Texas counties have been fined $72,000-$89,000. First-time violations carry penalties up to $75,000; subsequent violations up to $150,000.</p>
+</div>
+<div class="card">
+<h3>Most Common Violations Found</h3>
+<p><strong>Critical:</strong> Invalid ARIA attributes, missing form labels, focusable content hidden from assistive technology.<br>
+<strong>Serious:</strong> Insufficient color contrast, missing link text, images without alt text, keyboard traps.<br>
+<strong>Moderate:</strong> Heading order issues, missing landmark regions, redundant ARIA roles.</p>
+</div>
+
+<div class="methodology">
+<h3>Methodology</h3>
+<p>Each city's homepage was scanned using <a href="https://github.com/dequelabs/axe-core" style="color:#60a5fa">axe-core</a>, the industry-standard open-source accessibility testing engine. Tests were run against WCAG 2.1 Level A and AA success criteria.</p>
+<ul>
+<li>101 US cities with populations over 200,000</li>
+<li>Scanned March 8, 2026</li>
+<li>Homepage only (full-site scans would likely reveal more violations)</li>
+<li>Automated testing covers approximately 57% of WCAG 2.1 AA criteria</li>
+<li>Full compliance requires manual expert review of remaining criteria</li>
+</ul>
+</div>
+
+<div class="cta-box">
+<h3 style="font-size:1.3rem;margin-bottom:8px">Scan Your Website</h3>
+<p style="color:#94a3b8;margin-bottom:16px">Check if your municipal website is ready for the ADA Title II deadline. Free homepage scan.</p>
+<a class="cta-btn" href="mailto:ricardo.yudi@gmail.com?subject=ADA Readiness Scan Request&body=I would like a free ADA Title II readiness scan of our website.">Request Free Scan</a>
+<a class="cta-btn secondary" href="report.html">View Full Report</a>
+</div>
+
+<footer>
+<p>Sovereign Accessibility Tools | Data from axe-core WCAG 2.1 AA automated audit<br>
+This is a readiness assessment, not legal advice. Automated scans cover ~57% of WCAG criteria.<br>
+<a href="https://www.ada.gov/law-and-regs/regulations/title-ii-2024/">ADA Title II Final Rule (2024)</a> |
+<a href="https://github.com/dequelabs/axe-core">axe-core (open source)</a></p>
+</footer>
+</div>
+
+<script>
+const deadline = new Date('2026-04-24T00:00:00Z');
+function update() {
+  const days = Math.ceil((deadline - new Date()) / 86400000);
+  document.getElementById('deadline').textContent = 'DEADLINE: April 24, 2026 — ' + days + ' Days Left';
+}
+update(); setInterval(update, 3600000);
+</script>
+</body>
+</html>
